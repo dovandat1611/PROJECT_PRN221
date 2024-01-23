@@ -1,0 +1,108 @@
+﻿@page
+@model PROJECT_PRN221.Pages.customersite.authenticate.otp.IndexModel
+@{
+}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" type="text/css" href="~/customer/css/normalize.css">
+        <link rel="stylesheet" type="text/css" href="~/customer/icomoon/icomoon.css">
+        <link rel="stylesheet" type="text/css" media="all" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="~/customer/css/vendor.css">
+        <link rel="stylesheet" type="text/css" href="~/customer/style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+        <!-- script
+        ================================================== -->
+        <script src="~/customer/js/modernizr.js"></script>
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-PV3J437JX5"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+
+            gtag('config', 'G-PV3J437JX5');
+        </script>
+    </head>
+<body>
+    <!-- ================================================== -->
+
+         @*HEADER*@
+
+
+         @*BANNER*@
+        <section class="site-banner jarallax min-height300 padding-large" style="background: url(Client/images/iphone14.png) no-repeat;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="page-title">Forgot Password</h1>
+                        <div class="breadcrumbs">
+                            <span class="item">
+                                <a href="#">Home /</a>
+                            </span>
+                            <span class="item">Forgot Password</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        @*FORM*@
+        <section class="login-tabs padding-large no-padding-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="tabs-listing">
+                        <nav>
+                            <div class="nav nav-tabs d-flex justify-content-center" id="nav-tab" role="tablist">
+                                <button class="nav-link active" id="nav-sign-in-tab" data-bs-toggle="tab" data-bs-target="#nav-sign-in" type="button" role="tab" aria-controls="nav-sign-in" aria-selected="true">OTP</button>
+                            </div>
+                        </nav>
+
+                        @*FORM*@
+                        <form action="VerifyOTPController" method="post">
+
+                            <div class="tab-content" id="nav-tabContent">
+
+                                <div class="tab-pane fade active show" id="nav-sign-in" role="tabpanel" aria-labelledby="nav-sign-in-tab">
+                                    <div class="form-group">
+                                        <label for="OTP">Input OTP *</label>
+                                        <input type="text" minlength="2" name="otp" placeholder="Enter OTP" class="u-full-width bg-light" required="">
+                                    </div>     
+                                    <label>
+                                        <span class="label-body">If you remember your password: </span>
+                                        <span class="label-body"><a href="./LoginController">Login</a></span>
+                                    </label>
+                                    <button type="submit" name="submit" class="btn btn-dark btn-full btn-medium">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <hr>
+
+       @*FOOTER*@
+
+
+
+
+    <!-- ================================================== -->
+        <script src="~/customer/js/jquery-1.11.0.min.js"></script>
+        <script src="~/customer/js/plugins.js"></script>
+        <script src="~/customer/js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,206 @@
+﻿@page
+@model PROJECT_PRN221.Pages.customersite.about.IndexModel
+@{
+}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" type="text/css" href="~/customer/css/normalize.css">
+        <link rel="stylesheet" type="text/css" href="~/customer/icomoon/icomoon.css">
+        <link rel="stylesheet" type="text/css" media="all" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="~/customer/css/vendor.css">
+        <link rel="stylesheet" type="text/css" href="~/customer/style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+        <!-- script
+        ================================================== -->
+        <script src="~/customer/js/modernizr.js"></script>
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-PV3J437JX5"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+
+            gtag('config', 'G-PV3J437JX5');
+        </script>
+    </head>
+<body>
+        
+        <div class="preloader-wrapper">
+            <div class="preloader">
+            </div>
+        </div>
+
+        @*HEADER*@
+
+         <section class="site-banner jarallax min-height300 padding-large" style="background: url(images/about/teamworking.jpg) no-repeat;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="page-title">About us</h1>
+                        <div class="breadcrumbs">
+                            <span class="item">
+                                <a href="index.jsp">Home /</a>
+                            </span>
+                            <span class="item">About</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        @*ABOUT*@
+        <section id="about-us">
+            <div class="container ">
+                <div class="row d-flex align-items-center">
+
+                    @*<c:forEach items="${about}" var="a">*@
+                        <div class="col-lg-6 col-md-12">
+                            <div class="image-holder">
+                                <img src="" alt="single" class="about-image">
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-md-12">
+                            <div class="detail">
+                                <div class="display-header">
+                                    <h2 class="section-title">@*${a.getTitle()}*@</h2>
+                                    @*<p>${a.getContent()}</p>*@
+                                    <div class="btn-wrap">
+                                        <a href="" class="btn btn-dark btn-medium d-flex align-items-center" tabindex="0">Shop our store<i class="icon icon-arrow-io"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @*</c:forEach>*@
+
+            </div>
+        </section>
+
+    @*QUOTE*@
+    <section id="testimonials" class="padding-large no-padding-bottom">
+      <div class="container">
+        <div class="reviews-content">
+          <div class="row d-flex flex-wrap">
+            <div class="col-md-2">
+              <div class="review-icon">
+                <i class="icon icon-right-quote"></i>
+              </div>
+            </div>
+            <div class="col-md-8">
+              <div class="swiper testimonial-swiper overflow-hidden">
+                <div class="swiper-wrapper">
+
+                  @* LIST QUOTE*@
+                  <div class="swiper-slide">
+                    <div class="testimonial-detail">
+                      <p>“Dignissim massa diam elementum habitant fames. Id nullam pellentesque nisi, eget cursus dictumst pharetra, sit. Pulvinar laoreet id porttitor egestas dui urna. Porttitor nibh magna dolor ultrices iaculis sit iaculis.”</p>
+                      <div class="author-detail">
+                        <div class="name">By John Smith</div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+              <div class="swiper-arrows">
+                <button class="prev-button">
+                  <i class="icon icon-arrow-left"></i>
+                </button>
+                <button class="next-button">
+                  <i class="icon icon-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+        <hr>
+
+    @*NEW*@
+    <section id="latest-blog" class="padding-large">
+      <div class="container">
+        <div class="section-header d-flex flex-wrap align-items-center justify-content-between">
+          <h2 class="section-title">Our News</h2>
+          <div class="btn-wrap align-right">
+            <a href="blog.html" class="d-flex align-items-center">Read All Articles <i class="icon icon icon-arrow-io"></i>
+            </a>
+          </div>
+        </div>
+
+        
+        <div class="row d-flex flex-wrap">
+
+          @*LIST NEW*@
+          <article class="col-md-4 post-item">
+            <div class="image-holder zoom-effect">
+              <a href="single-post.html">
+                <img src="images/articles/macbook-promo-2.jpg" alt="post" class="post-image">
+              </a>
+            </div>
+            <div class="post-content d-flex">
+              <div class="meta-date">
+                <div class="meta-day text-primary">25</div>
+                <div class="meta-month">Aug-2021</div>
+              </div>
+              <div class="post-header">
+                <h3 class="post-title">
+                  <a href="single-post.html">Latest trends of wearing street wears supremely</a>
+                </h3>
+                <a href="blog.html" class="blog-categories">Trending</a>
+              </div>
+            </div>
+          </article>
+          
+        </div>
+      </div>
+    </section>
+
+    @* BRAND*@
+    <section id="brand-collection" class="padding-medium bg-light-grey">
+      <div class="container">
+      
+        <div class="d-flex flex-wrap justify-content-between " style="margin-bottom: 20px;">
+          <img src="images/brands/apple.svg" alt="phone" class="brand-image" style="width: 100px; height: 50px;">
+          <img src="images/brands/intel.svg" alt="phone" class="brand-image" style="width: 100px; height: 50px;">
+          <img src="images/brands/microsoft.svg" alt="phone" class="brand-image" style="width: 100px; height: 50px;">
+          <img src="images/brands/dell.svg" alt="phone" class="brand-image" style="width: 100px; height: 50px;">
+          <img src="images/brands/asus.svg" alt="phone" class="brand-image" style="width: 100px; height: 50px;">
+        </div>
+        
+        <div class="d-flex flex-wrap justify-content-between">
+          <img src="images/brands/canon.svg" alt="phone" class="brand-image" style="width: 100px; height: 50px;">
+          <img src="images/brands/hp.svg" alt="phone" class="brand-image" style="width: 100px; height: 50px;">
+          <img src="images/brands/lenovo.svg" alt="phone" class="brand-image" style="width: 100px; height: 50px;">
+          <img src="images/brands/lg.svg" alt="phone" class="brand-image" style="width: 100px; height: 50px;">
+          <img src="images/brands/sony.svg" alt="phone" class="brand-image" style="width: 100px; height: 50px;">
+        </div>
+      </div>
+    </section>
+
+        <section id="instagram" class="padding-large">
+        </section>
+
+         @*FOOTER*@
+
+        <script src="~/customer/js/jquery-1.11.0.min.js"></script>
+        <script src="~/customer/js/plugins.js"></script>
+        <script src="~/customer/js/script.js"></script>
+</body>
+</html>

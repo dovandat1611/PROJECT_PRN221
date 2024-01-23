@@ -1,0 +1,124 @@
+﻿@page
+@model PROJECT_PRN221.Pages.adminsite.warranty.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+@*<h1>Create</h1>
+
+<h4>Warranty</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Warranty.OrderdetailId" class="control-label"></label>
+                <select asp-for="Warranty.OrderdetailId" class ="form-control" asp-items="ViewBag.OrderdetailId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Warranty.ProductId" class="control-label"></label>
+                <select asp-for="Warranty.ProductId" class ="form-control" asp-items="ViewBag.ProductId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Warranty.CustomerId" class="control-label"></label>
+                <select asp-for="Warranty.CustomerId" class ="form-control" asp-items="ViewBag.CustomerId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Warranty.ImageProduct" class="control-label"></label>
+                <input asp-for="Warranty.ImageProduct" class="form-control" />
+                <span asp-validation-for="Warranty.ImageProduct" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Warranty.ProductStatus" class="control-label"></label>
+                <input asp-for="Warranty.ProductStatus" class="form-control" />
+                <span asp-validation-for="Warranty.ProductStatus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Warranty.WarrantyDate" class="control-label"></label>
+                <input asp-for="Warranty.WarrantyDate" class="form-control" />
+                <span asp-validation-for="Warranty.WarrantyDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Warranty.WarrantyStatus" class="control-label"></label>
+                <input asp-for="Warranty.WarrantyStatus" class="form-control" />
+                <span asp-validation-for="Warranty.WarrantyStatus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Warranty.WarrantyQuantity" class="control-label"></label>
+                <input asp-for="Warranty.WarrantyQuantity" class="form-control" />
+                <span asp-validation-for="Warranty.WarrantyQuantity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Warranty.ProductStatusAdmin" class="control-label"></label>
+                <input asp-for="Warranty.ProductStatusAdmin" class="form-control" />
+                <span asp-validation-for="Warranty.ProductStatusAdmin" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Warranty.ImageProductAdmin" class="control-label"></label>
+                <input asp-for="Warranty.ImageProductAdmin" class="form-control" />
+                <span asp-validation-for="Warranty.ImageProductAdmin" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Warranty.WarrantyDateAdmin" class="control-label"></label>
+                <input asp-for="Warranty.WarrantyDateAdmin" class="form-control" />
+                <span asp-validation-for="Warranty.WarrantyDateAdmin" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Warranty.Status" class="control-label"></label>
+                <input asp-for="Warranty.Status" class="form-control" />
+                <span asp-validation-for="Warranty.Status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}*@
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Star Admin2 </title>
+        <link rel="stylesheet" href="~/admin/vendors/feather/feather.css">
+        <link rel="stylesheet" href="~/admin/vendors/mdi/css/materialdesignicons.min.css">
+        <link rel="stylesheet" href="~/admin/vendors/ti-icons/css/themify-icons.css">
+        <link rel="stylesheet" href="~/admin/vendors/typicons/typicons.css">
+        <link rel="stylesheet" href="~/admin/vendors/simple-line-icons/css/simple-line-icons.css">
+        <link rel="stylesheet" href="~/admin/vendors/css/vendor.bundle.base.css">
+        <link rel="stylesheet" href="~/admin/css/vertical-layout-light/style.css">
+        <link rel="shortcut icon" href="~/admin/images/favicon.png" />
+        <style>
+            a {
+                all: unset;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+
+
+
+
+
+        <script src="~/admin/vendors/js/vendor.bundle.base.js"></script>
+        <script src="~/admin/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+        <script src="~/admin/js/off-canvas.js"></script>
+        <script src="~/admin/js/hoverable-collapse.js"></script>
+        <script src="~/admin/js/template.js"></script>
+        <script src="~/admin/js/settings.js"></script>
+        <script src="~/admin/js/todolist.js"></script>
+    </body>
+</html>

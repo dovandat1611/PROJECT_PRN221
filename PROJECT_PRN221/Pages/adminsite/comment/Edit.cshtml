@@ -1,0 +1,94 @@
+﻿@page
+@model PROJECT_PRN221.Pages.adminsite.comment.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+@*<h1>Edit</h1>
+
+<h4>Comment</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Comment.CommentId" />
+            <div class="form-group">
+                <label asp-for="Comment.ProductId" class="control-label"></label>
+                <select asp-for="Comment.ProductId" class="form-control" asp-items="ViewBag.ProductId"></select>
+                <span asp-validation-for="Comment.ProductId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Comment.CustomerId" class="control-label"></label>
+                <select asp-for="Comment.CustomerId" class="form-control" asp-items="ViewBag.CustomerId"></select>
+                <span asp-validation-for="Comment.CustomerId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Comment.CommentDate" class="control-label"></label>
+                <input asp-for="Comment.CommentDate" class="form-control" />
+                <span asp-validation-for="Comment.CommentDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Comment.CommentContent" class="control-label"></label>
+                <input asp-for="Comment.CommentContent" class="form-control" />
+                <span asp-validation-for="Comment.CommentContent" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+*@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Star Admin2 </title>
+        <!-- plugins:css -->
+        <link rel="stylesheet" href="~/admin/vendors/feather/feather.css">
+        <link rel="stylesheet" href="~/admin/vendors/mdi/css/materialdesignicons.min.css">
+        <link rel="stylesheet" href="~/admin/vendors/ti-icons/css/themify-icons.css">
+        <link rel="stylesheet" href="~/admin/vendors/typicons/typicons.css">
+        <link rel="stylesheet" href="~/admin/vendors/simple-line-icons/css/simple-line-icons.css">
+        <link rel="stylesheet" href="~/admin/vendors/css/vendor.bundle.base.css">
+        <!-- endinject -->
+        <!-- Plugin css for this page -->
+        <!-- End plugin css for this page -->
+        <!-- inject:css -->
+        <link rel="stylesheet" href="~/admin/css/vertical-layout-light/style.css">
+        <!-- endinject -->
+        <link rel="shortcut icon" href="~/admin/images/favicon.png" />
+    </head>
+    <body>
+
+
+        <!-- plugins:js -->
+        <script src="~/admin/vendors/js/vendor.bundle.base.js"></script>
+        <!-- endinject -->
+        <!-- Plugin js for this page -->
+        <script src="~/admin/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+        <!-- End plugin js for this page -->
+        <!-- inject:js -->
+        <script src="~/admin/js/off-canvas.js"></script>
+        <script src="~/admin/js/hoverable-collapse.js"></script>
+        <script src="~/admin/js/template.js"></script>
+        <script src="~/admin/js/settings.js"></script>
+        <script src="~/admin/js/todolist.js"></script>
+        <!-- endinject -->
+    </body>
+</html>

@@ -1,0 +1,625 @@
+﻿@page
+@model PROJECT_PRN221.Pages.customersite.home.IndexModel
+@{
+
+}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Ultras - Clothing Store eCommerce Store HTML Website Template</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="author" content="">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link rel="stylesheet" type="text/css" href="~/customer/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="~/customer/icomoon/icomoon.css">
+    <link rel="stylesheet" type="text/css" media="all" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="~/customer/css/vendor.css">
+    <link rel="stylesheet" type="text/css" href="~/customer/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- script
+    ================================================== -->
+    <script src="~/customer/js/modernizr.js"></script>
+  </head>
+  <body>
+
+
+    @*HEADER*@
+    <header id="header">
+      <div id="header-wrap">
+        <nav class="secondary-nav border-bottom">
+          <div class="container">
+            <div class="row d-flex align-items-center">
+              <div class="col-md-4 header-contact">
+                <p>Let's talk! <strong>+57 444 11 00 35</strong>
+                </p>
+              </div>
+              <div class="col-md-4 shipping-purchase text-center">
+                <p>Free shipping on a purchase value of $200</p>
+              </div>
+              <div class="col-md-4 col-sm-12 user-items">
+                <ul class="d-flex justify-content-end list-unstyled">
+                  <li>
+                    <a href="login.html">
+                      <i class="icon icon-user"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="cart.html">
+                      <i class="icon icon-shopping-cart"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="wishlist.html">
+                      <i class="icon icon-heart"></i>
+                    </a>
+                  </li>
+                  <li class="user-items search-item pe-3">
+                    <a href="#" class="search-button">
+                      <i class="icon icon-search"></i>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </nav>
+        <nav class="primary-nav padding-small">
+          <div class="container">
+            <div class="row d-flex align-items-center">
+              <div class="col-lg-2 col-md-2">
+                <div class="main-logo">
+                  <a href="index.html">
+                    <img src="images/main-logo.png" alt="logo">
+                  </a>
+                </div>
+              </div>
+              <div class="col-lg-10 col-md-10">
+                <div class="navbar">
+
+                  <div id="main-nav" class="stellarnav d-flex justify-content-end right">
+                    <ul class="menu-list">
+
+                        
+                      <li><a href="index.html" class="item-anchor active">Home</a></li>
+                        
+
+                      <li><a href="about.html" class="item-anchor" data-effect="About">About</a></li>
+
+                      <li class="menu-item has-sub">
+                        <a href="shop.html" class="item-anchor d-flex align-item-center" data-effect="Shop">Shop<i class="icon icon-chevron-down"></i></a>
+                        <ul class="submenu">
+                          <li><a href="shop.html" class="item-anchor">Shop</a></li>
+                          <li><a href="single-product.html" class="item-anchor">Single product<span class="text-primary"></span></a></li>
+                          <li><a href="cart.html" class="item-anchor">Cart<span class="text-primary"></span></a></li>
+                          <li><a href="wishlist.html" class="item-anchor">Wishlist<span class="text-primary"></span></a></li>
+                          <li><a href="checkout.html" class="item-anchor">Checkout<span class="text-primary"></span></a></li>
+                        </ul>
+                      </li>
+
+                      <li class="menu-item has-sub">
+                        <a href="#" class="item-anchor d-flex align-item-center" data-effect="Pages">Pages<i class="icon icon-chevron-down"></i></a>
+                        <ul class="submenu">
+                          <li><a href="coming-soon.html" class="item-anchor">Coming soon<span class="text-primary"></span></a></li>
+                          <li><a href="login.html" class="item-anchor">Login<span class="text-primary"></span></a></li>
+                          <li><a href="thank-you.html" class="item-anchor">Thankyou</a></li>
+                          <li><a href="error.html" class="item-anchor">Error page<span class="text-primary"></span></a></li>
+                        </ul>
+                      </li>
+
+                      <li class="menu-item has-sub">
+                        <a href="blog.html" class="item-anchor d-flex align-item-center" data-effect="Blog">Blog<i class="icon icon-chevron-down"></i></a>
+                        <ul class="submenu">
+                          <li><a href="blog.html" class="item-anchor">Blog</a></li>
+                          <li><a href="single-post.html" class="item-anchor">Single post</a></li>
+                        </ul>
+                      </li>
+
+                      <li><a href="contact.html" class="item-anchor" data-effect="Contact">Contact</a></li>
+
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+
+    @* HEADER 1 *@
+    <section id="billboard" class="overflow-hidden">
+      <button class="button-prev">
+        <i class="icon icon-chevron-left"></i>
+      </button>
+      <button class="button-next">
+        <i class="icon icon-chevron-right"></i>
+      </button>
+      <div class="swiper main-swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide" style="background-image: url('images/macbook_banners.jpg');background-repeat: no-repeat;background-size: cover;background-position: center;">
+            <div class="banner-content">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-6">
+                    <h2 class="banner-title">Summer Collection</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu feugiat amet, libero ipsum enim pharetra hac.</p>
+                    <div class="btn-wrap">
+                      <a href="shop.html" class="btn btn-light btn-medium d-flex align-items-center" tabindex="0">Shop it now <i class="icon icon-arrow-io"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide" style="background-image: url('images/iphone14_banners.png');background-repeat: no-repeat;background-size: cover;background-position: center;">
+            <div class="banner-content">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-6">
+                    <h2 class="banner-title">Casual Collection</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu feugiat amet, libero ipsum enim pharetra hac.</p>
+                    <div class="btn-wrap">
+                      <a href="shop.html" class="btn btn-light btn-light-arrow btn-medium d-flex align-items-center" tabindex="0">Shop it now <i class="icon icon-arrow-io"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    @* BEST SELLING 1 *@
+    <section id="featured-products" class="product-store padding-large">
+      <div class="container">
+        <div class="section-header d-flex flex-wrap align-items-center justify-content-between">
+          <h2 class="section-title">Best Selling</h2>            
+          <div class="btn-wrap">
+            <a href="shop.html" class="d-flex align-items-center">View all products <i class="icon icon icon-arrow-io"></i></a>
+          </div>            
+        </div>
+        <div class="swiper product-swiper overflow-hidden">
+          <div class="swiper-wrapper">
+
+
+            @* PRODUCT HERE *@
+            <div class="swiper-slide">
+              <div class="product-item">
+                <div class="image-holder">
+                  <img src="images/producs/1/1-large.jpg" alt="Books" class="product-image" style="width: 290px; height: 290px;">
+                </div>
+                <div class="cart-concern">
+                  <div class="cart-button d-flex justify-content-between align-items-center">
+                    <button type="button" class="btn-wrap cart-link d-flex align-items-center">add to cart <i class="icon icon-arrow-io"></i>
+                    </button>
+                    <button type="button" class="view-btn tooltip
+                        d-flex">
+                      <i class="icon icon-screen-full"></i>
+                      <span class="tooltip-text">Quick view</span>
+                    </button>
+                    <button type="button" class="wishlist-btn">
+                      <i class="icon icon-heart"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="product-detail">
+                  <h3 class="product-title">
+                    <a href="single-product.html">Apple MacBook Pro 15" Touch Bar MPTU2LL/A 256GB (Silver)</a>
+                  </h3>
+                  <span class="item-price text-primary">$40.00</span>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </section>
+
+
+
+    @* BANNER 2 *@
+    <section id="latest-collection">
+      <div class="container">
+        <div class="product-collection row">
+
+
+          <div class="col-lg-7 col-md-12 left-content">
+            <div class="collection-item">
+              <div class="products-thumb">
+                <img src="images/promo/iphone.jpg" alt="collection item" class="large-image image-rounded">
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6 product-entry">
+                <div class="categories">casual collection</div>
+                <h3 class="item-title">IPHONE.</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dignissim massa diam elementum.</p>
+                <div class="btn-wrap">
+                  <a href="shop.html" class="d-flex align-items-center">shop collection <i class="icon icon-arrow-io"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-lg-5 col-md-12 right-content flex-wrap">
+
+            <div class="collection-item top-item">
+              <div class="products-thumb">
+                <img src="images/promo/ipad.jpg" alt="collection item" class="small-image image-rounded">
+              </div>
+              <div class="col-md-6 product-entry">
+                <div class="categories">Basic Collection</div>
+                <h3 class="item-title">IPAD.</h3>
+                <div class="btn-wrap">
+                  <a href="shop.html" class="d-flex align-items-center">shop collection <i class="icon icon-arrow-io"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="collection-item bottom-item">
+              <div class="products-thumb">
+                <img src="images/promo/macbook-new.jpg" alt="collection item" class="small-image image-rounded">
+              </div>
+              <div class="col-md-6 product-entry">
+                <div class="categories">Best Selling Product</div>
+                <h3 class="item-title">MACBOOK.</h3>
+                <div class="btn-wrap">
+                  <a href="shop.html" class="d-flex align-items-center">shop collection <i class="icon icon-arrow-io"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </section>
+
+    @* NEW ITEMS *@
+    <section id="selling-products" class="product-store bg-light-grey padding-large">
+
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">New Products</h2>
+        </div>
+
+        <div class="tab-content">
+          <div id="all" data-tab-content class="active">
+            <div class="row d-flex flex-wrap">
+
+            @* LIST NEW ITEMS *@
+              <div class="product-item col-lg-3 col-md-6 col-sm-6">
+                <div class="image-holder">
+                  <img src="images/producs/2/2-medium.jpg" alt="Books" class="product-image" style="width: 290px; height: 200px;">
+                </div>
+                <div class="cart-concern">
+                  <div class="cart-button d-flex justify-content-between align-items-center">
+                    <button type="button" class="btn-wrap cart-link d-flex align-items-center">add to cart <i class="icon icon-arrow-io"></i>
+                    </button>
+                    <button type="button" class="view-btn tooltip
+                        d-flex">
+                      <i class="icon icon-screen-full"></i>
+                      <span class="tooltip-text">Quick view</span>
+                    </button>
+                    <button type="button" class="wishlist-btn">
+                      <i class="icon icon-heart"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="product-detail">
+                  <h3 class="product-title">
+                    <a href="single-product.html">Half sleeve T-shirt</a>
+                  </h3>
+                  <div class="item-price text-primary">$40.00</div>
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    @*QUOTE*@
+    <section id="testimonials" class="padding-large no-padding-bottom">
+      <div class="container">
+        <div class="reviews-content">
+          <div class="row d-flex flex-wrap">
+            <div class="col-md-2">
+              <div class="review-icon">
+                <i class="icon icon-right-quote"></i>
+              </div>
+            </div>
+            <div class="col-md-8">
+              <div class="swiper testimonial-swiper overflow-hidden">
+                <div class="swiper-wrapper">
+
+                  @* LIST QUOTE*@
+                  <div class="swiper-slide">
+                    <div class="testimonial-detail">
+                      <p>“Dignissim massa diam elementum habitant fames. Id nullam pellentesque nisi, eget cursus dictumst pharetra, sit. Pulvinar laoreet id porttitor egestas dui urna. Porttitor nibh magna dolor ultrices iaculis sit iaculis.”</p>
+                      <div class="author-detail">
+                        <div class="name">By John Smith</div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+              <div class="swiper-arrows">
+                <button class="prev-button">
+                  <i class="icon icon-arrow-left"></i>
+                </button>
+                <button class="next-button">
+                  <i class="icon icon-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+   @* FLASH SALE*@
+    <section id="flash-sales" class="product-store padding-large">
+      
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Flash sales</h2>
+        </div>
+        <div class="swiper product-swiper flash-sales overflow-hidden">
+
+          <div class="swiper-wrapper">
+
+            @* LIST HERE *@
+            <div class="swiper-slide">
+              <div class="product-item">
+                <img src="images/catalog/cameras.png" alt="Books" class="product-image" style="width: 290px; height: 290px;">
+                <div class="cart-concern">
+                  <div class="cart-button d-flex justify-content-between align-items-center">
+                    <button type="button" class="btn-wrap cart-link d-flex align-items-center">add to cart <i class="icon icon-arrow-io"></i>
+                    </button>
+                    <button type="button" class="view-btn tooltip
+                        d-flex">
+                      <i class="icon icon-screen-full"></i>
+                      <span class="tooltip-text">Quick view</span>
+                    </button>
+                    <button type="button" class="wishlist-btn">
+                      <i class="icon icon-heart"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="discount">10% Off</div>
+                <div class="product-detail">
+                  <h3 class="product-title">
+                    <a href="single-product.html">Long Sleeve T-shirt</a>
+                  </h3>
+                  <div class="item-price text-primary">
+                    <del class="prev-price">$50.00</del>$40.00
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+    </section>
+
+
+  @*  BANNER 3*@
+    <section class="shoppify-section-banner">
+      <div class="container">
+        <div class="product-collection">
+          <div class="left-content collection-item">
+            <div class="products-thumb">
+              <img src="images/articles/macbook-photo.jpg" alt="collection item" class="large-image image-rounded">
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 product-entry">
+              <div class="categories">Denim collection</div>
+              <h3 class="item-title">The casual selection.</h3>
+              <p>Vel non viverra ligula odio ornare turpis mauris. Odio aliquam, tincidunt ut vitae elit risus. Tempor egestas condimentum et ac rutrum dui, odio.</p>
+              <div class="btn-wrap">
+                <a href="shop.html" class="d-flex align-items-center">shop collection <i class="icon icon-arrow-io"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>        
+      </div>
+    </section>
+
+    @*QUOTE 2*@
+    <section id="quotation" class="align-center padding-large">
+      <div class="inner-content">
+        <h2 class="section-title divider">Quote of the day</h2>
+        <blockquote>
+          <q>It's true, I don't like the whole cutoff-shorts-and-T-shirt look, but I think you can look fantastic in casual clothes.</q>
+          <div class="author-name">- Dr. Seuss</div>
+        </blockquote>
+      </div>
+    </section>
+
+    <hr>
+
+    @*NEW*@
+    <section id="latest-blog" class="padding-large">
+      <div class="container">
+        <div class="section-header d-flex flex-wrap align-items-center justify-content-between">
+          <h2 class="section-title">Our News</h2>
+          <div class="btn-wrap align-right">
+            <a href="blog.html" class="d-flex align-items-center">Read All Articles <i class="icon icon icon-arrow-io"></i>
+            </a>
+          </div>
+        </div>
+
+        
+        <div class="row d-flex flex-wrap">
+
+          @*LIST NEW*@
+          <article class="col-md-4 post-item">
+            <div class="image-holder zoom-effect">
+              <a href="single-post.html">
+                <img src="images/articles/macbook-promo-2.jpg" alt="post" class="post-image">
+              </a>
+            </div>
+            <div class="post-content d-flex">
+              <div class="meta-date">
+                <div class="meta-day text-primary">25</div>
+                <div class="meta-month">Aug-2021</div>
+              </div>
+              <div class="post-header">
+                <h3 class="post-title">
+                  <a href="single-post.html">Latest trends of wearing street wears supremely</a>
+                </h3>
+                <a href="blog.html" class="blog-categories">Trending</a>
+              </div>
+            </div>
+          </article>
+
+          
+        </div>
+      </div>
+    </section>
+
+
+   @* BRAND*@
+    <section id="brand-collection" class="padding-medium bg-light-grey">
+      <div class="container">
+      
+        <div class="d-flex flex-wrap justify-content-between " style="margin-bottom: 20px;">
+          <img src="images/brands/apple.svg" alt="phone" class="brand-image" style="width: 100px; height: 50px;">
+          <img src="images/brands/intel.svg" alt="phone" class="brand-image" style="width: 100px; height: 50px;">
+          <img src="images/brands/microsoft.svg" alt="phone" class="brand-image" style="width: 100px; height: 50px;">
+          <img src="images/brands/dell.svg" alt="phone" class="brand-image" style="width: 100px; height: 50px;">
+          <img src="images/brands/asus.svg" alt="phone" class="brand-image" style="width: 100px; height: 50px;">
+        </div>
+        
+        <div class="d-flex flex-wrap justify-content-between">
+          <img src="images/brands/canon.svg" alt="phone" class="brand-image" style="width: 100px; height: 50px;">
+          <img src="images/brands/hp.svg" alt="phone" class="brand-image" style="width: 100px; height: 50px;">
+          <img src="images/brands/lenovo.svg" alt="phone" class="brand-image" style="width: 100px; height: 50px;">
+          <img src="images/brands/lg.svg" alt="phone" class="brand-image" style="width: 100px; height: 50px;">
+          <img src="images/brands/sony.svg" alt="phone" class="brand-image" style="width: 100px; height: 50px;">
+        </div>
+      </div>
+    </section>
+
+    @*FOOTER*@
+    <footer id="footer">
+      <div class="container">
+        <div class="footer-menu-list">
+          <div class="row d-flex flex-wrap justify-content-between">
+            <div class="col-lg-3 col-md-6 col-sm-6">
+              <div class="footer-menu">
+                <h5 class="widget-title">HighTech</h5>
+                <ul class="menu-list list-unstyled">
+                  <li class="menu-item">
+                    <a href="about.html">About us</a>
+                  </li>
+                  <li class="menu-item">
+                    <a href="#">Conditions </a>
+                  </li>
+                  <li class="menu-item">
+                    <a href="blog.html">News</a>
+                  </li>
+                  <li class="menu-item">
+                    <a href="#">Careers</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+              <div class="footer-menu">
+                <h5 class="widget-title">Customer Service</h5>
+                <ul class="menu-list list-unstyled">
+                  <li class="menu-item">
+                    <a href="contact.html">Contact</a>
+                  </li>
+                  <li class="menu-item">
+                    <a href="#">Privacy Policy</a>
+                  </li>
+                  <li class="menu-item">
+                    <a href="#">Returns & Refunds</a>
+                  </li>
+                  <li class="menu-item">
+                    <a href="#">Delivery Information</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+              <div class="footer-menu">
+                <h5 class="widget-title">Contact Us</h5>
+                <p>Do you have any questions or suggestions? <a href="mailto:hightech05vn@gmail.com" class="email">hightechstore05vn@gmail.com</a>
+                </p>
+                <p>Do you need assistance? Give us a call. <br>
+                  <a href="tel://0968519615"><strong>+84 968 519 615</strong></a>
+                </p>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+              <div class="footer-menu">
+                <h5 class="widget-title">Social Media</h5>
+                <p>Let us know what you think and you can also give feedback on the product or website quality.</p>
+                <div class="social-links">
+                  <ul class="d-flex list-unstyled">
+                    <li>
+                      <a href="#">
+                        <i class="icon icon-facebook"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <i class="icon icon-twitter"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <i class="icon icon-youtube-play"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <i class="icon icon-behance-square"></i>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr>
+    </footer>
+
+    <script src="~/customer/js/jquery-1.11.0.min.js"></script>
+    <script src="~/customer/js/plugins.js"></script>
+    <script src="~/customer/js/script.js"></script>
+  </body>
+</html>
+

@@ -1,0 +1,181 @@
+﻿@page
+@model PROJECT_PRN221.Pages.customersite.warranty.CreateModel
+@{
+}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" type="text/css" href="~/customer/css/normalize.css">
+        <link rel="stylesheet" type="text/css" href="~/customer/icomoon/icomoon.css">
+        <link rel="stylesheet" type="text/css" media="all" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="~/customer/css/vendor.css">
+        <link rel="stylesheet" type="text/css" href="~/customer/style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+        <!-- script
+        ================================================== -->
+        <script src="~/customer/js/modernizr.js"></script>
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-PV3J437JX5"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+
+            gtag('config', 'G-PV3J437JX5');
+        </script>
+    </head>
+<body>
+    <!-- ================================================== -->
+
+    @*HEADER*@
+
+            <div class="col-lg-12 col-md-12">
+            <div>
+                <div style="text-align: center">
+                    <h1 class="">Add Warranty</h1>
+                </div>
+            </div>
+            <div>
+                <table style="width: 100%">
+                    <thead>
+                        <tr>
+                            <th>Product Name</th>
+                            <th>Image</th>
+                            <th>Quantity Order</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <c:forEach items="${data}" var="d">
+                            <tr>
+                                <td>${d.product_name}</td> 
+                                <td style="width: 40%"><img src="${d.image}" alt="alt" style="width: 60%"/></td>
+                                <td>${d.quantity_order}</td> 
+                            </tr>
+                        </c:forEach>
+                    </tbody>
+                </table>
+            </div>
+
+            <!--input -->
+
+            <div>
+                <div style="text-align: center">
+                    <h3 class="">Information of Warranty</h3>
+                </div>
+            </div>
+            <div>
+                <form class="forms-sample" method="post" action="OrderWarrantyController" id="yourFormId">
+                    <input type="hidden" name="service" value="insertWarranty">
+                    <table style="width: 100%">
+                        <thead>
+                            <tr>
+                                <th>Upload Image Product</th>
+                                <th>Status Product</th>
+                                <th>Quantity Warranty</th>
+                                <th>Submit</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <c:forEach items="${data}" var="d">
+
+                            <input type="hidden" name="customer_id" value="${d.customer_id}">   
+                            <input type="hidden" name="name" id="name" value="${d.name}">
+                            <input type="hidden" name="phone" id="phone" value="${d.phone}">
+
+                            <input type="hidden" name="product_id" id="product_id" value="${d.product_id}">
+                            <input type="hidden" name="product_name" id="product_name" value="${d.product_name}">
+                            <input type="hidden" name="image" value="${d.image}">
+
+                            <input type="hidden" name="orderdetail_id" value="${d.orderdetail_id}">
+                            <input type="hidden" name="order_date" value="${d.order_date}">
+
+                            <input type="hidden" name="status" value="Wait">
+                            <tr>
+                                <td style="width: 30%">
+                                    <img width="90%" id="preview-img" src="" alt=""> <br>
+                                    <input type="file" onchange="previewImage()" accept="image/*" name="image_product"/>
+                                </td> 
+
+                                <td>
+                                    <input type="text" name="product_status" id="product_status">
+                                </td> 
+
+                                <td>
+                                    <input type="text" name="quantity" id="quantity" required="" >
+                                </td> 
+
+                                <td>
+                                    <input type="submit" name="submit">
+                                </td> 
+                            </tr>
+                        </c:forEach>
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+        </div>
+
+
+     @*FOOTER*@
+
+
+
+
+
+    <!-- ================================================== -->
+        <script src="~/customer/js/jquery-1.11.0.min.js"></script>
+        <script src="~/customer/js/plugins.js"></script>
+        <script src="~/customer/js/script.js"></script>
+        <script>
+                                        function previewImage() {
+                                            var preview = document.querySelector('#preview-img');
+                                            var file = document.querySelector('input[type=file]').files[0];
+                                            var reader = new FileReader();
+
+                                            reader.onloadend = function () {
+                                                preview.src = reader.result;
+                                            };
+
+                                            if (file) {
+                                                reader.readAsDataURL(file);
+                                            } else {
+                                                preview.src = "";
+                                            }
+                                        }
+        </script>
+        <script>
+            <c:forEach items="${data}" var="d">
+            const inputField = document.getElementById('quantity');
+
+            inputField.addEventListener('input', function (event) {
+                validateInput();
+            });
+
+            function validateInput() {
+                let value = inputField.value;
+                value = value.replace(/[^\d]/g, ''); // Loại bỏ tất cả các ký tự không phải số
+                if (value === '') {
+                    inputField.value = 1;
+                } else {
+                    value = parseInt(value);
+                    if (isNaN(value) || value < 1 || value > ${d.quantity_order}) {
+                        inputField.value = 1;
+                    } else {
+                        inputField.value = value;
+                    }
+                }
+            }
+            </c:forEach>
+        </script>
+</body>
+</html>

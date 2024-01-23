@@ -1,0 +1,301 @@
+﻿@page
+@model PROJECT_PRN221.Pages.customersite.cart.IndexModel
+@{
+}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" type="text/css" href="~/customer/css/normalize.css">
+        <link rel="stylesheet" type="text/css" href="~/customer/icomoon/icomoon.css">
+        <link rel="stylesheet" type="text/css" media="all" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="~/customer/css/vendor.css">
+        <link rel="stylesheet" type="text/css" href="~/customer/style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+        <!-- script
+        ================================================== -->
+        <script src="~/customer/js/modernizr.js"></script>
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-PV3J437JX5"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+
+            gtag('config', 'G-PV3J437JX5');
+        </script>
+    </head>
+<body>
+    <!-- ================================================== -->
+
+    
+    @*HEADER*@
+
+    @*BANNER*@
+     <section class="site-banner padding-small bg-light-grey">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="breadcrumbs">
+                            <span class="item">
+                                <a href="HomeControlle">Home /</a>
+                            </span>
+                            <span class="item">
+                                <a href="ShopController">Shop /</a>
+                            </span>
+                            <span class="item">Cart</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    @*CART*@
+       <section class="shopify-cart padding-large">
+            <div>
+                <h4 style="text-align: center">${ms}</h4>
+            </div>
+
+            <form action="CartController" method="post">  
+
+            <div class="container">
+
+                <div class="cart-table">
+
+                    <div class="cart-header border-bottom ">
+                        <div class="row d-flex">
+                            <h3 class="cart-title col-lg-4">Product</h3>
+                            <h3 class="cart-title col-lg-3">Quantity</h3>
+                            <h3 class="cart-title col-lg-4">Subtotal</h3>
+                        </div>
+                    </div>
+                        
+                        <div class="cart-item border-bottom padding-small">
+                            <input type="hidden" name="service" value="updateCart">
+                            @*<c:forEach var="c" items="${listCart}" varStatus="status">*@
+                                <div>
+                                    <input type="hidden" name="id${status.index}" value="${c.id}">
+                                </div>
+                                <div class="row"> 
+                                    <div class="col-lg-4 col-md-3">
+                                        <div class="row cart-info d-flex flex-wrap">
+                                            <div class="col-lg-5">
+                                                <div class="card-image">
+                                                    <img src="${c.image}" alt="cloth" class="img-fluid">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="card-detail">
+                                                    <h3 class="card-title">
+                                                        <a href="#">${c.name}</a>
+                                                    </h3>
+                                                    <div class="card-price">
+                                                        <span class="money text-primary number">${c.price}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6 col-md-7">
+                                        <div class="row d-flex">
+                                            <div class="col-lg-6">
+                                                <div class="qty-number d-flex align-items-center justify-content-start">
+                                                    <button class="decrement-button" data-index="${status.index}">-</button>
+                                                    <input type="text" name="quantity${status.index}" class="spin-number-output" value="${c.quantity}" min="1" max="100">
+                                                    <button class="increment-button" data-index="${status.index}">+</button>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="total-price" style="margin-top: 25px">
+                                                    <span class="money text-primary number">${c.subtotal}</span>
+                                                </div>
+                                            </div>   
+                                        </div>             
+                                    </div>
+                                    <div class="col-lg-1 col-md-2">
+                                        <div class="cart-remove" style="margin-top: 30px">
+                                            <a href="CartController?service=deleteCart&id=${c.id}"><i class="icon icon-close"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            @*</c:forEach>*@
+                        </div>
+                </div>
+
+                <div class="cart-totals">
+                    <h2 class="section-title">Cart Totals</h2>
+                    <div class="total-price">
+                        <table cellspacing="0" class="table">
+                            <tbody>
+                                <tr class="subtotal">
+                                    <th>Subtotal</th>
+                                    <td data-title="Subtotal">
+                                        <span class="price-amount amount text-primary">
+                                            <bdi>
+                                                <span class="price-currency-symbol number">${totalprice}</span>
+                                            </bdi>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr class="order-total">
+                                    <th>Total</th>
+                                    <td data-title="Total">
+                                        <span class="price-amount amount text-primary">
+                                            <bdi>
+                                                <span class="price-currency-symbol number">${totalprice}</span></bdi>
+                                        </span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="button-wrap">
+
+                        <button type="submit" name="submit" class="btn btn-dark btn-medium">Update Cart</button>
+                        <a href="" class="btn btn-dark btn-medium">Continue Shopping</a>
+                        <a href="" class="btn btn-dark btn-medium">Proceed to checkout</a>
+                    </div>
+                </div>
+            </div>
+           </form>
+        </section>
+
+
+
+        @*SALE BANNER*@
+        <section id="shipping-information">
+            <hr>
+            <div class="container">
+                <div class="row d-flex flex-wrap align-items-center justify-content-between">
+                    <div class="col-md-3 col-sm-6">
+                        <div class="icon-box">
+                            <i class="icon icon-truck"></i>
+                            <h4 class="block-title">
+                                <strong>Free shipping</strong> Over $200
+                            </h4>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="icon-box">
+                            <i class="icon icon-return"></i>
+                            <h4 class="block-title">
+                                <strong>Money back</strong> Return within 7 days
+                            </h4>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="icon-box">
+                            <i class="icon icon-tags1"></i>
+                            <h4 class="block-title">
+                                <strong>Buy 4 get 5th</strong> 50% off
+                            </h4>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="icon-box">
+                            <i class="icon icon-help_outline"></i>
+                            <h4 class="block-title">
+                                <strong>Any questions?</strong> experts are ready
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+        </section>
+
+
+     @*FOOTER*@
+
+    <!-- ================================================== -->
+        <script src="~/customer/js/jquery-1.11.0.min.js"></script>
+        <script src="~/customer/js/plugins.js"></script>
+        <script src="~/customer/js/script.js"></script>
+        <script>
+            const decrementButtons = document.getElementsByClassName('decrement-button');
+            const incrementButtons = document.getElementsByClassName('increment-button');
+
+            for (let i = 0; i < decrementButtons.length; i++) {
+                decrementButtons[i].addEventListener('click', function (event) {
+                    event.preventDefault();
+                    const parent = this.closest('.row');
+                    const inputField = parent.querySelector('.spin-number-output');
+                    decreaseValue(inputField);
+                });
+            }
+
+            for (let i = 0; i < incrementButtons.length; i++) {
+                incrementButtons[i].addEventListener('click', function (event) {
+                    event.preventDefault();
+                    const parent = this.closest('.row');
+                    const inputField = parent.querySelector('.spin-number-output');
+                    increaseValue(inputField);
+                });
+            }
+
+
+            const inputFields = document.getElementsByClassName('spin-number-output');
+
+            for (let i = 0; i < inputFields.length; i++) {
+
+                const inputField = inputFields[i];
+
+                inputField.addEventListener('input', function (event) {
+                    let value = this.value;
+                    value = value.replace(/[^\d]/g, ''); // Loại bỏ tất cả các ký tự không phải số
+
+                    if (value === '' || value < 1 || value > 100) {
+                        this.value = 1;
+                    } else {
+                        this.value = value;
+                    }
+                });
+            }
+
+
+            function increaseValue(inputField) {
+                let value = parseInt(inputField.value);
+                if (value < 100) {
+                    value++;
+                    inputField.value = value;
+                }
+            }
+
+            function decreaseValue(inputField) {
+                let value = parseInt(inputField.value);
+                if (value > 1) {
+                    value--;
+                    inputField.value = value;
+                }
+            }
+
+            const numberElements = document.getElementsByClassName('number');
+            for (let i = 0; i < numberElements.length; i++) {
+                const numberElement = numberElements[i];
+                const number = parseFloat(numberElement.innerText);
+                const formattedNumber = formatCurrency(number);
+                numberElement.innerText = formattedNumber;
+            }
+
+            function formatCurrency(value) {
+                const intValue = parseInt(value);
+                const formattedValue = intValue.toLocaleString('vi-VN', {
+                    style: 'currency',
+                    currency: 'VND',
+                });
+                return formattedValue;
+            }
+        </script>
+
+        <div id="cboxOverlay" style="display: none;"></div><div id="colorbox" class="" role="dialog" tabindex="-1" style="display: none;"><div id="cboxWrapper"><div><div id="cboxTopLeft" style="float: left;"></div><div id="cboxTopCenter" style="float: left;"></div><div id="cboxTopRight" style="float: left;"></div></div><div style="clear: left;"><div id="cboxMiddleLeft" style="float: left;"></div><div id="cboxContent" style="float: left;"><div id="cboxTitle" style="float: left;"></div><div id="cboxCurrent" style="float: left;"></div><button type="button" id="cboxPrevious"></button><button type="button" id="cboxNext"></button><button type="button" id="cboxSlideshow"></button><div id="cboxLoadingOverlay" style="float: left;"></div><div id="cboxLoadingGraphic" style="float: left;"></div></div><div id="cboxMiddleRight" style="float: left;"></div></div><div style="clear: left;"><div id="cboxBottomLeft" style="float: left;"></div><div id="cboxBottomCenter" style="float: left;"></div><div id="cboxBottomRight" style="float: left;"></div></div></div><div style="position: absolute; width: 9999px; visibility: hidden; display: none; max-width: none;"></div></div>
+</body>
+</html>

@@ -1,0 +1,409 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = PROJECT_PRN221
+build_property.RootNamespace = PROJECT_PRN221
+build_property.ProjectDir = C:\Users\Lenovo\Documents\C#\PRN221\PROJECT_PRN221\PROJECT_PRN221\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\Lenovo\Documents\C#\PRN221\PROJECT_PRN221\PROJECT_PRN221
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/adminsite/admin/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYWRtaW5zaXRlXGFkbWluXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/adminsite/admin/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYWRtaW5zaXRlXGFkbWluXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/adminsite/admin/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYWRtaW5zaXRlXGFkbWluXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/adminsite/admin/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYWRtaW5zaXRlXGFkbWluXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/adminsite/admin/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYWRtaW5zaXRlXGFkbWluXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/adminsite/authenticate/changespassword/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYWRtaW5zaXRlXGF1dGhlbnRpY2F0ZVxjaGFuZ2VzcGFzc3dvcmRcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/adminsite/authenticate/forgotpassword/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYWRtaW5zaXRlXGF1dGhlbnRpY2F0ZVxmb3Jnb3RwYXNzd29yZFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/adminsite/authenticate/login/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYWRtaW5zaXRlXGF1dGhlbnRpY2F0ZVxsb2dpblxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/adminsite/authenticate/otp/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYWRtaW5zaXRlXGF1dGhlbnRpY2F0ZVxvdHBcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/adminsite/brand/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYWRtaW5zaXRlXGJyYW5kXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/adminsite/brand/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYWRtaW5zaXRlXGJyYW5kXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/adminsite/brand/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYWRtaW5zaXRlXGJyYW5kXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/adminsite/brand/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYWRtaW5zaXRlXGJyYW5kXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/adminsite/brand/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYWRtaW5zaXRlXGJyYW5kXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/adminsite/category/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYWRtaW5zaXRlXGNhdGVnb3J5XENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/adminsite/category/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYWRtaW5zaXRlXGNhdGVnb3J5XERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/adminsite/category/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYWRtaW5zaXRlXGNhdGVnb3J5XERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/adminsite/category/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYWRtaW5zaXRlXGNhdGVnb3J5XEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/adminsite/category/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYWRtaW5zaXRlXGNhdGVnb3J5XEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/adminsite/comment/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYWRtaW5zaXRlXGNvbW1lbnRcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/adminsite/comment/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYWRtaW5zaXRlXGNvbW1lbnRcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/adminsite/comment/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYWRtaW5zaXRlXGNvbW1lbnRcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/adminsite/comment/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYWRtaW5zaXRlXGNvbW1lbnRcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/adminsite/comment/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYWRtaW5zaXRlXGNvbW1lbnRcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/adminsite/contact/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYWRtaW5zaXRlXGNvbnRhY3RcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/adminsite/contact/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYWRtaW5zaXRlXGNvbnRhY3RcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/adminsite/contact/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYWRtaW5zaXRlXGNvbnRhY3RcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/adminsite/contact/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYWRtaW5zaXRlXGNvbnRhY3RcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/adminsite/contact/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYWRtaW5zaXRlXGNvbnRhY3RcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/adminsite/customer/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYWRtaW5zaXRlXGN1c3RvbWVyXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/adminsite/customer/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYWRtaW5zaXRlXGN1c3RvbWVyXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/adminsite/customer/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYWRtaW5zaXRlXGN1c3RvbWVyXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/adminsite/customer/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYWRtaW5zaXRlXGN1c3RvbWVyXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/adminsite/customer/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYWRtaW5zaXRlXGN1c3RvbWVyXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/adminsite/dashboard/Charts.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYWRtaW5zaXRlXGRhc2hib2FyZFxDaGFydHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/adminsite/dashboard/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYWRtaW5zaXRlXGRhc2hib2FyZFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/adminsite/newsgroup/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYWRtaW5zaXRlXG5ld3Nncm91cFxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/adminsite/newsgroup/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYWRtaW5zaXRlXG5ld3Nncm91cFxEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/adminsite/newsgroup/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYWRtaW5zaXRlXG5ld3Nncm91cFxEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/adminsite/newsgroup/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYWRtaW5zaXRlXG5ld3Nncm91cFxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/adminsite/newsgroup/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYWRtaW5zaXRlXG5ld3Nncm91cFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/adminsite/news/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYWRtaW5zaXRlXG5ld3NcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/adminsite/news/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYWRtaW5zaXRlXG5ld3NcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/adminsite/news/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYWRtaW5zaXRlXG5ld3NcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/adminsite/news/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYWRtaW5zaXRlXG5ld3NcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/adminsite/news/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYWRtaW5zaXRlXG5ld3NcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/adminsite/orderdetail/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYWRtaW5zaXRlXG9yZGVyZGV0YWlsXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/adminsite/orderdetail/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYWRtaW5zaXRlXG9yZGVyZGV0YWlsXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/adminsite/orderdetail/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYWRtaW5zaXRlXG9yZGVyZGV0YWlsXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/adminsite/orderdetail/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYWRtaW5zaXRlXG9yZGVyZGV0YWlsXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/adminsite/orderdetail/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYWRtaW5zaXRlXG9yZGVyZGV0YWlsXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/adminsite/order/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYWRtaW5zaXRlXG9yZGVyXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/adminsite/order/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYWRtaW5zaXRlXG9yZGVyXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/adminsite/order/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYWRtaW5zaXRlXG9yZGVyXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/adminsite/order/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYWRtaW5zaXRlXG9yZGVyXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/adminsite/order/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYWRtaW5zaXRlXG9yZGVyXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/adminsite/product/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYWRtaW5zaXRlXHByb2R1Y3RcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/adminsite/product/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYWRtaW5zaXRlXHByb2R1Y3RcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/adminsite/product/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYWRtaW5zaXRlXHByb2R1Y3RcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/adminsite/product/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYWRtaW5zaXRlXHByb2R1Y3RcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/adminsite/product/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYWRtaW5zaXRlXHByb2R1Y3RcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/adminsite/profile/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYWRtaW5zaXRlXHByb2ZpbGVcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/adminsite/profile/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYWRtaW5zaXRlXHByb2ZpbGVcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/adminsite/warranty/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYWRtaW5zaXRlXHdhcnJhbnR5XENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/adminsite/warranty/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYWRtaW5zaXRlXHdhcnJhbnR5XERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/adminsite/warranty/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYWRtaW5zaXRlXHdhcnJhbnR5XERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/adminsite/warranty/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYWRtaW5zaXRlXHdhcnJhbnR5XEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/adminsite/warranty/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYWRtaW5zaXRlXHdhcnJhbnR5XEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/customersite/about/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcY3VzdG9tZXJzaXRlXGFib3V0XEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/customersite/authenticate/changespassword/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcY3VzdG9tZXJzaXRlXGF1dGhlbnRpY2F0ZVxjaGFuZ2VzcGFzc3dvcmRcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/customersite/authenticate/forgotpassword/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcY3VzdG9tZXJzaXRlXGF1dGhlbnRpY2F0ZVxmb3Jnb3RwYXNzd29yZFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/customersite/authenticate/login/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcY3VzdG9tZXJzaXRlXGF1dGhlbnRpY2F0ZVxsb2dpblxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/customersite/authenticate/otp/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcY3VzdG9tZXJzaXRlXGF1dGhlbnRpY2F0ZVxvdHBcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/customersite/authenticate/register/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcY3VzdG9tZXJzaXRlXGF1dGhlbnRpY2F0ZVxyZWdpc3RlclxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/customersite/cart/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcY3VzdG9tZXJzaXRlXGNhcnRcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/customersite/checkout/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcY3VzdG9tZXJzaXRlXGNoZWNrb3V0XEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/customersite/historyorder/Detail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcY3VzdG9tZXJzaXRlXGhpc3RvcnlvcmRlclxEZXRhaWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/customersite/historyorder/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcY3VzdG9tZXJzaXRlXGhpc3RvcnlvcmRlclxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/customersite/home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcY3VzdG9tZXJzaXRlXGhvbWVcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/customersite/news/Detail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcY3VzdG9tZXJzaXRlXG5ld3NcRGV0YWlsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/customersite/news/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcY3VzdG9tZXJzaXRlXG5ld3NcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/customersite/productdetail/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcY3VzdG9tZXJzaXRlXHByb2R1Y3RkZXRhaWxcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/customersite/profile/ChangesAvatar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcY3VzdG9tZXJzaXRlXHByb2ZpbGVcQ2hhbmdlc0F2YXRhci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/customersite/profile/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcY3VzdG9tZXJzaXRlXHByb2ZpbGVcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/customersite/profile/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcY3VzdG9tZXJzaXRlXHByb2ZpbGVcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/customersite/shop/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcY3VzdG9tZXJzaXRlXHNob3BcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/customersite/warranty/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcY3VzdG9tZXJzaXRlXHdhcnJhbnR5XENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/customersite/warranty/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcY3VzdG9tZXJzaXRlXHdhcnJhbnR5XEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/LeftPageAdminSite.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTGVmdFBhZ2VBZG1pblNpdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpdmFjeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/_FooterCustomerSite.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0Zvb3RlckN1c3RvbWVyU2l0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/_HeaderCustomerSite.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0hlYWRlckN1c3RvbWVyU2l0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-omtb56yd87

@@ -1,0 +1,201 @@
+﻿@page
+@model PROJECT_PRN221.Pages.customersite.warranty.IndexModel
+@{
+}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" type="text/css" href="~/customer/css/normalize.css">
+        <link rel="stylesheet" type="text/css" href="~/customer/icomoon/icomoon.css">
+        <link rel="stylesheet" type="text/css" media="all" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="~/customer/css/vendor.css">
+        <link rel="stylesheet" type="text/css" href="~/customer/style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+        <!-- script
+        ================================================== -->
+        <script src="~/customer/js/modernizr.js"></script>
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-PV3J437JX5"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+
+            gtag('config', 'G-PV3J437JX5');
+        </script>
+        <style>
+            .orderstatus {
+                margin-bottom:  20px;
+                display: flex;
+                justify-content: space-evenly;
+                margin-top:   20px;
+            }
+        </style>
+    </head>
+<body>
+    <!-- ================================================== -->
+        
+        <div class="preloader-wrapper">
+            <div class="preloader">
+            </div>
+        </div>
+
+    
+    @*HEADER*@
+
+            <div class="col-lg-12 col-md-12">
+            <div>
+                <div style="text-align: center">
+                    <h1 class="">Warranty</h1>
+                </div>
+                <div style="text-align: center">
+                    <a onclick="exportToExcel()" class="btn btn-primary text-white me-0"> Export</a>
+                </div>
+                <div class="orderstatus">
+                    <p><a href="WarrantyCustomerController?service=displayWarrantyStatus&status=Wait">Wait: ${wait} </a></p>
+                    <p><a href="WarrantyCustomerController?service=displayWarrantyStatus&status=Process">Process:${process} </a></p>
+                    <p><a href="WarrantyCustomerController?service=displayWarrantyStatus&status=Done">Done:${done} </a></p>
+                </div>
+            </div>
+            <div>
+                <table style="width: 100%" id="myTable">
+                    <thead>
+                        <tr>
+                            <th>Product Name</th>
+                            <th>Image</th>
+                            <th>Warranty Quantity</th>
+                            <th>Image Product</th>
+                            <th>Product Status</th>
+                            <th>Warranty Status</th>
+                            <th>Warranty Date</th>
+                            <th>Status</th>
+                            <th>DOWNLOAD</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <c:forEach items="${data}" var="d">
+                            <tr>
+                                <td>${d.product_name}</td>
+                                <td><img style="width: 60%" src="${d.image}" alt="alt"/></td>
+                                <td>${d.warranty_quantity}</td>
+                                <td><img style="width: 60%" src="${d.image_product}" alt="alt"/></td>
+                                <td>${d.product_status}</td> 
+                                <td>${d.warranty_status}</td>
+                                <td><fmt:formatDate value="${d.warranty_date}" pattern="dd-MM-yyyy" var="formattedDate" />${formattedDate}</td>
+                                <td>${d.status}</td> 
+                                <td>
+                                    <input type="hidden"  class="name" value="${d.name}">
+                                    <input type="hidden"  class="phone" value="${d.phone}">
+
+                                    <input type="hidden" class="product_id" value="${d.product_id}">
+                                    <input type="hidden"  class="product_name" value="${d.product_name}">
+
+                                    <input type="hidden" class="status_product" value="${d.product_status}">
+                                    <input type="hidden" class="warranty_date" value="${formattedDate}">
+                                    <input type="hidden" class="warranty_status" value="${d.warranty_status}">
+
+                                    <a onclick="updateDocumentAndDownload(this)" class="btn btn-primary text-white me-0">Download</a>
+                                </td> 
+                            </tr>
+                        </c:forEach>
+                    </tbody>
+                </table>
+            </div>
+           </div>
+
+
+
+
+
+     @*FOOTER*@
+
+
+
+
+
+
+    <!-- ================================================== -->
+        <script src="~/customer/js/jquery-1.11.0.min.js"></script>
+        <script src="~/customer/js/plugins.js"></script>
+        <script src="~/customer/js/script.js"></script>
+        <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+        <script>
+                                        function updateDocumentAndDownload(element) {
+                                            var currentDate = new Date();
+                                            var day = currentDate.getDate();
+                                            var month = currentDate.getMonth() + 1;
+                                            var year = currentDate.getFullYear();
+                                            var dateString = day + '/' + month + '/' + year;
+                                            var date = dateString;
+                                            var row = element.parentNode.parentNode;
+                                            var name = row.getElementsByClassName("name")[0].value;
+                                            var phone = row.getElementsByClassName("phone")[0].value;
+                                            var product_id = row.getElementsByClassName("product_id")[0].value;
+                                            var product_name = row.getElementsByClassName("product_name")[0].value;
+                                            var status_product = row.getElementsByClassName("status_product")[0].value;
+                                            var warranty_date = row.getElementsByClassName("warranty_date")[0].value;
+                                            var status_warranty = row.getElementsByClassName("warranty_status")[0].value;
+
+                                            var url = "https://script.google.com/macros/s/AKfycbxsj42Fpb0guQYIovzC9o69ohTsiiJMYBShBYWP4lw--M9drmy_cYHrbWSNPxECIFMNKQ/exec";
+
+                                            var xhr = new XMLHttpRequest();
+                                            xhr.open("POST", url);
+                                            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                                            xhr.responseType = "text";
+                                            xhr.onreadystatechange = function () {
+                                                if (xhr.readyState === XMLHttpRequest.DONE) {
+                                                    if (xhr.status === 200) {
+                                                        var responseText = xhr.responseText;
+                                                        var responseJson = JSON.parse(responseText);
+                                                        var downloadUrl = responseJson.url;
+                                                        var downloadUrlDocx = downloadUrl.replace("/edit?usp=drivesdk", "/export?format=doc");
+                                                        var link = document.createElement("a");
+                                                        link.href = downloadUrlDocx;
+                                                        link.download = "Warranty.txt";
+                                                        document.body.appendChild(link);
+                                                        link.click();
+                                                        document.body.removeChild(link);
+                                                        URL.revokeObjectURL(downloadUrl);
+                                                    } else {
+                                                        console.error("Error:", xhr.status);
+                                                    }
+                                                }
+                                            };
+                                            var params = "name=" + encodeURIComponent(name) + "&phone=" + encodeURIComponent(phone) +
+                                                    "&date=" + encodeURIComponent(date) + "&product_id=" + encodeURIComponent(product_id) +
+                                                    "&product_name=" + encodeURIComponent(product_name) + "&status_product=" + encodeURIComponent(status_product) +
+                                                    "&warranty_date=" + encodeURIComponent(warranty_date) + "&status_warranty=" + encodeURIComponent(status_warranty);
+                                            xhr.send(params);
+                                        }
+        </script>
+
+
+
+        <script>
+            function exportToExcel() {
+                const table = document.getElementById("myTable");
+                const wb = XLSX.utils.table_to_book(table, {sheet: "SheetJS"});
+                const wbout = XLSX.write(wb, {bookType: "xlsx", type: "array"});
+                saveAsExcelFile(wbout, "warranty.xlsx");
+            }
+
+
+            function saveAsExcelFile(buffer, fileName) {
+                const data = new Blob([buffer], {type: "application/octet-stream"});
+                const link = document.createElement("a");
+                link.href = window.URL.createObjectURL(data);
+                link.download = fileName;
+                link.click();
+            }
+        </script>
+</body>
+</html>

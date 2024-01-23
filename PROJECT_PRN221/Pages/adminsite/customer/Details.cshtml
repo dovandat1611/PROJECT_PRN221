@@ -1,0 +1,122 @@
+﻿@page
+@model PROJECT_PRN221.Pages.adminsite.customer.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+@*<h1>Details</h1>
+
+<div>
+    <h4>Customer</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Customer.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Customer.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Customer.Phone)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Customer.Phone)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Customer.Email)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Customer.Email)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Customer.Dob)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Customer.Dob)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Customer.Image)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Customer.Image)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Customer.Gender)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Customer.Gender)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Customer.Address)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Customer.Address)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Customer.Username)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Customer.Username)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Customer.Password)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Customer.Password)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Customer.Status)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Customer.Status)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Customer?.CustomerId">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>
+*@
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Star Admin2 </title>
+        <!-- plugins:css -->
+        <link rel="stylesheet" href="~/admin/vendors/feather/feather.css">
+        <link rel="stylesheet" href="~/admin/vendors/mdi/css/materialdesignicons.min.css">
+        <link rel="stylesheet" href="~/admin/vendors/ti-icons/css/themify-icons.css">
+        <link rel="stylesheet" href="~/admin/vendors/typicons/typicons.css">
+        <link rel="stylesheet" href="~/admin/vendors/simple-line-icons/css/simple-line-icons.css">
+        <link rel="stylesheet" href="~/admin/vendors/css/vendor.bundle.base.css">
+        <!-- endinject -->
+        <!-- Plugin css for this page -->
+        <!-- End plugin css for this page -->
+        <!-- inject:css -->
+        <link rel="stylesheet" href="~/admin/css/vertical-layout-light/style.css">
+        <!-- endinject -->
+        <link rel="shortcut icon" href="~/admin/images/favicon.png" />
+    </head>
+    <body>
+
+
+        <!-- plugins:js -->
+        <script src="~/admin/vendors/js/vendor.bundle.base.js"></script>
+        <!-- endinject -->
+        <!-- Plugin js for this page -->
+        <script src="~/admin/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+        <!-- End plugin js for this page -->
+        <!-- inject:js -->
+        <script src="~/admin/js/off-canvas.js"></script>
+        <script src="~/admin/js/hoverable-collapse.js"></script>
+        <script src="~/admin/js/template.js"></script>
+        <script src="~/admin/js/settings.js"></script>
+        <script src="~/admin/js/todolist.js"></script>
+        <!-- endinject -->
+    </body>
+</html>
