@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace PROJECT_PRN221.Pages
 {
-    public class _HeaderCustomerSiteModel : PageModel
+    public class _HeaderAdminsiteModel : PageModel
     {
         public void OnGet()
         {

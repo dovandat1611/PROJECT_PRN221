@@ -35,13 +35,10 @@
         </script>
     </head>
 <body>
-        
-        <div class="preloader-wrapper">
-            <div class="preloader">
-            </div>
-        </div>
 
         @*HEADER*@
+        <partial name="/Pages/_HeaderCustomersite.cshtml" model="new PROJECT_PRN221.Pages._HeaderCustomerSiteModel()"/>
+
 
          <section class="site-banner jarallax min-height300 padding-large" style="background: url(images/about/teamworking.jpg) no-repeat;">
             <div class="container">
@@ -198,6 +195,7 @@
         </section>
 
          @*FOOTER*@
+         <partial name="/Pages/_FooterCustomerSite.cshtml" model="new PROJECT_PRN221.Pages._FooterCustomerSiteModel()"/>
 
         <script src="~/customer/js/jquery-1.11.0.min.js"></script>
         <script src="~/customer/js/plugins.js"></script>

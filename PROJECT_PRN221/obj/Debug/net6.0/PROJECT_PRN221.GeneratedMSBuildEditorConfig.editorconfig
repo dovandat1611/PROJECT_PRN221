@@ -376,10 +376,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/LeftPageAdminSite.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTGVmdFBhZ2VBZG1pblNpdGUuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpdmFjeS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -392,8 +388,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0Zvb3RlckN1c3RvbWVyU2l0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/_HeaderAdminsite.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0hlYWRlckFkbWluc2l0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/_HeaderCustomerSite.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0hlYWRlckN1c3RvbWVyU2l0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/_LeftPageAdminSite.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0xlZnRQYWdlQWRtaW5TaXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/_ViewImports.cshtml]
