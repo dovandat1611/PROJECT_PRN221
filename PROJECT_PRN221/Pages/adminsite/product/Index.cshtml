@@ -1,87 +1,9 @@
 ﻿@page
 @model PROJECT_PRN221.Pages.adminsite.product.IndexModel
 
-@*@{
-    ViewData["Title"] = "Index";
-}*@
-
-@*<h1>Index</h1>
-
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Product[0].ProductName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Product[0].SubDescription)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Product[0].Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Product[0].Image)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Product[0].ListPrice)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Product[0].Discount)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Product[0].Status)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Product[0].Brand)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Product[0].Category)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.Product) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SubDescription)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Image)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ListPrice)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Discount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Status)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Brand.BrandId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Category.CategoryId)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.ProductId">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.ProductId">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.ProductId">Delete</a>
-            </td>
-        </tr>
+@{
+    ViewData["Title"] = "Product";
 }
-    </tbody>
-</table>*@
 
 <!DOCTYPE html>
 <html lang="en">
@@ -89,7 +11,6 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Star Admin2 </title>
         <link rel="stylesheet" href="~/admin/vendors/feather/feather.css">
         <link rel="stylesheet" href="~/admin/vendors/mdi/css/materialdesignicons.min.css">
         <link rel="stylesheet" href="~/admin/vendors/ti-icons/css/themify-icons.css">
@@ -118,21 +39,28 @@
                                         <div>
                                             <h4 class="card-title card-title-dash">Product</h4>
                                         </div>
+
+                                        @*Search Product for Name*@
                                         <div>
-                                            <form class="search-form" action="ProductController?service=searchProduct" method="post">
+                                            <form class="search-form" action="/adminsite/product/Search" method="post">
                                                 <input type="text" class="form-control" name="name" placeholder="Search Here" title="Search here">
                                             </form>
+                                        </div>
 
-                                        </div>
-                                        <div class="badge badge-opacity-warning me-3"><a href="ProductController?service=displayProductWarranty">Search for product Warranty</a></div>
+                                        @*Search WARRANTY*@
+                                        <div class="badge badge-opacity-warning me-3"><a href="">Search for product Warranty</a></div>
+
+                                        @*Download EXCEL*@
                                         <div>
-                                            <a href="ProductController?service=insertProduct" class="btn btn-primary text-white me-0"><i class="mdi mdi-account-plus"></i> Add new product</a>
-                                            <a onclick="exportToExcel()" class="btn btn-primary text-white me-0"><i class="icon-download"></i> Export</a>
+                                            <a href="/adminsite/product/Create" class="btn btn-primary text-white me-0">Create product</a>
+                                            <a onclick="exportToExcel()" class="btn btn-primary text-white me-0"><i class="icon-download"></i>Export</a>
                                         </div>
+
                                     </div>
-                                    <div style="text-align: center">
+@*                                    <div style="text-align: center">
                                         <p class="badge badge-danger">${ms}</p>
-                                    </div> 
+                                    </div> *@
+
                                     <div class="table-responsive">
                                         <table class="table table-hover" id="myTable" >
                                             <thead>
@@ -151,10 +79,11 @@
                                             </thead>
                                             <tbody>
 
-                                                <c:forEach items="${data}" var="d">
+                                        @foreach (var item in Model.Product)
+                                        {
                                                     <tr>
-                                                        <td>${d.product_id}</td>
-                                                        <c:set var="productPrinted" value="false" /> 
+                                                        <td>@item.ProductId</td>
+                                                        @*<c:set var="productPrinted" value="false" /> 
                                                         <c:forEach var="totalwarranty" items="${totalwarrantyofproduct}">
                                                             <c:if test="${totalwarranty.product_id eq d.product_id}">
                                                                 <c:if test="${!productPrinted}"> 
@@ -168,29 +97,34 @@
                                                                     <c:set var="productPrinted" value="true" /> 
                                                                 </c:if>
                                                             </c:if>
-                                                        </c:forEach>
+                                                        </c:forEach>*@
 
-                                                        <c:if test="${!productPrinted}">
-                                                            <td>${d.product_name}</td>
-                                                        </c:if>
+                                                        @*<c:if test="${!productPrinted}">*@
+                                                            <td>@item.ProductName</td>
+                                                        @*</c:if>*@
 
-                                                        <td><img src="${d.image}" alt="alt"/></td>
-                                                        <td class="number">${d.list_price}</td>
-                                                        <td>${d.discount}</td> 
-                                                        <td>${d.category_name}</td> 
-                                                        <td>${d.brand_name}</td> 
+                                                        <td><img src="@item.Image" alt="alt"/></td>
+
+                                                        <td class="number">@item.ListPrice</td>
+
+                                                        <td>@item.Discount</td> 
+                                                        <td>@item.Category.CategoryName</td> 
+                                                        <td>@item.Brand.BrandName</td> 
+
                                                         <td>
-                                                            <div class="${d.status eq 'Stocking' ? 'badge badge-opacity-success' : 'badge badge-opacity-danger'}">
-                                                                ${d.status}
+                                                            <div class="@(item.Status.Equals("Stocking") ? "badge badge-opacity-success" : "badge badge-opacity-danger")">
+                                                                @item.Status
                                                             </div>
-                                                        </td> 
-                                                        <td><div class="badge badge-info"><a href="ProductController?service=updateProduct&id=${d.product_id}">Update</a></div></td>
-                                                        <td><div class="badge badge-danger"><a href="ProductController?service=deleteProduct&id=${d.product_id}">Delete</a></div></td> 
+                                                        </td>
+
+                                                        <td><div class="badge badge-info"><a asp-page="./Edit" asp-route-id="@item.ProductId">Update</a></div></td>
+                                                        <td><div class="badge badge-danger"><a asp-page="./Delete" asp-route-id="@item.ProductId">Delete</a></div></td> 
                                                     </tr>
-                                                </c:forEach>
+                                        }
+
                                             </tbody>
                                         </table>
-                                        <div style="text-align: center">
+@*                                        <div style="text-align: center">
                                             <c:choose>
                                                 <c:when test="${currentPage > 1}">
                                                     <a href="?page=${currentPage - 1}">Previous</a>
@@ -219,7 +153,7 @@
                                                     <span>Next</span>
                                                 </c:otherwise>
                                             </c:choose>
-                                        </div>
+                                        </div>*@
                                     </div>
                                 </div>
                             </div>
@@ -237,7 +171,9 @@
         <script src="~/admin/js/template.js"></script>
         <script src="~/admin/js/settings.js"></script>
         <script src="~/admin/js/todolist.js"></script>
-            <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+                <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
     <script>
                                                 function exportToExcel() {
                                                     const table = document.getElementById("myTable");
@@ -270,5 +206,6 @@
                                                     return formattedValue;
                                                 }
     </script>
+}
     </body>
 </html>

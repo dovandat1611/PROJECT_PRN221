@@ -95,9 +95,7 @@ public partial class ProjectPrn221Context : DbContext
         {
             entity.ToTable("Category");
 
-            entity.Property(e => e.CategoryId)
-                .ValueGeneratedNever()
-                .HasColumnName("category_id");
+            entity.Property(e => e.CategoryId).HasColumnName("category_id");
             entity.Property(e => e.CategoryName)
                 .HasMaxLength(250)
                 .HasColumnName("category_name");

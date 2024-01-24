@@ -12,11 +12,11 @@
                         </button>
                     </div>
                     <div>
-                        <a class="navbar-brand brand-logo" href="DashboardController">
-                            <img src="images/logo.svg" alt="logo" />
+                        <a class="navbar-brand brand-logo" href="/adminsite/dashboard">
+                            <img src="/Images/logo/logo.png" alt="logo" />
                         </a>
-                        <a class="navbar-brand brand-logo-mini" href="#">
-                            <img src="images/logo.svg" alt="logo" />
+                        <a class="navbar-brand brand-logo-mini" href="/adminsite/dashboard">
+                            <img src="/Images/logo/logo.png" alt="logo" />
                         </a>
                     </div>
                 </div>
@@ -64,9 +64,9 @@
                             <a class="nav-link" id="UserDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="mdi mdi-account-circle"></i> </a>
                             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
-                                <a href="ProfileAdminController" class="dropdown-item"><i class="dropdown-item-icon mdi mdi-account-outline text-primary me-2"></i> My Profile </a>
-                                <a href="ChangesPasswordAdminController" class="dropdown-item"><i class="dropdown-item-icon mdi mdi-account-key text-primary me-2"></i> Change Password</a>
-                                <a href="LogoutController?logout=2" class="dropdown-item"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Sign Out</a>
+                                <a href="/adminsite/profile" class="dropdown-item"><i class="dropdown-item-icon mdi mdi-account-outline text-primary me-2"></i> My Profile </a>
+                                <a href="/adminsite/authenticate/changespassword" class="dropdown-item"><i class="dropdown-item-icon mdi mdi-account-key text-primary me-2"></i> Change Password</a>
+                                <a href="#" class="dropdown-item"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Sign Out</a>
                             </div>
                         </li>
 
@@ -80,7 +80,6 @@
 
             <!-- partial -->
             <div class="container-fluid page-body-wrapper">
-                <!-- partial:../../partials/_settings-panel.html -->
                 <div class="theme-setting-wrapper">
                     <div id="settings-trigger"><i class="ti-settings"></i></div>
                     <div id="theme-settings" class="settings-panel">

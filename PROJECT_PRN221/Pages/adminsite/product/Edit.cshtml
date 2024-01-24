@@ -1,87 +1,14 @@
 ﻿@page
 @model PROJECT_PRN221.Pages.adminsite.product.EditModel
-
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Update Product";
 }
-
-@*<h1>Edit</h1>
-
-<h4>Product</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Product.ProductId" />
-            <div class="form-group">
-                <label asp-for="Product.ProductName" class="control-label"></label>
-                <input asp-for="Product.ProductName" class="form-control" />
-                <span asp-validation-for="Product.ProductName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Product.SubDescription" class="control-label"></label>
-                <input asp-for="Product.SubDescription" class="form-control" />
-                <span asp-validation-for="Product.SubDescription" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Product.Description" class="control-label"></label>
-                <input asp-for="Product.Description" class="form-control" />
-                <span asp-validation-for="Product.Description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Product.Image" class="control-label"></label>
-                <input asp-for="Product.Image" class="form-control" />
-                <span asp-validation-for="Product.Image" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Product.ListPrice" class="control-label"></label>
-                <input asp-for="Product.ListPrice" class="form-control" />
-                <span asp-validation-for="Product.ListPrice" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Product.Discount" class="control-label"></label>
-                <input asp-for="Product.Discount" class="form-control" />
-                <span asp-validation-for="Product.Discount" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Product.CategoryId" class="control-label"></label>
-                <select asp-for="Product.CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
-                <span asp-validation-for="Product.CategoryId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Product.BrandId" class="control-label"></label>
-                <select asp-for="Product.BrandId" class="form-control" asp-items="ViewBag.BrandId"></select>
-                <span asp-validation-for="Product.BrandId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Product.Status" class="control-label"></label>
-                <input asp-for="Product.Status" class="form-control" />
-                <span asp-validation-for="Product.Status" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
-
-<div>
-    <a asp-page="./Index">Back to List</a>
-</div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
-*@
-
 <!DOCTYPE html>
 <html lang="en">
 
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Star Admin2 </title>
         <link rel="stylesheet" href="~/admin/vendors/feather/feather.css">
         <link rel="stylesheet" href="~/admin/vendors/mdi/css/materialdesignicons.min.css">
         <link rel="stylesheet" href="~/admin/vendors/ti-icons/css/themify-icons.css">
@@ -102,9 +29,7 @@
                 <!-- partial -->
                 <div class="main-panel">
                     <div class="content-wrapper">
-                        @*<c:forEach var="d" items="${data}">*@
-                            <form class="forms-sample" method="post" action="ProductController">
-                                <input type="hidden" name="service" value="updateProduct">
+                           <form method="post">
                                 <div class="row">
                                     <div class="col-md-12 grid-margin card">
                                         <div class="card-body">
@@ -116,70 +41,90 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="card-body">
-                                                    <input type="hidden" name="id" value="${d.product_id}">
-                                                    <div class="form-group">
-                                                        <label for="role">Product Name</label>
-                                                        <input type="text" class="form-control" name="product_name" id="product_name"  value="${d.product_name}" placeholder="Product Name" required>
 
-                                                    </div>
+                                                    <input type="hidden" asp-for="Product.ProductId">
+
                                                     <div class="form-group">
-                                                        <label for="list_price">List Price</label>
-                                                        <input type="text" class="form-control number" name="list_price" id="list_price" value="${d.list_price}" placeholder="Password" required>
+                                                        <label asp-for="Product.ProductName" >Product Name</label>
+                                                        <input type="text" class="form-control" asp-for="Product.ProductName" 
+                                                        placeholder="Product Name" required>
                                                     </div>
+
+                                                    <div class="form-group">
+                                                        <label asp-for="Product.ListPrice" >List Price | VNĐ</label>
+                                                        <input type="text" class="form-control number" asp-for="Product.ListPrice" required>
+                                                    </div>
+
                                                     <div class="form-group">
                                                         <label for="discount">Discount</label>
-                                                        <input type="text" class="form-control" name="discount" id="discount" value="${d.discount}" placeholder="Discount" required>
+                                                        <input type="text" class="form-control" asp-for="Product.Discount"
+                                                        placeholder="Discount" required>
                                                     </div>
+
                                                 </div> 
                                             </div>
+
                                             <div class="col-md-6">
                                                 <div class="card-body">
+
                                                     <div class="form-group">
-                                                        <label for="category_id">Category Name</label>
-                                                        <select class="form-control" name="category_id" id="category_id">
-                                                            <c:forEach var="c" items="${listC}">
-                                                                @*<option value="${c.category_id}" ${(d.category_id==c.category_id)? "selected" : ""}>${c.category_name}</option>*@
-                                                            </c:forEach>
-                                                        </select>
+
+                                                        <label asp-for="Product.CategoryId">Category</label>
+                                                        <select asp-for="Product.CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
+
                                                     </div>
 
                                                     <div class="form-group">
-                                                        <label for="brand_id">Brand Name</label>
-                                                        <select class="form-control" name="brand_id" id="brand_id">
-                                                            <c:forEach var="b" items="${listB}">
-                                                                @*<option value="${b.brand_id}" ${(d.brand_id == b.brand_id)? "selected" : ""}>${b.brand_name}</option>*@
-                                                            </c:forEach>
-                                                        </select>
+
+                                                        <label asp-for="Product.BrandId">Brand</label>
+                                                        <select  asp-for="Product.BrandId" class="form-control" asp-items="ViewBag.BrandId"></select>
+
                                                     </div>
 
                                                     <div class="form-group">
-                                                        <label for="status">Status</label>
-                                                        <select class="form-control" name="status" id="status" >   
-                                                            @*<option value="Stocking" ${d.status.equalsIgnoreCase("Stocking")? "selected" : ""}>Stocking</option>*@
-                                                            @*<option value="Sold out" ${d.status.equalsIgnoreCase("Sold out")? "selected" : ""}>Sold out</option> *@
+
+                                                        <label  asp-for="Product.Status">Status</label>
+                                                        <select asp-for="Product.Status" 
+                                                        asp-items="@(new SelectList(new List<SelectListItem>
+                                                        {
+                                                            new SelectListItem { Text = "Stocking", Value = "Stocking" },
+                                                            new SelectListItem { Text = "Sold out", Value = "Sold out" }
+                                                        }, "Value", "Text"))" 
+                                                        
+                                                        class="form-control">
                                                         </select>
+                                                         
                                                     </div>
-
-
                                                 </div>
                                             </div>
+
+
                                             <div class="col-md-12">
+
                                                 <div class="card-body">
+
                                                     <div class="form-group">
-                                                        <label for="image">image</label>
-                                                        <img id="preview-img" src="${d.image}"  style="width: 30%">
-                                                        <input type="file" class="form-control" onchange="previewImage()" accept="image/*" name="image" id="image" value="${d.image}"  placeholder="image">
-                                                        <input type="hidden" name="imageoriginal" value="${d.image}">
+                                                        <label asp-for="Product.Image" class="control-label">Image</label>
+                                                        <img id="preview-img" src="@ViewData["Image"]"  style="width: 30%">
+                                                        <input type="file"  asp-for="Product.Image" class="form-control" 
+                                                         onchange="previewImage()" accept="image/*" >
+                                                        @*<span asp-validation-for="Product.Image" class="text-danger"></span>*@
                                                     </div>
+
                                                     <div class="form-group">
-                                                        <label for="sub_description">Sub Description</label>
-                                                        <textarea  name="sub_description" >${d.sub_description}</textarea>
+
+                                                        <label asp-for="Product.SubDescription">Sub Description</label>
+                                                        <textarea  asp-for="Product.SubDescription"></textarea>
+
                                                     </div>
+
                                                     <div class="form-group">
-                                                        <label for="description">Description</label>
-                                                        <textarea  name="description" >${d.description}</textarea>
+                                                        <label asp-for="Product.Description">Description</label>
+                                                        <textarea  asp-for="Product.Description"></textarea>
                                                     </div>
+
                                                 </div>
+
                                             </div>
                                             <div style="text-align: center; margin-bottom: 30px">
                                                 <button type="submit" name="submit" class="btn btn-primary me-2">Submit</button>
@@ -188,11 +133,9 @@
                                         </div>
                                     </div>
                                  </div>
-                                @*</c:forEach>*@
                         </form>
                     </div>
-                    <!-- content-wrapper ends -->
-                    <!-- partial:../../partials/_footer.html -->
+
                     <footer class="footer">
                         <div class="d-sm-flex justify-content-center justify-content-sm-between">
                             <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Premium <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a> from BootstrapDash.</span>
@@ -201,7 +144,6 @@
                     </footer>
                 </div>
             </div>
-        </div>
 
 
 
@@ -221,7 +163,10 @@
         <script src="~/admin/vendors/tinymce/tinymce.js"></script>
         <script src="~/admin/vendors/tinymce/jquery.tinymce.js"></script>
         <script src="~/admin/vendors/tinymce/jquery.tinymce.min.js"></script>
-        <script>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+           <script>
                                                             tinymce.init({
                                                                 selector: 'textarea',
                                                                 height: 500,
@@ -229,8 +174,7 @@
                                                                 plugins: 'advlist autolink lists link image charmap print preview anchor',
                                                                 toolbar: 'undo redo | formatselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image'
                                                             });
-        </script>
-        <script>
+
             const numberElements = document.getElementsByClassName('number');
             for (let i = 0; i < numberElements.length; i++) {
                 const numberElement = numberElements[i];
@@ -262,5 +206,6 @@
                 }
             }
         </script>
+}
     </body>
 </html>

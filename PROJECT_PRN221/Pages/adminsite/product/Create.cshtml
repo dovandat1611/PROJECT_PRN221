@@ -1,76 +1,8 @@
 ﻿@page
 @model PROJECT_PRN221.Pages.adminsite.product.CreateModel
-
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Create Product";
 }
-
-@*<h1>Create</h1>
-
-<h4>Product</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Product.ProductName" class="control-label"></label>
-                <input asp-for="Product.ProductName" class="form-control" />
-                <span asp-validation-for="Product.ProductName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Product.SubDescription" class="control-label"></label>
-                <input asp-for="Product.SubDescription" class="form-control" />
-                <span asp-validation-for="Product.SubDescription" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Product.Description" class="control-label"></label>
-                <input asp-for="Product.Description" class="form-control" />
-                <span asp-validation-for="Product.Description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Product.Image" class="control-label"></label>
-                <input asp-for="Product.Image" class="form-control" />
-                <span asp-validation-for="Product.Image" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Product.ListPrice" class="control-label"></label>
-                <input asp-for="Product.ListPrice" class="form-control" />
-                <span asp-validation-for="Product.ListPrice" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Product.Discount" class="control-label"></label>
-                <input asp-for="Product.Discount" class="form-control" />
-                <span asp-validation-for="Product.Discount" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Product.CategoryId" class="control-label"></label>
-                <select asp-for="Product.CategoryId" class ="form-control" asp-items="ViewBag.CategoryId"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="Product.BrandId" class="control-label"></label>
-                <select asp-for="Product.BrandId" class ="form-control" asp-items="ViewBag.BrandId"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="Product.Status" class="control-label"></label>
-                <input asp-for="Product.Status" class="form-control" />
-                <span asp-validation-for="Product.Status" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
-
-<div>
-    <a asp-page="Index">Back to List</a>
-</div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
-*@
 
 <!DOCTYPE html>
 <html lang="en">
@@ -78,7 +10,6 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Star Admin2 </title>
         <link rel="stylesheet" href="~/admin/vendors/feather/feather.css">
         <link rel="stylesheet" href="~/admin/vendors/mdi/css/materialdesignicons.min.css">
         <link rel="stylesheet" href="~/admin/vendors/ti-icons/css/themify-icons.css">
@@ -98,8 +29,9 @@
                 <!-- partial -->
                 <div class="main-panel"> 
                     <div class="content-wrapper">
-                        <form class="forms-sample" method="post" action="ProductController">
-                            <input type="hidden" name="service" value="insertProduct">
+
+                        <form method="post">
+
                             <div class="row">
                                 <div class="col-md-12 grid-margin card">
                                     <div class="card-body">
@@ -111,66 +43,82 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="card-body">
-                                                <div class="form-group">
-                                                    <label for="role">Product Name</label>
-                                                    <input type="text" class="form-control" name="product_name" id="product_name" placeholder="Product Name" required>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="list_price">List Price</label>
-                                                    <input type="text" class="form-control" name="list_price" id="list_price" placeholder="Price" required>
-                                                </div>
 
-                                                <div class="form-group">
-                                                    <label for="discount">Discount</label>
-                                                    <input type="text" class="form-control" name="discount" id="discount" placeholder="Discount" required>
-                                                </div>
+                                                    <div class="form-group">
+                                                        <label asp-for="Product.ProductName" >Product Name</label>
+                                                        <input type="text" class="form-control" asp-for="Product.ProductName" 
+                                                        placeholder="Product Name" required>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label asp-for="Product.ListPrice" >List Price | VNĐ</label>
+                                                        <input type="text" class="form-control number" asp-for="Product.ListPrice" required>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="discount">Discount</label>
+                                                        <input type="text" class="form-control" asp-for="Product.Discount"
+                                                        placeholder="Discount" required>
+                                                    </div>
                                             </div> 
                                         </div>
                                         <div class="col-md-6">
                                             <div class="card-body">
-                                                <div class="form-group">
-                                                    <label for="category_id">Category Name</label>
-                                                    <select class="form-control" name="category_id" id="category_id">
-                                                        <c:forEach var="c" items="${listC}">
-                                                            <option value="${c.category_id}">${c.category_name}</option>
-                                                        </c:forEach>
-                                                    </select>
-                                                </div>
 
-                                                <div class="form-group">
-                                                    <label for="brand_id">Brand Name</label>
-                                                    <select class="form-control" name="brand_id" id="brand_id">
-                                                        <c:forEach var="b" items="${listB}">
-                                                            <option value="${b.brand_id}">${b.brand_name}</option>
-                                                        </c:forEach>
-                                                    </select>
-                                                </div>
+                                                    <div class="form-group">
 
-                                                <div class="form-group">
-                                                    <label for="status">Status</label>
-                                                    <Select class="form-control" name="status" id="status">                        
-                                                        <option value="Stocking">Stocking</option>
-                                                        <option value="Sold out">Sold out</option> 
-                                                    </Select>
-                                                </div>
+                                                        <label asp-for="Product.CategoryId">Category</label>
+                                                        <select asp-for="Product.CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
+
+                                                    </div>
+
+                                                    <div class="form-group">
+
+                                                        <label asp-for="Product.BrandId">Brand</label>
+                                                        <select  asp-for="Product.BrandId" class="form-control" asp-items="ViewBag.BrandId"></select>
+
+                                                    </div>
+
+                                                    <div class="form-group">
+
+                                                        <label  asp-for="Product.Status">Status</label>
+                                                        <select asp-for="Product.Status" 
+                                                        asp-items="@(new SelectList(new List<SelectListItem>
+                                                        {
+                                                            new SelectListItem { Text = "Stocking", Value = "Stocking" },
+                                                            new SelectListItem { Text = "Sold out", Value = "Sold out" }
+                                                        }, "Value", "Text"))" 
+                                                        
+                                                        class="form-control">
+                                                        </select>
+                                                         
+                                                    </div>
 
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="card-body">
-                                                <div class="form-group">
-                                                    <label for="image">image</label>
-                                                    <img id="preview-img" src="" alt="" style="width: 30%">
-                                                    <input type="file" class="form-control" onchange="previewImage()" accept="image/*" name="image" id="image"   placeholder="image" required>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="sub_description">Sub Description</label> <br>
-                                                    <textarea id="inputText"  name="sub_description"></textarea>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="description">Description</label> <br>
-                                                    <textarea id="inputText1" name="description"></textarea>
-                                                </div>
+
+                                                    <div class="form-group">
+                                                        <label asp-for="Product.Image" class="control-label">Image</label>
+                                                        <img id="preview-img" src=""  style="width: 30%">
+                                                        <input type="file"  asp-for="Product.Image" class="form-control" 
+                                                         onchange="previewImage()" accept="image/*" >
+                                                        @*<span asp-validation-for="Product.Image" class="text-danger"></span>*@
+                                                    </div>
+
+                                                    <div class="form-group">
+
+                                                        <label asp-for="Product.SubDescription">Sub Description</label>
+                                                        <textarea  asp-for="Product.SubDescription"></textarea>
+
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label asp-for="Product.Description">Description</label>
+                                                        <textarea  asp-for="Product.Description"></textarea>
+                                                    </div>
+
                                             </div> 
                                         </div>
                                     </div>
@@ -190,7 +138,6 @@
                     </footer>
                 </div>
             </div>
-        </div>
 
 
         <script src="~/admin/vendors/js/vendor.bundle.base.js"></script>
@@ -210,16 +157,16 @@
         <script src="~/admin/vendors/tinymce/tinymce.js"></script>
         <script src="~/admin/vendors/tinymce/jquery.tinymce.js"></script>
         <script src="~/admin/vendors/tinymce/jquery.tinymce.min.js"></script>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
         <script>
                                                         tinymce.init({
-                                                            selector: '#inputText,#inputText1',
+                                                            selector: 'textarea',
                                                             height: 500,
                                                             menubar: 'file edit view format',
                                                             plugins: 'advlist autolink lists link image charmap print preview anchor',
                                                             toolbar: 'undo redo | formatselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image'
                                                         });
-        </script>
-        <script>
             function previewImage() {
                 var preview = document.querySelector('#preview-img');
                 var file = document.querySelector('input[type=file]').files[0];
@@ -236,5 +183,8 @@
                 }
             }
         </script>
+}
+
+
     </body>
 </html>

@@ -23,7 +23,7 @@ namespace PROJECT_PRN221.Pages.adminsite.product
         public Product Product { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
-        {
+        {   
             if (id == null || _context.Products == null)
             {
                 return NotFound();
@@ -35,8 +35,9 @@ namespace PROJECT_PRN221.Pages.adminsite.product
                 return NotFound();
             }
             Product = product;
-           ViewData["BrandId"] = new SelectList(_context.Brands, "BrandId", "BrandId");
-           ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "CategoryId");
+            ViewData["Image"] = product.Image; 
+            ViewData["BrandId"] = new SelectList(_context.Brands, "BrandId", "BrandName");
+            ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "CategoryName");
             return Page();
         }
 
