@@ -5,8 +5,368 @@
       "PackagePath": "staticwebassets\\PROJECT_PRN221.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\about\\teamworking.jpg",
+      "PackagePath": "staticwebassets\\Images\\about\\teamworking.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\avatar\\carol.svg",
+      "PackagePath": "staticwebassets\\Images\\avatar\\carol.svg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\avatar\\george.svg",
+      "PackagePath": "staticwebassets\\Images\\avatar\\george.svg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\avatar\\martin.svg",
+      "PackagePath": "staticwebassets\\Images\\avatar\\martin.svg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\avatar\\nicole.svg",
+      "PackagePath": "staticwebassets\\Images\\avatar\\nicole.svg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\avatar\\patricia.svg",
+      "PackagePath": "staticwebassets\\Images\\avatar\\patricia.svg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\avatar\\thomas.svg",
+      "PackagePath": "staticwebassets\\Images\\avatar\\thomas.svg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\banner\\ipad.jpg",
+      "PackagePath": "staticwebassets\\Images\\banner\\ipad.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\banner\\iphone.jpg",
+      "PackagePath": "staticwebassets\\Images\\banner\\iphone.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\banner\\iphone14.png",
+      "PackagePath": "staticwebassets\\Images\\banner\\iphone14.png"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\banner\\macbook.jpg",
+      "PackagePath": "staticwebassets\\Images\\banner\\macbook.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\brands\\acer.svg",
+      "PackagePath": "staticwebassets\\Images\\brands\\acer.svg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\brands\\apple.svg",
+      "PackagePath": "staticwebassets\\Images\\brands\\apple.svg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\brands\\asus.svg",
+      "PackagePath": "staticwebassets\\Images\\brands\\asus.svg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\brands\\canon.svg",
+      "PackagePath": "staticwebassets\\Images\\brands\\canon.svg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\brands\\dell.svg",
+      "PackagePath": "staticwebassets\\Images\\brands\\dell.svg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\brands\\hp.svg",
+      "PackagePath": "staticwebassets\\Images\\brands\\hp.svg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\brands\\intel.svg",
+      "PackagePath": "staticwebassets\\Images\\brands\\intel.svg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\brands\\lenovo.svg",
+      "PackagePath": "staticwebassets\\Images\\brands\\lenovo.svg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\brands\\lg.svg",
+      "PackagePath": "staticwebassets\\Images\\brands\\lg.svg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\brands\\microsoft.svg",
+      "PackagePath": "staticwebassets\\Images\\brands\\microsoft.svg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\brands\\samsung.svg",
+      "PackagePath": "staticwebassets\\Images\\brands\\samsung.svg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\brands\\sony.svg",
+      "PackagePath": "staticwebassets\\Images\\brands\\sony.svg"
+    },
+    {
       "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\logo\\logo.png",
       "PackagePath": "staticwebassets\\Images\\logo\\logo.png"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\news\\Apple.webp",
+      "PackagePath": "staticwebassets\\Images\\news\\Apple.webp"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\news\\MSI.jpg",
+      "PackagePath": "staticwebassets\\Images\\news\\MSI.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\news\\SamsungGalaxyZFlip4.jpg",
+      "PackagePath": "staticwebassets\\Images\\news\\SamsungGalaxyZFlip4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\news\\Teamwork-in-the-Workplace.png",
+      "PackagePath": "staticwebassets\\Images\\news\\Teamwork-in-the-Workplace.png"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\news\\macbook-photo.jpg",
+      "PackagePath": "staticwebassets\\Images\\news\\macbook-photo.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\news\\macbook-promo-1.jpg",
+      "PackagePath": "staticwebassets\\Images\\news\\macbook-promo-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\news\\macbook-promo-2.jpg",
+      "PackagePath": "staticwebassets\\Images\\news\\macbook-promo-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\news\\teamworking.jpg",
+      "PackagePath": "staticwebassets\\Images\\news\\teamworking.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\products\\1.jpg",
+      "PackagePath": "staticwebassets\\Images\\products\\1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\products\\10.jpg",
+      "PackagePath": "staticwebassets\\Images\\products\\10.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\products\\11.jpg",
+      "PackagePath": "staticwebassets\\Images\\products\\11.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\products\\12.jpg",
+      "PackagePath": "staticwebassets\\Images\\products\\12.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\products\\13.png",
+      "PackagePath": "staticwebassets\\Images\\products\\13.png"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\products\\14.png",
+      "PackagePath": "staticwebassets\\Images\\products\\14.png"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\products\\15.png",
+      "PackagePath": "staticwebassets\\Images\\products\\15.png"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\products\\16.png",
+      "PackagePath": "staticwebassets\\Images\\products\\16.png"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\products\\17.png",
+      "PackagePath": "staticwebassets\\Images\\products\\17.png"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\products\\18.png",
+      "PackagePath": "staticwebassets\\Images\\products\\18.png"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\products\\19.png",
+      "PackagePath": "staticwebassets\\Images\\products\\19.png"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\products\\2.jpg",
+      "PackagePath": "staticwebassets\\Images\\products\\2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\products\\20.png",
+      "PackagePath": "staticwebassets\\Images\\products\\20.png"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\products\\21.png",
+      "PackagePath": "staticwebassets\\Images\\products\\21.png"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\products\\22.png",
+      "PackagePath": "staticwebassets\\Images\\products\\22.png"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\products\\23.png",
+      "PackagePath": "staticwebassets\\Images\\products\\23.png"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\products\\24.png",
+      "PackagePath": "staticwebassets\\Images\\products\\24.png"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\products\\3.jpg",
+      "PackagePath": "staticwebassets\\Images\\products\\3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\products\\30.png",
+      "PackagePath": "staticwebassets\\Images\\products\\30.png"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\products\\31.png",
+      "PackagePath": "staticwebassets\\Images\\products\\31.png"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\products\\4.jpg",
+      "PackagePath": "staticwebassets\\Images\\products\\4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\products\\5.jpg",
+      "PackagePath": "staticwebassets\\Images\\products\\5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\products\\6.jpg",
+      "PackagePath": "staticwebassets\\Images\\products\\6.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\products\\7.jpg",
+      "PackagePath": "staticwebassets\\Images\\products\\7.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\products\\8.jpg",
+      "PackagePath": "staticwebassets\\Images\\products\\8.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\products\\9.jpg",
+      "PackagePath": "staticwebassets\\Images\\products\\9.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\products\\AIRPOD.jpg",
+      "PackagePath": "staticwebassets\\Images\\products\\AIRPOD.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\products\\Apple-iPhone-14-Pro-Max.jpg",
+      "PackagePath": "staticwebassets\\Images\\products\\Apple-iPhone-14-Pro-Max.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\products\\DELLGAMING.jpg",
+      "PackagePath": "staticwebassets\\Images\\products\\DELLGAMING.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\products\\IPadMini6.jpg",
+      "PackagePath": "staticwebassets\\Images\\products\\IPadMini6.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\products\\IpadProM2.jpg",
+      "PackagePath": "staticwebassets\\Images\\products\\IpadProM2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\products\\Iphone14ProGold.jpg",
+      "PackagePath": "staticwebassets\\Images\\products\\Iphone14ProGold.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\products\\LG GRAM 17ZD90R.png",
+      "PackagePath": "staticwebassets\\Images\\products\\LG GRAM 17ZD90R.png"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\products\\Lenovo IDEAPAD SLIM 5 PRO.jpg",
+      "PackagePath": "staticwebassets\\Images\\products\\Lenovo IDEAPAD SLIM 5 PRO.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\products\\LenovoTabP11Pro__1_.jpg",
+      "PackagePath": "staticwebassets\\Images\\products\\LenovoTabP11Pro__1_.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\products\\Samsung-Galaxy-S22-Ultra.jpg",
+      "PackagePath": "staticwebassets\\Images\\products\\Samsung-Galaxy-S22-Ultra.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\products\\Samsung-Galaxy.jpg",
+      "PackagePath": "staticwebassets\\Images\\products\\Samsung-Galaxy.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\products\\SamsungGalaxyZFlip4.jpg",
+      "PackagePath": "staticwebassets\\Images\\products\\SamsungGalaxyZFlip4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\products\\SamsungGalaxyZFold4.png",
+      "PackagePath": "staticwebassets\\Images\\products\\SamsungGalaxyZFold4.png"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\products\\SonyWH.jpg",
+      "PackagePath": "staticwebassets\\Images\\products\\SonyWH.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\products\\Soundbar.jpg",
+      "PackagePath": "staticwebassets\\Images\\products\\Soundbar.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\products\\Surface-Laptop-4.jpg",
+      "PackagePath": "staticwebassets\\Images\\products\\Surface-Laptop-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\products\\SurfaceLaptopGoCorei5.jpg",
+      "PackagePath": "staticwebassets\\Images\\products\\SurfaceLaptopGoCorei5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\products\\SurfacePro8.jpg",
+      "PackagePath": "staticwebassets\\Images\\products\\SurfacePro8.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\products\\TrueWireLessSony.jpg",
+      "PackagePath": "staticwebassets\\Images\\products\\TrueWireLessSony.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\products\\Xiaomi-Redmi-Note-12.jpg",
+      "PackagePath": "staticwebassets\\Images\\products\\Xiaomi-Redmi-Note-12.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\products\\Xiaomi12T.jpg",
+      "PackagePath": "staticwebassets\\Images\\products\\Xiaomi12T.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\products\\XiaomiPad5.jpg",
+      "PackagePath": "staticwebassets\\Images\\products\\XiaomiPad5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\products\\ZFold4.png",
+      "PackagePath": "staticwebassets\\Images\\products\\ZFold4.png"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\products\\iphone-14-plus-starlight.jpg",
+      "PackagePath": "staticwebassets\\Images\\products\\iphone-14-plus-starlight.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\products\\iphone-14-plus-starlight_05.jpg",
+      "PackagePath": "staticwebassets\\Images\\products\\iphone-14-plus-starlight_05.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\products\\iphone14-white.jpg",
+      "PackagePath": "staticwebassets\\Images\\products\\iphone14-white.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\products\\iphone14progold.jpeg",
+      "PackagePath": "staticwebassets\\Images\\products\\iphone14progold.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\products\\iphone_14_pro_max_gold.png",
+      "PackagePath": "staticwebassets\\Images\\products\\iphone_14_pro_max_gold.png"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\products\\laptops.png",
+      "PackagePath": "staticwebassets\\Images\\products\\laptops.png"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\products\\macbook-promo-1.jpg",
+      "PackagePath": "staticwebassets\\Images\\products\\macbook-promo-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\products\\macbook-promo-2.jpg",
+      "PackagePath": "staticwebassets\\Images\\products\\macbook-promo-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\products\\macbook27in.png",
+      "PackagePath": "staticwebassets\\Images\\products\\macbook27in.png"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\products\\surface-pro-7.jpg",
+      "PackagePath": "staticwebassets\\Images\\products\\surface-pro-7.jpg"
     },
     {
       "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\admin\\css\\maps\\horizontal-layout-dark\\style.css.map",
