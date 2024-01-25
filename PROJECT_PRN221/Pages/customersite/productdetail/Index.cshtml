@@ -54,10 +54,10 @@
                     <div class="col-md-12">
                         <div class="breadcrumbs">
                             <span class="item">
-                                <a href="/HomeController">Home /</a>
+                                <a href="/customersite/home">Home /</a>
                             </span>
                             <span class="item">
-                                <a href="/ShopController">Shop /</a>
+                                <a href="/customersite/shop">Shop /</a>
                             </span>
                             <span class="item">Shop Single</span>
                         </div>
@@ -67,11 +67,9 @@
         </section>
 
         @*PRODUCT*@
-                <form action="/CartController" method="post">
-            <input type="hidden" name="service" value="addToCart">
-          
+           <form action="/customersite/cart" method="post">
 
-                <input type="hidden" name="id" value="${data.product_id}">
+               @* <input type="hidden" name="id" value="${data.product_id}">*@
 
                 <section class="single-product padding-large">
                     <div class="container">
@@ -94,9 +92,12 @@
                                         <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
                                     <div class="swiper large-swiper overflow-hidden col-md-9 col-xs-9 swiper-fade swiper-initialized swiper-horizontal swiper-watch-progress swiper-backface-hidden">
                                         <div class="swiper-wrapper" id="swiper-wrapper-33c3ebe2556c5912" aria-live="polite" style="transition-duration: 0ms;">
+                                           
+                                            @*IMAGE PRODUCT*@
                                             <div class="swiper-slide" role="group" aria-label="1 / 3" style="width: 632px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;">
-                                                <img src="/${data.image}" alt="single-product" style="height: 500px;">
+                                                @*<img src="/${data.image}" alt="single-product" style="height: 500px;">*@
                                             </div>
+
                                             <div class="swiper-slide swiper-slide-prev" role="group" aria-label="2 / 3" style="width: 632px; opacity: 1; transform: translate3d(-632px, 0px, 0px); transition-duration: 0ms;">
                                                 <img src="/images/producs/1/1-add-1-large.jpg" alt="single-product" style="height: 500px;">
                                             </div>
@@ -107,22 +108,27 @@
                                         <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
                                 </div>
                             </div>
+
                             <div class="col-md-6">
                                 <div class="product-info">
                                     <div class="element-header">
-                                        <h1 itemprop="name" class="product-title">${data.product_name}</h1>
+                                        @*PRODUCT NAME*@
+                                        @*<h1 itemprop="name" class="product-title">${data.product_name}</h1>*@
                                     </div>
 
-                                    <c:set var="a" value="${data.discount}" />
+                                  @*  <c:set var="a" value="${data.discount}" />
                                     <c:set var="b" value="${data.list_price}" />
-                                    <c:set var="product" value="${(1-a) * b}" />
+                                    <c:set var="product" value="${(1-a) * b}" />*@
 
                                     <div class="product-price">
-                                        <strong class="number">${product}</strong>
-                                        <del class="number">${data.list_price}</del>
+                                     @*DISCOUNT*@
+                                     @*   <strong class="number">${product}</strong>*@
+                                     @*NUMBER*@
+                                        @*<del class="number">${data.list_price}</del>*@
                                     </div>
 
-                                    <p>${data.sub_description}</p>
+                                    @*SUB DISCRIPTION*@
+                                    @*<p>${data.sub_description}</p>*@
                                     <div class="cart-wrap margin-small">
 
                                         <div class="product-quantity">
@@ -173,7 +179,7 @@
                         <div class="tab-content" id="nav-tabContent">
                                 <div class="tab-pane fade" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                                     <p>Product Description</p>
-                                    <p>${data.description}</p>           
+                                   @* <p>${data.description}</p>           *@
                                 </div>
                             <div class="tab-pane fade" id="nav-information" role="tabpanel" aria-labelledby="nav-information-tab">
                                 <p>Shipping Policy</p>
@@ -189,7 +195,10 @@
                             </div>
                             <div class="tab-pane fade active" id="nav-review" role="tabpanel" aria-labelledby="nav-review-tab">
                                 <div class="review-box review-style d-flex flex-wrap justify-content-between">
-                                    <c:if test="${empty comment}">
+
+
+                                    @*COMMENT*@
+@*                                    <c:if test="${empty comment}">
                                         <p>Have no comment</p>
                                     </c:if>
                                     <c:if test="${comment != null}">
@@ -209,9 +218,10 @@
                                             </div>
                                         </c:forEach>  
                                     </c:if>
-                                </div>
+                                </div>*@
 
-                                <c:if test="${not empty sessionScope.account}">
+                                
+@*                                <c:if test="${not empty sessionScope.account}">
                                     <div class="add-review margin-small">
                                         <h3>Add a review</h3>
                                         <form id="form" class="padding-small" method="post" action="/SingleProductController">
@@ -222,7 +232,7 @@
                                             <button type="submit" name="submit" class="btn btn-dark btn-medium">Submit</button>
                                         </form>
                                     </div>
-                                </c:if>
+                                </c:if>*@
 
 @*                                <c:if test="${empty sessionScope.account}">
                                     <div class="add-review margin-small">
@@ -248,6 +258,8 @@
 
                     <div class="swiper product-swiper overflow-hidden">
                         <div class="swiper-wrapper">
+
+                            @*Related Products*@
                             <c:forEach items="${relatepro}" var="d">
                                 <div class="swiper-slide">
                                     <div class="product-item">
@@ -263,6 +275,7 @@
                                     </div>
                                 </div>
                             </c:forEach>
+
                         </div>
                     </div>
                     <div class="swiper-pagination"></div>

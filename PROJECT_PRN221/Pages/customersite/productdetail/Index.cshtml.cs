@@ -8,5 +8,10 @@ namespace PROJECT_PRN221.Pages.customersite.productdetail
         public void OnGet()
         {
         }
+
+        public void OnPost()
+        {
+        }
+
     }
 }
