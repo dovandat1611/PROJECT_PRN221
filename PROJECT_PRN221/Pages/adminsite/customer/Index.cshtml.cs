@@ -27,5 +27,24 @@ namespace PROJECT_PRN221.Pages.adminsite.customer
                 Customer = await _context.Customers.ToListAsync();
             }
         }
+
+
+        public async Task OnPostAsync(int id, string action, string status, string name)
+        {
+            if (_context.Customers != null)
+            {
+
+                if (action.Equals("updateStatus"))
+                {
+                    Customer customer = _context.Customers.FirstOrDefault(x => x.CustomerId == id);
+                    customer.Status = status;
+                    _context.SaveChanges();
+                }
+                if (action.Equals("searchByName"))
+                {
+                    Customer = await _context.Customers.Where(x => x.Name.Contains(name)).ToListAsync();
+                }
+            }
+        }
     }
 }

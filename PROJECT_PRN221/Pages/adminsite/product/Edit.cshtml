@@ -105,7 +105,7 @@
 
                                                     <div class="form-group">
                                                         <label asp-for="Product.Image" class="control-label">Image</label>
-                                                        <img id="preview-img" src="@ViewData["Image"]"  style="width: 30%">
+                                                        <img id="preview-img" src="@Model.Product.Image"  style="width: 30%">
                                                         <input type="file"  asp-for="Product.Image" class="form-control" 
                                                          onchange="previewImage()" accept="image/*" >
                                                         @*<span asp-validation-for="Product.Image" class="text-danger"></span>*@

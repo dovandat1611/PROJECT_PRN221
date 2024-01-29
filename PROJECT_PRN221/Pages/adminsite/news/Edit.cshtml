@@ -2,68 +2,8 @@
 @model PROJECT_PRN221.Pages.adminsite.news.EditModel
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Edit News";
 }
-
-@*<h1>Edit</h1>
-
-<h4>News</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="News.NewsId" />
-            <div class="form-group">
-                <label asp-for="News.NewsgroupId" class="control-label"></label>
-                <select asp-for="News.NewsgroupId" class="form-control" asp-items="ViewBag.NewsgroupId"></select>
-                <span asp-validation-for="News.NewsgroupId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="News.Image" class="control-label"></label>
-                <input asp-for="News.Image" class="form-control" />
-                <span asp-validation-for="News.Image" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="News.Title" class="control-label"></label>
-                <input asp-for="News.Title" class="form-control" />
-                <span asp-validation-for="News.Title" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="News.Content" class="control-label"></label>
-                <input asp-for="News.Content" class="form-control" />
-                <span asp-validation-for="News.Content" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="News.Createdby" class="control-label"></label>
-                <select asp-for="News.Createdby" class="form-control" asp-items="ViewBag.Createdby"></select>
-                <span asp-validation-for="News.Createdby" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="News.CreatedDate" class="control-label"></label>
-                <input asp-for="News.CreatedDate" class="form-control" />
-                <span asp-validation-for="News.CreatedDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="News.Status" class="control-label"></label>
-                <input asp-for="News.Status" class="form-control" />
-                <span asp-validation-for="News.Status" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
-
-<div>
-    <a asp-page="./Index">Back to List</a>
-</div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
-*@
 
 <!DOCTYPE html>
 <html lang="en">
@@ -94,6 +34,9 @@
                     <div class="content-wrapper">
                             <form class="forms-sample" method="post">
                                 <input type="hidden" asp-for="News.NewsId" />
+                                <input type="hidden" asp-for="News.Createdby"/>
+                                <input type="hidden" asp-for="News.Status"/>
+                                <input type="hidden" asp-for="News.CreatedDate"/>
                                 <div class="row">
                                     <div class="col-md-12 grid-margin stretch-card">
                                         <div class="card">
@@ -102,31 +45,26 @@
                                                 <p class="card-description">
                                                     Fill all the bank
                                                 </p>
-                                                <input type="hidden" name="service" value="updateNews">
-                                                <input type="hidden" name="news_id" value="${d.news_id}">
                                                 <div class="form-group">
-                                                    <label for="newsgroup_id">News Group</label>
-                                                    <select class="form-control" name="newsgroup_id" id="newsgroup_id">
-                                                        <c:forEach items="${listG}" var="g">
-                                                            @*<option value="${g.newsgroup_id}" ${g.newsgroup_id == d.newsgroup_id ? "selected" : ""}>${g.newsgroup_name}</option>*@
-                                                        </c:forEach>
+                                                    <label asp-for="News.NewsgroupId">News Group</label>
+                                                    <select class="form-control" asp-for="News.NewsgroupId" asp-items="ViewBag.NewsgroupId">
                                                     </select>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="image">Image</label>
-                                                    <img id="preview-img" src="${d.image}" alt="" style="width: 30%">
-                                                    <input type="file" class="form-control" onchange="previewImage()" accept="image/*" name="image" id="image"  placeholder="Image">
-                                                    <input type="hidden" name="imageoriginal" value="${d.image}">
+                                                    <label asp-for="News.Image">Image</label>
+                                                    <img id="preview-img" src="@Model.News.Image" alt="@Model.News.Image" style="width: 30%">
+                                                    <input type="file" asp-for="News.Image"  
+                                                    class="form-control" onchange="previewImage()" accept="image/*"  placeholder="Image">
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label for="title">Tile</label>
-                                                    <input type="text" class="form-control" value="${d.title}" name="title" id="title" placeholder="Title" required>
+                                                    <label  asp-for="News.Title">Tile</label>
+                                                    <input type="text" class="form-control" asp-for="News.Title" placeholder="Title" required>
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label for="content">Content</label> <br>
-                                                    <textarea id="inputText"  name="content" >${d.content}</textarea>
+                                                    <label asp-for="News.Content">Content</label> <br>
+                                                    <textarea  asp-for="News.Content" ></textarea>
                                                 </div>
                                                 <div style="text-align: center">
                                                     <button type="submit" name="submit" class="btn btn-primary me-2">Submit</button>
@@ -162,7 +100,7 @@
         <script src="~/admin/vendors/tinymce/jquery.tinymce.min.js"></script>
         <script>
                                                         tinymce.init({
-                                                            selector: '#inputText',
+                                                            selector: 'textarea',
                                                             height: 500,
                                                             menubar: 'file edit view format',
                                                             plugins: 'advlist autolink lists link image charmap print preview anchor',

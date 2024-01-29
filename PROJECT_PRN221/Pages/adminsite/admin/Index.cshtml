@@ -2,80 +2,8 @@
 @model PROJECT_PRN221.Pages.adminsite.admin.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Admin";
 }
-
-@*<h1>Index</h1>
-
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Admin[0].Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Admin[0].Phone)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Admin[0].Gmail)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Admin[0].Dob)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Admin[0].Image)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Admin[0].Username)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Admin[0].Password)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Admin[0].Status)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.Admin) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Phone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Gmail)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Dob)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Image)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Username)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Password)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Status)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.AdminId">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.AdminId">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.AdminId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>*@
 
 <!DOCTYPE html>
 <html lang="en">
@@ -83,7 +11,6 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Star Admin2 </title>
         <link rel="stylesheet" href="~/admin/vendors/feather/feather.css">
         <link rel="stylesheet" href="~/admin/vendors/mdi/css/materialdesignicons.min.css">
         <link rel="stylesheet" href="~/admin/vendors/ti-icons/css/themify-icons.css">
@@ -117,67 +44,64 @@
                                             <h4 class="card-title card-title-dash">Admin</h4>
                                         </div>
                                         <div>
-                                            <form class="search-form" action="AdminController?service=searchAdmin" method="post">
+                                            <form class="search-form" method="post">
+                                                <input type="hidden" name="service" value="searchByName">
                                                 <input type="text" class="form-control" name="name" placeholder="Search Here" title="Search here">
                                             </form>
                                         </div>
                                         <div>
-                                            <a href="AdminController?service=insertAdmin" class="btn btn-primary text-white me-0"><i class="mdi mdi-account-plus"></i> Add new member</a>
+                                            <a href="/adminsite/admin/Create" class="btn btn-primary text-white me-0">Create Admin</a>
                                             <a onclick="exportToExcel()" class="btn btn-primary text-white me-0"><i class="icon-download"></i>Export</a>
                                         </div>
                                     </div>
-                                    <div style="text-align: center">
-                                        <p class="badge badge-danger">${ms}</p>
-                                    </div>
+      
                                     <div class="table-responsive">
                                         <table class="table table-hover"  id="myTable">
                                             <thead>
                                                 <tr>
                                                     <th>ID</th>
-                                                    <th>Role</th>
                                                     <th>Name</th>
+                                                    <th>Image</th>
                                                     <th>Phone</th>
+                                                    <th>Dob</th>
                                                     <th>Email</th>
-                                                    <th>Username</th>
-                                                    <th>Password</th>
                                                     <th>Status</th>
-                                                    <th>Update</th>
-                                                    <th>Delete</th>
+                                                    <th>Update Status</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <c:forEach items="${data}" var="d">
+                                                @foreach (var item in Model.Admin) {
                                                     <tr>
-                                                        <td>${d.admin_id}</td>
-                                                        <td>${d.role}</td>
-                                                        <td>${d.name}</td>
-                                                        <td>${d.phone}</td>
-                                                        <td>${d.gmail}</td> 
-                                                        <td>${d.username}</td> 
-                                                        <td>******</td> 
+                                                        <td>@item.AdminId</td>
+                                                        <td>@item.Name</td>
+                                                        <td>@item.Image</td>
+                                                        <td>@item.Phone</td>
+                                                        <td>@item.Dob</td>
+                                                        <td>@item.Gmail</td>
                                                         <td>
-                                                            <div class="${d.status eq "Active"?" badge badge-opacity-success":"badge badge-opacity-danger"}">
-                                                                ${d.status}
+                                                            <div class="@(item.Status.Equals("Active")?"badge badge-opacity-success":"badge badge-opacity-danger")">
+                                                                @item.Status
                                                             </div>
                                                         </td>
                                                         <td> 
-                                                            <form method="post" action="AdminController"> 
+                                                            <form method="post"> 
                                                                 <input type="hidden" name="service" value="updateStatus">
-                                                                <input  type="hidden" name="id" id="id" value="${d.admin_id}"> 
-                                                                <Select class="input" name="status" id="status"> 
-                                                                    @*<option ${d.status eq "Active"?"selected":""} value="Active">Active</option>*@
-                                                                    @*<option ${d.status eq "Deactive"?"selected":""} value="Deactive">Deactive</option>*@
-                                                                </Select> 
+                                                                <input  type="hidden" name="id" value="@item.AdminId"> 
+                                                                <select name="status" asp-for="@item.Status"
+                                                                    asp-items="@(new SelectList(new List<SelectListItem>
+                                                                    {
+                                                                        new SelectListItem { Text = "Active", Value = "Active" },
+                                                                        new SelectListItem { Text = "Deactive", Value = "Deactive" }
+                                                                    }, "Value", "Text"))">
+                                                                </select>
                                                                 <input type="submit" value="Update">
                                                             </form> 
                                                         </td>
-                                                        <!--                                                    <td ><div class="badge badge-info"> <a href="AdminController?service=updateAdmin&id=?">Update</a></div></td> -->
-                                                        <td ><div class="badge badge-danger"> <a href="AdminController?service=deleteAdmin&id=${d.admin_id}">Delete</a></div></td> 
                                                     </tr>
-                                                </c:forEach>
+                                                }
                                             </tbody>
                                         </table>
-                                        <div style="text-align: center">
+@*                                        <div style="text-align: center">
                                             <c:choose>
                                                 <c:when test="${currentPage > 1}">
                                                     <a href="?page=${currentPage - 1}">Previous</a>
@@ -206,7 +130,7 @@
                                                     <span>Next</span>
                                                 </c:otherwise>
                                             </c:choose>
-                                        </div>
+                                        </div>*@
                                     </div>
                                 </div>
                             </div>
@@ -214,7 +138,6 @@
                     </div>
                 </div>
             </div>
-        </div>
 
         <script src="~/admin/vendors/js/vendor.bundle.base.js"></script>
         <script src="~/admin/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>

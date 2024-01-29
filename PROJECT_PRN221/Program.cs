@@ -47,5 +47,4 @@ app.UseSession();
 //// Map SignalR hub
 //app.MapHub<ChatHub>("/chatHub");
 
-
 app.Run();

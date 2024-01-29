@@ -35,7 +35,6 @@ namespace PROJECT_PRN221.Pages.adminsite.product
                 return NotFound();
             }
             Product = product;
-            ViewData["Image"] = product.Image; 
             ViewData["BrandId"] = new SelectList(_context.Brands, "BrandId", "BrandName");
             ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "CategoryName");
             return Page();

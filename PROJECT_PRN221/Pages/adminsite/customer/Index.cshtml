@@ -2,94 +2,8 @@
 @model PROJECT_PRN221.Pages.adminsite.customer.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Customer";
 }
-
-@*<h1>Index</h1>
-
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Customer[0].Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Customer[0].Phone)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Customer[0].Email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Customer[0].Dob)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Customer[0].Image)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Customer[0].Gender)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Customer[0].Address)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Customer[0].Username)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Customer[0].Password)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Customer[0].Status)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.Customer) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Phone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Dob)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Image)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Gender)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Address)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Username)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Password)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Status)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.CustomerId">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.CustomerId">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.CustomerId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
-*@
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -129,19 +43,20 @@
                                             <h4 class="card-title card-title-dash">Customer</h4>
                                         </div>
                                         <div>
-                                            <form class="search-form" action="CustomerController?service=searchCustomer" method="post">
+                                            <form class="search-form" method="post">
+                                                <input type="hidden" name="action" value="searchByName">
                                                 <input type="text" class="form-control" name="name" placeholder="Search Here" title="Search here">
                                             </form>
                                         </div>
                                         <div>
-                                            <a href="CustomerController?service=insertCustomer" class="btn btn-primary text-white me-0"><i class="mdi mdi-account-plus"></i> Add new Customer</a>
+                                            <a href="/adminsite/customer/Create" class="btn btn-primary text-white me-0"><i class="mdi mdi-account-plus"></i> Add new Customer</a>
                                             <a onclick="exportToExcel()" class="btn btn-primary text-white me-0"><i class="icon-download"></i> Export</a>
                                         </div>
                                     </div>
-                                    <div style="text-align: center">
+@*                                    <div style="text-align: center">
                                         <p class="badge badge-danger">${ms}</p>
                                     </div>  
-                                    <div class="table-responsive">
+*@                                    <div class="table-responsive">
                                         <table class="table table-hover" id="myTable">
                                             <thead>
                                                 <tr>
@@ -152,49 +67,45 @@
                                                     <th>Gender</th>
                                                     <th>Email</th>
                                                     <th>Address</th>
-                                                    <th>Username</th>
-                                                    <th>Password</th>
                                                     <th>Status</th>
-                                                    <th>Update</th>
-                                                    <th>Delete</th>
+                                                    <th>Update Status</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <c:forEach items="${data}" var="d">
-                                                    <fmt:formatDate value="${d.dob}" pattern="dd-MM-yyyy" var="formattedDate" />
+                                                
+                                                   @foreach (var item in Model.Customer) {
                                                     <tr>
-                                                        <td>${d.customer_id}</td>
-                                                        <td>${d.name}</td>
-                                                        <td>${d.phone}</td>
-                                                        <td>${formattedDate}</td>
-                                                        <td>${d.gender==false?"Female":"Male"}</td>
-                                                        <td>${d.gmail}</td> 
-                                                        <td>${d.address}</td> 
-                                                        <td>${d.username}</td> 
-                                                        <td>******</td> 
+                                                        <td>@item.CustomerId</td>
+                                                        <td>@item.Name</td>
+                                                        <td>@item.Phone</td>
+                                                        <td>@item.Dob</td>
+                                                        <td>@item.Gender == true?"Male":"Female"</td>
+                                                        <td>@item.Email</td> 
+                                                        <td>@item.Address</td> 
                                                         <td>
                                                             <div class="${d.status eq "Active"?" badge badge-opacity-success":"badge badge-opacity-danger"}">
-                                                                ${d.status}
+                                                                @item.Status
                                                             </div>
                                                         </td>
                                                         <td> 
-                                                            <form method="post" action="CustomerController"> 
-                                                                <input type="hidden" name="service" value="updateStatus">
-                                                                <input  type="hidden" name="id" id="id" value="${d.customer_id}"> 
-                                                                <Select class="input" name="status" id="status"> 
-                                                                    @*<option ${d.status eq "Active"?"selected":""} value="Active">Active</option>*@
-                                                                    @*<option ${d.status eq "Deactive"?"selected":""} value="Deactive">Deactive</option>*@
-                                                                </Select> 
+                                                            <form method="post">
+                                                                <input type="hidden" name="action" value="updateStatus">
+                                                                <input type="hidden" name="id" value="@item.CustomerId">
+                                                                <select name="status" asp-for="@item.Status"
+                                                                    asp-items="@(new SelectList(new List<SelectListItem>
+                                                                    {
+                                                                        new SelectListItem { Text = "Active", Value = "Active" },
+                                                                        new SelectListItem { Text = "Deactive", Value = "Deactive" }
+                                                                    }, "Value", "Text"))">
+                                                                </select>
                                                                 <input type="submit" value="Update">
-                                                            </form> 
+                                                            </form>
                                                         </td>
-                                                        <!--                                                        <td><div class="badge badge-info"><a href="CustomerController?service=updateCustomer&id=">Update</a></div></td>-->
-                                                        <td ><div class="badge badge-danger"><a href="CustomerController?service=deleteCustomer&id=${d.customer_id}">Delete</a></div></td> 
                                                     </tr>
-                                                </c:forEach>
+                                                    }
                                             </tbody>
                                         </table>
-                                        <div style="text-align: center">
+@*                                        <div style="text-align: center">
                                             <c:choose>
                                                 <c:when test="${currentPage > 1}">
                                                     <a href="?page=${currentPage - 1}">Previous</a>
@@ -223,7 +134,7 @@
                                                     <span>Next</span>
                                                 </c:otherwise>
                                             </c:choose>
-                                        </div>
+                                        </div>*@
                                     </div>
                                 </div>
                             </div>

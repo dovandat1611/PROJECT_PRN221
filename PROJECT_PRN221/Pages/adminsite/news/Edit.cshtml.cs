@@ -35,8 +35,7 @@ namespace PROJECT_PRN221.Pages.adminsite.news
                 return NotFound();
             }
            News = news;
-           ViewData["Createdby"] = new SelectList(_context.Admins, "AdminId", "AdminId");
-           ViewData["NewsgroupId"] = new SelectList(_context.NewsGroups, "NewsgroupId", "NewsgroupId");
+           ViewData["NewsgroupId"] = new SelectList(_context.NewsGroups, "NewsgroupId", "NewsgroupName");
             return Page();
         }
 
