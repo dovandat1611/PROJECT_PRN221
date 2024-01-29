@@ -1,4 +1,4 @@
-﻿@page
+﻿@page 
 @model PROJECT_PRN221.Pages.customersite.home.IndexModel
 @{
 
@@ -27,6 +27,16 @@
     <!-- script
     ================================================== -->
     <script src="~/customer/js/modernizr.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PV3J437JX5"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-PV3J437JX5');
+    </script>
   </head>
   <body>
 
@@ -91,43 +101,31 @@
             <a href="shop.html" class="d-flex align-items-center">View all products <i class="icon icon icon-arrow-io"></i></a>
           </div>            
         </div>
+
+
         <div class="swiper product-swiper overflow-hidden">
           <div class="swiper-wrapper">
 
-
             @* PRODUCT HERE *@
-            <div class="swiper-slide">
-              <div class="product-item">
-                <div class="image-holder">
-                  <img src="images/producs/1/1-large.jpg" alt="Books" class="product-image" style="width: 290px; height: 290px;">
-                </div>
-                <div class="cart-concern">
-                  <div class="cart-button d-flex justify-content-between align-items-center">
-                    <button type="button" class="btn-wrap cart-link d-flex align-items-center">add to cart <i class="icon icon-arrow-io"></i>
-                    </button>
-                    <button type="button" class="view-btn tooltip
-                        d-flex">
-                      <i class="icon icon-screen-full"></i>
-                      <span class="tooltip-text">Quick view</span>
-                    </button>
-                    <button type="button" class="wishlist-btn">
-                      <i class="icon icon-heart"></i>
-                    </button>
-                  </div>
-                </div>
-                <div class="product-detail">
-                  <h3 class="product-title">
-                    <a href="single-product.html">Apple MacBook Pro 15" Touch Bar MPTU2LL/A 256GB (Silver)</a>
-                  </h3>
-                  <span class="item-price text-primary">$40.00</span>
-                </div>
-              </div>
-            </div>
-
-
+                                @foreach (var item in Model.Product)
+                                {
+                                    <div class="swiper-slide">
+                                        <div class="product-item">
+                                            <div class="image-holder">
+                                                <img src="@item.Image" alt="Books" class="product-image" style="width: 290px; height: 290px;">
+                                            </div>
+                                            <div class="product-detail">
+                                                <h3 class="product-title">
+                                                    <a href="/customersite/productdetail?id=@item.ProductId">@item.ProductName</a>
+                                                </h3>
+                                                <span class="item-price text-primary number">@item.ListPrice</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
           </div>
         </div>
-        <div class="swiper-pagination"></div>
+       <div class="swiper-pagination"></div>
       </div>
     </section>
 
@@ -436,4 +434,3 @@
     <script src="~/customer/js/script.js"></script>
   </body>
 </html>
-

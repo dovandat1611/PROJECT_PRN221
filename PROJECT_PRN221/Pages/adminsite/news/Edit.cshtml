@@ -92,9 +92,8 @@
                 <!-- partial -->
                 <div class="main-panel">     
                     <div class="content-wrapper">
-                        <c:forEach var="d" items="${data}">
-                            <form class="forms-sample" method="post" action="NewsController">
-                                <input type="hidden" name="service" value="updateNews">
+                            <form class="forms-sample" method="post">
+                                <input type="hidden" asp-for="News.NewsId" />
                                 <div class="row">
                                     <div class="col-md-12 grid-margin stretch-card">
                                         <div class="card">
@@ -138,7 +137,6 @@
                                     </div>
                                 </div>
                             </form>
-                        </c:forEach>
                     </div>
                     <footer class="footer">
                         <div class="d-sm-flex justify-content-center justify-content-sm-between">
