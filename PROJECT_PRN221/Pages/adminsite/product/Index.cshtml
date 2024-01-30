@@ -125,36 +125,44 @@
 
                                             </tbody>
                                         </table>
-@*                                        <div style="text-align: center">
-                                            <c:choose>
-                                                <c:when test="${currentPage > 1}">
-                                                    <a href="?page=${currentPage - 1}">Previous</a>
-                                                </c:when>
-                                                <c:otherwise>
-                                                    <span>Previous</span>
-                                                </c:otherwise>
-                                            </c:choose>
-                                            <c:forEach begin="1" end="${totalPages}" varStatus="loop">
-                                                <c:choose>
-                                                    <c:when test="${loop.index == currentPage}">
-                                                        <span>${loop.index}</span>
-                                                    </c:when>
-                                                    <c:otherwise>
-                                                        <c:if test="${id == null}">
-                                                            <a href="?page=${loop.index}">${loop.index}</a>
-                                                        </c:if>  
-                                                    </c:otherwise>
-                                                </c:choose>
-                                            </c:forEach>
-                                            <c:choose>
-                                                <c:when test="${currentPage < totalPages}">
-                                                    <a href="?page=${currentPage + 1}">Next</a>
-                                                </c:when>
-                                                <c:otherwise>
-                                                    <span>Next</span>
-                                                </c:otherwise>
-                                            </c:choose>
-                                        </div>*@
+
+                                        @*PAGING*@
+                                        <div style="text-align: center">
+                                            @if (Model.Product.PageIndex > 1)
+                                            {
+                                                <a href="?pageIndex=@(Model.Product.PageIndex - 1)">Previous</a>
+                                            }
+                                            else
+                                            {
+                                                <span>Previous</span>
+                                            }
+
+                                            @for (int i = 1; i <= Model.Product.TotalPages; i++)
+                                            {
+                                                @if (i == Model.Product.PageIndex)
+                                                {
+                                                    <span>@i</span>
+                                                }
+                                                else
+                                                {   
+                                                    <a href="?pageIndex=@i">@i</a>
+                                                    @*@if (Model.Admin. == null)
+                                                    {
+                                                        <a href="?page=@i">@i</a>
+                                                    }*@
+                                                }
+                                            }
+
+                                            @if (Model.Product.PageIndex < Model.Product.TotalPages)
+                                            {
+                                                <a href="?pageIndex=@(Model.Product.PageIndex + 1)">Next</a>
+                                            }
+                                            else
+                                            {
+                                                <span>Next</span>
+                                            }
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using PROJECT_PRN221.Models;
+using PROJECT_PRN221.Utils;
 
 namespace PROJECT_PRN221.Pages.adminsite.product
 {
@@ -37,10 +38,31 @@ namespace PROJECT_PRN221.Pages.adminsite.product
                 return Page();
             }
 
-            _context.Products.Add(Product);
-            await _context.SaveChangesAsync();
+            bool checkInput = true;
 
-            return RedirectToPage("./Index");
+            if (!Validation.IsPrice(Product.ListPrice))
+            {
+                ModelState.AddModelError("Product.ListPrice", "Price must is number and bigger than 0");
+                checkInput = false;
+            }
+
+            if (!Validation.IsDiscount(Product.Discount))
+            {
+                ModelState.AddModelError("Product.Discount", "Discount range 0 - 1.");
+                checkInput = false;
+            }
+
+            if (checkInput == true)
+            {
+                _context.Products.Add(Product);
+                await _context.SaveChangesAsync();
+                return RedirectToPage("./Index");
+            }
+            else
+            {
+                return Page();
+            }
+
         }
     }
 }

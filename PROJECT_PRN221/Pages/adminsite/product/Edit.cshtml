@@ -53,12 +53,14 @@
                                                     <div class="form-group">
                                                         <label asp-for="Product.ListPrice" >List Price | VNĐ</label>
                                                         <input type="text" class="form-control number" asp-for="Product.ListPrice" required>
+                                                        <span asp-validation-for="Product.ListPrice" class="badge badge-danger"></span>
                                                     </div>
 
                                                     <div class="form-group">
                                                         <label for="discount">Discount</label>
                                                         <input type="text" class="form-control" asp-for="Product.Discount"
                                                         placeholder="Discount" required>
+                                                        <span asp-validation-for="Product.Discount" class="badge badge-danger"></span>
                                                     </div>
 
                                                 </div> 

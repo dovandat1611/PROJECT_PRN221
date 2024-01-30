@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="BCrypt.Net-Core" Version="1.6.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -21,6 +22,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Images\avatar\" />
+    <Folder Include="Images\about\" />
+    <Folder Include="Images\logo\" />
+    <Folder Include="Images\banner\" />
+    <Folder Include="Images\products\" />
+    <Folder Include="Images\news\" />
     <Folder Include="wwwroot\Images\avatar\" />
     <Folder Include="wwwroot\Images\brands\" />
     <Folder Include="wwwroot\Images\about\" />

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using PROJECT_PRN221.Models;
+using PROJECT_PRN221.Utils;
 
 namespace PROJECT_PRN221.Pages.adminsite.product
 {
@@ -49,25 +50,49 @@ namespace PROJECT_PRN221.Pages.adminsite.product
                 return Page();
             }
 
-            _context.Attach(Product).State = EntityState.Modified;
 
-            try
+            bool checkInput = true;
+
+            if (!Validation.IsPrice(Product.ListPrice))
             {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ProductExists(Product.ProductId))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                ModelState.AddModelError("Product.ListPrice", "Price must is number and bigger than 0");
+                checkInput = false;
             }
 
-            return RedirectToPage("./Index");
+            if (!Validation.IsDiscount(Product.Discount))
+            {
+                ModelState.AddModelError("Product.Discount", "Discount range 0 - 1.");
+                checkInput = false;
+            }
+
+            if (checkInput == true)
+            {
+                _context.Attach(Product).State = EntityState.Modified;
+
+                try
+                {
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!ProductExists(Product.ProductId))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+
+                return RedirectToPage("./Index");
+            }
+            else
+            {
+                ViewData["BrandId"] = new SelectList(_context.Brands, "BrandId", "BrandName");
+                ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "CategoryName");
+                return Page();
+            }
         }
 
         private bool ProductExists(int id)

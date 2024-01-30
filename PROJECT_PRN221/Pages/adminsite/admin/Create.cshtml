@@ -2,71 +2,8 @@
 @model PROJECT_PRN221.Pages.adminsite.admin.CreateModel
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Create Admin";
 }
-
-@*<h1>Create</h1>
-
-<h4>Admin</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Admin.Name" class="control-label"></label>
-                <input asp-for="Admin.Name" class="form-control" />
-                <span asp-validation-for="Admin.Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Admin.Phone" class="control-label"></label>
-                <input asp-for="Admin.Phone" class="form-control" />
-                <span asp-validation-for="Admin.Phone" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Admin.Gmail" class="control-label"></label>
-                <input asp-for="Admin.Gmail" class="form-control" />
-                <span asp-validation-for="Admin.Gmail" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Admin.Dob" class="control-label"></label>
-                <input asp-for="Admin.Dob" class="form-control" />
-                <span asp-validation-for="Admin.Dob" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Admin.Image" class="control-label"></label>
-                <input asp-for="Admin.Image" class="form-control" />
-                <span asp-validation-for="Admin.Image" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Admin.Username" class="control-label"></label>
-                <input asp-for="Admin.Username" class="form-control" />
-                <span asp-validation-for="Admin.Username" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Admin.Password" class="control-label"></label>
-                <input asp-for="Admin.Password" class="form-control" />
-                <span asp-validation-for="Admin.Password" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Admin.Status" class="control-label"></label>
-                <input asp-for="Admin.Status" class="form-control" />
-                <span asp-validation-for="Admin.Status" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
-
-<div>
-    <a asp-page="Index">Back to List</a>
-</div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}*@
 
 <!DOCTYPE html>
 <html lang="en">
@@ -93,8 +30,8 @@
                 <!-- partial -->
                 <div class="main-panel">        
                     <div class="content-wrapper">
-                        <form class="forms-sample" method="post" action="AdminController">
-                            <input type="hidden" name="service" value="insertAdmin">
+                        <form class="forms-sample" method="post">
+                            <input type="hidden" asp-for="Admin.Status" value="Active">
                             <div class="row">
                                 <div class="col-md-12 grid-margin card">
                                     <div class="card-body">
@@ -107,32 +44,41 @@
                                         <div class="col-md-6">
                                             <div class="card-body">
                                                 <div class="form-group">
-                                                    <label for="role">Role</label>
-                                                    <input type="text" class="form-control" name="role" id="role" placeholder="Role">
+                                                    <label asp-for="Admin.Name">Name</label>
+                                                    <input type="text" class="form-control" asp-for="Admin.Name" placeholder="Name">
+                                                     <span asp-validation-for="Admin.Name" class="badge badge-danger"></span>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="username">Username</label>
-                                                    <input type="text" class="form-control" name="username" id="username" placeholder="Username">
+                                                    <label asp-for="Admin.Username">Username</label>
+                                                    <input type="text" class="form-control" asp-for="Admin.Username" placeholder="Username">
+                                                    <span asp-validation-for="Admin.Username" class="badge badge-danger"></span>
+                                                    <span asp-validation-for="Admin.Username" class="badge badge-danger"></span>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="password">Password</label>
-                                                    <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+                                                    <label asp-for="Admin.Password">Password</label>
+                                                    <input type="password" class="form-control" asp-for="Admin.Password" placeholder="Password">
+                                                    <span asp-validation-for="Admin.Password" class="badge badge-danger"></span>
                                                 </div>
                                             </div> 
                                         </div>
                                         <div class="col-md-6">
                                             <div class="card-body">
                                                 <div class="form-group">
-                                                    <label for="name">Name</label>
-                                                    <input type="text" class="form-control" name="name" id="name" placeholder="Name">
+                                                    <label asp-for="Admin.Image">Image</label>
+                                                    <img id="preview-img" src="" alt="" style="width: 30%">
+                                                    <input type="file" asp-for="Admin.Image"  
+                                                    class="form-control" onchange="previewImage()" accept="image/*"  placeholder="Image">
+                                                    <span asp-validation-for="Admin.Image" class="badge badge-danger"></span>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="phone">Phone</label>
-                                                    <input type="text" class="form-control" name="phone" id="phone" placeholder="Phone">
+                                                    <label asp-for="Admin.Phone">Phone</label>
+                                                    <input type="text" class="form-control" asp-for="Admin.Phone" placeholder="Phone">
+                                                    <span asp-validation-for="Admin.Phone" class="badge badge-danger"></span>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="gmail">Email</label>
-                                                    <input type="email" class="form-control" name="gmail" id="gmail" placeholder="Email">
+                                                    <label asp-for="Admin.Gmail">Email</label>
+                                                    <input type="email" class="form-control" asp-for="Admin.Gmail" placeholder="Email">
+                                                    <span asp-validation-for="Admin.Gmail" class="badge badge-danger"></span>
                                                 </div>
                                             </div>
                                         </div>
@@ -164,5 +110,22 @@
         <script src="~/admin/js/template.js"></script>
         <script src="~/admin/js/settings.js"></script>
         <script src="~/admin/js/todolist.js"></script>
+        <script>
+            function previewImage() {
+                var preview = document.querySelector('#preview-img');
+                var file = document.querySelector('input[type=file]').files[0];
+                var reader = new FileReader();
+
+                reader.onloadend = function () {
+                    preview.src = reader.result;
+                };
+
+                if (file) {
+                    reader.readAsDataURL(file);
+                } else {
+                    preview.src = "";
+                }
+            }
+        </script>
     </body>
 </html>
