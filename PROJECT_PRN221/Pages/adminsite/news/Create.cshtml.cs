@@ -12,29 +12,56 @@ namespace PROJECT_PRN221.Pages.adminsite.news
     public class CreateModel : PageModel
     {
         private readonly PROJECT_PRN221.Models.ProjectPrn221Context _context;
+        private Microsoft.AspNetCore.Hosting.IHostingEnvironment _environment;
 
-        public CreateModel(PROJECT_PRN221.Models.ProjectPrn221Context context)
+        public CreateModel(PROJECT_PRN221.Models.ProjectPrn221Context context, Microsoft.AspNetCore.Hosting.IHostingEnvironment environment)
         {
             _context = context;
+            _environment = environment;
         }
 
-        public IActionResult OnGet()
-        {
-        ViewData["Createdby"] = new SelectList(_context.Admins, "AdminId", "AdminId");
-        ViewData["NewsgroupId"] = new SelectList(_context.NewsGroups, "NewsgroupId", "NewsgroupId");
-            return Page();
-        }
+
+        [BindProperty]
+        public IFormFile[] FileUploads { get; set; }
+
 
         [BindProperty]
         public News News { get; set; } = default!;
-        
 
-        // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
+        public IActionResult OnGet()
+        {
+            ViewData["NewsgroupId"] = new SelectList(_context.NewsGroups, "NewsgroupId", "NewsgroupName");
+            return Page();
+        }
+
         public async Task<IActionResult> OnPostAsync()
         {
           if (!ModelState.IsValid || _context.News == null || News == null)
             {
+                ViewData["NewsgroupId"] = new SelectList(_context.NewsGroups, "NewsgroupId", "NewsgroupName");
                 return Page();
+            }
+
+            // Upload file 
+            string fileURL = string.Empty;
+            if (FileUploads != null)
+            {
+                foreach (var FileUpload in FileUploads)
+                {
+                    var file = Path.Combine(_environment.ContentRootPath, "Images/news",
+                    FileUpload.FileName);
+                    using (var fileStream = new FileStream(file, FileMode.Create))
+                    {
+                        await FileUpload.CopyToAsync(fileStream);
+                        fileURL = "/Images/news/" + FileUpload.FileName;
+                    }
+                }
+            }
+
+            // Add and save changes
+            if (fileURL != string.Empty)
+            {
+                News.Image = fileURL;
             }
 
             _context.News.Add(News);

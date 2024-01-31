@@ -16,7 +16,6 @@
         <link rel="stylesheet" href="~/admin/vendors/simple-line-icons/css/simple-line-icons.css">
         <link rel="stylesheet" href="~/admin/vendors/css/vendor.bundle.base.css">
         <link rel="stylesheet" href="~/admin/css/vertical-layout-light/style.css">
-        <link rel="shortcut icon" href="~/admin/images/favicon.png" />
     </head>
     <body>
 
@@ -29,7 +28,9 @@
                 <!-- partial -->
                 <div class="main-panel">
                     <div class="content-wrapper">
-                           <form method="post">
+                        @*LƯU Ý*@
+                           <form method="post" enctype="multipart/form-data"> 
+
                                 <div class="row">
                                     <div class="col-md-12 grid-margin card">
                                         <div class="card-body">
@@ -43,6 +44,7 @@
                                                 <div class="card-body">
 
                                                     <input type="hidden" asp-for="Product.ProductId">
+                                                    <input type="hidden" asp-for="Product.Image">
 
                                                     <div class="form-group">
                                                         <label asp-for="Product.ProductName" >Product Name</label>
@@ -106,11 +108,12 @@
                                                 <div class="card-body">
 
                                                     <div class="form-group">
-                                                        <label asp-for="Product.Image" class="control-label">Image</label>
-                                                        <img id="preview-img" src="@Model.Product.Image"  style="width: 30%">
-                                                        <input type="file"  asp-for="Product.Image" class="form-control" 
-                                                         onchange="previewImage()" accept="image/*" >
-                                                        @*<span asp-validation-for="Product.Image" class="text-danger"></span>*@
+
+                                                        <label asp-for="@Model.FileUploads">Image</label>
+                                                        <img id="preview-img" src="@Model.Product.Image" alt="@Model.Product.Image" style="width: 30%">
+                                                        <input type="file"  asp-for="@Model.FileUploads" 
+                                                         class="form-control" onchange="previewImage()" accept="image/*" >
+
                                                     </div>
 
                                                     <div class="form-group">
@@ -157,9 +160,6 @@
         <script src="~/admin/js/settings.js"></script>
         <script src="~/admin/js/todolist.js"></script>
 
-        <script src="~/admin/js/file-upload.js"></script>
-        <script src="~/admin/js/typeahead.js"></script>
-        <script src="~/admin/js/select2.js"></script>
         <!-- End custom js for this page-->
         <script src="~/admin/vendors/tinymce/tinymce.min.js"></script>
         <script src="~/admin/vendors/tinymce/tinymce.js"></script>

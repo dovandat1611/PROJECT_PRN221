@@ -51,6 +51,7 @@
                                                     <select class="form-control" asp-for="News.NewsgroupId" asp-items="ViewBag.NewsgroupId">
                                                     </select>
                                                 </div>
+
                                                 <div class="form-group">
                                                     <label asp-for="@Model.FileUploads">Image</label>
                                                     <img id="preview-img" src="@Model.News.Image" alt="@Model.News.Image" style="width: 30%">
@@ -59,13 +60,17 @@
                                                 </div>
 
                                                 <div class="form-group">
+
                                                     <label  asp-for="News.Title">Tile</label>
                                                     <input type="text" class="form-control" asp-for="News.Title" placeholder="Title" required>
+
                                                 </div>
 
                                                 <div class="form-group">
+
                                                     <label asp-for="News.Content">Content</label> <br>
                                                     <textarea  asp-for="News.Content" ></textarea>
+
                                                 </div>
                                                 <div style="text-align: center">
                                                     <button type="submit"  name="submit" class="btn btn-primary me-2">Submit</button>

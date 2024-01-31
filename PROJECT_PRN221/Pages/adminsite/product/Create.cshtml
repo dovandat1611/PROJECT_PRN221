@@ -30,8 +30,8 @@
                 <div class="main-panel"> 
                     <div class="content-wrapper">
 
-                        <form method="post">
-
+                        <form method="post" enctype="multipart/form-data">
+                            <input type="hidden" asp-for="Product.Image" />
                             <div class="row">
                                 <div class="col-md-12 grid-margin card">
                                     <div class="card-body">
@@ -101,11 +101,10 @@
                                             <div class="card-body">
 
                                                     <div class="form-group">
-                                                        <label asp-for="Product.Image" class="control-label">Image</label>
+                                                        <label asp-for="@Model.FileUploads" >Image</label>
                                                         <img id="preview-img" src=""  style="width: 30%">
-                                                        <input type="file"  asp-for="Product.Image" class="form-control" 
+                                                        <input type="file"  asp-for="@Model.FileUploads" class="form-control" 
                                                          onchange="previewImage()" accept="image/*" >
-                                                        @*<span asp-validation-for="Product.Image" class="text-danger"></span>*@
                                                     </div>
 
                                                     <div class="form-group">

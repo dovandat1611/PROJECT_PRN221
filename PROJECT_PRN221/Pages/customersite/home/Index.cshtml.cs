@@ -19,9 +19,9 @@ namespace PROJECT_PRN221.Pages.customersite.home
         {
             if (_context.Products != null)
             {
-                Product =  _context.Products
+                Product = await _context.Products
                 .Include(p => p.Brand)
-                .Include(p => p.Category).ToList();
+                .Include(p => p.Category).ToListAsync();
             }
         }
 

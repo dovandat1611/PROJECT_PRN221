@@ -13,11 +13,19 @@ namespace PROJECT_PRN221.Pages.adminsite.product
     public class CreateModel : PageModel
     {
         private readonly PROJECT_PRN221.Models.ProjectPrn221Context _context;
+        private Microsoft.AspNetCore.Hosting.IHostingEnvironment _environment;
 
-        public CreateModel(PROJECT_PRN221.Models.ProjectPrn221Context context)
+        public CreateModel(PROJECT_PRN221.Models.ProjectPrn221Context context, Microsoft.AspNetCore.Hosting.IHostingEnvironment environment)
         {
             _context = context;
+            _environment = environment;
         }
+
+        [BindProperty]
+        public IFormFile[] FileUploads { get; set; }
+
+        [BindProperty]
+        public Product Product { get; set; } = default!;
 
         public IActionResult OnGet()
         {
@@ -26,15 +34,13 @@ namespace PROJECT_PRN221.Pages.adminsite.product
             return Page();
         }
 
-        [BindProperty]
-        public Product Product { get; set; } = default!;
-        
 
-        // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
           if (!ModelState.IsValid || _context.Products == null || Product == null)
             {
+                ViewData["BrandId"] = new SelectList(_context.Brands, "BrandId", "BrandName");
+                ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "CategoryName");
                 return Page();
             }
 
@@ -54,12 +60,37 @@ namespace PROJECT_PRN221.Pages.adminsite.product
 
             if (checkInput == true)
             {
+
+                // Upload file 
+                string fileURL = string.Empty;
+                if (FileUploads != null)
+                {
+                    foreach (var FileUpload in FileUploads)
+                    {
+                        var file = Path.Combine(_environment.ContentRootPath, "Images/products", FileUpload.FileName);
+                        using (var fileStream = new FileStream(file, FileMode.Create))
+                        {
+                            await FileUpload.CopyToAsync(fileStream);
+                            fileURL = "/Images/products/" + FileUpload.FileName;
+                        }
+                    }
+                }
+
+                // Add and save changes
+                if (fileURL != string.Empty)
+                {
+                    Product.Image = fileURL;
+                }
+
+
                 _context.Products.Add(Product);
                 await _context.SaveChangesAsync();
                 return RedirectToPage("./Index");
             }
             else
             {
+                ViewData["BrandId"] = new SelectList(_context.Brands, "BrandId", "BrandName");
+                ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "CategoryName");
                 return Page();
             }
 
