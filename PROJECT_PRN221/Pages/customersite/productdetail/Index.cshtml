@@ -1,11 +1,11 @@
 ﻿@page 
 @model PROJECT_PRN221.Pages.customersite.productdetail.IndexModel
 @{
+    ViewData["Title"] = "Product Detail";
 }
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Ultras - Clothing Store eCommerce Store HTML Website Template</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -68,9 +68,10 @@
         </section>
 
         @*PRODUCT*@
-           <form action="/customersite/cart" method="post">
+        <form method="post">
         
         <input type="hidden" name="id" value="@Model.Product.ProductId">
+        <input type="hidden" name="service" value="Create">
 
                 <section class="single-product padding-large">
                     <div class="container">
@@ -84,14 +85,15 @@
                                                 <img src="#" alt="">
                                             </div>                                         
                                         </div>
+
                                         <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
-                                    <div class="swiper large-swiper overflow-hidden col-md-9 col-xs-9 swiper-fade swiper-initialized swiper-horizontal swiper-watch-progress swiper-backface-hidden">
-                                        <div class="swiper-wrapper" id="swiper-wrapper-33c3ebe2556c5912" aria-live="polite" style="transition-duration: 0ms;">
-                                           
+
+                                         <div class="swiper large-swiper overflow-hidden col-md-9 col-xs-9 swiper-fade swiper-initialized swiper-horizontal swiper-watch-progress swiper-backface-hidden">
+                                            <div class="swiper-wrapper" id="swiper-wrapper-33c3ebe2556c5912" aria-live="polite" style="transition-duration: 0ms;">
                                             @*IMAGE PRODUCT*@
-                                    <div class="swiper-slide" role="group" aria-label="1 / 3" style="width: 632px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;">
-                                        <img src="@Model.Product.Image" alt="single-product" style="height: 500px;">
-                                    </div>
+                                            <div class="swiper-slide" role="group" aria-label="1 / 3" style="width: 632px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;">
+                                                <img src="@Model.Product.Image" alt="single-product" style="height: 500px;">
+                                            </div>
                                             <div class="swiper-slide swiper-slide-visible swiper-slide-active" role="group" aria-label="3 / 3" style="width: 632px; opacity: 1; transform: translate3d(-1264px, 0px, 0px); transition-duration: 0ms;">
                                                 <img src="/images/producs/1/1-add-2-large.jpg" alt="single-product" style="height: 500px;">
                                             </div>
@@ -109,22 +111,22 @@
 
                                 <div class="product-price">
                                 @if (Model.Product.Discount.HasValue && Model.Product.Discount > 0)
-                {
+                                    {
                                     double discountRate = Model.Product.Discount.Value / 100.0;
                                     double listPrice = Model.Product.ListPrice ?? 0;
-                                        double discountedPrice = (1 - discountRate) * listPrice;
+                                    double discountedPrice = (1 - discountRate) * listPrice;
                     
-                    <strong class="number">@discountedPrice</strong>
-                    <del class="number">@listPrice</del>
-                }
-                else
-                {
+                                    <strong class="number">@discountedPrice</strong>
+                                    <del class="number">@listPrice</del>
+                                    }
+                                    else
+                                    {
                                     <strong class="number">@Model.Product.ListPrice</strong>
-                }
-            </div>
+                                    }
+                                </div>
 
                                 @*SUB DISCRIPTION*@
-                            <p>@Model.Product.Description</p>
+                                <p>@Model.Product.Description</p>
                                 <div class="cart-wrap margin-small">
 
                                     <div class="product-quantity">
@@ -176,7 +178,7 @@
                         </nav>
                         <div class="tab-content" id="nav-tabContent">
                                 <div class="tab-pane fade" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                                    <p>Product Description</p>
+                                <p>Product Description</p>
                                <p>@Model.Product.Description</p>
                                 </div>
                             <div class="tab-pane fade" id="nav-information" role="tabpanel" aria-labelledby="nav-information-tab">

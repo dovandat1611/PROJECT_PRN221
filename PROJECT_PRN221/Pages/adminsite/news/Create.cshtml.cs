@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Newtonsoft.Json;
 using PROJECT_PRN221.Models;
 
 namespace PROJECT_PRN221.Pages.adminsite.news
@@ -63,6 +64,17 @@ namespace PROJECT_PRN221.Pages.adminsite.news
             {
                 News.Image = fileURL;
             }
+
+            Admin admin = null;
+            string adminJson = HttpContext.Session.GetString("admin");
+            if (!string.IsNullOrEmpty(adminJson))
+            {
+                admin = JsonConvert.DeserializeObject<Admin>(adminJson);
+            }
+
+            News.Createdby = admin.AdminId;
+            News.CreatedDate = DateTime.Now;
+            News.Status = "Active";
 
             _context.News.Add(News);
             await _context.SaveChangesAsync();

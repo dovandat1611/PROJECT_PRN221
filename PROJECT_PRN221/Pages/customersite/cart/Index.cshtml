@@ -60,11 +60,11 @@
 
     @*CART*@
        <section class="shopify-cart padding-large">
-            <div>
+@*            <div>
                 <h4 style="text-align: center">${ms}</h4>
-            </div>
+            </div>*@
 
-            <form action="CartController" method="post">  
+            <form  method="post">  
 
             <div class="container">
 
@@ -79,26 +79,26 @@
                     </div>
                         
                         <div class="cart-item border-bottom padding-small">
-                            <input type="hidden" name="service" value="updateCart">
-                            @*<c:forEach var="c" items="${listCart}" varStatus="status">*@
-                                <div>
-                                    <input type="hidden" name="id${status.index}" value="${c.id}">
-                                </div>
+                        <input type="hidden" name="service" value="Update">
+                        @for (int i = 0; i < Model.Carts.Count; i++)
+                        {   
+                               var item = Model.Carts[i];
+                               <input type="hidden" name="id[@i]" value="@item.id">
                                 <div class="row"> 
                                     <div class="col-lg-4 col-md-3">
                                         <div class="row cart-info d-flex flex-wrap">
                                             <div class="col-lg-5">
                                                 <div class="card-image">
-                                                    <img src="${c.image}" alt="cloth" class="img-fluid">
+                                                    <img src="@item.image" alt="cloth" class="img-fluid">
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="card-detail">
                                                     <h3 class="card-title">
-                                                        <a href="#">${c.name}</a>
+                                                        <a href="/customersite/productdetail/Index?id=@item.id">@item.name</a>
                                                     </h3>
                                                     <div class="card-price">
-                                                        <span class="money text-primary number">${c.price}</span>
+                                                        <span class="money text-primary number">@item.price</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -109,25 +109,25 @@
                                         <div class="row d-flex">
                                             <div class="col-lg-6">
                                                 <div class="qty-number d-flex align-items-center justify-content-start">
-                                                    <button class="decrement-button" data-index="${status.index}">-</button>
-                                                    <input type="text" name="quantity${status.index}" class="spin-number-output" value="${c.quantity}" min="1" max="100">
-                                                    <button class="increment-button" data-index="${status.index}">+</button>
+                                                    <button class="decrement-button" data-index="@i">-</button>
+                                                    <input type="text" name="quantity[@i]"class="spin-number-output" value="@item.quantity" min="1" max="100">
+                                                    <button class="increment-button" data-index="@i">+</button>
                                                 </div>
                                             </div>
                                             <div class="col-lg-4">
                                                 <div class="total-price" style="margin-top: 25px">
-                                                    <span class="money text-primary number">${c.subtotal}</span>
+                                                    <span class="money text-primary number">@item.subtotal</span>
                                                 </div>
                                             </div>   
                                         </div>             
                                     </div>
                                     <div class="col-lg-1 col-md-2">
                                         <div class="cart-remove" style="margin-top: 30px">
-                                            <a href="CartController?service=deleteCart&id=${c.id}"><i class="icon icon-close"></i></a>
+                                            <a href="/customersite/cart/Index?service=Delete&proid=@item.id"><i class="icon icon-close"></i></a>
                                         </div>
                                     </div>
                                 </div>
-                            @*</c:forEach>*@
+                        }
                         </div>
                 </div>
 
@@ -141,7 +141,7 @@
                                     <td data-title="Subtotal">
                                         <span class="price-amount amount text-primary">
                                             <bdi>
-                                                <span class="price-currency-symbol number">${totalprice}</span>
+                                                <span class="price-currency-symbol number">@Model.totalprice</span>
                                             </bdi>
                                         </span>
                                     </td>
@@ -151,7 +151,7 @@
                                     <td data-title="Total">
                                         <span class="price-amount amount text-primary">
                                             <bdi>
-                                                <span class="price-currency-symbol number">${totalprice}</span></bdi>
+                                                <span class="price-currency-symbol number">@Model.totalprice</span></bdi>
                                         </span>
                                     </td>
                                 </tr>
@@ -159,10 +159,9 @@
                         </table>
                     </div>
                     <div class="button-wrap">
-
                         <button type="submit" name="submit" class="btn btn-dark btn-medium">Update Cart</button>
-                        <a href="" class="btn btn-dark btn-medium">Continue Shopping</a>
-                        <a href="" class="btn btn-dark btn-medium">Proceed to checkout</a>
+                        <a href="/customersite/shop" class="btn btn-dark btn-medium">Continue Shopping</a>
+                        <a href="/customersite/checkout" class="btn btn-dark btn-medium">Proceed to checkout</a>
                     </div>
                 </div>
             </div>

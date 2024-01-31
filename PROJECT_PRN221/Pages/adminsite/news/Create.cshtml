@@ -88,7 +88,10 @@
                 <div class="main-panel">        
                     <div class="content-wrapper">
                         <form class="forms-sample" method="post" enctype="multipart/form-data">
-                            <input type="hidden" name="service" value="insertNews">
+                                <input type="hidden" asp-for="News.Createdby"/>
+                                <input type="hidden" asp-for="News.Status"/>
+                                <input type="hidden" asp-for="News.CreatedDate"/>
+                                <input type="hidden" asp-for="News.Image"/>
                             <div class="row">
                                 <div class="col-md-12 grid-margin stretch-card">
                                     <div class="card">
@@ -97,30 +100,33 @@
                                             <p class="card-description">
                                                 Fill all the bank
                                             </p>
-                                            <div class="form-group">
-                                                <label for="newsgroup_id">News Group</label>
-                                                <select class="form-control" name="newsgroup_id" id="newsgroup_id">
-                                                    <c:forEach items="${listG}" var="g">
-                                                        <option value="${g.newsgroup_id}">${g.newsgroup_name}</option>
-                                                    </c:forEach>
-                                                </select>
-                                            </div>
+                                                <div class="form-group">
+                                                    <label asp-for="News.NewsgroupId">News Group</label>
+                                                    <select class="form-control" asp-for="News.NewsgroupId" asp-items="ViewBag.NewsgroupId">
+                                                    </select>
+                                                </div>
 
-                                            <div class="form-group">
-                                                <label for="image">Image</label>
-                                                <img id="preview-img" src="" alt="" style="width: 30%">
-                                                <input type="file" class="form-control" onchange="previewImage()" accept="image/*" name="image" id="image" required>
-                                            </div>
+                                                <div class="form-group">
+                                                    <label asp-for="@Model.FileUploads">Image</label>
+                                                    <img id="preview-img" src="@Model.News.Image" alt="@Model.News.Image" style="width: 30%">
+                                                    <input type="file" asp-for="@Model.FileUploads"  
+                                                     class="form-control" onchange="previewImage()" accept="image/*" >
+                                                </div>
 
-                                            <div class="form-group">
-                                                <label for="title">Title</label>
-                                                <input type="text" class="form-control" name="title" id="title" placeholder="Title" required>
-                                            </div>
+                                                <div class="form-group">
 
-                                            <div class="form-group">
-                                                <label for="content">Content</label> <br>
-                                                <textarea id="inputText" name="content"></textarea>
-                                            </div>
+                                                    <label  asp-for="News.Title">Tile</label>
+                                                    <input type="text" class="form-control" asp-for="News.Title" placeholder="Title" required>
+
+                                                </div>
+
+                                                <div class="form-group">
+
+                                                    <label asp-for="News.Content">Content</label> <br>
+                                                    <textarea  asp-for="News.Content" ></textarea>
+
+                                                </div>
+
                                             <div style="text-align: center">
                                                 <button type="submit" name="submit" class="btn btn-primary me-2">Submit</button>
                                                 <button class="btn btn-light">Cancel</button>
