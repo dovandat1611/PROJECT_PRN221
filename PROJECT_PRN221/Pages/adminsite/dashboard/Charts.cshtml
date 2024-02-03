@@ -1,6 +1,7 @@
 ﻿@page
 @model PROJECT_PRN221.Pages.adminsite.dashboard.ChartsModel
 @{
+    ViewData["Title"] = "Charts";
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -8,7 +9,6 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Star Admin2 </title>
         <link rel="stylesheet" href="~/admin/vendors/feather/feather.css">
         <link rel="stylesheet" href="~/admin/vendors/mdi/css/materialdesignicons.min.css">
         <link rel="stylesheet" href="~/admin/vendors/ti-icons/css/themify-icons.css">
@@ -16,7 +16,6 @@
         <link rel="stylesheet" href="~/admin/vendors/simple-line-icons/css/simple-line-icons.css">
         <link rel="stylesheet" href="~/admin/vendors/css/vendor.bundle.base.css">
         <link rel="stylesheet" href="~/admin/css/vertical-layout-light/style.css">
-        <link rel="shortcut icon" href="~/admin/images/favicon.png" />
     </head>
     <body>
 
@@ -26,7 +25,6 @@
 
                 <partial name="/Pages/_LeftPageAdminSite.cshtml" model="new PROJECT_PRN221.Pages._LeftPageAdminSiteModel()"/>
 
-                <!-- partial -->
                 <div class="main-panel">
                     <div class="content-wrapper">
                         <div class="row">
@@ -66,18 +64,8 @@
                             </div>
                         </div>
                     </div>
-                    <!-- content-wrapper ends -->
-                    <!-- partial:../../partials/_footer.html -->
-                    <!-- partial -->
                 </div>
-                <!-- main-panel ends -->
             </div>
-            <!-- page-body-wrapper ends -->
-        </div>
-
-
-
-
 
 
         <script src="~/admin/vendors/js/vendor.bundle.base.js"></script>
@@ -87,7 +75,9 @@
         <script src="~/admin/js/template.js"></script>
         <script src="~/admin/js/settings.js"></script>
         <script src="~/admin/js/todolist.js"></script>
-                <script>
+        <script src="~/admin/vendors/chart.js/Chart.min.js"></script>
+
+        <script>
             $(function () {
                 /* ChartJS
                  * -------
@@ -95,18 +85,17 @@
                  */
                 'use strict';
                 var data = {
-                    labels: ["${day - 6}/${month}",
-                                    "${day - 5}/${month}",
-                                                    "${day - 4}/${month}",
-                                                                    "${day - 3}/${month}",
-                                                                                    "${day - 2}/${month}",
-                                                                                                    "${day - 1}/${month}",
-                                                                                                                    "${day}/${month}"],
+                    labels: ["@(Model.currentDay-6)/@(Model.currentMonth)", 
+                             "@(Model.currentDay-5)/@(Model.currentMonth)", 
+                             "@(Model.currentDay-4)/@(Model.currentMonth)", 
+                             "@(Model.currentDay-3)/@(Model.currentMonth)", 
+                             "@(Model.currentDay-2)/@(Model.currentMonth)", 
+                             "@(Model.currentDay-1)/@(Model.currentMonth)", 
+                             "@(Model.currentDay)/@(Model.currentMonth)"],
+
                                                                                                                                 datasets: [{
                                                                                                                                         label: '# of Votes',
-                                                                                                                                        data: [${o1==null?0:o1}, ${o2==null?0:o2},
-            ${o3==null?0:o3}, ${o4==null?0:o4}, ${o5==null?0:o5}, ${o6==null?0:o6},
-            ${o7==null?0:o7}],
+                    data: [@Model.o7,@Model.o6,@Model.o5,@Model.o4,@Model.o3,@Model.o2,@Model.o1],
                                                                                                                                         backgroundColor: [
                                                                                                                                             'rgba(255, 99, 132, 0.2)',
                                                                                                                                             'rgba(54, 162, 235, 0.2)',
@@ -148,12 +137,9 @@
 
                                                                                                                             };
 
-                                                                                                                            var OrderData = {
+                var OrderData = {
                                                                                                                                 datasets: [{
-                                                                                                                                        data: [${orderWait==null?0:orderWait},
-            ${orderProcess==null?0:orderProcess},
-            ${orderDone==null?0:orderDone},
-            ${orderCancel==null?0:orderCancel}],
+                data: [@Model.orderWait,@Model.orderProcess, @Model.orderDone, @Model.orderCancel],
                                                                                                                                         backgroundColor: [
                                                                                                                                             'rgba(255, 99, 132, 0.5)',
                                                                                                                                             'rgba(54, 162, 235, 0.5)',
@@ -181,11 +167,9 @@
                                                                                                                                 ]
                                                                                                                             };
 
-                                                                                                                            var WarrantyData = {
+                var WarrantyData = {
                                                                                                                                 datasets: [{
-                                                                                                                                        data: [${warrantyWait == null ? 0 : warrantyWait},
-            ${warrantyProcess == null ? 0 : warrantyProcess},
-            ${warrantyDone == null ? 0 : warrantyDone}],
+                data: [@Model.warrantyWait,@Model.warrantyProcess, @Model.warrantyDone],
                                                                                                                                         backgroundColor: [
                                                                                                                                             'rgba(255, 99, 132, 0.5)',
                                                                                                                                             'rgba(54, 162, 235, 0.5)',
@@ -219,18 +203,17 @@
                                                                                                                                     animateRotate: true
                                                                                                                                 }
                                                                                                                             };
-                                                                                                                            var areaData = {
-                                                                                                                                labels: ["${day - 6}/${month}",
-                                                                                                                                                "${day - 5}/${month}",
-                                                                                                                                                                "${day - 4}/${month}",
-                                                                                                                                                                                "${day - 3}/${month}",
-                                                                                                                                                                                                "${day - 2}/${month}",
-                                                                                                                                                                                                        "${day - 1}/${month}",
-                                                                                                                                                                                                        "${day}/${month}"],
+                 var areaData = {
+                    labels: ["@(Model.currentDay-6)/@(Model.currentMonth)", 
+                             "@(Model.currentDay-5)/@(Model.currentMonth)", 
+                             "@(Model.currentDay-4)/@(Model.currentMonth)", 
+                             "@(Model.currentDay-3)/@(Model.currentMonth)", 
+                             "@(Model.currentDay-2)/@(Model.currentMonth)", 
+                             "@(Model.currentDay-1)/@(Model.currentMonth)", 
+                             "@(Model.currentDay)/@(Model.currentMonth)"],
                                                                                                                                                                                                                                             datasets: [{
                                                                                                                                                                                                                                                     label: 'Total',
-                                                                                                                                                                                                        data: [${m1 == null ? 0 : m1}, ${m2 == null ? 0 : m2}, ${m3 == null ? 0 : m3},
-            ${m4 == null ? 0 : m4}, ${m5 == null ? 0 : m5}, ${m6 == null ? 0 : m6}, ${m7 == null ? 0 : m7}],
+                 data: [@Model.ti7,@Model.ti6,@Model.ti5,@Model.ti4,@Model.ti3,@Model.ti2,@Model.ti1],
                                                                                                                                                                                                                                                     backgroundColor: [
                                                                                                                                                                                                                                                         'rgba(255, 99, 132, 0.2)',
                                                                                                                                                                                                                                                         'rgba(54, 162, 235, 0.2)',

@@ -66,23 +66,18 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <c:forEach items="${data}" var="d">
+                        @foreach(var item in Model.OrderDetails){
                             <tr>
-                                <td style="width: 20%">${d.product_name}</td> 
-                                <td style="width: 30%"><img src="${d.image}" alt="alt" style="width: 40%"/></td>
-                                <td style="width: 20%" class="number">${d.list_price}</td> 
-                                <td style="width: 10%">${d.quantity_order}</td> 
+                                <td style="width: 20%">@item.Product.ProductName</td> 
+                                <td style="width: 30%"><img src="@item.Product.Image" alt="@item.Product.Image" style="width: 40%"/></td>
+                                <td style="width: 20%" class="number">@item.ListPrice</td> 
+                                <td style="width: 10%">@item.QuantityOrder</td> 
                             </tr>
-                        </c:forEach>
+                    }
                     </tbody>
                 </table>
             </div>
         </div>
-
-
-
-     @*FOOTER*@
-     <partial name="/Pages/_FooterCustomerSite.cshtml" model="new PROJECT_PRN221.Pages._FooterCustomerSiteModel()"/>
 
 
 

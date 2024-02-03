@@ -72,7 +72,7 @@
 
                         @*FORM*@
 
-                        <form action="LoginController" method="post">
+                        <form  method="post">
 
                             <div class="tab-content" id="nav-tabContent">
                                 <div class="tab-pane fade active show" id="nav-sign-in" role="tabpanel" aria-labelledby="nav-sign-in-tab">
@@ -83,7 +83,7 @@
                                     <div class="form-group">
                                         <label for="sign-in">Password *</label>
                                         <input type="password" minlength="2" name="password" placeholder="Your Password" class="u-full-width bg-light" required="">
-                                        <h5>${ms}</h5>
+                                        <h5>@Model.ErrorMess</h5>
                                     </div>                
                                     <label>
                                         <input type="checkbox">

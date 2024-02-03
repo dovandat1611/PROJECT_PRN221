@@ -69,24 +69,27 @@
                                                     <i class="icon icon-shopping-cart"></i>
                                                 </a>
                                             </li>
-                                                
-                                              @* check session*@
-@*                                                <li class="menu-item has-sub">
-                                                    <a href="" class="item-anchor d-flex align-item-center icon icon-user"></i></a>
-                                                </li>*@
 
-                                              @* check session*@
-                                                <li class="menu-item has-sub">
-                                                    <a href="" class="item-anchor d-flex align-item-center icon icon-user"><i class="icon icon-chevron-down"></i></a>
-                                                    <ul class="submenu">
-                                                        <li><a href="/customersite/profile" class="item-anchor">Profile</a></li>
-                                                        <li><a href="/customersite/authenticate/changespassword" class="item-anchor">Password<span class="text-primary"></span></a></li>
-                                                        <li><a href="/customersite/historyorder" class="item-anchor">Order</a></li>
-                                                        <li><a href="/customersite/warranty/Create" class="item-anchor">Order Warranty</a></li>
-                                                        <li><a href="/customersite/warranty" class="item-anchor">Warranty</a></li>
-                                                        <li><a href="" class="item-anchor">Log out<span class="text-primary"></span></a></li>
-                                                    </ul>
-                                                </li>
+                                     @*   @if (!string.IsNullOrEmpty(@Model.isCustomerAuthenticated))
+                                        {*@
+                                            <li class="menu-item has-sub">
+                                                <a href="" class="item-anchor d-flex align-item-center icon icon-user"><i class="icon icon-chevron-down"></i></a>
+                                                <ul class="submenu">
+                                                    <li><a href="/customersite/profile" class="item-anchor">Profile</a></li>
+                                                    <li><a href="/customersite/authenticate/changespassword" class="item-anchor">Password<span class="text-primary"></span></a></li>
+                                                    <li><a href="/customersite/historyorder" class="item-anchor">Order</a></li>
+                                                    <li><a href="/customersite/warranty/Create" class="item-anchor">Order Warranty</a></li>
+                                                    <li><a href="/customersite/warranty" class="item-anchor">Warranty</a></li>
+                                                    <li><a href="/customersite/logout" class="item-anchor">Log out<span class="text-primary"></span></a></li>
+                                                </ul>
+                                            </li>
+ @*                                       }
+                                        else
+                                        {
+                                            <li class="menu-item has-sub">
+                                                <a href="" class="item-anchor d-flex align-item-center icon icon-user"></a>
+                                            </li>
+                                        }*@
                                         </ul>
                                     </div>
                                 </div>

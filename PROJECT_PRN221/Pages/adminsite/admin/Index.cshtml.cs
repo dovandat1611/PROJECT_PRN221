@@ -35,7 +35,7 @@ namespace PROJECT_PRN221.Pages.adminsite.admin
             {
                 IQueryable<Admin> adminsIQ = from s in _context.Admins select s;
 
-                var pageSize = Configuration.GetValue("PageSize", 1);
+                var pageSize = Configuration.GetValue("PageSize", 10);
                 Admin = await PaginatedList<Admin>.CreateAsync(
                 adminsIQ.AsNoTracking(), pageIndex ?? 1, pageSize);
             }
@@ -49,6 +49,7 @@ namespace PROJECT_PRN221.Pages.adminsite.admin
 
             if (_context.Customers != null)
             {
+                IQueryable<Admin> adminsIQ = null;
                 if (service.Equals("updateStatus"))
                 {
                     Admin admin = _context.Admins.FirstOrDefault(x => x.AdminId == id);
@@ -56,20 +57,16 @@ namespace PROJECT_PRN221.Pages.adminsite.admin
                     _context.Update(admin);
                     _context.SaveChanges();
 
-
-                    IQueryable<Admin> adminsIQ = from s in _context.Admins select s;
-                    var pageSize = Configuration.GetValue("PageSize", 1);
-                    Admin = await PaginatedList<Admin>.CreateAsync(
-                    adminsIQ.AsNoTracking(), pageIndex ?? 1, pageSize);
+                    adminsIQ = from s in _context.Admins select s;
+                    
                 }
                 if (service.Equals("searchByName"))
                 {
-
-                    IQueryable<Admin> adminsIQ = from s in _context.Admins where s.Name.Contains(name) select s;
-                    var pageSize = Configuration.GetValue("PageSize", 1);
-                    Admin = await PaginatedList<Admin>.CreateAsync(
-                    adminsIQ.AsNoTracking(), pageIndex ?? 1, pageSize);
+                    adminsIQ = from s in _context.Admins where s.Name.Contains(name) select s;
                 }
+                var pageSize = Configuration.GetValue("PageSize", 1);
+                Admin = await PaginatedList<Admin>.CreateAsync(
+                adminsIQ.AsNoTracking(), pageIndex ?? 1, pageSize);
             }
         }
     }

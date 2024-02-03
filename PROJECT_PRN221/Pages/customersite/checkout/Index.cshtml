@@ -62,23 +62,22 @@
         @*SHOPING*@
         <section class="shopify-cart checkout-wrap padding-large">
             <div class="container">
-                @*<c:if test="${not empty sessionScope.account}">
-                    <c:forEach var="c" items="${listC}">*@
-                        <form class="form-group" action="CheckoutController" method="post">
+                
+                        <form class="form-group" method="post">
                             <input type="hidden" name="service" value="addOrder">
                             <div class="row d-flex flex-wrap">
                                 <div class="col-lg-6">
                                     <h2 class="section-title">Billing Details</h2>
                                     <div class="billing-details">
-                                        <input type="hidden" name="id" value="${c.customer_id}">
-                                        <input type="hidden" name="total_price" value="${totalprice}">
+                                        <input type="hidden" name="id" value="@Model.Customer.CustomerId">
+                                        <input type="hidden" name="total_price" value="@Model.totalprice">
                                         <input type="hidden" name="status" value="Wait">
                                         <label for="cname">Name Receiver*</label>
-                                        <input type="text" id="cname" name="name_receiver" value="${c.name}" class="form-control" required>
-                                        <label for="cname">Phone Receiver</label>
-                                        <input type="text" id="cname" name="phone_receiver" value="${c.phone}" class="form-control" required> 
-                                        <label for="cname">Address Receiver*</label>
-                                        <input type="text" id="cname" name="address_receiver" value="${c.address}" class="form-control" required> 
+                                        <input type="text" id="cname" name="name_receiver" value="@Model.Customer.Name" class="form-control" required>
+                                        <label for="cphone">Phone Receiver*</label>
+                                        <input type="text" id="cphone" name="phone_receiver" value="@Model.Customer.Phone" class="form-control" required> 
+                                        <label for="caddress">Address Receiver*</label>
+                                        <input type="text" id="caddress" name="address_receiver" value="@Model.Customer.Address" class="form-control" required> 
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
@@ -92,7 +91,7 @@
                                                         <td data-title="Total">
                                                             <span class="price-amount amount text-primary">
                                                                 <bdi>
-                                                                    <span class="price-currency-symbol number">${totalprice}</span></bdi>
+                                                                    <span class="price-currency-symbol number">@Model.totalprice</span></bdi>
                                                             </span>
                                                         </td>
                                                     </tr>
@@ -120,10 +119,7 @@
                                 </div>
                             </div>
                         </form>
-@*                    </c:forEach>
-                </c:if>*@
             </div>
-
         </section>
 
 
