@@ -5,6 +5,8 @@ VisualStudioVersion = 17.5.33627.172
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PROJECT_PRN221", "PROJECT_PRN221\PROJECT_PRN221.csproj", "{5BDC8E5A-0301-4CFD-99AD-53065657F4B2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VNPAY_CS_ASPX", "..\..\..\..\Downloads\vnpay_cs (1)\vnpay_cs\VNPAY_CS_ASPX\VNPAY_CS_ASPX.csproj", "{6CEDC31D-CF83-4E86-B4FB-BD7EC1F819AF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{5BDC8E5A-0301-4CFD-99AD-53065657F4B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5BDC8E5A-0301-4CFD-99AD-53065657F4B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5BDC8E5A-0301-4CFD-99AD-53065657F4B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CEDC31D-CF83-4E86-B4FB-BD7EC1F819AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CEDC31D-CF83-4E86-B4FB-BD7EC1F819AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CEDC31D-CF83-4E86-B4FB-BD7EC1F819AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CEDC31D-CF83-4E86-B4FB-BD7EC1F819AF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -31,7 +31,11 @@
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\Lenovo\\Downloads\\vnpay_cs (1)\\vnpay_cs\\VNPAY_CS_ASPX\\VNPAY_CS_ASPX.csproj": {
+                "projectPath": "C:\\Users\\Lenovo\\Downloads\\vnpay_cs (1)\\vnpay_cs\\VNPAY_CS_ASPX\\VNPAY_CS_ASPX.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -94,6 +98,21 @@
           },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
         }
+      }
+    },
+    "C:\\Users\\Lenovo\\Downloads\\vnpay_cs (1)\\vnpay_cs\\VNPAY_CS_ASPX\\VNPAY_CS_ASPX.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Lenovo\\Downloads\\vnpay_cs (1)\\vnpay_cs\\VNPAY_CS_ASPX\\VNPAY_CS_ASPX.csproj",
+        "projectName": "VNPAY_CS_ASPX",
+        "projectPath": "C:\\Users\\Lenovo\\Downloads\\vnpay_cs (1)\\vnpay_cs\\VNPAY_CS_ASPX\\VNPAY_CS_ASPX.csproj",
+        "frameworks": {
+          "net48": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net48": {}
       }
     }
   }

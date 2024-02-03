@@ -272,3 +272,8 @@ C:\Users\Lenovo\Documents\C#\PRN221\PROJECT_PRN221\PROJECT_PRN221\obj\Debug\net6
 C:\Users\Lenovo\Documents\C#\PRN221\PROJECT_PRN221\PROJECT_PRN221\obj\Debug\net6.0\PROJECT_PRN221.genruntimeconfig.cache
 C:\Users\Lenovo\Documents\C#\PRN221\PROJECT_PRN221\PROJECT_PRN221\obj\Debug\net6.0\ref\PROJECT_PRN221.dll
 C:\Users\Lenovo\Documents\C#\PRN221\PROJECT_PRN221\PROJECT_PRN221\bin\Debug\net6.0\BCrypt.Net-Core.dll
+C:\Users\Lenovo\Documents\C#\PRN221\PROJECT_PRN221\PROJECT_PRN221\bin\Debug\net6.0\VNPAY_CS_ASPX.dll
+C:\Users\Lenovo\Documents\C#\PRN221\PROJECT_PRN221\PROJECT_PRN221\bin\Debug\net6.0\log4net.dll
+C:\Users\Lenovo\Documents\C#\PRN221\PROJECT_PRN221\PROJECT_PRN221\bin\Debug\net6.0\VNPAY_CS_ASPX.pdb
+C:\Users\Lenovo\Documents\C#\PRN221\PROJECT_PRN221\PROJECT_PRN221\bin\Debug\net6.0\VNPAY_CS_ASPX.dll.config
+C:\Users\Lenovo\Documents\C#\PRN221\PROJECT_PRN221\PROJECT_PRN221\bin\Debug\net6.0\log4net.xml

@@ -38,7 +38,7 @@ namespace PROJECT_PRN221.Pages.customersite.checkout
         }
 
         public async Task<IActionResult> OnPostAsync(int id, double total_price, string status, string name_receiver, 
-            string phone_receiver, string address_receiver, string payment)
+            string phone_receiver, string address_receiver, string payment, string service, string paymentStatus)
         {
             if(payment.Equals("Ship COD"))
             {
@@ -89,10 +89,21 @@ namespace PROJECT_PRN221.Pages.customersite.checkout
             }
             if (payment.Equals("Payment by Card"))
             {
-                //PaymentService _paymentService = new PaymentService();
-                //double amount = total_price;
-                //string paymentUrl = _paymentService.ProcessPayment(amount);
-                //Redirect(paymentUrl);
+                PaymentService _paymentService = new PaymentService();
+                double amount = total_price;
+                string paymentUrl = _paymentService.ProcessPayment(amount);
+                return Redirect(paymentUrl);
+            }
+            if (service.Equals("returnVNPAY"))
+            {
+                if (paymentStatus.Equals("Success"))
+                {
+                    return RedirectToPage("/customersite/home");
+                }
+                else
+                {
+                    return RedirectToPage("/customersite/cart/Index");
+                }
             }
             return RedirectToPage("/customersite/cart/Index");
         }

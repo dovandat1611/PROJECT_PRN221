@@ -13,7 +13,8 @@
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.0",
           "Microsoft.EntityFrameworkCore.Tools": "7.0.0",
           "Microsoft.Extensions.Configuration.Json": "7.0.0",
-          "Microsoft.VisualStudio.Web.CodeGeneration.Design": "6.0.16"
+          "Microsoft.VisualStudio.Web.CodeGeneration.Design": "6.0.16",
+          "VNPAY_CS_ASPX": "1.0.0"
         },
         "runtime": {
           "PROJECT_PRN221.dll": {}
@@ -2717,6 +2718,19 @@
           "System.Threading": "4.3.0",
           "System.Xml.ReaderWriter": "4.3.0"
         }
+      },
+      "VNPAY_CS_ASPX/1.0.0": {
+        "runtime": {
+          "VNPAY_CS_ASPX.dll": {}
+        }
+      },
+      "log4net/1.2.15.0": {
+        "runtime": {
+          "log4net.dll": {
+            "assemblyVersion": "1.2.15.0",
+            "fileVersion": "1.2.15.0"
+          }
+        }
       }
     }
   },
@@ -4349,6 +4363,16 @@
       "sha512": "sha512-5zJ0XDxAIg8iy+t4aMnQAu0MqVbqyvfoUVl1yDV61xdo3Vth45oA2FoY4pPkxYAH5f8ixpmTqXeEIya95x0aCQ==",
       "path": "system.xml.xdocument/4.3.0",
       "hashPath": "system.xml.xdocument.4.3.0.nupkg.sha512"
+    },
+    "VNPAY_CS_ASPX/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "log4net/1.2.15.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }

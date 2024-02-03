@@ -39,4 +39,8 @@
     <None Include="wwwroot\Images\logo\logo.png" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\Downloads\vnpay_cs (1)\vnpay_cs\VNPAY_CS_ASPX\VNPAY_CS_ASPX.csproj" />
+  </ItemGroup>
+
 </Project>

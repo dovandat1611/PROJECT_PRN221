@@ -4028,6 +4028,15 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XDocument.dll": {}
         }
+      },
+      "VNPAY_CS_ASPX/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/VNPAY_CS_ASPX.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/VNPAY_CS_ASPX.dll": {}
+        }
       }
     }
   },
@@ -11488,6 +11497,11 @@
         "system.xml.xdocument.4.3.0.nupkg.sha512",
         "system.xml.xdocument.nuspec"
       ]
+    },
+    "VNPAY_CS_ASPX/1.0.0": {
+      "type": "project",
+      "path": "../../../../../Downloads/vnpay_cs (1)/vnpay_cs/VNPAY_CS_ASPX/VNPAY_CS_ASPX.csproj",
+      "msbuildProject": "../../../../../Downloads/vnpay_cs (1)/vnpay_cs/VNPAY_CS_ASPX/VNPAY_CS_ASPX.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -11497,7 +11511,8 @@
       "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.0",
       "Microsoft.EntityFrameworkCore.Tools >= 7.0.0",
       "Microsoft.Extensions.Configuration.Json >= 7.0.0",
-      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 6.0.16"
+      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 6.0.16",
+      "VNPAY_CS_ASPX >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -11531,7 +11546,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Lenovo\\Downloads\\vnpay_cs (1)\\vnpay_cs\\VNPAY_CS_ASPX\\VNPAY_CS_ASPX.csproj": {
+              "projectPath": "C:\\Users\\Lenovo\\Downloads\\vnpay_cs (1)\\vnpay_cs\\VNPAY_CS_ASPX\\VNPAY_CS_ASPX.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
