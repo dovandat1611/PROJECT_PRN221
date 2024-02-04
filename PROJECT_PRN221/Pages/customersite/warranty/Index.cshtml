@@ -55,9 +55,9 @@
                     <a onclick="exportToExcel()" class="btn btn-primary text-white me-0"> Export</a>
                 </div>
                 <div class="orderstatus">
-                    <p><a href="WarrantyCustomerController?service=displayWarrantyStatus&status=Wait">Wait: ${wait} </a></p>
-                    <p><a href="WarrantyCustomerController?service=displayWarrantyStatus&status=Process">Process:${process} </a></p>
-                    <p><a href="WarrantyCustomerController?service=displayWarrantyStatus&status=Done">Done:${done} </a></p>
+                    <p><a href="/customersite/warranty/Index?service=displayWarrantyStatus&status=Wait">Wait: @Model.Wait </a></p>
+                    <p><a href="/customersite/warranty/Index?service=displayWarrantyStatus&status=Process">Process: @Model.Process  </a></p>
+                    <p><a href="/customersite/warranty/Index?service=displayWarrantyStatus&status=Done">Done: @Model.Done  </a></p>
                 </div>
             </div>
             <div>
@@ -76,45 +76,39 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <c:forEach items="${data}" var="d">
+                        @foreach(var item in Model.warranties){
                             <tr>
-                                <td>${d.product_name}</td>
-                                <td><img style="width: 60%" src="${d.image}" alt="alt"/></td>
-                                <td>${d.warranty_quantity}</td>
-                                <td><img style="width: 60%" src="${d.image_product}" alt="alt"/></td>
-                                <td>${d.product_status}</td> 
-                                <td>${d.warranty_status}</td>
-                                <td><fmt:formatDate value="${d.warranty_date}" pattern="dd-MM-yyyy" var="formattedDate" />${formattedDate}</td>
-                                <td>${d.status}</td> 
+                                <td>@item.Product.ProductName</td>
+                                <td><img style="width: 60%" src="@item.Product.Image" alt="alt"/></td>
+                                <td>@item.WarrantyQuantity</td>
+                                <td><img style="width: 60%" src="@item.ImageProduct" alt="alt"/></td>
+                                <td>@item.ProductStatus</td> 
+                                <td>@item.WarrantyStatus</td>
+                                <td>@item.WarrantyDate</td> 
+                                <td>@item.Status</td> 
                                 <td>
-                                    <input type="hidden"  class="name" value="${d.name}">
-                                    <input type="hidden"  class="phone" value="${d.phone}">
+                                    <input type="hidden"  class="name" value="@Model.Customer.Name">
+                                    <input type="hidden"  class="phone" value="@Model.Customer.Phone">
 
-                                    <input type="hidden" class="product_id" value="${d.product_id}">
-                                    <input type="hidden"  class="product_name" value="${d.product_name}">
+                                    <input type="hidden" class="product_id" value="@item.ProductId">
+                                    <input type="hidden"  class="product_name" value="@item.Product.ProductName">
 
-                                    <input type="hidden" class="status_product" value="${d.product_status}">
-                                    <input type="hidden" class="warranty_date" value="${formattedDate}">
-                                    <input type="hidden" class="warranty_status" value="${d.warranty_status}">
+                                    <input type="hidden" class="status_product" value="@item.ProductStatus">
+                                    <input type="hidden" class="warranty_date" value="@item.WarrantyDate">
+                                    <input type="hidden" class="warranty_status" value="@item.WarrantyStatus">
 
                                     <a onclick="updateDocumentAndDownload(this)" class="btn btn-primary text-white me-0">Download</a>
                                 </td> 
                             </tr>
-                        </c:forEach>
+                    }
                     </tbody>
                 </table>
             </div>
            </div>
 
 
-
-
-
      @*FOOTER*@
-     <partial name="/Pages/_FooterCustomerSite.cshtml" model="new PROJECT_PRN221.Pages._FooterCustomerSiteModel()"/>
-
-
-
+     @*<partial name="/Pages/_FooterCustomerSite.cshtml" model="new PROJECT_PRN221.Pages._FooterCustomerSiteModel()"/>*@
 
 
     <!-- ================================================== -->

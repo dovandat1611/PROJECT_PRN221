@@ -2,7 +2,7 @@
 @model PROJECT_PRN221.Pages.adminsite.warranty.EditModel
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Update Warranty";
 }
 
 <!DOCTYPE html>
@@ -31,9 +31,17 @@
                 <!-- partial -->
                 <div class="main-panel">
                     <div class="content-wrapper">
-                        @*<c:forEach var="d" items="${data}">*@
-                            <form class="forms-sample" method="post" action="WarrantyController">
-                                <input type="hidden" name="service" value="updateWarrantyforAdmin">
+                           <form class="forms-sample" method="post" enctype="multipart/form-data">
+                                <input type="hidden" asp-for="Warranty.WarrantyId">
+                                <input type="hidden" asp-for="Warranty.OrderdetailId">
+                                <input type="hidden" asp-for="Warranty.ProductId">
+                                <input type="hidden" asp-for="Warranty.CustomerId">
+                                <input type="hidden" asp-for="Warranty.ImageProduct">
+                                <input type="hidden" asp-for="Warranty.ProductStatus">
+                                <input type="hidden" asp-for="Warranty.WarrantyDate">
+                                <input type="hidden" asp-for="Warranty.WarrantyStatus">
+                                <input type="hidden" asp-for="Warranty.WarrantyDateAdmin">
+                                <input type="hidden" asp-for="Warranty.ImageProductAdmin">
                                 <div class="row">
                                     <div class="col-md-12 grid-margin card">
                                         <div class="card-body">
@@ -45,15 +53,14 @@
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="card-body">
-                                                    <input type="hidden" name="id" value="${d.warranty_id}">
                                                     <div class="form-group">
-                                                        <label for="image">Image</label>
+                                                        <label asp-for="@Model.FileUploads">Image</label>
                                                         <img id="preview-img" src="" alt="" style="width: 30%">
-                                                        <input type="file" class="form-control" onchange="previewImage()" accept="image/*" name="image" id="image" placeholder="image">
+                                                        <input type="file" asp-for="@Model.FileUploads"  class="form-control" onchange="previewImage()" accept="image/*">
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="status">Status Product</label>
-                                                        <textarea  name="status"></textarea>
+                                                        <label asp-for="Warranty.ProductStatusAdmin">Status Product</label>
+                                                        <textarea  asp-for="Warranty.ProductStatusAdmin"></textarea>
                                                     </div>
                                                 </div> 
                                             </div>
@@ -64,10 +71,8 @@
                                         </div>
                                     </div>
                                 </div>
-                            @*</c:forEach>*@
                         </form>
                     </div>
-
                     <footer class="footer">
                         <div class="d-sm-flex justify-content-center justify-content-sm-between">
                             <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Premium <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a> from BootstrapDash.</span>
@@ -76,8 +81,6 @@
                     </footer>
                 </div>
             </div>
-        </div>
-
 
 
         <script src="~/admin/vendors/js/vendor.bundle.base.js"></script>

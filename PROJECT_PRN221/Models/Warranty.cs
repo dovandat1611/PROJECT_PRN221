@@ -27,7 +27,7 @@ public partial class Warranty
 
     public string? ImageProductAdmin { get; set; }
 
-    public string? WarrantyDateAdmin { get; set; }
+    public DateTime? WarrantyDateAdmin { get; set; }
 
     public string? Status { get; set; }
 

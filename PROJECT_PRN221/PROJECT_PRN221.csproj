@@ -26,6 +26,7 @@
     <Folder Include="Images\about\" />
     <Folder Include="Images\logo\" />
     <Folder Include="Images\banner\" />
+    <Folder Include="Images\warranties\" />
     <Folder Include="Images\products\" />
     <Folder Include="Images\news\" />
     <Folder Include="wwwroot\Images\avatar\" />

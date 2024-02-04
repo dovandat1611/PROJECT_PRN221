@@ -2,7 +2,7 @@
 @model PROJECT_PRN221.Pages.adminsite.warranty.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Warranty";
 }
 
 <!DOCTYPE html>
@@ -11,7 +11,6 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Star Admin2 </title>
         <link rel="stylesheet" href="~/admin/vendors/feather/feather.css">
         <link rel="stylesheet" href="~/admin/vendors/mdi/css/materialdesignicons.min.css">
         <link rel="stylesheet" href="~/admin/vendors/ti-icons/css/themify-icons.css">
@@ -19,7 +18,6 @@
         <link rel="stylesheet" href="~/admin/vendors/simple-line-icons/css/simple-line-icons.css">
         <link rel="stylesheet" href="~/admin/vendors/css/vendor.bundle.base.css">
         <link rel="stylesheet" href="~/admin/css/vertical-layout-light/style.css">
-        <link rel="shortcut icon" href="~/admin/images/favicon.png" />
         <style>
             a {
                 all: unset;
@@ -50,9 +48,9 @@
                                         </div>
                                     </div>
                                     <div class="d-sm-flex justify-content-evenly">
-                                        <p class="badge badge-info"><a href="WarrantyController?service=displayWarrantyStatus&status=Wait">Wait: ${wait} </a></p>
-                                        <p class="badge badge-warning"><a href="WarrantyController?service=displayWarrantyStatus&status=Process">Process:${process} </a></p>
-                                        <p class="badge badge-success"><a href="WarrantyController?service=displayWarrantyStatus&status=Done">Done:${done} </a></p>
+                                        <p class="badge badge-info"><a href="/adminsite/warranty/Index?service=displayWarrantyStatus&status=Wait">Wait: @Model.Wait </a></p>
+                                        <p class="badge badge-warning"><a href="/adminsite/warranty/Index?service=displayWarrantyStatus&status=Process">Process: @Model.Process </a></p>
+                                        <p class="badge badge-success"><a href="/adminsite/warranty/Index?service=displayWarrantyStatus&status=Done">Done: @Model.Done </a></p>
                                     </div>
                                     <div class="table-responsive">
                                         <table class="table table-hover" id="myTable">
@@ -73,69 +71,61 @@
                                                     <th>Status</th>
                                                     <th>Update</th>
                                                     <th>DOWNLOAD</th>
-                                                        <c:if test="${status.equalsIgnoreCase('Wait')}">
-                                                        <th>Update Status</th>
-                                                        </c:if>
-                                                        <c:if test="${status.equalsIgnoreCase('Process')}">
-                                                        <th>Update Status</th>
-                                                        </c:if>
+                                                @if (Model.Status.Equals("Wait") || Model.Status.Equals("Process"))
+                                                {
+                                                     <th>Update Status</th>
+                                                }
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <c:forEach items="${data}" var="d">
-                                                    <fmt:formatDate value="${d.warranty_date}" pattern="dd-MM-yyyy" var="formattedDate" />
-                                                    <fmt:formatDate value="${d.warranty_date_admin}" pattern="dd-MM-yyyy" var="formattedDate1" />
-                                                    <tr>
-                                                        <td>${d.warranty_id}</td>
-                                                        <td>${d.customer_id}</td>
-                                                        <td><img src="${d.image}" alt="alt"/></td>
-                                                        <td>${d.product_name}</td>
-                                                        <td><img src="${d.image_product}" alt="alt"/></td>
-                                                        <td>${d.product_status}</td> 
-                                                        <td>${d.warranty_status}</td>
-                                                        <td>${d.warranty_quantity}</td>
-                                                        <td>${formattedDate}</td>
-                                                        <td><img src="${empty d.image_product_admin?"NULL":d.image_product_admin}" alt="alt"/></td>
-                                                        <td>${empty d.product_status_admin?"NULL":d.product_status_admin}</td>
-                                                        <td>${empty d.warranty_date_admin?"NULL":formattedDate1}</td>
-
-                                                        <td><div class="badge badge-opacity-info"> <a href="WarrantyController?service=updateWarrantyforAdmin&id=${d.warranty_id}">Update</a> </div></td>
-
+                                        @foreach (var item in Model.Warranty)
+                                        {   
+                                            <tr>
+                                                        <td>@item.WarrantyId</td>
+                                                        <td>@item.ProductId</td>
+                                                        <td><img src="@item.Product.Image" alt="alt"/></td>
+                                                        <td>@item.Product.ProductName</td>
+                                                        <td><img src="@item.ImageProduct" alt="alt"/></td>
+                                                        <td>@item.ProductStatus</td> 
+                                                        <td>@item.WarrantyStatus</td>
+                                                        <td>@item.WarrantyQuantity</td>
+                                                        <td>@item.WarrantyDate</td>
+                                                        <td><img src="@((item.ImageProductAdmin != null) ? item.ImageProductAdmin : "NULL")" alt="alt" /></td>
+                                                        <td>@((item.ProductStatusAdmin != null) ? item.ProductStatusAdmin : "NULL")"</td>
+                                                        <td>@((item.WarrantyDateAdmin != null) ? item.WarrantyDateAdmin : "NULL")"</td>
                                                         <td>
-                                                            <div> 
-                                                                <c:if test="${d.status.equalsIgnoreCase('Wait')}">
-                                                                    class="badge badge-opacity-info"
-                                                                </c:if> 
-                                                                <c:if test="${d.status.equalsIgnoreCase('Process')}">
-                                                                    class="badge badge-opacity-warning"
-                                                                </c:if>
-                                                                <c:if test="${d.status.equalsIgnoreCase('Done')}">
-                                                                    class="badge badge-opacity-success"
-                                                                </c:if>
-                                                                >${d.status}
-                                                            </div>
+                                                         <div class="@(item.Status.Equals("Wait") ? "badge badge-opacity-info" :
+                                                                  item.Status.Equals("Process") ? "badge badge-opacity-warning" :
+                                                                  item.Status.Equals("Done") ? "badge badge-opacity-success" :
+                                                                  item.Status.Equals("Cancel") ? "badge badge-opacity-danger" :
+                                                                  "default-class")">
+                                                        @item.Status
+                                                        </div>
                                                         </td> 
 
+                                                        <td><div class="badge badge-opacity-info"> <a href="/adminsite/warranty/Edit?id=@item.WarrantyId">Update</a> </div></td>
+
                                                         <td>
-                                                            <input type="hidden"  class="name_admin" value="${d.name}">
+                                                            <input type="hidden"  class="name_admin" value="@Model.Admin.Name">
 
-                                                            <input type="hidden"  class="name" value="${d.name}">
-                                                            <input type="hidden"  class="phone" value="${d.phone}">
+                                                            <input type="hidden"  class="name" value="@item.Customer.Name">
+                                                            <input type="hidden"  class="phone" value="@item.Customer.Phone">
 
-                                                            <input type="hidden" class="product_id" value="${d.product_id}">
-                                                            <input type="hidden"  class="product_name" value="${d.product_name}">
+                                                            <input type="hidden" class="product_id" value="@item.ProductId">
+                                                            <input type="hidden"  class="product_name" value="@item.Product.ProductName">
 
-                                                            <input type="hidden" class="status_product" value="${d.product_status}">
-                                                            <input type="hidden" class="warranty_date" value="${formattedDate}">
-                                                            <input type="hidden" class="warranty_status" value="${d.warranty_status}">
+                                                            <input type="hidden" class="status_product" value="@item.ProductStatus">
+                                                            <input type="hidden" class="warranty_date" value="@item.WarrantyDate">
+                                                            <input type="hidden" class="warranty_status" value="@item.WarrantyStatus">
 
                                                             <button class="btn btn-inverse-success btn-icon" onclick="updateDocumentAndDownload(this)"><i class="icon-download"></i></button>
                                                         </td> 
-                                                        <c:if test="${status.equalsIgnoreCase('Wait')}">
-                                                            <td> 
-                                                                <form method="post" action="WarrantyController"> 
+                                                @if (Model.Status.Equals("Wait"))
+                                                {
+                                                    <td> 
+                                                                <form method="post"> 
                                                                     <input type="hidden" name="service" value="updateStatus">
-                                                                    <input  type="hidden" name="id" id="id" value="${d.warranty_id}"> 
+                                                                    <input  type="hidden" name="id" id="id" value="@item.WarrantyId"> 
                                                                     <label  for="status">Status: </label> 
                                                                     <Select class="input" name="status" id="status"> 
                                                                         <option selected value="Wait">Wait</option>
@@ -143,13 +133,14 @@
                                                                     </Select> 
                                                                     <input type="submit" value="Update">
                                                                 </form> 
-                                                            </td>
-                                                        </c:if>
-                                                        <c:if test="${status.equalsIgnoreCase('Process')}">
+                                                    </td>
+                                                }
+                                                @if (Model.Status.Equals("Process"))
+                                                {
                                                             <td> 
-                                                                <form method="post" action="WarrantyController"> 
+                                                                <form method="post"> 
                                                                     <input type="hidden" name="service" value="updateStatus">
-                                                                    <input  type="hidden" name="id" id="id" value="${d.warranty_id}"> 
+                                                                    <input  type="hidden" name="id" id="id" value="@item.WarrantyId"> 
                                                                     <label  for="status">Status: </label> 
                                                                     <Select class="input" name="status" id="status"> 
                                                                         <option  value="Wait">Wait</option>
@@ -159,41 +150,50 @@
                                                                     <input type="submit" value="Update">
                                                                 </form> 
                                                             </td>
-                                                        </c:if>
+                                                }
                                                     </tr>
-                                                </c:forEach>
+                                        }
                                             </tbody>
                                         </table>
-                                        <div style="text-align: center">
-                                            <c:choose>
-                                                <c:when test="${currentPage > 1}">
-                                                    <a href="?page=${currentPage - 1}">Previous</a>
-                                                </c:when>
-                                                <c:otherwise>
-                                                    <span>Previous</span>
-                                                </c:otherwise>
-                                            </c:choose>
-                                            <c:forEach begin="1" end="${totalPages}" varStatus="loop">
-                                                <c:choose>
-                                                    <c:when test="${loop.index == currentPage}">
-                                                        <span>${loop.index}</span>
-                                                    </c:when>
-                                                    <c:otherwise>
-                                                        <c:if test="${id == null}">
-                                                            <a href="?page=${loop.index}">${loop.index}</a>
-                                                        </c:if>  
-                                                    </c:otherwise>
-                                                </c:choose>
-                                            </c:forEach>
-                                            <c:choose>
-                                                <c:when test="${currentPage < totalPages}">
-                                                    <a href="?page=${currentPage + 1}">Next</a>
-                                                </c:when>
-                                                <c:otherwise>
-                                                    <span>Next</span>
-                                                </c:otherwise>
-                                            </c:choose>
-                                        </div>
+                                        @*PAGING*@ 
+
+                                    <div style="text-align: center">
+                                        @if (Model.Warranty.PageIndex > 1)
+                                        {
+                                            <a href="?pageIndex=@(Model.Warranty.PageIndex - 1)">Previous</a>
+                                        }
+                                        else
+                                        {
+                                            <span>Previous</span>
+                                        }
+
+                                        @for (int i = 1; i <= Model.Warranty.TotalPages; i++)
+                                        {
+                                            @if (i == Model.Warranty.PageIndex)
+                                            {
+                                                <span>@i</span>
+                                            }
+                                            else
+                                            {   
+                                                <a href="?pageIndex=@i">@i</a>
+                                                @*@if (Model.Admin. == null)
+                                                {
+                                                    <a href="?page=@i">@i</a>
+                                                }*@
+                                            }
+                                        }
+
+                                        @if (Model.Warranty.PageIndex < Model.Warranty.TotalPages)
+                                        {
+                                            <a href="?pageIndex=@(Model.Warranty.PageIndex + 1)">Next</a>
+                                        }
+                                        else
+                                        {
+                                            <span>Next</span>
+                                        }
+                                    </div>
+
+
                                     </div>
                                 </div>
                             </div>
@@ -201,7 +201,6 @@
                     </div>
                 </div>
             </div>
-        </div>
 
 
         <script src="~/admin/vendors/js/vendor.bundle.base.js"></script>
@@ -228,8 +227,8 @@
                                                                     var status_product = row.getElementsByClassName("status_product")[0].value;
                                                                     var warranty_date = row.getElementsByClassName("warranty_date")[0].value;
                                                                     var status_warranty = row.getElementsByClassName("warranty_status")[0].value;
-                                                                    var admin_name = '${admin.name}';
-                                                                    var id_admin = '${admin.admin_id}';
+                                                                    var admin_name = @Model.Admin.Name;
+                                                                    var id_admin = @Model.Admin.AdminId;
 
                                                                     var url = "https://script.google.com/macros/s/AKfycbwBdkazjfAPDM9w0MYKj89YFPA0QbabTUIecQDV0QBAtApktuxvahKm4sZHVFndFGby/exec";
 

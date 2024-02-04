@@ -38,23 +38,24 @@ namespace PROJECT_PRN221.Pages.customersite.checkout
         }
 
         public async Task<IActionResult> OnPostAsync(int id, double total_price, string status, string name_receiver, 
-            string phone_receiver, string address_receiver, string payment, string service, string paymentStatus)
+            string phone_receiver, string address_receiver, string payment)
         {
-            if(payment.Equals("Ship COD"))
+            // Add ORDER
+            Order order = new Order
+            {
+                CustomerId = id,
+                NameReceiver = name_receiver,
+                PhoneReceiver = phone_receiver,
+                AddressReceiver = address_receiver,
+                TotalPrice = total_price,
+                OderDate = DateTime.Now,
+                Payment = payment,
+                Status = status,
+            };
+
+            if (payment.Equals("Ship COD"))
             {
                 int orderId = 0;
-                // Add ORDER
-                Order order = new Order
-                {
-                    CustomerId = id,
-                    NameReceiver = name_receiver,
-                    PhoneReceiver = phone_receiver,
-                    AddressReceiver = address_receiver,
-                    TotalPrice = total_price,
-                    OderDate = DateTime.Now,
-                    Payment = payment,
-                    Status = status,
-                };
 
                 if (_context != null)
                 {
@@ -88,22 +89,16 @@ namespace PROJECT_PRN221.Pages.customersite.checkout
                 HttpContext.Session.Remove("cart");
             }
             if (payment.Equals("Payment by Card"))
-            {
+            {   
+                // ADD order in Session
+                string orderVNPAY = JsonConvert.SerializeObject(order);
+                HttpContext.Session.SetString("orderByVNPAY", orderVNPAY);
+
+                // Process Payment
                 PaymentService _paymentService = new PaymentService();
                 double amount = total_price;
                 string paymentUrl = _paymentService.ProcessPayment(amount);
                 return Redirect(paymentUrl);
-            }
-            if (service.Equals("returnVNPAY"))
-            {
-                if (paymentStatus.Equals("Success"))
-                {
-                    return RedirectToPage("/customersite/home");
-                }
-                else
-                {
-                    return RedirectToPage("/customersite/cart/Index");
-                }
             }
             return RedirectToPage("/customersite/cart/Index");
         }
