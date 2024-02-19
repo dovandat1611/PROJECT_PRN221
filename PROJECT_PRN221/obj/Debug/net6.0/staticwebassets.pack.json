@@ -9,6 +9,10 @@
       "PackagePath": "staticwebassets\\Images\\about\\teamworking.jpg"
     },
     {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\avatar\\avtgithub.jpg",
+      "PackagePath": "staticwebassets\\Images\\avatar\\avtgithub.jpg"
+    },
+    {
       "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\avatar\\carol.svg",
       "PackagePath": "staticwebassets\\Images\\avatar\\carol.svg"
     },
@@ -367,6 +371,14 @@
     {
       "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\products\\surface-pro-7.jpg",
       "PackagePath": "staticwebassets\\Images\\products\\surface-pro-7.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\products\\金克丝.png",
+      "PackagePath": "staticwebassets\\Images\\products\\金克丝.png"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\warranties\\test.png",
+      "PackagePath": "staticwebassets\\Images\\warranties\\test.png"
     },
     {
       "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\admin\\css\\maps\\horizontal-layout-dark\\style.css.map",

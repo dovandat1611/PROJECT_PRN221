@@ -22,12 +22,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Images\avatar\" />
-    <Folder Include="Images\about\" />
-    <Folder Include="Images\logo\" />
-    <Folder Include="Images\banner\" />
-    <Folder Include="Images\products\" />
-    <Folder Include="Images\news\" />
     <Folder Include="wwwroot\Images\avatar\" />
     <Folder Include="wwwroot\Images\brands\" />
     <Folder Include="wwwroot\Images\about\" />
@@ -37,6 +31,7 @@
 
   <ItemGroup>
     <None Include="wwwroot\Images\logo\logo.png" />
+    <None Include="wwwroot\Images\warranties\test.png" />
   </ItemGroup>
 
   <ItemGroup>

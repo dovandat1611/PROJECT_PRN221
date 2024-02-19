@@ -19,14 +19,34 @@ namespace PROJECT_PRN221.Pages.customersite.productdetail
         }
 
         public Product Product { get; set; } = default!;
+        public List<Comment> Comment { get; set; } = default!;
         public IList<Product> RelateProduct { get; set; } = new List<Product>(); // Initialize with an empty list
+        public string isCustomerAuthenticated { get; set; } = null;
+        public void checkSession()
+        {
+            var httpContext = HttpContext;
+            if (httpContext != null && httpContext.Session != null)
+            {
+                isCustomerAuthenticated = httpContext.Session.GetString("customer");
+            }
+        }
 
         public async Task<IActionResult> OnGetAsync(int id)
         {
+            checkSession();
+
+            Comment = _context.Comments
+                .Include(p => p.Customer)
+                .Include(p => p.Product)
+                .Where(x => x.ProductId == id)
+                .ToList();
+
             Product = await _context.Products
                 .Include(p => p.Brand)
                 .Include(p => p.Category)
                 .FirstOrDefaultAsync(x => x.ProductId == id);
+
+            
 
             if (Product == null)
             {
@@ -42,7 +62,7 @@ namespace PROJECT_PRN221.Pages.customersite.productdetail
             return Page();
         }
 
-        public IActionResult OnPost(int id, int quantity, string service)
+        public IActionResult OnPost(int id, int quantity, string service,int product_id, string comment_content)
         {
             var product = _context.Products.FirstOrDefault(x => x.ProductId == id);
 
@@ -50,6 +70,23 @@ namespace PROJECT_PRN221.Pages.customersite.productdetail
             {
                 return NotFound(); 
             }
+
+            if (service.Equals("insertComment"))
+            {
+                string customerJson = HttpContext.Session.GetString("customer");
+                Customer customer = JsonConvert.DeserializeObject<Customer>(customerJson);
+
+                Comment comment = new Comment()
+                {
+                    ProductId = product_id,
+                    CustomerId = customer.CustomerId,
+                    CommentContent = comment_content,
+                    CommentDate = DateTime.Now,
+                };
+                _context.Comments.Add(comment);
+                _context.SaveChanges();
+            }
+
 
             if (service.Equals("Create"))
             {
@@ -101,6 +138,5 @@ namespace PROJECT_PRN221.Pages.customersite.productdetail
             }
             return RedirectToPage("/customersite/productdetail/Index", new { id = id });
         }
-
     }
 }

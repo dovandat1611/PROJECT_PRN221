@@ -12,10 +12,23 @@ namespace PROJECT_PRN221.Pages.customersite.home
         {
             _context = context;
         }
+        public string isCustomerAuthenticated { get; set; } = null;
+
         public List<Product> Product { get; set; } = default!;
         public IList<News> News { get; set; } = default!;
+
+        public void checkSession()
+        {
+            var httpContext = HttpContext;
+            if (httpContext != null && httpContext.Session != null)
+            {
+                isCustomerAuthenticated = httpContext.Session.GetString("customer");
+            }
+        }
+
         public async Task OnGetAsync()
         {
+            checkSession();
             if (_context.Products != null)
             {
                 Product = await _context.Products

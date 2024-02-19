@@ -47,7 +47,15 @@
 
     
     @*HEADER*@
-    <partial name="/Pages/_HeaderCustomersite.cshtml" model="new PROJECT_PRN221.Pages._HeaderCustomerSiteModel()"/>
+    @if (!string.IsNullOrEmpty(@Model.isCustomerAuthenticated))
+    {
+        <partial name="/Pages/_HeaderCustomersite.cshtml" model="new PROJECT_PRN221.Pages._HeaderCustomerSiteModel()"/>
+    }
+    else
+    {
+        <partial name="/Pages/_HeaderGuestSite.cshtml" model="new PROJECT_PRN221.Pages._HeaderGuestSiteModel()"/>
+    }
+
     @*BANNER*@
             <section class="site-banner padding-small bg-light-grey">
             <div class="container">
@@ -145,12 +153,23 @@
                                     </div>
 
                                     <div class="action-buttons">
+                                                                        
+                                    @if (!string.IsNullOrEmpty(@Model.isCustomerAuthenticated))
+                                    {
                                         <button type="submit" name="buynow" class="btn btn-medium btn-dark">
                                             Buy now
                                         </button>
                                         <button type="submit" name="submit" id="add-to-cart" class="btn btn-medium btn-dark">
                                             <span id="add-to-cart">Add to cart</span>
                                         </button>
+                                    }
+                                    else
+                                    {
+                                        <a href="/customersite/authenticate/login" class="btn btn-medium btn-dark">
+                                            Login To Buy
+                                        </a>
+                                    }
+   
                                     </div>
 
                                 </div>
@@ -159,7 +178,6 @@
                        </div>
                     </div>
                 </section>
-                
                 }
         </form>
 
@@ -178,7 +196,7 @@
                         </nav>
                         <div class="tab-content" id="nav-tabContent">
                                 <div class="tab-pane fade" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                                <p>Product Description</p>
+                               <p>Product Description</p>
                                <p>@Model.Product.Description</p>
                                 </div>
                             <div class="tab-pane fade" id="nav-information" role="tabpanel" aria-labelledby="nav-information-tab">
@@ -198,47 +216,50 @@
 
 
                                     @*COMMENT*@
-@*                                    <c:if test="${empty comment}">
-                                        <p>Have no comment</p>
-                                    </c:if>
-                                    <c:if test="${comment != null}">
-                                        <c:forEach var="c" items="${comment}">
-                                            <div class="review-item d-flex">
+
+                                    @if(Model.Comment.Count > 0){
+                                    @foreach(var item in Model.Comment)
+                                    {
+                                         <div class="review-item d-flex">
                                                 <div style="width: 10%" >
-                                                    <img class="image-holder" src="/${c.image}" alt="review">
+                                                    <img class="image-holder" src="@item.Customer.Image" alt="review">
                                                 </div>
                                                 <div class="review-content">
                                                     <div class="review-header">
-                                                        <fmt:formatDate value="${c.comment_date}" pattern="dd/MM/yyyy" var="formattedDate" />
-                                                        <span class="author-name">${c.customer_name}</span>
-                                                        <span class="review-date">- ${formattedDate}</span>
+                                                        <span class="author-name">@item.Customer.Name</span>
+                                                        <span class="review-date">- @item.CommentDate</span>
                                                     </div>
-                                                    <p>${c.comment_content}</p>
+                                                    <p>@item.CommentContent</p>
                                                 </div>
-                                            </div>
-                                        </c:forEach>  
-                                    </c:if>
-                                </div>*@
+                                         </div>
+                                    }
+                                    }
+                                    else
+                                    {
+                                        <p>Have no comment</p>
+                                    }
+                                </div>
 
                                 
-@*                                <c:if test="${not empty sessionScope.account}">
+                            @if (!string.IsNullOrEmpty(@Model.isCustomerAuthenticated))
+                            {
                                     <div class="add-review margin-small">
                                         <h3>Add a review</h3>
-                                        <form id="form" class="padding-small" method="post" action="/SingleProductController">
+                                        <form id="form" class="padding-small" method="post">
                                             <input type="hidden" name="service" value="insertComment">
-                                            <input type="hidden" name="product_id" value="${data.product_id}">
+                                            <input type="hidden" name="product_id" value="@Model.Product.ProductId">
                                             <label>Your Review *</label>
                                             <textarea placeholder="Write your review here" name="comment_content" class="u-full-width"></textarea>
                                             <button type="submit" name="submit" class="btn btn-dark btn-medium">Submit</button>
                                         </form>
-                                    </div>
-                                </c:if>*@
-
-@*                                <c:if test="${empty sessionScope.account}">
+                                    </div>                               
+                            }
+                            else
+                            {
                                     <div class="add-review margin-small">
                                         <h3>Login to Review</h3>
                                     </div>
-                                </c:if>*@
+                            }
 
                             </div>
                         </div>

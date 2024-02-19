@@ -3,7 +3,6 @@
 @{
 
 }
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -42,7 +41,16 @@
 
 
     @*HEADER*@
-    <partial name="/Pages/_HeaderCustomersite.cshtml" model="new PROJECT_PRN221.Pages._HeaderCustomerSiteModel()"/>
+    @if (!string.IsNullOrEmpty(@Model.isCustomerAuthenticated))
+    {
+        <partial name="/Pages/_HeaderCustomersite.cshtml" model="new PROJECT_PRN221.Pages._HeaderCustomerSiteModel()"/>
+    }
+    else
+    {
+        <partial name="/Pages/_HeaderGuestSite.cshtml" model="new PROJECT_PRN221.Pages._HeaderGuestSiteModel()"/>
+    }
+
+   
 
 
     @* HEADER 1 *@

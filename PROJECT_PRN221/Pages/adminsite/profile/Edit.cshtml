@@ -5,71 +5,6 @@
     ViewData["Title"] = "Edit";
 }
 
-@*<h1>Edit</h1>
-
-<h4>Admin</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Admin.AdminId" />
-            <div class="form-group">
-                <label asp-for="Admin.Name" class="control-label"></label>
-                <input asp-for="Admin.Name" class="form-control" />
-                <span asp-validation-for="Admin.Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Admin.Phone" class="control-label"></label>
-                <input asp-for="Admin.Phone" class="form-control" />
-                <span asp-validation-for="Admin.Phone" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Admin.Gmail" class="control-label"></label>
-                <input asp-for="Admin.Gmail" class="form-control" />
-                <span asp-validation-for="Admin.Gmail" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Admin.Dob" class="control-label"></label>
-                <input asp-for="Admin.Dob" class="form-control" />
-                <span asp-validation-for="Admin.Dob" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Admin.Image" class="control-label"></label>
-                <input asp-for="Admin.Image" class="form-control" />
-                <span asp-validation-for="Admin.Image" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Admin.Username" class="control-label"></label>
-                <input asp-for="Admin.Username" class="form-control" />
-                <span asp-validation-for="Admin.Username" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Admin.Password" class="control-label"></label>
-                <input asp-for="Admin.Password" class="form-control" />
-                <span asp-validation-for="Admin.Password" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Admin.Status" class="control-label"></label>
-                <input asp-for="Admin.Status" class="form-control" />
-                <span asp-validation-for="Admin.Status" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
-
-<div>
-    <a asp-page="./Index">Back to List</a>
-</div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
-*@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -96,7 +31,6 @@
 
 
                 <div class="container" style="margin-top: 50px">
-                    @*<c:forEach var="a" items="${data}">*@
                         <div class="row gutters">
                             <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
                                 <div class="card h-100">
@@ -104,16 +38,17 @@
                                         <div class="account-settings">
                                             <div class="user-profile">
                                                 <div class="user-avatar">
-                                                    <img src="images/avatar/martin.svg" alt="Maxwell Admin">
+                                                    <img src="@Model.Admin.Image" alt="Admin" style="width: 100px; height: 100px">
                                                 </div>
-                                                <h5 class="user-name">${a.getUsername()}</h5>
-                                                <h6 class="user-email">${a.getGmail()}</h6>
+                                                <h5 class="user-name">@Model.Admin.Username</h5>
+                                                <h6 class="user-email">@Model.Admin.Gmail</h6>
                                             </div>
                                             <div class="about">
                                                 <h5>About</h5>
-                                                <p>Full Name: ${a.name}</p>
-                                                <p>Phone: ${a.phone}</p>
-                                                <p>Email: ${a.gmail}</p>                                                                                               
+                                                <p>Full Name: @Model.Admin.Name</p>
+                                                <p>Phone: @Model.Admin.Phone</p>
+                                                <p>Email: @Model.Admin.Gmail</p> 
+                                                <p>Dob: @Model.Admin.Dob</p>      
                                             </div>
                                             <div class="about">
                                                 <a href="ProfileAdminController" class="btn btn-secondary">Cancel</a>
@@ -122,41 +57,50 @@
                                     </div>
                                 </div>
                             </div>
-                        @*</c:forEach>*@
                         <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
                             <div class="card h-100">
-                                @*<c:forEach var="a" items="${data}">*@
                                     <div class="card-body">
-                                        <form action="EditProfileAdminController" method="post">                                           
+                                        <form method="post" enctype="multipart/form-data">      
+                                             <input type="hidden" asp-for="Admin.AdminId">
+                                             <input type="hidden" asp-for="Admin.Username">
+                                             <input type="hidden" asp-for="Admin.Password">
+                                             <input type="hidden" asp-for="Admin.Status">
                                             <div class="row gutters">
                                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                                     <h6 class="mb-2 text-primary">Personal Details</h6>
                                                 </div>
                                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                                     <div class="form-group">
-                                                        <label for="fullName">Role ID</label>
-                                                        <input type="text" name="role" class="form-control" id="fullName" value="${a.getRole()}" readonly="">
+                                                        <label asp-for="Admin.Name">Full Name</label>
+                                                        <input type="text" asp-for="Admin.Name" class="form-control">
                                                     </div>
                                                 </div>
                                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                                     <div class="form-group">
-                                                        <label for="fullName">Full Name</label>
-                                                        <input type="text" name="name" class="form-control" id="fullName" value="${a.getName()}">
+                                                        <label asp-for="Admin.Gmail">Email</label>
+                                                        <input type="text" asp-for="Admin.Gmail" class="form-control">
+                                                        <span asp-validation-for="Admin.Gmail" class="badge badge-danger"></span>
                                                     </div>
                                                 </div>
                                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                                     <div class="form-group">
-                                                        <label for="eMail">Email</label>
-                                                        <input type="text" name="email" class="form-control" id="eMail" value="${a.getGmail()}" >
-                                                        <p>${ms1}</p>
+                                                        <label asp-for="@Model.FileUploads">Image</label>
+                                                        <img id="preview-img" src="@Model.Admin.Image" alt="@Model.Admin.Image" style="width: 30%">
+                                                        <input type="file"  asp-for="@Model.FileUploads" 
+                                                         class="form-control" onchange="previewImage()" accept="image/*" >
                                                     </div>
                                                 </div>
                                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                                     <div class="form-group">
-                                                        <label for="phone">Phone</label>
-                                                        <input type="text" name="phone"class="form-control" id="phone" value="${a.getPhone()}">
-                                                        <p>${ms}</p>
+                                                        <label asp-for="Admin.Phone">Phone</label>
+                                                        <input type="text" asp-for="Admin.Phone" class="form-control">
                                                     </div>
+                                                </div>
+                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                                <div class="form-group">
+                                                    <label asp-for="Admin.Dob">Dob</label>
+                                                    <input type="date" asp-for="Admin.Dob" class="form-control">
+                                                </div>
                                                 </div>
                                                 <div class="row gutters">
                                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
@@ -168,7 +112,6 @@
                                             </div>
                                         </form>
                                     </div>
-                                @*</c:forEach>*@
                             </div>
                         </div>
                     </div>
@@ -187,5 +130,20 @@
         <script src="~/admin/js/template.js"></script>
         <script src="~/admin/js/settings.js"></script>
         <script src="~/admin/js/todolist.js"></script>
+           <script>
+            function previewImage() {
+                var preview = document.querySelector('#preview-img');
+                var file = document.querySelector('input[type=file]').files[0];
+                var reader = new FileReader();
+                reader.onloadend = function () {
+                    preview.src = reader.result;
+                };
+                if (file) {
+                    reader.readAsDataURL(file);
+                } else {
+                    preview.src = "";
+                }
+            }
+        </script>
     </body>
 </html>

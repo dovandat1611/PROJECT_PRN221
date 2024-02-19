@@ -36,7 +36,14 @@
 <body>  
 
     @*HEADER*@
+    @if (!string.IsNullOrEmpty(@Model.isCustomerAuthenticated))
+    {
         <partial name="/Pages/_HeaderCustomersite.cshtml" model="new PROJECT_PRN221.Pages._HeaderCustomerSiteModel()"/>
+    }
+    else
+    {
+        <partial name="/Pages/_HeaderGuestSite.cshtml" model="new PROJECT_PRN221.Pages._HeaderGuestSiteModel()"/>
+    }
 
         <section class="site-banner jarallax padding-large" style="background: url('/Images/about/teamworking.jpg') no-repeat; background-position: top;">
             <div class="container">

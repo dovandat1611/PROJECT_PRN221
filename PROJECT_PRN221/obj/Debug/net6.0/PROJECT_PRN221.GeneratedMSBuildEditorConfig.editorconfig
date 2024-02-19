@@ -48,6 +48,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYWRtaW5zaXRlXGF1dGhlbnRpY2F0ZVxsb2dpblxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/adminsite/authenticate/logout/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYWRtaW5zaXRlXGF1dGhlbnRpY2F0ZVxsb2dvdXRcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/adminsite/authenticate/otp/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYWRtaW5zaXRlXGF1dGhlbnRpY2F0ZVxvdHBcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -304,6 +308,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcY3VzdG9tZXJzaXRlXGF1dGhlbnRpY2F0ZVxsb2dpblxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/customersite/authenticate/logout/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcY3VzdG9tZXJzaXRlXGF1dGhlbnRpY2F0ZVxsb2dvdXRcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/customersite/authenticate/otp/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcY3VzdG9tZXJzaXRlXGF1dGhlbnRpY2F0ZVxvdHBcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -406,6 +414,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/_HeaderCustomerSite.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0hlYWRlckN1c3RvbWVyU2l0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/_HeaderGuestSite.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0hlYWRlckd1ZXN0U2l0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Lenovo/Documents/C\#/PRN221/PROJECT_PRN221/PROJECT_PRN221/Pages/_LeftPageAdminSite.cshtml]

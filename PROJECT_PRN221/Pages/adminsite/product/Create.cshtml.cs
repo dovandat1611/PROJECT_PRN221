@@ -67,7 +67,7 @@ namespace PROJECT_PRN221.Pages.adminsite.product
                 {
                     foreach (var FileUpload in FileUploads)
                     {
-                        var file = Path.Combine(_environment.ContentRootPath, "Images/products", FileUpload.FileName);
+                        var file = Path.Combine(_environment.ContentRootPath, "wwwroot/Images/products", FileUpload.FileName);
                         using (var fileStream = new FileStream(file, FileMode.Create))
                         {
                             await FileUpload.CopyToAsync(fileStream);

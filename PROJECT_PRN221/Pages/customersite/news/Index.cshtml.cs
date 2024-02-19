@@ -18,8 +18,19 @@ namespace PROJECT_PRN221.Pages.customersite.news
         }
         public PaginatedList<News> News { get; set; } = default!;
 
+        public string isCustomerAuthenticated { get; set; } = null;
+        public void checkSession()
+        {
+            var httpContext = HttpContext;
+            if (httpContext != null && httpContext.Session != null)
+            {
+                isCustomerAuthenticated = httpContext.Session.GetString("customer");
+            }
+        }
+
         public async Task OnGetAsync(int? pageIndex)
         {
+            checkSession();
             if (pageIndex == null)
             {
                 pageIndex = 1;

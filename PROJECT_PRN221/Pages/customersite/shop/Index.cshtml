@@ -37,12 +37,16 @@
     <!-- ================================================== -->
 
 
-
-
-
-    
     @*HEADER*@
+    @if (!string.IsNullOrEmpty(@Model.isCustomerAuthenticated))
+    {
         <partial name="/Pages/_HeaderCustomersite.cshtml" model="new PROJECT_PRN221.Pages._HeaderCustomerSiteModel()"/>
+    }
+    else
+    {
+        <partial name="/Pages/_HeaderGuestSite.cshtml" model="new PROJECT_PRN221.Pages._HeaderGuestSiteModel()"/>
+    }
+
     @*BANNER*@
         <section class="site-banner jarallax min-height300 padding-large" style="background: url(images/banner/macbook.jpg) no-repeat; background-position: top;">
             <div class="container">

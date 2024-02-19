@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "/zEpK+VIUifh8XjnFd+nosnKrbpeCmzDtzjzJFRz3qY=",
+  "Hash": "81xzQd3XGmXp+BJZzKLI2SwFqPpbzjFbB11NMJoxTmY=",
   "Source": "PROJECT_PRN221",
   "BasePath": "_content/PROJECT_PRN221",
   "Mode": "Default",
@@ -29121,6 +29121,23 @@
       "OriginalItemSpec": "wwwroot\\Images\\about\\teamworking.jpg"
     },
     {
+      "Identity": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\avatar\\avtgithub.jpg",
+      "SourceId": "PROJECT_PRN221",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\",
+      "BasePath": "_content/PROJECT_PRN221",
+      "RelativePath": "Images/avatar/avtgithub.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\avatar\\avtgithub.jpg"
+    },
+    {
       "Identity": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\avatar\\carol.svg",
       "SourceId": "PROJECT_PRN221",
       "SourceType": "Discovered",
@@ -30649,6 +30666,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Images\\products\\ZFold4.png"
+    },
+    {
+      "Identity": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\products\\金克丝.png",
+      "SourceId": "PROJECT_PRN221",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\",
+      "BasePath": "_content/PROJECT_PRN221",
+      "RelativePath": "Images/products/金克丝.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\products\\金克丝.png"
+    },
+    {
+      "Identity": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\warranties\\test.png",
+      "SourceId": "PROJECT_PRN221",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\",
+      "BasePath": "_content/PROJECT_PRN221",
+      "RelativePath": "Images/warranties/test.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\warranties\\test.png"
     },
     {
       "Identity": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\js\\site.js",

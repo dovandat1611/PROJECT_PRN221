@@ -5,8 +5,15 @@ namespace PROJECT_PRN221.Pages.adminsite.authenticate.logout
 {
     public class IndexModel : PageModel
     {
-        public void OnGet()
+        public IActionResult OnGet()
         {
+            var session = HttpContext.Session;
+
+            if (session.Keys.Contains("admin"))
+            {
+                session.Remove("admin");
+            }
+            return RedirectToPage("/admin/authenticate/login/Index");
         }
     }
 }

@@ -38,7 +38,15 @@
 
 
         @*HEADER*@
-        <partial name="/Pages/_HeaderCustomersite.cshtml" model="new PROJECT_PRN221.Pages._HeaderCustomerSiteModel()"/>
+           @if (!string.IsNullOrEmpty(@Model.isCustomerAuthenticated))
+            {
+                <partial name="/Pages/_HeaderCustomersite.cshtml" model="new PROJECT_PRN221.Pages._HeaderCustomerSiteModel()"/>
+            }
+            else
+            {
+                <partial name="/Pages/_HeaderGuestSite.cshtml" model="new PROJECT_PRN221.Pages._HeaderGuestSiteModel()"/>
+            }
+
 
         @*BANNER*@
         <section class="site-banner jarallax min-height300 padding-large" style="background: url(Client/images/iphone14_banners.png) no-repeat;">

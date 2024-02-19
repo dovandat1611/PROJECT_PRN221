@@ -16,8 +16,19 @@ namespace PROJECT_PRN221.Pages.customersite.news
         }
         public News News { get; set; } = default!;
         public IList<News> RelateNews { get; set; } = default!;
+        public string isCustomerAuthenticated { get; set; } = null;
+        public void checkSession()
+        {
+            var httpContext = HttpContext;
+            if (httpContext != null && httpContext.Session != null)
+            {
+                isCustomerAuthenticated = httpContext.Session.GetString("customer");
+            }
+        }
+
         public async Task OnGetAsync(int id)
         {
+            checkSession();
             News = await _context.News
                 .Include(n => n.Newsgroup)
                 .FirstOrDefaultAsync(n => n.NewsId == id);

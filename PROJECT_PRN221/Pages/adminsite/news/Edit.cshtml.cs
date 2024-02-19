@@ -62,7 +62,7 @@ namespace PROJECT_PRN221.Pages.adminsite.news
             {
                 foreach (var FileUpload in FileUploads)
                 {
-                    var file = Path.Combine(_environment.ContentRootPath, "Images/news",
+                    var file = Path.Combine(_environment.ContentRootPath, "wwwroot/Images/news",
                     FileUpload.FileName);
                     using (var fileStream = new FileStream(file, FileMode.Create))
                     {

@@ -70,8 +70,7 @@
                                                 </a>
                                             </li>
                       
-                              @*          @if (!string.IsNullOrEmpty(@Model.isCustomerAuthenticated))
-                                        {*@
+   
                                             <li class="menu-item has-sub">
                                                 <a href="" class="item-anchor d-flex align-item-center icon icon-user"><i class="icon icon-chevron-down"></i></a>
                                                 <ul class="submenu">
@@ -80,16 +79,9 @@
                                                     <li><a href="/customersite/historyorder" class="item-anchor">Order</a></li>
                                                     <li><a href="/customersite/warranty/Order" class="item-anchor">Order Warranty</a></li>
                                                     <li><a href="/customersite/warranty" class="item-anchor">Warranty</a></li>
-                                                    <li><a href="/customersite/logout" class="item-anchor">Log out<span class="text-primary"></span></a></li>
+                                                    <li><a href="/customersite/authenticate/logout" class="item-anchor">Log out<span class="text-primary"></span></a></li>
                                                 </ul>
                                             </li>
-@*                                        }
-                                        else
-                                        {
-                                            <li class="menu-item has-sub">
-                                                <a href="" class="item-anchor d-flex align-item-center icon icon-user"></a>
-                                            </li>
-                                        }*@
                                         </ul>
                                     </div>
                                 </div>
