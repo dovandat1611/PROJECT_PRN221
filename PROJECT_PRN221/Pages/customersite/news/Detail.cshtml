@@ -106,58 +106,60 @@
     @*CONTENT*@
             <div class="main-content d-flex flex-wrap padding-large">
             <div class="container">
-                @*<c:forEach var="n" items="${news}">*@
-
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="post-meta">
-                                <span class="post-date">${n.day} ${n.month}, ${n.year}</span> / <a href="NewsCustomerController" class="blog-categories">${n.newsgroup_name}</a>
-                            </div>
-                            <h1 class="page-title">${n.title}</h1>
-                            <div class="feature-image">
-                                <img src="${n.image}" alt="post image" class="jarallax-img">
-                            </div>
+           
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="post-meta">
+                            <span class="post-date">@Model.News.CreatedDate</span> / <a href="NewsCustomerController" class="blog-categories">@Model.News.Newsgroup.NewsgroupName</a>
                         </div>
-                        <div class="col-md-6">
-                            <div class="post-content">
-                                <p><strong>${n.title}:</strong></p>
-                                <p>${n.content}</p>
-                                <div class="post-tags">
-                                    <div class="block-tag">
-                                        <ul class="list-unstyled d-flex">
-                                            <li>
-                                                <a href="#" class="btn btn-dark btn-small btn-rounded">Fashion</a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="btn btn-dark btn-small btn-rounded">Hoodie</a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="btn btn-dark btn-small btn-rounded">Casual</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="social-links d-flex margin-small">
-                                    <div class="element-title">Share:</div>
-                                    <ul class="d-flex list-unstyled">
+                        <h1 class="page-title">@Model.News.Title</h1>
+                        <div class="feature-image">
+                            <img src="@Model.News.Image" alt="post image" class="jarallax-img">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="post-content">
+                        <p><strong>@Model.News.Title</strong></p>
+                        <p>@Model.News.Content</p>
+                            <div class="post-tags">
+                                <div class="block-tag">
+                                    <ul class="list-unstyled d-flex">
                                         <li>
-                                            <a href="#"><i class="icon icon-facebook"></i></a>
+                                            <a href="#" class="btn btn-dark btn-small btn-rounded">Fashion</a>
                                         </li>
                                         <li>
-                                            <a href="#"><i class="icon icon-twitter"></i></a>
+                                            <a href="#" class="btn btn-dark btn-small btn-rounded">Hoodie</a>
                                         </li>
                                         <li>
-                                            <a href="#"><i class="icon icon-instagram"></i></a>
-                                        </li>
-                                        <li>
-                                            <a href="#"><i class="icon icon-youtube-play"></i></a>
+                                            <a href="#" class="btn btn-dark btn-small btn-rounded">Casual</a>
                                         </li>
                                     </ul>
                                 </div>
                             </div>
+                            <div class="social-links d-flex margin-small">
+                                <div class="element-title">Share:</div>
+                                <ul class="d-flex list-unstyled">
+                                    <li>
+                                        <a href="#"><i class="icon icon-facebook"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="icon icon-twitter"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="icon icon-instagram"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="icon icon-youtube-play"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                @*</c:forEach>*@
+                </div>
+            
+
+                  
+           
             </div>
         </div>
 
@@ -174,27 +176,30 @@
                 </div>
                 <div class="swiper product-swiper overflow-hidden">
                     <div class="swiper-wrapper section-header align-items-center justify">
-                        @*<c:forEach items="${relatednews}" var="r">*@
-                            <div class="swiper-slide  post-item product-item">
-                                <div class="image-holder zoom-effect">
-                                    <a href="NewsDetailCustomerController?id=${r.news_id}">
-                                        <img src="${r.image}" alt="post" class="post-image">
-                                    </a>
+                    @foreach(var item in Model.RelateNews)
+                    {
+                        <div class="swiper-slide  post-item product-item">
+                            <div class="image-holder zoom-effect">
+                                <a href="customersite/news/Detail?@item.NewsId">
+                                    <img src="@item.Image" alt="post" class="post-image">
+                                </a>
+                            </div>
+                            <div class="post-content d-flex">
+                                <div class="meta-date" style="margin-right: 20px; margin-top: 23px">
+                                    <div class="meta-day text-primary">25</div>
+                                    <div class="meta-month">Augurt-7</div>
                                 </div>
-                                <div class="post-content d-flex">
-                                    <div class="meta-date" style="margin-right: 20px; margin-top: 23px">
-                                        <div class="meta-day text-primary">${r.day}</div>
-                                        <div class="meta-month">${r.month} ${r.year}</div>
-                                    </div>
-                                    <div class="post-header">
-                                        <h4 class="post-title">
-                                            <a href="NewsDetailCustomerController?id=${r.news_id}">${r.title}</a>
-                                        </h4>
-                                        <a href="NewsCustomerController" class="blog-categories">${r.newsgroup_name}</a>
-                                    </div>
+                                <div class="post-header">
+                                    <h4 class="post-title">
+                                        <a href="customersite/news/Detail?@item.NewsId">@item.Title</a>
+                                    </h4>
+                                    <a href="customersite/news/Detail" class="blog-categories">@item.Newsgroup.NewsgroupName</a>
                                 </div>
                             </div>
-                        @*</c:forEach>*@
+                        </div>
+                    }
+                   
+                       
                     </div>
                     <div class="swiper-pagination"></div>
                 </div>

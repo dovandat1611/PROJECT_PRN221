@@ -12,9 +12,8 @@ namespace PROJECT_PRN221.Pages.customersite.home
         {
             _context = context;
         }
-
         public List<Product> Product { get; set; } = default!;
-
+        public IList<News> News { get; set; } = default!;
         public async Task OnGetAsync()
         {
             if (_context.Products != null)
@@ -22,6 +21,7 @@ namespace PROJECT_PRN221.Pages.customersite.home
                 Product = await _context.Products
                 .Include(p => p.Brand)
                 .Include(p => p.Category).ToListAsync();
+                News = _context.News.Include(n => n.Newsgroup).ToList();
             }
         }
 

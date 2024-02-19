@@ -378,27 +378,29 @@
         <div class="row d-flex flex-wrap">
 
           @*LIST NEW*@
-          <article class="col-md-4 post-item">
-            <div class="image-holder zoom-effect">
-              <a href="single-post.html">
-                <img src="images/articles/macbook-promo-2.jpg" alt="post" class="post-image">
-              </a>
-            </div>
-            <div class="post-content d-flex">
-              <div class="meta-date">
-                <div class="meta-day text-primary">25</div>
-                <div class="meta-month">Aug-2021</div>
-              </div>
-              <div class="post-header">
-                <h3 class="post-title">
-                  <a href="single-post.html">Latest trends of wearing street wears supremely</a>
-                </h3>
-                <a href="blog.html" class="blog-categories">Trending</a>
-              </div>
-            </div>
-          </article>
+               @foreach(var item in Model.News)
+                {
+                    <article class="col-md-4 post-item">
+                        <div class="image-holder zoom-effect">
+                            <a href="/customersite/news/Detail?id=@item.NewsId">
+                                <img src="@item.Image" alt="post" class="post-image">
+                            </a>
+                        </div>
+                        <div class="post-content d-flex">
+                            <div class="meta-date">
+                                <div class="meta-day text-primary">25</div>
+                                <div class="meta-month">Aug-2021</div>
+                            </div>
+                            <div class="post-header">
+                                <h3 class="post-title">
+                                    <a href="/customersite/news/Detail?id=@item.NewsId">@item.Title</a>
 
-          
+                                </h3>
+                                <a href="/customersite/news" class="blog-categories">@item.Newsgroup.NewsgroupName</a>
+                            </div>
+                        </div>
+                    </article>
+                }
         </div>
       </div>
     </section>

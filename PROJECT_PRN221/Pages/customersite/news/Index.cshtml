@@ -45,7 +45,140 @@
     <partial name="/Pages/_HeaderCustomersite.cshtml" model="new PROJECT_PRN221.Pages._HeaderCustomerSiteModel()"/>
 
 
+    
+        <section class="site-banner jarallax min-height300 padding-large" style="background: url(images/banner/macbook.jpg) no-repeat; background-position: top;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="page-title">News Page</h1>
+                        <div class="breadcrumbs">
+                            <span class="item">
+                                <a href="HomeController">Home /</a>
+                            </span>
+                            <span class="item">News</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
+        <section id="latest-blog" class="post-grid padding-large">
+            <div class="container">
+                <div class="row d-flex flex-wrap">
+                @foreach (var item in Model.News)
+                {
+                    <article class="col-md-4 post-item">
+                        <div class="image-holder zoom-effect">
+                            <a href="/customersite/news/Detail?id=@item.NewsId">
+                                <img src="@item.Image" alt="post" class="post-image">
+                            </a>
+                        </div>
+                        <div class="post-content d-flex">
+                            <div class="meta-date">
+                                <div class="meta-day text-primary"></div>
+                                <div class="meta-month">@item.CreatedDate</div>
+                            </div>
+                            <div class="post-header">
+                                <h3 class="post-title">
+                                    <a href="/customersite/news/Detail?id=@item.NewsId">@item.Title</a>
+                                </h3>
+                                <a href="/customersite/news" class="blog-categories">@item.Newsgroup.NewsgroupName</a>
+                            </div>
+                        </div>
+                    </article>
+                }
+
+                   
+                </div>
+            <div style="text-align: center">
+                <nav class="navigation paging-navigation text-center padding-medium" role="navigation">
+                    <div class="pagination loop-pagination d-flex justify-content-center">
+                @if (Model.News.PageIndex > 1)
+                {
+                    <a href="?pageIndex=@(Model.News.PageIndex - 1)" class="pagination-arrow d-flex align-items-center">
+                        <i class="icon icon-arrow-left"></i>
+                    </a>
+                }
+                else
+                {
+                    <span class="pagination-arrow d-flex align-items-center">
+                        <i class="icon icon-arrow-left"></i>
+                    </span>
+                }
+
+                @for (int i = 1; i <= Model.News.TotalPages; i++)
+                {
+                    if (i == Model.News.PageIndex)
+                    {
+                        <span aria-current="page" class="page-numbers current">@i</span>
+                    }
+                    else
+                    {
+                        <a href="?pageIndex=@i" class="page-numbers">@i</a>
+                    }
+                }
+
+                @if (Model.News.PageIndex < Model.News.TotalPages)
+                {
+                    <a href="?pageIndex=@(Model.News.PageIndex + 1)" class="pagination-arrow d-flex align-items-center">
+                        <i class="icon icon-arrow-right"></i>
+                    </a>
+                }
+                else
+                {
+                    <span class="pagination-arrow d-flex align-items-center">
+                        <i class="icon icon-arrow-right"></i>
+                    </span>
+                }
+                </div>
+                </nav>
+            </div>
+
+            </div>
+        </section>
+
+
+        <section id="shipping-information">
+            <hr>
+            <div class="container">
+                <div class="row d-flex flex-wrap align-items-center justify-content-between">
+                    <div class="col-md-3 col-sm-6">
+                        <div class="icon-box">
+                            <i class="icon icon-truck"></i>
+                            <h4 class="block-title">
+                                <strong>Free shipping</strong> Over $200
+                            </h4>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="icon-box">
+                            <i class="icon icon-return"></i>
+                            <h4 class="block-title">
+                                <strong>Money back</strong> Return within 7 days
+                            </h4>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="icon-box">
+                            <i class="icon icon-tags1"></i>
+                            <h4 class="block-title">
+                                <strong>Buy 4 get 5th</strong> 50% off
+                            </h4>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="icon-box">
+                            <i class="icon icon-help_outline"></i>
+                            <h4 class="block-title">
+                                <strong>Any questions?</strong> experts are ready
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+        </section>
+    
 
      @*FOOTER*@
      <partial name="/Pages/_FooterCustomerSite.cshtml" model="new PROJECT_PRN221.Pages._FooterCustomerSiteModel()"/>
