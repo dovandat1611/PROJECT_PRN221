@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Newtonsoft.Json;
 using PROJECT_PRN221.Models;
+using PROJECT_PRN221.Utils;
+using System;
 
 namespace PROJECT_PRN221.Pages.adminsite.authenticate.login
 {
@@ -30,13 +32,13 @@ namespace PROJECT_PRN221.Pages.adminsite.authenticate.login
                     return Page();
                 }
                 else
-                {   
-                    Admin admin = _context.Admins.FirstOrDefault(x => x.Username.Equals(username) && x.Password.Equals(password));
+                {
+                    Admin admin = _context.Admins.FirstOrDefault(x => x.Username.Equals(username) && x.Password.Equals(Validation.HashPassword(password)));
                     if(admin != null)
                     {
                         string adminJson = JsonConvert.SerializeObject(admin);
                         HttpContext.Session.SetString("admin", adminJson);
-                        return RedirectToPage("/adminsite/profile/Index");
+                        return RedirectToPage("/adminsite/dashboard/Index");
                     }
                     else
                     {

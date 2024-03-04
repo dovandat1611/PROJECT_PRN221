@@ -3,31 +3,9 @@
 
 @{
     ViewData["Title"] = "Order";
+    Layout = "_AdminLayout";
 }
 
-<!DOCTYPE html>
-<html lang="en">
-
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Star Admin2 </title>
-        <link rel="stylesheet" href="~/admin/vendors/feather/feather.css">
-        <link rel="stylesheet" href="~/admin/vendors/mdi/css/materialdesignicons.min.css">
-        <link rel="stylesheet" href="~/admin/vendors/ti-icons/css/themify-icons.css">
-        <link rel="stylesheet" href="~/admin/vendors/typicons/typicons.css">
-        <link rel="stylesheet" href="~/admin/vendors/simple-line-icons/css/simple-line-icons.css">
-        <link rel="stylesheet" href="~/admin/vendors/css/vendor.bundle.base.css">
-        <link rel="stylesheet" href="~/admin/css/vertical-layout-light/style.css">
-        <link rel="shortcut icon" href="~/admin/images/favicon.png" />
-        <style>
-            a {
-                all: unset;
-                cursor: pointer;
-            }
-        </style>
-    </head>
-    <body>
                 <div class="container-scroller">
 
                 <partial name="/Pages/_HeaderAdminsite.cshtml" model="new PROJECT_PRN221.Pages._HeaderAdminsiteModel()"/>
@@ -68,12 +46,18 @@
                                                     <th>Payment</th>
                                                     <th>Status</th>
                                                     <th>Detail</th>
-@*                                                        <c:if test="${status.equalsIgnoreCase('Wait')}">
-                                                        <th>Update Status</th>
-                                                        </c:if>
-                                                        <c:if test="${status.equalsIgnoreCase('Process')}">
-                                                        <th>Update Status</th>
-                                                        </c:if>*@
+                                        @if (!string.IsNullOrEmpty(Model.Status))
+                                        {
+                                                    @if (Model.Status.Equals("Wait"))
+                                                    {
+                                                         <th>Update Status</th>
+                                                    }
+                                                    @if (Model.Status.Equals("Process"))
+                                                    {
+                                                         <th>Update Status</th>
+                                                    }                                            
+                                        }
+
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -99,12 +83,14 @@
                                                         </td> 
 
                                                         <td><div class="badge badge-info"><a href="/adminsite/orderdetail/?id=@item.OrderId">Detail</a></div></td>  
-@*
-                                                        <c:if test="${status.equalsIgnoreCase('Wait')}">
+                                            @if (!string.IsNullOrEmpty(Model.Status))
+                                            {
+                                                @if (Model.Status.Equals("Wait"))
+                                            {
                                                             <td> 
-                                                                <form method="post" action="OrderController"> 
+                                                                <form method="post"> 
                                                                     <input type="hidden" name="service" value="updateStatus">
-                                                                    <input  type="hidden" name="order_id" id="order_id" value="${d.order_id}"> 
+                                                                    <input  type="hidden" name="id" value="@item.OrderId"> 
                                                                     <label  for="status">Status: </label> 
                                                                     <Select class="input" name="status" id="status"> 
                                                                         <option selected value="Wait">Wait</option>
@@ -113,13 +99,14 @@
                                                                     </Select> 
                                                                     <input type="submit" value="Update">
                                                                 </form> 
-                                                            </td>
-                                                        </c:if>
-                                                        <c:if test="${status.equalsIgnoreCase('Process')}">
+                                                            </td>                                                
+                                            }
+                                            @if (Model.Status.Equals("Process"))
+                                            {
                                                             <td> 
-                                                                <form method="post" action="OrderController"> 
+                                                                <form method="post"> 
                                                                     <input type="hidden" name="service" value="updateStatus">
-                                                                    <input  type="hidden" name="order_id" id="order_id" value="${d.order_id}"> 
+                                                                    <input  type="hidden" name="id" value="@item.OrderId"> 
                                                                     <label  for="status">Status: </label> 
                                                                     <Select class="input" name="status" id="status"> 
                                                                         <option  value="Wait">Wait</option>
@@ -128,8 +115,9 @@
                                                                     </Select> 
                                                                     <input type="submit" value="Update">
                                                                 </form> 
-                                                            </td>
-                                                        </c:if>*@
+                                                            </td>                                                
+                                            }
+                                            }
 
                                                     </tr>
                                                 }
@@ -180,47 +168,3 @@
                     </div>
                 </div>
             </div>
-
-
-        <script src="~/admin/vendors/js/vendor.bundle.base.js"></script>
-        <script src="~/admin/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
-        <script src="~/admin/js/off-canvas.js"></script>
-        <script src="~/admin/js/hoverable-collapse.js"></script>
-        <script src="~/admin/js/template.js"></script>
-        <script src="~/admin/js/settings.js"></script>
-        <script src="~/admin/js/todolist.js"></script>
-            <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
-    <script>
-                                                    function exportToExcel() {
-                                                        const table = document.getElementById("myTable");
-                                                        const wb = XLSX.utils.table_to_book(table, {sheet: "SheetJS"});
-                                                        const wbout = XLSX.write(wb, {bookType: "xlsx", type: "array"});
-                                                        saveAsExcelFile(wbout, "order.xlsx");
-                                                    }
-
-                                                    function saveAsExcelFile(buffer, fileName) {
-                                                        const data = new Blob([buffer], {type: "application/octet-stream"});
-                                                        const link = document.createElement("a");
-                                                        link.href = window.URL.createObjectURL(data);
-                                                        link.download = fileName;
-                                                        link.click();
-                                                    }
-                                                    const numberElements = document.getElementsByClassName('number');
-                                                    for (let i = 0; i < numberElements.length; i++) {
-                                                        const numberElement = numberElements[i];
-                                                        const number = parseFloat(numberElement.innerText);
-                                                        const formattedNumber = formatCurrency(number);
-                                                        numberElement.innerText = formattedNumber;
-                                                    }
-
-                                                    function formatCurrency(value) {
-                                                        const intValue = parseInt(value);
-                                                        const formattedValue = intValue.toLocaleString('vi-VN', {
-                                                            style: 'currency',
-                                                            currency: 'VND',
-                                                        });
-                                                        return formattedValue;
-                                                    }
-    </script>
-    </body>
-</html>

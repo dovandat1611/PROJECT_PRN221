@@ -5,15 +5,26 @@ namespace PROJECT_PRN221.Pages.adminsite.authenticate.logout
 {
     public class IndexModel : PageModel
     {
-        public IActionResult OnGet()
+        public void OnGet()
         {
-            var session = HttpContext.Session;
 
-            if (session.Keys.Contains("admin"))
-            {
-                session.Remove("admin");
-            }
-            return RedirectToPage("/admin/authenticate/login/Index");
         }
+
+        public IActionResult OnPost(string otp)
+        {
+            string sessionOTP = HttpContext.Session.GetString("otp");
+
+            if (sessionOTP.Equals(otp))
+            {
+                return RedirectToPage("/adminsite/authenticate/changespassword/Index");
+            }
+            else
+            {
+                HttpContext.Session.Remove("username");
+                HttpContext.Session.Remove("otp");
+                return RedirectToPage("/adminsite/authenticate/forgotpassword/Index");
+            }
+        }
+
     }
 }

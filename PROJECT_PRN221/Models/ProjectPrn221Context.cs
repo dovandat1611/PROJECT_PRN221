@@ -39,6 +39,8 @@ public partial class ProjectPrn221Context : DbContext
 
     public virtual DbSet<Warranty> Warranties { get; set; }
 
+    public virtual DbSet<About> Abouts { get; set; }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         var builder = new ConfigurationBuilder()
@@ -142,6 +144,8 @@ public partial class ProjectPrn221Context : DbContext
                 .HasMaxLength(250)
                 .HasColumnName("name");
         });
+
+
 
         modelBuilder.Entity<Customer>(entity =>
         {
@@ -345,6 +349,25 @@ public partial class ProjectPrn221Context : DbContext
                 .HasForeignKey(d => d.ProductId)
                 .HasConstraintName("FK_Warranty_Product");
         });
+
+        modelBuilder.Entity<About>(entity =>
+        {
+            entity.ToTable("About");
+
+            entity.HasKey(e => e.aId); 
+
+            entity.Property(e => e.aId).HasColumnName("aId");
+            entity.Property(e => e.Title)
+                .HasMaxLength(100)
+                .HasColumnName("Title");
+            entity.Property(e => e.Image)
+                .HasMaxLength(255)
+                .HasColumnName("Image");
+            entity.Property(e => e.Content)
+                .HasColumnType("text")
+                .HasColumnName("Content");
+        });
+
 
         OnModelCreatingPartial(modelBuilder);
     }

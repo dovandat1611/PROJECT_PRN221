@@ -30,8 +30,30 @@ namespace PROJECT_PRN221.Pages.adminsite.profile
         [BindProperty]
         public Admin Admin { get; set; } = default!;
 
+
+        public bool checkSession()
+        {
+            bool checkS = true;
+            var httpContext = HttpContext;
+            if (httpContext != null && httpContext.Session != null)
+            {
+                string isCustomerAuthenticated = httpContext.Session.GetString("admin");
+                if (string.IsNullOrEmpty(isCustomerAuthenticated))
+                {
+                    checkS = false;
+                }
+            }
+            return checkS;
+        }
+
         public async Task<IActionResult> OnGetAsync()
-        {   
+        {
+
+            if (checkSession() == false)
+            {
+                return RedirectToPage("/adminsite/authenticate/login/Index");
+            }
+
             // get adminid form session
             string adminJson = HttpContext.Session.GetString("admin");
             Admin adminjson = JsonConvert.DeserializeObject<Admin>(adminJson);

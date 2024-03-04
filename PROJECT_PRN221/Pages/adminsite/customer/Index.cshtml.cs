@@ -21,9 +21,27 @@ namespace PROJECT_PRN221.Pages.adminsite.customer
         }
 
         public PaginatedList<Customer> Customer { get;set; } = default!;
-
-        public async Task OnGetAsync(int? pageIndex)
+        public bool checkSession()
         {
+            bool checkS = true;
+            var httpContext = HttpContext;
+            if (httpContext != null && httpContext.Session != null)
+            {
+                string isCustomerAuthenticated = httpContext.Session.GetString("admin");
+                if (string.IsNullOrEmpty(isCustomerAuthenticated))
+                {
+                    checkS = false;
+                }
+            }
+            return checkS;
+        }
+
+        public async Task<IActionResult> OnGetAsync(int? pageIndex)
+        {
+            if (checkSession() == false)
+            {
+                return RedirectToPage("/adminsite/authenticate/login/Index");
+            }
             if (pageIndex == null)
             {
                 pageIndex = 1;
@@ -36,6 +54,7 @@ namespace PROJECT_PRN221.Pages.adminsite.customer
                 Customer = await PaginatedList<Customer>.CreateAsync(
                 customersIQ.AsNoTracking(), pageIndex ?? 1, pageSize);
             }
+            return Page();
         }
 
 
@@ -52,6 +71,7 @@ namespace PROJECT_PRN221.Pages.adminsite.customer
                 {
                     Customer customer = _context.Customers.FirstOrDefault(x => x.CustomerId == id);
                     customer.Status = status;
+                    _context.Customers.Update(customer);
                     _context.SaveChanges();
 
                     IQueryable<Customer> customersIQ = from s in _context.Customers select s;

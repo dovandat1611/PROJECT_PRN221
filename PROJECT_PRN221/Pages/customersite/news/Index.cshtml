@@ -1,45 +1,9 @@
 ﻿@page
 @model PROJECT_PRN221.Pages.customersite.news.IndexModel
 @{
+    ViewData["Title"] = "News";
+    Layout = "CustomerLayout";
 }
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="format-detection" content="telephone=no">
-        <meta name="apple-mobile-web-app-capable" content="yes">
-        <link rel="stylesheet" type="text/css" href="~/customer/css/normalize.css">
-        <link rel="stylesheet" type="text/css" href="~/customer/icomoon/icomoon.css">
-        <link rel="stylesheet" type="text/css" media="all" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" type="text/css" href="~/customer/css/vendor.css">
-        <link rel="stylesheet" type="text/css" href="~/customer/style.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-        <!-- script
-        ================================================== -->
-        <script src="~/customer/js/modernizr.js"></script>
-        <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-PV3J437JX5"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag() {
-                dataLayer.push(arguments);
-            }
-            gtag('js', new Date());
-
-            gtag('config', 'G-PV3J437JX5');
-        </script>
-    </head>
-<body>
-    <!-- ================================================== -->
-
-
-
-
-
     
     @*HEADER*@
     @if (!string.IsNullOrEmpty(@Model.isCustomerAuthenticated))
@@ -76,20 +40,20 @@
                 {
                     <article class="col-md-4 post-item">
                         <div class="image-holder zoom-effect">
-                            <a href="/customersite/news/Detail?id=@item.NewsId">
-                                <img src="@item.Image" alt="post" class="post-image">
+                            <a href="/customersite/news/Detail?id=@item.news_id">
+                                <img src="@item.image" alt="post" class="post-image">
                             </a>
                         </div>
                         <div class="post-content d-flex">
                             <div class="meta-date">
-                                <div class="meta-day text-primary"></div>
-                                <div class="meta-month">@item.CreatedDate</div>
+                                <div class="meta-day text-primary">@item.day</div>
+                                <div class="meta-month">@item.month-@item.year</div>
                             </div>
                             <div class="post-header">
                                 <h3 class="post-title">
-                                    <a href="/customersite/news/Detail?id=@item.NewsId">@item.Title</a>
+                                    <a href="/customersite/news/Detail?id=@item.news_id">@item.title</a>
                                 </h3>
-                                <a href="/customersite/news" class="blog-categories">@item.Newsgroup.NewsgroupName</a>
+                                <a href="/customersite/news" class="blog-categories">@item.newsgroup_name</a>
                             </div>
                         </div>
                     </article>
@@ -189,13 +153,3 @@
 
      @*FOOTER*@
      <partial name="/Pages/_FooterCustomerSite.cshtml" model="new PROJECT_PRN221.Pages._FooterCustomerSiteModel()"/>
-
-
-
-
-    <!-- ================================================== -->
-        <script src="~/customer/js/jquery-1.11.0.min.js"></script>
-        <script src="~/customer/js/plugins.js"></script>
-        <script src="~/customer/js/script.js"></script>
-</body>
-</html>

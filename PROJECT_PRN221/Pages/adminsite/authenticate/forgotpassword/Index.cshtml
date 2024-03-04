@@ -1,24 +1,9 @@
 ﻿@page
 @model PROJECT_PRN221.Pages.adminsite.authenticate.forgotpassword.IndexModel
 @{
+    ViewData["Title"] = "Forgot Password";
+    Layout = "_AdminLayout";
 }
-<!DOCTYPE html>
-<html lang="en">
-
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Star Admin2 </title>
-        <link rel="stylesheet" href="~/admin/vendors/feather/feather.css">
-        <link rel="stylesheet" href="~/admin/vendors/mdi/css/materialdesignicons.min.css">
-        <link rel="stylesheet" href="~/admin/vendors/ti-icons/css/themify-icons.css">
-        <link rel="stylesheet" href="~/admin/vendors/typicons/typicons.css">
-        <link rel="stylesheet" href="~/admin/vendors/simple-line-icons/css/simple-line-icons.css">
-        <link rel="stylesheet" href="~/admin/vendors/css/vendor.bundle.base.css">
-        <link rel="stylesheet" href="~/admin/css/vertical-layout-light/style.css">
-        <link rel="shortcut icon" href="~/admin/images/favicon.png" />
-    </head>
-    <body>
 
          <div class="container-scroller">
             <div class="container-fluid page-body-wrapper full-page-wrapper">
@@ -26,12 +11,12 @@
                     <div class="row w-100 mx-0">
                         <div class="col-lg-4 mx-auto">
                             <div class="auth-form-light text-left py-5 px-4 px-sm-5">
-                                <div class="brand-logo">
-                                    <img src="images/logo.svg" alt="logo">
-                                </div>
+               
                                 <h2 style="text-align: center">Forgot Password</h2>
-
-                                <form action="SendOTPAdminController" method="post">
+                                @if(Model.ErrorMess != null){
+                                     <h5>@Model.ErrorMess</h5>
+                                }
+                                <form method="post">
                                     <div class="form-group">
                                         <input type="text" class="form-control form-control-lg" name="username" placeholder="Username">
                                     </div>
@@ -47,25 +32,12 @@
                                 <div class="my-2 d-flex justify-content-between align-items-center">
                                     <div class="form-check">
                                     </div>
-                                    <a href="LoginAdminController" class="auth-link text-black">Sign In?</a>
+                                    <a href="/adminsite/authenticate/login" class="auth-link text-black">Sign In?</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- content-wrapper ends -->
             </div>
-            <!-- page-body-wrapper ends -->
         </div>
-
-
-
-        <script src="~/admin/vendors/js/vendor.bundle.base.js"></script>
-        <script src="~/admin/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
-        <script src="~/admin/js/off-canvas.js"></script>
-        <script src="~/admin/js/hoverable-collapse.js"></script>
-        <script src="~/admin/js/template.js"></script>
-        <script src="~/admin/js/settings.js"></script>
-        <script src="~/admin/js/todolist.js"></script>
-    </body>
-</html>
+ 

@@ -2,83 +2,9 @@
 @model PROJECT_PRN221.Pages.adminsite.news.CreateModel
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Create News";
+    Layout = "_AdminLayout";
 }
-
-@*<h1>Create</h1>
-
-<h4>News</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="News.NewsgroupId" class="control-label"></label>
-                <select asp-for="News.NewsgroupId" class ="form-control" asp-items="ViewBag.NewsgroupId"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="News.Image" class="control-label"></label>
-                <input asp-for="News.Image" class="form-control" />
-                <span asp-validation-for="News.Image" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="News.Title" class="control-label"></label>
-                <input asp-for="News.Title" class="form-control" />
-                <span asp-validation-for="News.Title" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="News.Content" class="control-label"></label>
-                <input asp-for="News.Content" class="form-control" />
-                <span asp-validation-for="News.Content" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="News.Createdby" class="control-label"></label>
-                <select asp-for="News.Createdby" class ="form-control" asp-items="ViewBag.Createdby"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="News.CreatedDate" class="control-label"></label>
-                <input asp-for="News.CreatedDate" class="form-control" />
-                <span asp-validation-for="News.CreatedDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="News.Status" class="control-label"></label>
-                <input asp-for="News.Status" class="form-control" />
-                <span asp-validation-for="News.Status" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
-
-<div>
-    <a asp-page="Index">Back to List</a>
-</div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
-*@
-
-<!DOCTYPE html>
-<html lang="en">
-
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Star Admin2 </title>
-        <link rel="stylesheet" href="~/admin/vendors/feather/feather.css">
-        <link rel="stylesheet" href="~/admin/vendors/mdi/css/materialdesignicons.min.css">
-        <link rel="stylesheet" href="~/admin/vendors/ti-icons/css/themify-icons.css">
-        <link rel="stylesheet" href="~/admin/vendors/typicons/typicons.css">
-        <link rel="stylesheet" href="~/admin/vendors/simple-line-icons/css/simple-line-icons.css">
-        <link rel="stylesheet" href="~/admin/vendors/css/vendor.bundle.base.css">
-        <link rel="stylesheet" href="~/admin/css/vertical-layout-light/style.css">
-        <link rel="shortcut icon" href="~/admin/images/favicon.png" />
-    </head>
-    <body>
 
         <div class="container-scroller">
                 <partial name="/Pages/_HeaderAdminsite.cshtml" model="new PROJECT_PRN221.Pages._HeaderAdminsiteModel()"/>
@@ -108,7 +34,7 @@
 
                                                 <div class="form-group">
                                                     <label asp-for="@Model.FileUploads">Image</label>
-                                                    <img id="preview-img" src="@Model.News.Image" alt="@Model.News.Image" style="width: 30%">
+                                                    <img id="preview-img" src="" alt="" style="width: 30%">
                                                     <input type="file" asp-for="@Model.FileUploads"  
                                                      class="form-control" onchange="previewImage()" accept="image/*" >
                                                 </div>
@@ -139,44 +65,3 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-        <script src="~/admin/vendors/js/vendor.bundle.base.js"></script>
-        <script src="~/admin/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
-        <script src="~/admin/js/off-canvas.js"></script>
-        <script src="~/admin/js/hoverable-collapse.js"></script>
-        <script src="~/admin/js/template.js"></script>
-        <script src="~/admin/js/settings.js"></script>
-        <script src="~/admin/js/todolist.js"></script>
-                <script src="~/admin/vendors/tinymce/tinymce.min.js"></script>
-        <script src="~/admin/vendors/tinymce/tinymce.js"></script>
-        <script src="~/admin/vendors/tinymce/jquery.tinymce.js"></script>
-        <script src="~/admin/vendors/tinymce/jquery.tinymce.min.js"></script>
-        <script>
-                                                    tinymce.init({
-                                                        selector: '#inputText',
-                                                        height: 500,
-                                                        menubar: 'file edit view format',
-                                                        plugins: 'advlist autolink lists link image charmap print preview anchor',
-                                                        toolbar: 'undo redo | formatselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image'
-                                                    });
-        </script>
-        <script>
-            function previewImage() {
-                var preview = document.querySelector('#preview-img');
-                var file = document.querySelector('input[type=file]').files[0];
-                var reader = new FileReader();
-
-                reader.onloadend = function () {
-                    preview.src = reader.result;
-                };
-
-                if (file) {
-                    reader.readAsDataURL(file);
-                } else {
-                    preview.src = "";
-                }
-            }
-        </script>
-    </body>
-</html>

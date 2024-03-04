@@ -1,38 +1,11 @@
 ﻿@page
 @model PROJECT_PRN221.Pages.customersite.news.DetailModel
 @{
+    ViewData["Title"] = "News Detail";
+    Layout = "CustomerLayout";
 }
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="format-detection" content="telephone=no">
-        <meta name="apple-mobile-web-app-capable" content="yes">
-        <link rel="stylesheet" type="text/css" href="~/customer/css/normalize.css">
-        <link rel="stylesheet" type="text/css" href="~/customer/icomoon/icomoon.css">
-        <link rel="stylesheet" type="text/css" media="all" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" type="text/css" href="~/customer/css/vendor.css">
-        <link rel="stylesheet" type="text/css" href="~/customer/style.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-        <!-- script
-        ================================================== -->
-        <script src="~/customer/js/modernizr.js"></script>
-        <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-PV3J437JX5"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag() {
-                dataLayer.push(arguments);
-            }
-            gtag('js', new Date());
 
-            gtag('config', 'G-PV3J437JX5');
-        </script>
-                <style>
+        <style>
             .image-overlay {
                 display: none;
                 position: fixed;
@@ -74,8 +47,7 @@
                 right: 10px;
             }
         </style>
-    </head>
-<body>
+
     <!-- ================================================== -->
 
 
@@ -117,7 +89,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="post-meta">
-                            <span class="post-date">@Model.News.CreatedDate</span> / <a href="NewsCustomerController" class="blog-categories">@Model.News.Newsgroup.NewsgroupName</a>
+                            <span class="post-date">@Model.Newsview.day @Model.Newsview.month, @Model.Newsview.year</span> / <a href="/customersite/news" class="blog-categories">@Model.News.Newsgroup.NewsgroupName</a>
                         </div>
                         <h1 class="page-title">@Model.News.Title</h1>
                         <div class="feature-image">
@@ -127,7 +99,7 @@
                     <div class="col-md-6">
                         <div class="post-content">
                         <p><strong>@Model.News.Title</strong></p>
-                        <p>@Model.News.Content</p>
+                        <p> @Html.Raw(Model.News.Content)</p>
                             <div class="post-tags">
                                 <div class="block-tag">
                                     <ul class="list-unstyled d-flex">
@@ -163,13 +135,10 @@
                         </div>
                     </div>
                 </div>
-            
-
-                  
-           
             </div>
         </div>
 
+        <hr>
 
         @*Related News*@
         <section id="flash-sales" class="product-store padding-large">
@@ -187,7 +156,7 @@
                     {
                         <div class="swiper-slide  post-item product-item">
                             <div class="image-holder zoom-effect">
-                                <a href="customersite/news/Detail?@item.NewsId">
+                                <a href="/customersite/news/Detail?id=@item.NewsId">
                                     <img src="@item.Image" alt="post" class="post-image">
                                 </a>
                             </div>
@@ -198,15 +167,13 @@
                                 </div>
                                 <div class="post-header">
                                     <h4 class="post-title">
-                                        <a href="customersite/news/Detail?@item.NewsId">@item.Title</a>
+                                        <a href="/customersite/news/Detail?id=@item.NewsId">@item.Title</a>
                                     </h4>
-                                    <a href="customersite/news/Detail" class="blog-categories">@item.Newsgroup.NewsgroupName</a>
+                                    <a href="/customersite/news/Detail" class="blog-categories">@item.Newsgroup.NewsgroupName</a>
                                 </div>
                             </div>
                         </div>
                     }
-                   
-                       
                     </div>
                     <div class="swiper-pagination"></div>
                 </div>
@@ -217,10 +184,3 @@
      @*FOOTER*@
      <partial name="/Pages/_FooterCustomerSite.cshtml" model="new PROJECT_PRN221.Pages._FooterCustomerSiteModel()"/>
 
-
-    <!-- ================================================== -->
-        <script src="~/customer/js/jquery-1.11.0.min.js"></script>
-        <script src="~/customer/js/plugins.js"></script>
-        <script src="~/customer/js/script.js"></script>
-</body>
-</html>

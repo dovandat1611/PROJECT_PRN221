@@ -2,76 +2,12 @@
 @model PROJECT_PRN221.Pages.adminsite.contact.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Contact";
+    Layout = "_AdminLayout";
 }
 
-@*<h1>Index</h1>
-
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Contact[0].Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Contact[0].Gmail)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Contact[0].ContactContent)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Contact[0].ContactDate)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.Contact) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Gmail)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ContactContent)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ContactDate)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.ContactId">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.ContactId">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.ContactId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>*@
-
-<!DOCTYPE html>
-<html lang="en">
-
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Star Admin2 </title>
-        <link rel="stylesheet" href="~/admin/vendors/feather/feather.css">
-        <link rel="stylesheet" href="~/admin/vendors/mdi/css/materialdesignicons.min.css">
-        <link rel="stylesheet" href="~/admin/vendors/ti-icons/css/themify-icons.css">
-        <link rel="stylesheet" href="~/admin/vendors/typicons/typicons.css">
-        <link rel="stylesheet" href="~/admin/vendors/simple-line-icons/css/simple-line-icons.css">
-        <link rel="stylesheet" href="~/admin/vendors/css/vendor.bundle.base.css">
-        <link rel="stylesheet" href="~/admin/css/vertical-layout-light/style.css">
-        <link rel="shortcut icon" href="~/admin/images/favicon.png" />
-    </head>
-    <body>
         <div class="container-scroller">
-                 <partial name="/Pages/_HeaderAdminsite.cshtml" model="new PROJECT_PRN221.Pages._HeaderAdminsiteModel()"/>
+                <partial name="/Pages/_HeaderAdminsite.cshtml" model="new PROJECT_PRN221.Pages._HeaderAdminsiteModel()"/>
 
                 <partial name="/Pages/_LeftPageAdminSite.cshtml" model="new PROJECT_PRN221.Pages._LeftPageAdminSiteModel()"/>
                 <!-- partial -->
@@ -85,17 +21,18 @@
                                             <h4 class="card-title card-title-dash">Contact</h4>
                                         </div>
                                         <div>
-                                            <form class="search-form" action="ContactController?service=searchContact" method="post">
-                                                <input type="text" class="form-control" name="name" placeholder="Search Here" title="Search here">
+                                            <form class="search-form" method="post">
+                                                <input type="hidden" name="service" value="searchContact">
+                                                <input type="text" class="form-control" name="content" placeholder="Search Here" title="Search here">
                                             </form>
                                         </div>
                                         <div>
                                             <a onclick="exportToExcel()" class="btn btn-primary text-white me-0"><i class="icon-download"></i>Export</a>
                                         </div>
                                     </div>
-                                    <div style="text-align: center">
+          @*                          <div style="text-align: center">
                                         <p class="badge badge-danger">${ms}</p>
-                                    </div>
+                                    </div>*@
                                     <div class="table-responsive">
                                         <table class="table table-hover"  id="myTable">
                                             <thead>
@@ -109,48 +46,58 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <c:forEach items="${data}" var="d">
+                                        @foreach (var item in Model.Contact)
+                                        {
                                                     <tr>
-                                                        <td>${d.contact_id}</td>
-                                                        <td>${d.name}</td>
-                                                        <td>${d.email}</td>
-                                                        <td>${d.contact_date}</td>
-                                                        <td>${d.contact_content}</td> 
-                                                        <td ><div class="badge badge-danger"> <a href="ContactController?service=deleteContact&id=${d.contact_id}">Delete</a></div></td> 
-                                                    </tr>
-                                                </c:forEach>
+                                                        <td>@item.ContactId</td>
+                                                        <td>@item.Name</td>
+                                                        <td>@item.Gmail</td>
+                                                        <td>@item.ContactDate</td>
+                                                        <td>@item.ContactContent</td> 
+                                                        <td ><div class="badge badge-danger"> <a href="/adminsite/contact/Delete?id=@item.ContactId">Delete</a></div></td> 
+                                                    </tr> 
+                                        }
+
                                             </tbody>
                                         </table>
-                                        <div style="text-align: center">
-                                              <c:choose>
-                                            <c:when test="${currentPage > 1}">
-                                                <a href="?page=${currentPage - 1}">Previous</a>
-                                            </c:when>
-                                            <c:otherwise>
-                                                <span>Previous</span>
-                                            </c:otherwise>
-                                        </c:choose>
-                                        <c:forEach begin="1" end="${totalPages}" varStatus="loop">
-                                            <c:choose>
-                                                <c:when test="${loop.index == currentPage}">
-                                                    <span>${loop.index}</span>
-                                                </c:when>
-                                                <c:otherwise>
-                                                    <c:if test="${id == null}">
-                                                        <a href="?page=${loop.index}">${loop.index}</a>
-                                                    </c:if>  
-                                                </c:otherwise>
-                                            </c:choose>
-                                        </c:forEach>
-                                        <c:choose>
-                                            <c:when test="${currentPage < totalPages}">
-                                                <a href="?page=${currentPage + 1}">Next</a>
-                                            </c:when>
-                                            <c:otherwise>
-                                                <span>Next</span>
-                                            </c:otherwise>
-                                        </c:choose>
-                                        </div>
+                                     @*PAGING*@ 
+
+                                    <div style="text-align: center">
+                                        @if (Model.Contact.PageIndex > 1)
+                                        {
+                                            <a href="?pageIndex=@(Model.Contact.PageIndex - 1)">Previous</a>
+                                        }
+                                        else
+                                        {
+                                            <span>Previous</span>
+                                        }
+
+                                        @for (int i = 1; i <= Model.Contact.TotalPages; i++)
+                                        {
+                                            @if (i == Model.Contact.PageIndex)
+                                            {
+                                                <span>@i</span>
+                                            }
+                                            else
+                                            {   
+                                                <a href="?pageIndex=@i">@i</a>
+                                                @*@if (Model.Admin. == null)
+                                                {
+                                                    <a href="?page=@i">@i</a>
+                                                }*@
+                                            }
+                                        }
+
+                                        @if (Model.Contact.PageIndex < Model.Contact.TotalPages)
+                                        {
+                                            <a href="?pageIndex=@(Model.Contact.PageIndex + 1)">Next</a>
+                                        }
+                                        else
+                                        {
+                                            <span>Next</span>
+                                        }
+                                    </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -158,31 +105,3 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-        <script src="~/admin/vendors/js/vendor.bundle.base.js"></script>
-        <script src="~/admin/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
-        <script src="~/admin/js/off-canvas.js"></script>
-        <script src="~/admin/js/hoverable-collapse.js"></script>
-        <script src="~/admin/js/template.js"></script>
-        <script src="~/admin/js/settings.js"></script>
-        <script src="~/admin/js/todolist.js"></script>
-            <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
-    <script>
-                                                function exportToExcel() {
-                                                    const table = document.getElementById("myTable");
-                                                    const wb = XLSX.utils.table_to_book(table, {sheet: "SheetJS"});
-                                                    const wbout = XLSX.write(wb, {bookType: "xlsx", type: "array"});
-                                                    saveAsExcelFile(wbout, "contact.xlsx");
-                                                }
-
-                                                function saveAsExcelFile(buffer, fileName) {
-                                                    const data = new Blob([buffer], {type: "application/octet-stream"});
-                                                    const link = document.createElement("a");
-                                                    link.href = window.URL.createObjectURL(data);
-                                                    link.download = fileName;
-                                                    link.click();
-                                                }
-    </script>
-    </body>
-</html>

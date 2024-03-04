@@ -16,8 +16,31 @@ namespace PROJECT_PRN221.Pages.customersite.warranty
         }
         public Customer Customer { get; set; }
         public List<OrderWarranty> Warranties { get; set; }
-        public void OnGet()
+
+        public bool checkSession()
         {
+            bool checkS = true;
+            var httpContext = HttpContext;
+            if (httpContext != null && httpContext.Session != null)
+            {
+                string isCustomerAuthenticated = httpContext.Session.GetString("customer");
+                if (string.IsNullOrEmpty(isCustomerAuthenticated))
+                {
+                    checkS = false;
+                }
+            }
+
+            return checkS;
+        }
+
+        public IActionResult OnGet()
+        {   
+
+            if (checkSession() == false)
+            {
+                return RedirectToPage("/customersite/authenticate/login/Index");
+            }
+
             string customerJson = HttpContext.Session.GetString("customer");
             if (!string.IsNullOrEmpty(customerJson))
             {
@@ -33,6 +56,8 @@ namespace PROJECT_PRN221.Pages.customersite.warranty
             {
                 Warranties = OrderWarrantyIFNULL(Customer.CustomerId);
             }
+
+            return Page();
         }
 
         public List<Warranty> OrderWarrantyCheck(int id)

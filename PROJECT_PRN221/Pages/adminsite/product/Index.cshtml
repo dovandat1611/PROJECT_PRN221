@@ -3,27 +3,13 @@
 
 @{
     ViewData["Title"] = "Product";
+    Layout = "_AdminLayout";
 }
 
-<!DOCTYPE html>
-<html lang="en">
-
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="stylesheet" href="~/admin/vendors/feather/feather.css">
-        <link rel="stylesheet" href="~/admin/vendors/mdi/css/materialdesignicons.min.css">
-        <link rel="stylesheet" href="~/admin/vendors/ti-icons/css/themify-icons.css">
-        <link rel="stylesheet" href="~/admin/vendors/typicons/typicons.css">
-        <link rel="stylesheet" href="~/admin/vendors/simple-line-icons/css/simple-line-icons.css">
-        <link rel="stylesheet" href="~/admin/vendors/css/vendor.bundle.base.css">
-        <link rel="stylesheet" href="~/admin/css/vertical-layout-light/style.css">
-        <link rel="shortcut icon" href="~/admin/images/favicon.png" />
-    </head>
-    <body>
                 <div class="container-scroller">
 
                  <!-- partial:../../partials/_navbar.html -->
+
                 <partial name="/Pages/_HeaderAdminsite.cshtml" model="new PROJECT_PRN221.Pages._HeaderAdminsiteModel()"/>
 
                 <partial name="/Pages/_LeftPageAdminSite.cshtml" model="new PROJECT_PRN221.Pages._LeftPageAdminSiteModel()"/>
@@ -42,18 +28,28 @@
 
                                         @*Search Product for Name*@
                                         <div>
-                                            <form class="search-form" action="/adminsite/product/Search" method="post">
+                                            <form class="search-form" method="post">
+                                                <input type="hidden" name="service" value="searchProduct">
                                                 <input type="text" class="form-control" name="name" placeholder="Search Here" title="Search here">
                                             </form>
                                         </div>
 
-                                        @*Search WARRANTY*@
-                                        <div class="badge badge-opacity-warning me-3"><a href="">Search for product Warranty</a></div>
+
+                                        <div>
+                                            <form class="search-form" enctype="multipart/form-data" method="post">
+                                                <input type="hidden" name="service" value="inputFile">
+                                                <div class="d-flex">
+                                                <input type="file" class="form-control" name="inputFile" style="width: 200px;" accept=".json">
+                                                <button type="submit" class="badge badge-info">Import</button>
+                                                </div>
+                                            </form>
+                                        </div>
+
 
                                         @*Download EXCEL*@
                                         <div>
                                             <a href="/adminsite/product/Create" class="btn btn-primary text-white me-0">Create product</a>
-                                            <a onclick="exportToExcel()" class="btn btn-primary text-white me-0"><i class="icon-download"></i>Export</a>
+                                            <a onclick="exportToExcel()" class="btn btn-primary text-white me-0">Export</a>
                                         </div>
 
                                     </div>
@@ -84,34 +80,12 @@
                                         {
                                                     <tr>
                                                         <td>@item.ProductId</td>
-                                                        @*<c:set var="productPrinted" value="false" /> 
-                                                        <c:forEach var="totalwarranty" items="${totalwarrantyofproduct}">
-                                                            <c:if test="${totalwarranty.product_id eq d.product_id}">
-                                                                <c:if test="${!productPrinted}"> 
-                                                                    <td>${d.product_name} | 
-                                                                        <div class="badge badge-opacity-danger">
-                                                                            <a href="WarrantyController?service=displayWarrantyforProduct&id=${d.product_id}">
-                                                                                Total Warranty: ${totalwarranty.total_warranty}
-                                                                            </a>
-                                                                        </div>
-                                                                    </td>
-                                                                    <c:set var="productPrinted" value="true" /> 
-                                                                </c:if>
-                                                            </c:if>
-                                                        </c:forEach>*@
-
-                                                        @*<c:if test="${!productPrinted}">*@
-                                                            <td>@item.ProductName</td>
-                                                        @*</c:if>*@
-
+                                                        <td>@item.ProductName</td>
                                                         <td><img src="@item.Image" alt="alt"/></td>
-
                                                         <td class="number">@item.ListPrice</td>
-
                                                         <td>@item.Discount</td> 
                                                         <td>@item.Category.CategoryName</td> 
                                                         <td>@item.Brand.BrandName</td> 
-
                                                         <td>
                                                             <div class="@(item.Status.Equals("Stocking") ? "badge badge-opacity-success" : "badge badge-opacity-danger")">
                                                                 @item.Status
@@ -173,48 +147,3 @@
 
 
 
-        <script src="~/admin/vendors/js/vendor.bundle.base.js"></script>
-        <script src="~/admin/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
-        <script src="~/admin/js/off-canvas.js"></script>
-        <script src="~/admin/js/hoverable-collapse.js"></script>
-        <script src="~/admin/js/template.js"></script>
-        <script src="~/admin/js/settings.js"></script>
-        <script src="~/admin/js/todolist.js"></script>
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-                <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
-    <script>
-                                                function exportToExcel() {
-                                                    const table = document.getElementById("myTable");
-                                                    const wb = XLSX.utils.table_to_book(table, {sheet: "SheetJS"});
-                                                    const wbout = XLSX.write(wb, {bookType: "xlsx", type: "array"});
-                                                    saveAsExcelFile(wbout, "product.xlsx");
-                                                }
-
-                                                function saveAsExcelFile(buffer, fileName) {
-                                                    const data = new Blob([buffer], {type: "application/octet-stream"});
-                                                    const link = document.createElement("a");
-                                                    link.href = window.URL.createObjectURL(data);
-                                                    link.download = fileName;
-                                                    link.click();
-                                                }
-                                                const numberElements = document.getElementsByClassName('number');
-                                                for (let i = 0; i < numberElements.length; i++) {
-                                                    const numberElement = numberElements[i];
-                                                    const number = parseFloat(numberElement.innerText);
-                                                    const formattedNumber = formatCurrency(number);
-                                                    numberElement.innerText = formattedNumber;
-                                                }
-
-                                                function formatCurrency(value) {
-                                                    const intValue = parseInt(value);
-                                                    const formattedValue = intValue.toLocaleString('vi-VN', {
-                                                        style: 'currency',
-                                                        currency: 'VND',
-                                                    });
-                                                    return formattedValue;
-                                                }
-    </script>
-}
-    </body>
-</html>

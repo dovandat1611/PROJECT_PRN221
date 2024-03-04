@@ -3,30 +3,9 @@
 
 @{
     ViewData["Title"] = "Admin";
+    Layout = "_AdminLayout";
 }
 
-<!DOCTYPE html>
-<html lang="en">
-
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="stylesheet" href="~/admin/vendors/feather/feather.css">
-        <link rel="stylesheet" href="~/admin/vendors/mdi/css/materialdesignicons.min.css">
-        <link rel="stylesheet" href="~/admin/vendors/ti-icons/css/themify-icons.css">
-        <link rel="stylesheet" href="~/admin/vendors/typicons/typicons.css">
-        <link rel="stylesheet" href="~/admin/vendors/simple-line-icons/css/simple-line-icons.css">
-        <link rel="stylesheet" href="~/admin/vendors/css/vendor.bundle.base.css">
-        <link rel="stylesheet" href="~/admin/css/vertical-layout-light/style.css">
-        <link rel="shortcut icon" href="~/admin/images/favicon.png" />
-                <style>
-            a {
-                all: unset;
-                cursor: pointer;
-            }
-        </style>
-    </head>
-    <body>
         <div class="container-scroller">
                 <partial name="/Pages/_HeaderAdminsite.cshtml" model="new PROJECT_PRN221.Pages._HeaderAdminsiteModel()"/>
 
@@ -51,7 +30,7 @@
                                         </div>
                                         <div>
                                             <a href="/adminsite/admin/Create" class="btn btn-primary text-white me-0">Create Admin</a>
-                                            <a onclick="exportToExcel()" class="btn btn-primary text-white me-0"><i class="icon-download"></i>Export</a>
+                                            <a onclick="exportToExcel()" class="btn btn-primary text-white me-0">Export</a>
                                         </div>
                                     </div>
       
@@ -74,7 +53,7 @@
                                                     <tr>
                                                         <td>@item.AdminId</td>
                                                         <td>@item.Name</td>
-                                                        <td>@item.Image</td>
+                                                        <td><img src="@item.Image" alt="@item.Image"/></td>
                                                         <td>@item.Phone</td>
                                                         <td>@item.Dob</td>
                                                         <td>@item.Gmail</td>
@@ -148,13 +127,3 @@
                     </div>
                 </div>
             </div>
-
-        <script src="~/admin/vendors/js/vendor.bundle.base.js"></script>
-        <script src="~/admin/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
-        <script src="~/admin/js/off-canvas.js"></script>
-        <script src="~/admin/js/hoverable-collapse.js"></script>
-        <script src="~/admin/js/template.js"></script>
-        <script src="~/admin/js/settings.js"></script>
-        <script src="~/admin/js/todolist.js"></script>
-    </body>
-</html>

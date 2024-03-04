@@ -42,9 +42,27 @@ namespace PROJECT_PRN221.Pages.adminsite.dashboard
         public int o7 { get; set; }
 
 
-
-        public async Task OnGetAsync()
+        public bool checkSession()
         {
+            bool checkS = true;
+            var httpContext = HttpContext;
+            if (httpContext != null && httpContext.Session != null)
+            {
+                string isCustomerAuthenticated = httpContext.Session.GetString("admin");
+                if (string.IsNullOrEmpty(isCustomerAuthenticated))
+                {
+                    checkS = false;
+                }
+            }
+            return checkS;
+        }
+
+        public async Task<IActionResult> OnGetAsync()
+        {
+            if (checkSession() == false)
+            {
+                return RedirectToPage("/adminsite/authenticate/login/Index");
+            }
             DateTime currentDate = DateTime.Now;
             currentDay = currentDate.Day;
             currentMonth = currentDate.Month;
@@ -74,6 +92,8 @@ namespace PROJECT_PRN221.Pages.adminsite.dashboard
             o5 = GetChartTotalOrderWeek(currentDay - 4, currentMonth, currentYear);
             o6 = GetChartTotalOrderWeek(currentDay - 5, currentMonth, currentYear);
             o7 = GetChartTotalOrderWeek(currentDay - 6, currentMonth, currentYear);
+
+            return Page();
         }
 
         public int getChartStatusWarranty(string status)

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using PROJECT_PRN221.Models;
 using RazorPagesLab.utils;
 
@@ -25,9 +26,29 @@ namespace PROJECT_PRN221.Pages.adminsite.news
 
 
         public PaginatedList<News> News { get;set; } = default!;
-
-        public async Task OnGetAsync(int? pageIndex)
+        public bool checkSession()
         {
+            bool checkS = true;
+            var httpContext = HttpContext;
+            if (httpContext != null && httpContext.Session != null)
+            {
+                string isCustomerAuthenticated = httpContext.Session.GetString("admin");
+                if (string.IsNullOrEmpty(isCustomerAuthenticated))
+                {
+                    checkS = false;
+                }
+            }
+            return checkS;
+        }
+
+        public async Task<IActionResult> OnGetAsync(int? pageIndex)
+        {
+
+            if (checkSession() == false)
+            {
+                return RedirectToPage("/adminsite/authenticate/login/Index");
+            }
+
             if (pageIndex == null)
             {
                 pageIndex = 1;
@@ -44,9 +65,11 @@ namespace PROJECT_PRN221.Pages.adminsite.news
                 ViewData["NewsGroups"] = new SelectList(_context.NewsGroups, "NewsgroupId", "NewsgroupName");
                 ViewData["NewsNewsgroupId"] = 0;
             }
+
+            return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync(string service, string title, int newsgroup_id, int? pageIndex)
+        public async Task<IActionResult> OnPostAsync(IFormFile inputFile, string service, string title, int newsgroup_id, int? pageIndex)
         {
             if (pageIndex == null)
             {
@@ -77,6 +100,32 @@ namespace PROJECT_PRN221.Pages.adminsite.news
                         newsQuery = newsQuery.Where(x => x.Title.Contains(title) && x.NewsgroupId == newsgroup_id);
                     }
                 }
+
+                if (service.Equals("inputFile"))
+                {
+                    string fileContent = string.Empty;
+                    if (inputFile != null)
+                    {
+                        using (var reader = new StreamReader(inputFile.OpenReadStream()))
+                        {
+                            fileContent = reader.ReadToEnd();
+                        }
+                        if (!string.IsNullOrEmpty(fileContent))
+                        {
+                            var listOfNews = JsonConvert.DeserializeObject<List<News>>(fileContent);
+                            if (listOfNews.Count > 0)
+                            {
+                                foreach (var item in listOfNews)
+                                {
+                                    item.NewsId = 0;
+                                }
+                                _context.News.AddRange(listOfNews);
+                                _context.SaveChanges();
+                            }
+                        }
+                    }
+                }
+
 
                 ViewData["NewsNewsgroupId"] = newsgroup_id != 0 ? newsgroup_id : 0;
 

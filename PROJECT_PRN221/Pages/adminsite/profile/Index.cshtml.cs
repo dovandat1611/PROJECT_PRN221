@@ -15,8 +15,27 @@ namespace PROJECT_PRN221.Pages.adminsite.profile
         }
 
         public Admin Admin { get; set; }
-        public async Task OnGetAsync()
+        public bool checkSession()
         {
+            bool checkS = true;
+            var httpContext = HttpContext;
+            if (httpContext != null && httpContext.Session != null)
+            {
+                string isCustomerAuthenticated = httpContext.Session.GetString("admin");
+                if (string.IsNullOrEmpty(isCustomerAuthenticated))
+                {
+                    checkS = false;
+                }
+            }
+            return checkS;
+        }
+
+        public async Task<IActionResult> OnGetAsync()
+        {
+            if (checkSession() == false)
+            {
+                return RedirectToPage("/adminsite/authenticate/login/Index");
+            }
             int id = 0;
             string adminJson = HttpContext.Session.GetString("admin");
             if (!string.IsNullOrEmpty(adminJson))
@@ -25,6 +44,8 @@ namespace PROJECT_PRN221.Pages.adminsite.profile
                 id = admin.AdminId;
             }
             Admin = _context.Admins.FirstOrDefault(x => x.AdminId == id);
+
+            return Page();
         }
     }
 }

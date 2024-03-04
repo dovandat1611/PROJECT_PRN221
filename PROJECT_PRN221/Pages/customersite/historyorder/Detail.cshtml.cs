@@ -18,13 +18,35 @@ namespace PROJECT_PRN221.Pages.customersite.historyorder
             _context = context;
         }
         public List<OrderDetail> OrderDetails { get; set; }
-        public async Task OnGetAsync(int id)
+
+        public bool checkSession()
         {
+            bool checkS = true;
+            var httpContext = HttpContext;
+            if (httpContext != null && httpContext.Session != null)
+            {
+                string isCustomerAuthenticated = httpContext.Session.GetString("customer");
+                if (string.IsNullOrEmpty(isCustomerAuthenticated))
+                {
+                    checkS = false;
+                }
+            }
+
+            return checkS;
+        }
+        public async Task<IActionResult> OnGetAsync(int id)
+        {
+            if (checkSession() == false)
+            {
+                return RedirectToPage("/customersite/authenticate/login/Index");
+            }
             if (_context != null)
             {
                 OrderDetails = _context.OrderDetails.Include(x => x.Order).Include(x => x.Product)
                 .Where(x => x.OrderId == id).ToList();
             }
+
+            return Page();
         }
     }
 }

@@ -2,86 +2,56 @@
 @model PROJECT_PRN221.Pages.adminsite.contact.DeleteModel
 
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Delete Contact";
+    Layout = "_AdminLayout";
 }
 
-@*<h1>Delete</h1>
+       <div class="container-scroller">
+                <partial name="/Pages/_HeaderAdminsite.cshtml" model="new PROJECT_PRN221.Pages._HeaderAdminsiteModel()"/>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Contact</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Contact.Name)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Contact.Name)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Contact.Gmail)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Contact.Gmail)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Contact.ContactContent)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Contact.ContactContent)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Contact.ContactDate)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Contact.ContactDate)
-        </dd>
-    </dl>
-    
-    <form method="post">
-        <input type="hidden" asp-for="Contact.ContactId" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-page="./Index">Back to List</a>
-    </form>
-</div>*@
-<!DOCTYPE html>
-<html lang="en">
+                <partial name="/Pages/_LeftPageAdminSite.cshtml" model="new PROJECT_PRN221.Pages._LeftPageAdminSiteModel()"/>
+                <!-- partial -->
+                <div class="main-panel">        
+                    <div class="content-wrapper">
+                        <div class="row">
 
-    <head>
-        <!-- Required meta tags -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Star Admin2 </title>
-        <!-- plugins:css -->
-        <link rel="stylesheet" href="~/admin/vendors/feather/feather.css">
-        <link rel="stylesheet" href="~/admin/vendors/mdi/css/materialdesignicons.min.css">
-        <link rel="stylesheet" href="~/admin/vendors/ti-icons/css/themify-icons.css">
-        <link rel="stylesheet" href="~/admin/vendors/typicons/typicons.css">
-        <link rel="stylesheet" href="~/admin/vendors/simple-line-icons/css/simple-line-icons.css">
-        <link rel="stylesheet" href="~/admin/vendors/css/vendor.bundle.base.css">
-        <!-- endinject -->
-        <!-- Plugin css for this page -->
-        <!-- End plugin css for this page -->
-        <!-- inject:css -->
-        <link rel="stylesheet" href="~/admin/css/vertical-layout-light/style.css">
-        <!-- endinject -->
-        <link rel="shortcut icon" href="~/admin/images/favicon.png" />
-    </head>
-    <body>
+                            <div class="col-md-6 grid-margin stretch-card">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Delete Contact</h4>
+                                        <p class="card-description">
+                                            Are you sure you want to delete this?
+                                        </p>
+
+                                        <div class="form-group">
+                                        <label for="name">Name</label>
+                                        <input type="text" class="form-control" id="name" value="@Model.Contact.Name"  readonly/>
+                                        <label for="email">Email</label>
+                                        <input type="text" class="form-control" id="email" value="@Model.Contact.Gmail"  readonly/>
+                                        <label for="date">Date</label>
+                                        <input type="text" class="form-control" id="date" value="@Model.Contact.ContactDate"  readonly/>
+                                        <label for="content">Content</label>
+                                        <input type="text" class="form-control" id="content" value="@Model.Contact.ContactContent"  readonly/>
+                                        </div>
 
 
-        <!-- plugins:js -->
-        <script src="~/admin/vendors/js/vendor.bundle.base.js"></script>
-        <!-- endinject -->
-        <!-- Plugin js for this page -->
-        <script src="~/admin/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
-        <!-- End plugin js for this page -->
-        <!-- inject:js -->
-        <script src="~/admin/js/off-canvas.js"></script>
-        <script src="~/admin/js/hoverable-collapse.js"></script>
-        <script src="~/admin/js/template.js"></script>
-        <script src="~/admin/js/settings.js"></script>
-        <script src="~/admin/js/todolist.js"></script>
-        <!-- endinject -->
-    </body>
-</html>
+                                        <form class="forms-sample" method="post">
+                                            <input type="hidden" asp-for="Contact.ContactId" />
+                                            <button type="submit" name="submit" class="btn btn-primary me-2">Submit</button>
+                                            <a asp-page="./Index" class="btn btn-light">Back to List</a>
+                                        </form>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <footer class="footer">
+                        <div class="d-sm-flex justify-content-center justify-content-sm-between">
+                            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Premium <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a> from BootstrapDash.</span>
+                            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Copyright © 2021. All rights reserved.</span>
+                        </div>
+                    </footer>
+                </div>
+            </div>

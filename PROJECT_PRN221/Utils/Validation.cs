@@ -1,5 +1,8 @@
 ﻿using PROJECT_PRN221.Models;
+using System.Globalization;
+using System.Text;
 using System.Text.RegularExpressions;
+using System.Security.Cryptography;
 
 namespace PROJECT_PRN221.Utils
 {
@@ -44,5 +47,45 @@ namespace PROJECT_PRN221.Utils
             }
             return false;
         }
+
+        public static string ConvertMonthNumberToName(string monthNumber)
+        {
+            int monthInt = int.Parse(monthNumber);
+            string monthName = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(monthInt);
+            return monthName;
+        }
+
+        public static string GenerateOTP(int length)
+        {
+            const string chars = "0123456789";
+            Random random = new Random();
+            return new string(Enumerable.Repeat(chars, length)
+              .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
+
+        public static string HashPassword(string password)
+        {
+            try
+            {
+                using (SHA256 sha256 = SHA256.Create())
+                {
+                    byte[] hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
+
+                    StringBuilder sb = new StringBuilder();
+                    foreach (byte b in hashedBytes)
+                    {
+                        sb.Append(b.ToString("x2"));
+                    }
+                    return sb.ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return null;
+        }
+
+
     }
 }

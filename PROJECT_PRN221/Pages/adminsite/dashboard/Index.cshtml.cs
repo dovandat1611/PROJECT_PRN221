@@ -48,9 +48,28 @@ namespace PROJECT_PRN221.Pages.adminsite.dashboard
         public decimal t11 { get; set; }
         public decimal t12 { get; set; }
 
-
-        public async Task OnGetAsync(string service, int year)
+        public bool checkSession()
         {
+            bool checkS = true;
+            var httpContext = HttpContext;
+            if (httpContext != null && httpContext.Session != null)
+            {
+                string isCustomerAuthenticated = httpContext.Session.GetString("admin");
+                if (string.IsNullOrEmpty(isCustomerAuthenticated))
+                {
+                    checkS = false;
+                }
+            }
+            return checkS;
+        }
+
+        public async Task<IActionResult> OnGetAsync(string service, int year)
+        {
+            if (checkSession() == false)
+            {
+                return RedirectToPage("/adminsite/authenticate/login/Index");
+            }
+
             // HEADER
             TotalOrder = _context.Orders.Count();
             TotalCustomer = _context.Customers.Count();
@@ -127,7 +146,7 @@ namespace PROJECT_PRN221.Pages.adminsite.dashboard
                                  CategoryName = g.Key.CategoryName,
                                  TotalSold = g.Count()
                              }).ToList();
-
+            return Page();
         }
 
 

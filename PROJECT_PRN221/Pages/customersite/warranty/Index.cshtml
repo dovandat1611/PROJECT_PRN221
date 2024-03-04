@@ -1,37 +1,10 @@
 ﻿@page
 @model PROJECT_PRN221.Pages.customersite.warranty.IndexModel
 @{
+    ViewData["Title"] = "Warranty";
+    Layout = "CustomerLayout";
 }
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="format-detection" content="telephone=no">
-        <meta name="apple-mobile-web-app-capable" content="yes">
-        <link rel="stylesheet" type="text/css" href="~/customer/css/normalize.css">
-        <link rel="stylesheet" type="text/css" href="~/customer/icomoon/icomoon.css">
-        <link rel="stylesheet" type="text/css" media="all" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" type="text/css" href="~/customer/css/vendor.css">
-        <link rel="stylesheet" type="text/css" href="~/customer/style.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-        <!-- script
-        ================================================== -->
-        <script src="~/customer/js/modernizr.js"></script>
-        <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-PV3J437JX5"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag() {
-                dataLayer.push(arguments);
-            }
-            gtag('js', new Date());
 
-            gtag('config', 'G-PV3J437JX5');
-        </script>
         <style>
             .orderstatus {
                 margin-bottom:  20px;
@@ -40,9 +13,7 @@
                 margin-top:   20px;
             }
         </style>
-    </head>
-<body>
-    <!-- ================================================== -->
+
 
     @*HEADER*@
         <partial name="/Pages/_HeaderCustomersite.cshtml" model="new PROJECT_PRN221.Pages._HeaderCustomerSiteModel()"/>
@@ -52,7 +23,7 @@
                     <h1 class="">Warranty</h1>
                 </div>
                 <div style="text-align: center">
-                    <a onclick="exportToExcel()" class="btn btn-primary text-white me-0"> Export</a>
+                    <a href="/customersite/warranty/Order" class="btn btn-primary text-white me-0">Create Warranty</a>
                 </div>
                 <div class="orderstatus">
                     <p><a href="/customersite/warranty/Index?service=displayWarrantyStatus&status=Wait">Wait: @Model.Wait </a></p>
@@ -110,11 +81,6 @@
      @*FOOTER*@
      @*<partial name="/Pages/_FooterCustomerSite.cshtml" model="new PROJECT_PRN221.Pages._FooterCustomerSiteModel()"/>*@
 
-
-    <!-- ================================================== -->
-        <script src="~/customer/js/jquery-1.11.0.min.js"></script>
-        <script src="~/customer/js/plugins.js"></script>
-        <script src="~/customer/js/script.js"></script>
         <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
         <script>
                                         function updateDocumentAndDownload(element) {
@@ -185,5 +151,3 @@
                 link.click();
             }
         </script>
-</body>
-</html>

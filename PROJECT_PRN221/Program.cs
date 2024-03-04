@@ -1,6 +1,13 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using PROJECT_PRN221.Models;
+using static PROJECT_PRN221.Utils.Mail;
+using System.Configuration;
+using Microsoft.Extensions.Configuration;
+using PROJECT_PRN221.Utils;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,6 +30,13 @@ builder.Services.AddSession(options =>
     options.Cookie.HttpOnly = true;
     options.Cookie.IsEssential = true;
 });
+
+
+builder.Services.AddOptions();
+var mailsettings = builder.Configuration.GetSection("MailSettings");
+builder.Services.Configure<MailSettings>(mailsettings);
+builder.Services.AddTransient<IEmailSender, SendMailService>();
+
 
 var app = builder.Build();
 

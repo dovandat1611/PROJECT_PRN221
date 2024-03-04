@@ -1,41 +1,10 @@
 ﻿@page
 @model PROJECT_PRN221.Pages.customersite.authenticate.register.IndexModel
 @{
+    ViewData["Title"] = "Register";
+    Layout = "CustomerLayout";
 }
 
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="format-detection" content="telephone=no">
-        <meta name="apple-mobile-web-app-capable" content="yes">
-        <link rel="stylesheet" type="text/css" href="~/customer/css/normalize.css">
-        <link rel="stylesheet" type="text/css" href="~/customer/icomoon/icomoon.css">
-        <link rel="stylesheet" type="text/css" media="all" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" type="text/css" href="~/customer/css/vendor.css">
-        <link rel="stylesheet" type="text/css" href="~/customer/style.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-        <!-- script
-        ================================================== -->
-        <script src="~/customer/js/modernizr.js"></script>
-        <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-PV3J437JX5"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag() {
-                dataLayer.push(arguments);
-            }
-            gtag('js', new Date());
-
-            gtag('config', 'G-PV3J437JX5');
-        </script>
-    </head>
-<body>
-    <!-- ================================================== -->
        @*HEADER*@
         <partial name="/Pages/_HeaderGuestSite.cshtml" model="new PROJECT_PRN221.Pages._HeaderGuestSiteModel()"/>
 
@@ -71,30 +40,29 @@
                         </nav>
                         
                         @*FORM*@
-                           <form action="register"  method="post"> 
-
+                           <form method="post"> 
                             <div class="tab-content" id="nav-tabContent">
                                 <div class="tab-pane fade active show" id="nav-sign-in" role="tabpanel" aria-labelledby="nav-sign-in-tab">
-                                      
+                                      <input type="hidden" asp-for="Customer.Gender">
                                         <p class="form-group">
-                                            <label for="register">Username *</label>
-                                            <input type="text" minlength="2" name="username" placeholder="Your Email Address" class="u-full-width bg-light" required="">
-                                        <h5>${ms4}</h5>
+                                            <label asp-for="Customer.Username">Username *</label>
+                                            <input type="text" asp-for="Customer.Username" placeholder="Your Username" class="u-full-width bg-light" required="">
+                                            <span asp-validation-for="Customer.Username" class="badge badge-danger"></span>
                                         </p>
                                         <p class="form-group">
-                                            <label for="sign-in">Password *</label>
-                                            <input type="password" minlength="2" name="password" placeholder="Your Password" class="u-full-width bg-light" required="">
-                                        <h5>${ms2}</h5>
-                                        </p>
-
-                                        <p class="form-group">
-                                            <label for="name">Full Name</label>
-                                            <input type="text" minlength="2" name="name" placeholder="Your FullName" class="u-full-width bg-light">
+                                            <label asp-for="Customer.Password">Password *</label>
+                                            <input type="password" asp-for="Customer.Password" placeholder="Your Password" class="u-full-width bg-light" required="">
+                                             <span asp-validation-for="Customer.Password" class="badge badge-danger"></span>
                                         </p>
 
                                         <p class="form-group">
-                                            <label for="dob">Date of birth</label>
-                                            <input type="date" minlength="2" name="dob" class="u-full-width bg-light" >
+                                            <label asp-for="Customer.Name">Full Name</label>
+                                            <input type="text" asp-for="Customer.Name" placeholder="Your FullName" class="u-full-width bg-light">
+                                        </p>
+
+                                        <p class="form-group">
+                                            <label asp-for="Customer.Dob">Date of birth</label>
+                                            <input type="date" asp-for="Customer.Dob" class="u-full-width bg-light" >
                                         </p>
                                         <p>
                                             <label for="gender">Gender: </label>
@@ -103,19 +71,18 @@
                                         </p>  
 
                                         <p class="form-group">
-                                            <label for="username">Email *</label>
-                                            <input type="text" minlength="2" name="gmail" placeholder="Your Email Address" class="u-full-width bg-light" required="">
-                                        <h5>${ms1}</h5>
+                                            <label asp-for="Customer.Email">Email *</label>
+                                            <input type="text" asp-for="Customer.Email" placeholder="Your Email Address" class="u-full-width bg-light" required="">
+                                             <span asp-validation-for="Customer.Email" class="badge badge-danger"></span>
                                         </p>
 
                                         <p class="form-group">
-                                            <label for="sign-in">Phone *</label>
-                                            <input type="text" minlength="2" name="phone"  placeholder="Phone" class="u-full-width bg-light" required="">
-                                        <h5>${ms3}</h5>
+                                            <label asp-for="Customer.Phone">Phone *</label>
+                                            <input type="text" asp-for="Customer.Phone"  placeholder="Phone" class="u-full-width bg-light" required="">
                                         </p> 
                                         <p class="form-group">
-                                            <label for="sign-in">Address</label>
-                                            <input type="text" minlength="2" name="address" placeholder="Address" class="u-full-width bg-light" required="">
+                                            <label asp-for="Customer.Address">Address</label>
+                                            <input type="text" asp-for="Customer.Address" placeholder="Address" class="u-full-width bg-light" required="">
                                         </p> 
                                         <label>
                                             <input type="checkbox">
@@ -134,9 +101,3 @@
 
        @*FOOTER*@
        <partial name="/Pages/_FooterCustomerSite.cshtml" model="new PROJECT_PRN221.Pages._FooterCustomerSiteModel()"/>
-    <!-- ================================================== -->
-        <script src="~/customer/js/jquery-1.11.0.min.js"></script>
-        <script src="~/customer/js/plugins.js"></script>
-        <script src="~/customer/js/script.js"></script>
-</body>
-</html>

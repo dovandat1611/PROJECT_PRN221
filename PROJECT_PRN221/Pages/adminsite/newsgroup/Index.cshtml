@@ -2,64 +2,9 @@
 @model PROJECT_PRN221.Pages.adminsite.newsgroup.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "News Group";
+    Layout = "_AdminLayout";
 }
-
-@*<h1>Index</h1>
-
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.NewsGroup[0].NewsgroupName)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.NewsGroup) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.NewsgroupName)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.NewsgroupId">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.NewsgroupId">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.NewsgroupId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>*@
-
-
-<!DOCTYPE html>
-<html lang="en">
-
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Star Admin2 </title>
-        <link rel="stylesheet" href="~/admin/vendors/feather/feather.css">
-        <link rel="stylesheet" href="~/admin/vendors/mdi/css/materialdesignicons.min.css">
-        <link rel="stylesheet" href="~/admin/vendors/ti-icons/css/themify-icons.css">
-        <link rel="stylesheet" href="~/admin/vendors/typicons/typicons.css">
-        <link rel="stylesheet" href="~/admin/vendors/simple-line-icons/css/simple-line-icons.css">
-        <link rel="stylesheet" href="~/admin/vendors/css/vendor.bundle.base.css">
-        <link rel="stylesheet" href="~/admin/css/vertical-layout-light/style.css">
-        <link rel="shortcut icon" href="~/admin/images/favicon.png" />
-                <style>
-            a {
-                all: unset;
-                cursor: pointer;
-            }
-        </style>
-    </head>
-    <body>
-
 
                 <div class="container-scroller">
 
@@ -78,18 +23,18 @@
                                             <h4 class="card-title card-title-dash">News Group</h4>
                                         </div>
                                         <div>
-                                            <form class="search-form" action="NewsGroupController?service=searchNewsGroup" method="post">
+                                            <form class="search-form" method="post">
+                                                <input type="hidden"  name="service" value="searchNewsGroup"/>
                                                 <input type="text" class="form-control" name="name" placeholder="Search Here" title="Search here">
                                             </form>
                                         </div>
                                         <div>
-                                            <a href="NewsGroupController?service=insertNewsGroup" class="btn btn-primary text-white me-0"><i class="mdi mdi-account-plus"></i> Add new News Group</a>
+                                            <a href="/adminsite/newsgroup/Create" class="btn btn-primary text-white me-0"><i class="mdi mdi-account-plus"></i> Add new News Group</a>
                                             <a onclick="exportToExcel()" class="btn btn-primary text-white me-0"><i class="icon-download"></i> Export</a>
                                         </div>
                                     </div>
-                                    <div style="text-align: center">
-                                        <p class="badge badge-danger">${ms}</p>
-                                    </div> 
+
+        
                                     <div class="table-responsive">
                                         <table class="table table-hover" id="myTable">
                                             <thead>
@@ -97,50 +42,59 @@
                                                     <th>ID</th>
                                                     <th>Name</th>
                                                     <th>Update</th>
-                                                    <th>Delete</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <c:forEach items="${data}" var="d">
-                                                    <tr>
-                                                        <td>${d.newsgroup_id}</td>
-                                                        <td>${d.newsgroup_name}</td>
-                                                        <td><div class="badge badge-info"><a href="NewsGroupController?service=updateNewsGroup&id=${d.newsgroup_id}">Update</a></div></td>
-                                                        <td ><div class="badge badge-danger"><a href="NewsGroupController?service=deleteNewsGroup&id=${d.newsgroup_id}">Delete</a></div></td> 
-                                                    </tr>
-                                                </c:forEach>
+                                        @foreach (var item in Model.NewsGroup)
+                                        {
+                                        <tr>
+                                                        <td>@item.NewsgroupId</td>
+                                                        <td>@item.NewsgroupName</td>
+                                                        <td><div class="badge badge-info"><a href="/adminsite/newsgroup/Edit?id=${d.newsgroup_id}">Update</a></div></td>
+                                                        @*<td ><div class="badge badge-danger"><a href="NewsGroupController?service=deleteNewsGroup&id=${d.newsgroup_id}">Delete</a></div></td> *@
+                                                    </tr> 
+                                        }
                                             </tbody>
                                         </table>
-                                        <div style="text-align: center">
-                                            <c:choose>
-                                                <c:when test="${currentPage > 1}">
-                                                    <a href="?page=${currentPage - 1}">Previous</a>
-                                                </c:when>
-                                                <c:otherwise>
-                                                    <span>Previous</span>
-                                                </c:otherwise>
-                                            </c:choose>
-                                            <c:forEach begin="1" end="${totalPages}" varStatus="loop">
-                                                <c:choose>
-                                                    <c:when test="${loop.index == currentPage}">
-                                                        <span>${loop.index}</span>
-                                                    </c:when>
-                                                    <c:otherwise>
-                                                        <c:if test="${id == null}">
-                                                            <a href="?page=${loop.index}">${loop.index}</a>
-                                                        </c:if>  
-                                                    </c:otherwise>
-                                                </c:choose>
-                                            </c:forEach>
-                                            <c:choose>
-                                                <c:when test="${currentPage < totalPages}">
-                                                    <a href="?page=${currentPage + 1}">Next</a>
-                                                </c:when>
-                                                <c:otherwise>
-                                                    <span>Next</span>
-                                                </c:otherwise>
-                                            </c:choose>
-                                        </div>
+
+                                     @*PAGING*@ 
+
+                                    <div style="text-align: center">
+                                        @if (Model.NewsGroup.PageIndex > 1)
+                                        {
+                                            <a href="?pageIndex=@(Model.NewsGroup.PageIndex - 1)">Previous</a>
+                                        }
+                                        else
+                                        {
+                                            <span>Previous</span>
+                                        }
+
+                                        @for (int i = 1; i <= Model.NewsGroup.TotalPages; i++)
+                                        {
+                                            @if (i == Model.NewsGroup.PageIndex)
+                                            {
+                                                <span>@i</span>
+                                            }
+                                            else
+                                            {   
+                                                <a href="?pageIndex=@i">@i</a>
+                                                @*@if (Model.Admin. == null)
+                                                {
+                                                    <a href="?page=@i">@i</a>
+                                                }*@
+                                            }
+                                        }
+
+                                        @if (Model.NewsGroup.PageIndex < Model.NewsGroup.TotalPages)
+                                        {
+                                            <a href="?pageIndex=@(Model.NewsGroup.PageIndex + 1)">Next</a>
+                                        }
+                                        else
+                                        {
+                                            <span>Next</span>
+                                        }
+                                    </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -148,15 +102,3 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-
-        <script src="~/admin/vendors/js/vendor.bundle.base.js"></script>
-        <script src="~/admin/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
-        <script src="~/admin/js/off-canvas.js"></script>
-        <script src="~/admin/js/hoverable-collapse.js"></script>
-        <script src="~/admin/js/template.js"></script>
-        <script src="~/admin/js/settings.js"></script>
-        <script src="~/admin/js/todolist.js"></script>
-    </body>
-</html>

@@ -20,8 +20,29 @@ namespace PROJECT_PRN221.Pages.customersite.historyorder
         public int Done { get; set; }
         public int Cancel { get; set; }
 
-        public async Task OnGetAsync(string service, string status)
+        public bool checkSession()
         {
+            bool checkS = true;
+            var httpContext = HttpContext;
+            if (httpContext != null && httpContext.Session != null)
+            {
+                string isCustomerAuthenticated = httpContext.Session.GetString("customer");
+                if (string.IsNullOrEmpty(isCustomerAuthenticated))
+                {
+                    checkS = false;
+                }
+            }
+
+            return checkS;
+        }
+
+        public async Task<IActionResult> OnGetAsync(string service, string status)
+        {
+            if (checkSession() == false)
+            {
+                return RedirectToPage("/customersite/authenticate/login/Index");
+            }
+
             string customerJson = HttpContext.Session.GetString("customer");
             Customer customer = null;
             if (!string.IsNullOrEmpty(customerJson))
@@ -58,6 +79,8 @@ namespace PROJECT_PRN221.Pages.customersite.historyorder
                     .ToList();
                 }
             }
+
+            return Page();
         }
 
 

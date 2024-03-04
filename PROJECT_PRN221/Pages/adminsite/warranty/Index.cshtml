@@ -3,29 +3,8 @@
 
 @{
     ViewData["Title"] = "Warranty";
+    Layout = "_AdminLayout";
 }
-
-<!DOCTYPE html>
-<html lang="en">
-
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="stylesheet" href="~/admin/vendors/feather/feather.css">
-        <link rel="stylesheet" href="~/admin/vendors/mdi/css/materialdesignicons.min.css">
-        <link rel="stylesheet" href="~/admin/vendors/ti-icons/css/themify-icons.css">
-        <link rel="stylesheet" href="~/admin/vendors/typicons/typicons.css">
-        <link rel="stylesheet" href="~/admin/vendors/simple-line-icons/css/simple-line-icons.css">
-        <link rel="stylesheet" href="~/admin/vendors/css/vendor.bundle.base.css">
-        <link rel="stylesheet" href="~/admin/css/vertical-layout-light/style.css">
-        <style>
-            a {
-                all: unset;
-                cursor: pointer;
-            }
-        </style>
-    </head>
-    <body>
 
         <div class="container-scroller">
 
@@ -110,6 +89,7 @@
 
                                                         <td>
                                                             <input type="hidden"  class="name_admin" value="@Model.Admin.Name">
+                                                             <input type="hidden"  class="id_admin" value="@Model.Admin.AdminId">
 
                                                             <input type="hidden"  class="name" value="@item.Customer.Name">
                                                             <input type="hidden"  class="phone" value="@item.Customer.Phone">
@@ -208,15 +188,6 @@
                 </div>
             </div>
 
-
-        <script src="~/admin/vendors/js/vendor.bundle.base.js"></script>
-        <script src="~/admin/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
-        <script src="~/admin/js/off-canvas.js"></script>
-        <script src="~/admin/js/hoverable-collapse.js"></script>
-        <script src="~/admin/js/template.js"></script>
-        <script src="~/admin/js/settings.js"></script>
-        <script src="~/admin/js/todolist.js"></script>
-            <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
     <script>
                                                                 function updateDocumentAndDownload(element) {
                                                                     var currentDate = new Date();
@@ -233,8 +204,8 @@
                                                                     var status_product = row.getElementsByClassName("status_product")[0].value;
                                                                     var warranty_date = row.getElementsByClassName("warranty_date")[0].value;
                                                                     var status_warranty = row.getElementsByClassName("warranty_status")[0].value;
-                                                                    var admin_name = @Model.Admin.Name;
-                                                                    var id_admin = @Model.Admin.AdminId;
+                                                                    var admin_name = row.getElementsByClassName("name_admin")[0].value;
+                                                                    var id_admin = row.getElementsByClassName("id_admin")[0].value;
 
                                                                     var url = "https://script.google.com/macros/s/AKfycbwBdkazjfAPDM9w0MYKj89YFPA0QbabTUIecQDV0QBAtApktuxvahKm4sZHVFndFGby/exec";
 
@@ -269,21 +240,3 @@
                                                                     xhr.send(params);
                                                                 }
     </script>
-    <script>
-        function exportToExcel() {
-            const table = document.getElementById("myTable");
-            const wb = XLSX.utils.table_to_book(table, {sheet: "SheetJS"});
-            const wbout = XLSX.write(wb, {bookType: "xlsx", type: "array"});
-            saveAsExcelFile(wbout, "warranty.xlsx");
-        }
-
-        function saveAsExcelFile(buffer, fileName) {
-            const data = new Blob([buffer], {type: "application/octet-stream"});
-            const link = document.createElement("a");
-            link.href = window.URL.createObjectURL(data);
-            link.download = fileName;
-            link.click();
-        }
-    </script>
-    </body>
-</html>

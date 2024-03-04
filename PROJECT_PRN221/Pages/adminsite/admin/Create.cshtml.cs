@@ -59,7 +59,7 @@ namespace PROJECT_PRN221.Pages.adminsite.admin
             
             if(checkInput == true)
             {
-                Admin.Password = BCrypt.Net.BCrypt.HashPassword(Admin.Password);
+                Admin.Password = Validation.HashPassword(Admin.Password);
                 _context.Admins.Add(Admin);
                 await _context.SaveChangesAsync();
                 return RedirectToPage("./Index");

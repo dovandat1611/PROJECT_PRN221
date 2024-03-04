@@ -25,9 +25,29 @@ namespace PROJECT_PRN221.Pages.adminsite.admin
 
         public PaginatedList<Admin> Admin { get;set; } = default!;
 
-        public async Task OnGetAsync(int? pageIndex)
-        {   
-            if(pageIndex == null)
+        public bool checkSession()
+        {
+            bool checkS = true;
+            var httpContext = HttpContext;
+            if (httpContext != null && httpContext.Session != null)
+            {
+                string isCustomerAuthenticated = httpContext.Session.GetString("admin");
+                if (string.IsNullOrEmpty(isCustomerAuthenticated))
+                {
+                    checkS = false;
+                }
+            }
+
+            return checkS;
+        }
+
+        public async Task<IActionResult> OnGetAsync(int? pageIndex)
+        {
+            if (checkSession() == false)
+            {
+                return RedirectToPage("/adminsite/authenticate/login/Index");
+            }
+            if (pageIndex == null)
             {
                 pageIndex = 1;
             }
@@ -39,6 +59,7 @@ namespace PROJECT_PRN221.Pages.adminsite.admin
                 Admin = await PaginatedList<Admin>.CreateAsync(
                 adminsIQ.AsNoTracking(), pageIndex ?? 1, pageSize);
             }
+            return Page();
         }
         public async Task OnPostAsync(int id, string service, string status, string name, int? pageIndex)
         {
@@ -54,7 +75,7 @@ namespace PROJECT_PRN221.Pages.adminsite.admin
                 {
                     Admin admin = _context.Admins.FirstOrDefault(x => x.AdminId == id);
                     admin.Status = status;
-                    _context.Update(admin);
+                    _context.Admins.Update(admin);
                     _context.SaveChanges();
 
                     adminsIQ = from s in _context.Admins select s;

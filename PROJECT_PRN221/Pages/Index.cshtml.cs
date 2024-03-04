@@ -12,9 +12,9 @@ namespace PROJECT_PRN221.Pages
             _logger = logger;
         }
 
-        public void OnGet()
+        public IActionResult OnGet()
         {
-
+            return RedirectToPage("/customersite/home/Index");
         }
     }
 }

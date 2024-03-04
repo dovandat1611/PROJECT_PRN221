@@ -1,0 +1,104 @@
+﻿@page
+@model PROJECT_PRN221.Pages.adminsite.about.IndexModel
+
+@{
+    ViewData["Title"] = "About Admin";
+    Layout = "_AdminLayout";
+}
+
+        <div class="container-scroller">
+                <partial name="/Pages/_HeaderAdminsite.cshtml" model="new PROJECT_PRN221.Pages._HeaderAdminsiteModel()"/>
+
+                <partial name="/Pages/_LeftPageAdminSite.cshtml" model="new PROJECT_PRN221.Pages._LeftPageAdminSiteModel()"/>
+                <!-- partial -->
+                <div class="main-panel">
+                    <div class="content-wrapper">
+                        <div class="col-lg-12 grid-margin stretch-card">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="d-sm-flex justify-content-between align-items-start">
+                                        <div>
+                                            <h4 class="card-title card-title-dash">About</h4>
+                                        </div>
+
+                                        @*<div>
+                                            <form class="search-form" action="CommentController?service=searchComment" method="post">
+                                                <input type="text" class="form-control" name="content" placeholder="Search Here" title="Search here">
+                                            </form>
+                                        </div>*@
+
+                                        <div>
+                                            <a onclick="exportToExcel()" class="btn btn-primary text-white me-0"><i class="icon-download"></i> Export</a>
+                                        </div>
+                                    </div>
+@*                                    <div style="text-align: center">
+                                        <p class="badge badge-danger">${ms}</p>
+                                    </div> *@                                         
+                                    <div class="table-responsive">
+                                        <table class="table table-hover" id="myTable">
+                                            <thead>
+                                                <tr>
+                                                    <th>About Id</th>
+                                                    <th>Title</th>
+                                                    <th>Images</th>
+                                                    <th>Update</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                        @foreach (var item in Model.About)
+                                        {
+                                                    <tr>
+                                                        <td>@item.aId</td>
+                                                        <td>@item.Title</td>
+                                                        <td><img src="@item.Image"/></td>
+                                                        <td ><div class="badge badge-info"><a href="/adminsite/about/Edit?id=@item.aId">Update</a></div></td> 
+                                                    </tr>   
+                                        }
+                                            </tbody>
+                                        </table> 
+
+                                    @*PAGING*@ 
+
+                                    <div style="text-align: center">
+                                        @if (Model.About.PageIndex > 1)
+                                        {
+                                            <a href="?pageIndex=@(Model.About.PageIndex - 1)">Previous</a>
+                                        }
+                                        else
+                                        {
+                                            <span>Previous</span>
+                                        }
+
+                                        @for (int i = 1; i <= Model.About.TotalPages; i++)
+                                        {
+                                            @if (i == Model.About.PageIndex)
+                                            {
+                                                <span>@i</span>
+                                            }
+                                            else
+                                            {   
+                                                <a href="?pageIndex=@i">@i</a>
+                                                @*@if (Model.Admin. == null)
+                                                {
+                                                    <a href="?page=@i">@i</a>
+                                                }*@
+                                            }
+                                        }
+
+                                        @if (Model.About.PageIndex < Model.About.TotalPages)
+                                        {
+                                            <a href="?pageIndex=@(Model.About.PageIndex + 1)">Next</a>
+                                        }
+                                        else
+                                        {
+                                            <span>Next</span>
+                                        }
+                                    </div>  
+                                    
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>

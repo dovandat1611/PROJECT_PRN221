@@ -23,14 +23,37 @@ namespace PROJECT_PRN221.Pages.customersite.warranty
         [BindProperty]
         public IFormFile[] FileUploads { get; set; }
 
-        public void OnGet(int id)
+        public bool checkSession()
         {
+            bool checkS = true;
+            var httpContext = HttpContext;
+            if (httpContext != null && httpContext.Session != null)
+            {
+                string isCustomerAuthenticated = httpContext.Session.GetString("customer");
+                if (string.IsNullOrEmpty(isCustomerAuthenticated))
+                {
+                    checkS = false;
+                }
+            }
+
+            return checkS;
+        }
+
+        public IActionResult OnGet(int id)
+        {
+            if (checkSession() == false)
+            {
+                return RedirectToPage("/customersite/authenticate/login/Index");
+            }
+
             string customerJson = HttpContext.Session.GetString("customer");
             if (!string.IsNullOrEmpty(customerJson))
             {
                 Customer = JsonConvert.DeserializeObject<Customer>(customerJson);
             }
             Warranty = GetOrderDetailWarranty(id);
+
+            return Page();
         }
         public OrderWarranty GetOrderDetailWarranty(int id)
         {

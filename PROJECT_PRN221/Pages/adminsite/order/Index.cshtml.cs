@@ -29,18 +29,40 @@ namespace PROJECT_PRN221.Pages.adminsite.order
         public int Process { get; set; }
         public int Done { get; set; }
         public int Cancel { get; set; }
+        public string Status { get; set; }
 
-        public async Task OnGetAsync(string service, string status, int? pageIndex)
+        public bool checkSession()
         {
+            bool checkS = true;
+            var httpContext = HttpContext;
+            if (httpContext != null && httpContext.Session != null)
+            {
+                string isCustomerAuthenticated = httpContext.Session.GetString("admin");
+                if (string.IsNullOrEmpty(isCustomerAuthenticated))
+                {
+                    checkS = false;
+                }
+            }
+            return checkS;
+        }
+        public async Task<IActionResult> OnGetAsync(string service, string status, int? pageIndex)
+        {
+
+            if (checkSession() == false)
+            {
+                return RedirectToPage("/adminsite/authenticate/login/Index");
+            }
+
             if (pageIndex == null)
             {
                 pageIndex = 1;
             }
+
             Wait = _context.Orders.Where(x => x.Status.Equals("Wait")).Count();
             Process = _context.Orders.Where(x => x.Status.Equals("Process")).Count();
             Done = _context.Orders.Where(x => x.Status.Equals("Done")).Count();
             Cancel = _context.Orders.Where(x => x.Status.Equals("Cancel")).Count();
-
+            Status = status;
             if (string.IsNullOrWhiteSpace(service))
             {
                 service = "DisplayOrder";
@@ -60,7 +82,7 @@ namespace PROJECT_PRN221.Pages.adminsite.order
              
             if(service == "displayOrderStatus")
             {
-                if (_context != null)
+                if (_context.Orders != null)
                 {
                     IQueryable<Order> ordersIQ = _context.Orders.Include(o => o.Customer).Where(x => x.Status.Equals(status));
 
@@ -69,7 +91,38 @@ namespace PROJECT_PRN221.Pages.adminsite.order
                     ordersIQ.AsNoTracking(), pageIndex ?? 1, pageSize);
                 }
             }
-            
+            return Page();
+        }
+        public async Task<IActionResult> OnPostAsync(int id, string status, string service, int? pageIndex)
+        {
+            if (pageIndex == null)
+            {
+                pageIndex = 1;
+            }
+            if (_context.Customers != null)
+            {
+                if (service.Equals("updateStatus"))
+                {
+                    Order order = _context.Orders.FirstOrDefault(x => x.OrderId == id);
+                    order.Status = status;
+                    _context.Orders.Update(order);
+                    _context.SaveChanges();
+                }
+            }
+            if (_context.Orders != null)
+            {
+                IQueryable<Order> ordersIQ = _context.Orders.Include(o => o.Customer).Where(x => x.Status.Equals(status));
+
+                var pageSize = Configuration.GetValue("PageSize", 10);
+                Order = await PaginatedList<Order>.CreateAsync(
+                ordersIQ.AsNoTracking(), pageIndex ?? 1, pageSize);
+            }
+            Wait = _context.Orders.Where(x => x.Status.Equals("Wait")).Count();
+            Process = _context.Orders.Where(x => x.Status.Equals("Process")).Count();
+            Done = _context.Orders.Where(x => x.Status.Equals("Done")).Count();
+            Cancel = _context.Orders.Where(x => x.Status.Equals("Cancel")).Count();
+            Status = status;
+            return Page();
         }
     }
 }

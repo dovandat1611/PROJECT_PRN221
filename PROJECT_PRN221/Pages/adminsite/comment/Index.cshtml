@@ -2,83 +2,10 @@
 @model PROJECT_PRN221.Pages.adminsite.comment.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Comment";
+    Layout = "_AdminLayout";
 }
 
-@*<h1>Index</h1>
-
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Comment[0].CommentDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Comment[0].CommentContent)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Comment[0].Customer)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Comment[0].Product)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.Comment) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.CommentDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CommentContent)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Customer.CustomerId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Product.ProductId)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.CommentId">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.CommentId">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.CommentId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>*@
-
-
-<!DOCTYPE html>
-<html lang="en">
-
-    <head>
-        <!-- Required meta tags -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Star Admin2 </title>
-        <!-- plugins:css -->
-        <link rel="stylesheet" href="~/admin/vendors/feather/feather.css">
-        <link rel="stylesheet" href="~/admin/vendors/mdi/css/materialdesignicons.min.css">
-        <link rel="stylesheet" href="~/admin/vendors/ti-icons/css/themify-icons.css">
-        <link rel="stylesheet" href="~/admin/vendors/typicons/typicons.css">
-        <link rel="stylesheet" href="~/admin/vendors/simple-line-icons/css/simple-line-icons.css">
-        <link rel="stylesheet" href="~/admin/vendors/css/vendor.bundle.base.css">
-        <link rel="stylesheet" href="~/admin/css/vertical-layout-light/style.css">
-        <link rel="shortcut icon" href="~/admin/images/favicon.png" />
-                <style>
-            a {
-                all: unset;
-                cursor: pointer;
-            }
-        </style>
-    </head>
-    <body>
         <div class="container-scroller">
                 <partial name="/Pages/_HeaderAdminsite.cshtml" model="new PROJECT_PRN221.Pages._HeaderAdminsiteModel()"/>
 
@@ -93,74 +20,83 @@
                                         <div>
                                             <h4 class="card-title card-title-dash">Comment</h4>
                                         </div>
+
                                         <div>
-                                            <form class="search-form" action="CommentController?service=searchComment" method="post">
+                                            <form class="search-form" method="post">
+                                                <input type="hidden" name="service" value="searchComment" />
                                                 <input type="text" class="form-control" name="content" placeholder="Search Here" title="Search here">
                                             </form>
                                         </div>
+
                                         <div>
                                             <a onclick="exportToExcel()" class="btn btn-primary text-white me-0"><i class="icon-download"></i> Export</a>
                                         </div>
                                     </div>
-                                    <div style="text-align: center">
-                                        <p class="badge badge-danger">${ms}</p>
-                                    </div>                                          
+
+                                                    
                                     <div class="table-responsive">
                                         <table class="table table-hover" id="myTable">
                                             <thead>
                                                 <tr>
                                                     <th>ID</th>
-                                                    <th>Product Id</th>
-                                                    <th>Customer Id</th>
+                                                    <th>Product</th>
+                                                    <th>Customer</th>
                                                     <th>Comment Date</th>
                                                     <th>Comment Content</th>
                                                     <th>Delete</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <c:forEach items="${data}" var="d">
-                                                    <fmt:formatDate value="${d.comment_date}" pattern="dd-MM-yyyy" var="formattedDate" />
-                                                    <tr>
-                                                        <td>${d.comment_id}</td>
-                                                        <td>${d.product_id}</td>
-                                                        <td>${d.customer_id}</td>
-                                                        <td>${formattedDate}</td> 
-                                                        <td>${d.comment_content}</td>
-                                                        <td ><div class="badge badge-danger"><a href="CategoryController?service=deleteComment&id=${d.comment_id}">Delete</a></div></td> 
+                                        @foreach (var item in Model.Comment)
+                                        {
+                                        <tr>
+                                                        <td>@item.CommentId</td>
+                                                        <td>@item.Product.ProductName</td>
+                                                        <td>@item.Customer.CustomerId</td>
+                                                        <td>@item.CommentDate</td> 
+                                                        <td>@item.CommentContent</td>
+                                                        <td ><div class="badge badge-danger"><a href="/adminsite/comment/Delete?id=@item.CustomerId">Delete</a></div></td> 
                                                     </tr>
-                                                </c:forEach>
+                                        }
                                             </tbody>
                                         </table> 
-                                        <div style="text-align: center">
-                                            <c:choose>
-                                                <c:when test="${currentPage > 1}">
-                                                    <a href="?page=${currentPage - 1}">Previous</a>
-                                                </c:when>
-                                                <c:otherwise>
-                                                    <span>Previous</span>
-                                                </c:otherwise>
-                                            </c:choose>
-                                            <c:forEach begin="1" end="${totalPages}" varStatus="loop">
-                                                <c:choose>
-                                                    <c:when test="${loop.index == currentPage}">
-                                                        <span>${loop.index}</span>
-                                                    </c:when>
-                                                    <c:otherwise>
-                                                        <c:if test="${id == null}">
-                                                            <a href="?page=${loop.index}">${loop.index}</a>
-                                                        </c:if>  
-                                                    </c:otherwise>
-                                                </c:choose>
-                                            </c:forEach>
-                                            <c:choose>
-                                                <c:when test="${currentPage < totalPages}">
-                                                    <a href="?page=${currentPage + 1}">Next</a>
-                                                </c:when>
-                                                <c:otherwise>
-                                                    <span>Next</span>
-                                                </c:otherwise>
-                                            </c:choose>
-                                        </div>
+                                      @*PAGING*@ 
+
+                                    <div style="text-align: center">
+                                        @if (Model.Comment.PageIndex > 1)
+                                        {
+                                            <a href="?pageIndex=@(Model.Comment.PageIndex - 1)">Previous</a>
+                                        }
+                                        else
+                                        {
+                                            <span>Previous</span>
+                                        }
+
+                                        @for (int i = 1; i <= Model.Comment.TotalPages; i++)
+                                        {
+                                            @if (i == Model.Comment.PageIndex)
+                                            {
+                                                <span>@i</span>
+                                            }
+                                            else
+                                            {   
+                                                <a href="?pageIndex=@i">@i</a>
+                                                @*@if (Model.Admin. == null)
+                                                {
+                                                    <a href="?page=@i">@i</a>
+                                                }*@
+                                            }
+                                        }
+
+                                        @if (Model.Comment.PageIndex < Model.Comment.TotalPages)
+                                        {
+                                            <a href="?pageIndex=@(Model.Comment.PageIndex + 1)">Next</a>
+                                        }
+                                        else
+                                        {
+                                            <span>Next</span>
+                                        }
+                                    </div>     
                                     </div>
                                 </div>
                             </div>
@@ -168,17 +104,3 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-
-
-
-        <script src="~/admin/vendors/js/vendor.bundle.base.js"></script>
-        <script src="~/admin/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
-        <script src="~/admin/js/off-canvas.js"></script>
-        <script src="~/admin/js/hoverable-collapse.js"></script>
-        <script src="~/admin/js/template.js"></script>
-        <script src="~/admin/js/settings.js"></script>
-        <script src="~/admin/js/todolist.js"></script>
-    </body>
-</html>

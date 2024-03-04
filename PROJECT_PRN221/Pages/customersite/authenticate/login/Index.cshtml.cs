@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using PROJECT_PRN221.Models;
+using PROJECT_PRN221.Utils;
 
 namespace PROJECT_PRN221.Pages.customersite.authenticate.login
 {
@@ -31,7 +32,8 @@ namespace PROJECT_PRN221.Pages.customersite.authenticate.login
                 }
                 else
                 {
-                    Customer customer = _context.Customers.FirstOrDefault(x => x.Username.Equals(username) && x.Password.Equals(password));
+                    Console.WriteLine(Validation.HashPassword(password));
+                    Customer customer = _context.Customers.FirstOrDefault(x => x.Username.Equals(username) && x.Password.Equals(Validation.HashPassword(password)));
                     if (customer != null)
                     {
                         string customerJson = JsonConvert.SerializeObject(customer);

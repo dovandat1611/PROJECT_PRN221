@@ -2,68 +2,11 @@
 @model PROJECT_PRN221.Pages.adminsite.category.CreateModel
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Create Category";
+    Layout = "_AdminLayout";
 }
 
-@*<h1>Create</h1>
 
-<h4>Category</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Category.CategoryId" class="control-label"></label>
-                <input asp-for="Category.CategoryId" class="form-control" />
-                <span asp-validation-for="Category.CategoryId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Category.CategoryName" class="control-label"></label>
-                <input asp-for="Category.CategoryName" class="form-control" />
-                <span asp-validation-for="Category.CategoryName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
-
-<div>
-    <a asp-page="Index">Back to List</a>
-</div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
-*@
-
-
-<!DOCTYPE html>
-<html lang="en">
-
-    <head>
-        <!-- Required meta tags -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Star Admin2 </title>
-        <!-- plugins:css -->
-        <link rel="stylesheet" href="~/admin/vendors/feather/feather.css">
-        <link rel="stylesheet" href="~/admin/vendors/mdi/css/materialdesignicons.min.css">
-        <link rel="stylesheet" href="~/admin/vendors/ti-icons/css/themify-icons.css">
-        <link rel="stylesheet" href="~/admin/vendors/typicons/typicons.css">
-        <link rel="stylesheet" href="~/admin/vendors/simple-line-icons/css/simple-line-icons.css">
-        <link rel="stylesheet" href="~/admin/vendors/css/vendor.bundle.base.css">
-        <!-- endinject -->
-        <!-- Plugin css for this page -->
-        <!-- End plugin css for this page -->
-        <!-- inject:css -->
-        <link rel="stylesheet" href="~/admin/css/vertical-layout-light/style.css">
-        <!-- endinject -->
-        <link rel="shortcut icon" href="~/admin/images/favicon.png" />
-    </head>
-    <body>
        <div class="container-scroller">
                 <partial name="/Pages/_HeaderAdminsite.cshtml" model="new PROJECT_PRN221.Pages._HeaderAdminsiteModel()"/>
 
@@ -82,16 +25,13 @@
                                         </p>
 
 
-                                        <form class="forms-sample" method="post" action="CategoryController">
-                                            <input type="hidden" name="service" value="insertCategory">
-
+                                        <form class="forms-sample" method="post">
                                             <div class="form-group">
-                                                <label for="name">Category Name</label>
-                                                <input type="text" class="form-control" name="name" id="name" placeholder="Category Name">
+                                                <label asp-for="Category.CategoryName">Category Name</label>
+                                                <input type="text" class="form-control" asp-for="Category.CategoryName">
                                             </div>
                                             <button type="submit" name="submit" class="btn btn-primary me-2">Submit</button>
                                             <button class="btn btn-light">Cancel</button>
-
                                         </form>
 
                                     </div>
@@ -107,14 +47,3 @@
                     </footer>
                 </div>
             </div>
-        </div>
-
-        <script src="~/admin/vendors/js/vendor.bundle.base.js"></script>
-        <script src="~/admin/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
-        <script src="~/admin/js/off-canvas.js"></script>
-        <script src="~/admin/js/hoverable-collapse.js"></script>
-        <script src="~/admin/js/template.js"></script>
-        <script src="~/admin/js/settings.js"></script>
-        <script src="~/admin/js/todolist.js"></script>
-    </body>
-</html>

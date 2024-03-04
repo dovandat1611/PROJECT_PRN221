@@ -1,41 +1,9 @@
 ﻿@page
 @model PROJECT_PRN221.Pages.customersite.shop.IndexModel
 @{
+    ViewData["Title"] = "Shop";
+    Layout = "CustomerLayout";
 }
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="format-detection" content="telephone=no">
-        <meta name="apple-mobile-web-app-capable" content="yes">
-        <link rel="stylesheet" type="text/css" href="~/customer/css/normalize.css">
-        <link rel="stylesheet" type="text/css" href="~/customer/icomoon/icomoon.css">
-        <link rel="stylesheet" type="text/css" media="all" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" type="text/css" href="~/customer/css/vendor.css">
-        <link rel="stylesheet" type="text/css" href="~/customer/style.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-        <!-- script
-        ================================================== -->
-        <script src="~/customer/js/modernizr.js"></script>
-        <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-PV3J437JX5"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag() {
-                dataLayer.push(arguments);
-            }
-            gtag('js', new Date());
-
-            gtag('config', 'G-PV3J437JX5');
-        </script>
-    </head>
-<body>
-    <!-- ================================================== -->
-
 
     @*HEADER*@
     @if (!string.IsNullOrEmpty(@Model.isCustomerAuthenticated))
@@ -55,7 +23,7 @@
                         <h1 class="page-title">Shop page</h1>
                         <div class="breadcrumbs">
                             <span class="item">
-                                <a href="index.html">Home /</a>
+                                <a href="#">Home /</a>
                             </span>
                             <span class="item">Shop</span>
                         </div>
@@ -74,13 +42,14 @@
 
                             <ul class="tabs list-unstyled">
                                 <li data-tab-target="#all" class="active tab">
-                                    <a href="ShopController">All</a>
+                                    <a href="/customersite/shop">All</a>
                                 </li>
-                              @*  <c:forEach var="c" items="${listC}">*@
+                            @foreach(var item in Model.Category){
                                     <li data-tab-target="#all" class="tab">
-                                        <a href="ShopController?service=displayProductbyCategory&id=${c.category_id}">${c.category_name}</a>
-                                    </li>
-                               @* </c:forEach>*@
+                                        <a href="/customersite/shop?service=displayProductbyCategory&categoryId=@item.CategoryId">@item.CategoryName</a>
+                                    </li>                              
+                            }
+
                             </ul>
 
                             <div class="tab-content">
@@ -88,23 +57,68 @@
 
                                     <div class="row d-flex flex-wrap">
 
-                                      @*  <c:forEach var="d" items="${data}">*@
-                                            <div class="product-item col-lg-4 col-md-6 col-sm-6">
+                                    @foreach (var item in Model.Product)
+                                    {
+                                     <div class="product-item col-lg-4 col-md-6 col-sm-6">
                                                 <div class="image-holder">
-                                                    <img src="${d.image}" alt="Books" class="product-image" style="width: 290px; height: 290px;">
+                                                    <img src="@item.Image" alt="Books" class="product-image" style="width: 290px; height: 290px;">
                                                 </div>
                                                 <div class="product-detail">
                                                     <h4 class="product-title">
-                                                        <a href="SingleProductController/${d.code}">${d.product_name}</a>
+                                                        <a href="/customersite/productdetail?id=@item.ProductId">@item.ProductName</a>
                                                     </h4>
-                                                    <div class="item-price text-primary number">${d.list_price}</div>
+                                                    <div class="item-price text-primary number">@item.ListPrice</div>
                                                 </div>
-                                            </div>
-                                       @* </c:forEach>*@
+                                            </div>                                       
+                                    }
 
                                     </div>
 
-                                    <div>
+                            <div style="text-align: center">
+                                <nav class="navigation paging-navigation text-center padding-medium" role="navigation">
+                                    <div class="pagination loop-pagination d-flex justify-content-center">
+                                @if (Model.Product.PageIndex > 1)
+                                {
+                                    <a href="?pageIndex=@(Model.Product.PageIndex - 1)" class="pagination-arrow d-flex align-items-center">
+                                        <i class="icon icon-arrow-left"></i>
+                                    </a>
+                                }
+                                else
+                                {
+                                    <span class="pagination-arrow d-flex align-items-center">
+                                        <i class="icon icon-arrow-left"></i>
+                                    </span>
+                                }
+
+                                @for (int i = 1; i <= Model.Product.TotalPages; i++)
+                                {
+                                    if (i == Model.Product.PageIndex)
+                                    {
+                                        <span aria-current="page" class="page-numbers current">@i</span>
+                                    }
+                                    else
+                                    {
+                                        <a href="?pageIndex=@i" class="page-numbers">@i</a>
+                                    }
+                                }
+
+                                @if (Model.Product.PageIndex < Model.Product.TotalPages)
+                                {
+                                    <a href="?pageIndex=@(Model.Product.PageIndex + 1)" class="pagination-arrow d-flex align-items-center">
+                                        <i class="icon icon-arrow-right"></i>
+                                    </a>
+                                }
+                                else
+                                {
+                                    <span class="pagination-arrow d-flex align-items-center">
+                                        <i class="icon icon-arrow-right"></i>
+                                    </span>
+                                }
+                                </div>
+                                </nav>
+                            </div>
+
+@*                                    <div>
                                         <nav class="navigation paging-navigation text-center padding-medium" role="navigation">
                                             <div class="pagination loop-pagination d-flex justify-content-center">
                                                 <c:choose>
@@ -204,7 +218,7 @@
                                                 </c:choose>
                                             </div>
                                         </nav>
-                                    </div>
+                                    </div>*@
                                </div>
                              </div>
                            </div>
@@ -214,9 +228,9 @@
                                         <div class="sidebar">
                                             <div class="widgets widget-menu">
                                                 <div class="widget-search-bar">
-                                                    <form action="ShopController" method="get" class="d-flex">
+                                                    <form method="post" class="d-flex">
                                                         <input type="hidden" name="service" value="displayProductbyName">
-                                                        <input type="text" name="name" required>
+                                                        <input type="text" name="productName" required>
                                                         <button class="btn btn-dark"><i class="icon icon-search"></i></button>
                                                     </form>
                                                 </div> 
@@ -225,86 +239,12 @@
                                             <div class="widgets widget-product-brands">
                                                 <h5 class="widget-title">Brands</h5>
                                                 <ul class="product-tags sidebar-list list-unstyled">
-                                                    <c:forEach var="b" items="${listB}">
-                                                        <li class="tags-item">
-                                                            <a href="ShopController?service=displayProductbyBrand&id=${b.brand_id}">${b.brand_name}</a>
-                                                        </li>
-                                                    </c:forEach>
-                                                </ul>
-                                            </div>
-                                            <div class="widgets widget-price-filter">
-                                                <h5 class="widget-title">Filter By Price</h5>
-                                                <ul class="product-tags sidebar-list list-unstyled">
-                                                    <form method="GET" action="ShopController">
-                                                        <input type="hidden" name="service" value="displayProductByPrice">
-                                                        <c:if test="${priceRange == null}">
-                                                            <input type="radio" id="option1" name="priceRange" value="0-500" checked>
-                                                            <label for="option1">From 0 to 5.000.000đ</label><br>
-
-                                                            <input type="radio" id="option2" name="priceRange" value="500-1000" >
-                                                            <label for="option2">From 5.000.000đ  to 10.000.000đ </label><br>
-
-                                                            <input type="radio" id="option3" name="priceRange" value="1000-2000">
-                                                            <label for="option3">From 10.000.000đ  to 20.000.000đ </label><br>
-
-                                                            <input type="radio" id="option4" name="priceRange" value="2000-">
-                                                            <label for="option4">Greater than 20.000.000đ</label><br>
-                                                        </c:if>
-                                                        <c:if test="${priceRange eq '0-500'}">
-                                                            <input type="radio" id="option1" name="priceRange" value="0-500" checked>
-                                                            <label for="option1">From 0 to 5.000.000đ</label><br>
-
-                                                            <input type="radio" id="option2" name="priceRange" value="500-1000" >
-                                                            <label for="option2">From 5.000.000đ  to 10.000.000đ </label><br>
-
-                                                            <input type="radio" id="option3" name="priceRange" value="1000-2000">
-                                                            <label for="option3">From 10.000.000đ  to 20.000.000đ </label><br>
-
-                                                            <input type="radio" id="option4" name="priceRange" value="2000-">
-                                                            <label for="option4">Greater than 20.000.000đ</label><br>
-                                                        </c:if>
-                                                        <c:if test="${priceRange eq '500-1000'}">
-                                                            <input type="radio" id="option1" name="priceRange" value="0-500">
-                                                            <label for="option1">From 0 to 5.000.000đ</label><br>
-
-                                                            <input type="radio" id="option2" name="priceRange" value="500-1000" checked>
-                                                            <label for="option2">From 5.000.000đ  to 10.000.000đ </label><br>
-
-                                                            <input type="radio" id="option3" name="priceRange" value="1000-2000">
-                                                            <label for="option3">From 10.000.000đ  to 20.000.000đ </label><br>
-
-                                                            <input type="radio" id="option4" name="priceRange" value="2000-">
-                                                            <label for="option4">Greater than 20.000.000đ</label><br>
-                                                        </c:if>
-                                                        <c:if test="${priceRange eq '1000-2000'}">
-                                                            <input type="radio" id="option1" name="priceRange" value="0-500">
-                                                            <label for="option1">From 0 to 5.000.000đ</label><br>
-
-                                                            <input type="radio" id="option2" name="priceRange" value="500-1000" >
-                                                            <label for="option2">From 5.000.000đ  to 10.000.000đ </label><br>
-
-                                                            <input type="radio" id="option3" name="priceRange" value="1000-2000" checked>
-                                                            <label for="option3">From 10.000.000đ  to 20.000.000đ </label><br>
-
-                                                            <input type="radio" id="option4" name="priceRange" value="2000-">
-                                                            <label for="option4">Greater than 20.000.000đ</label><br>
-                                                        </c:if>
-                                                        <c:if test="${priceRange eq '2000-'}">
-                                                            <input type="radio" id="option1" name="priceRange" value="0-500">
-                                                            <label for="option1">From 0 to 5.000.000đ</label><br>
-
-                                                            <input type="radio" id="option2" name="priceRange" value="500-1000" >
-                                                            <label for="option2">From 5.000.000đ  to 10.000.000đ </label><br>
-
-                                                            <input type="radio" id="option3" name="priceRange" value="1000-2000">
-                                                            <label for="option3">From 10.000.000đ  to 20.000.000đ </label><br>
-
-                                                            <input type="radio" id="option4" name="priceRange" value="2000-" checked>
-                                                            <label for="option4">Greater than 20.000.000đ</label><br>
-                                                        </c:if>
-
-                                                        <button type="submit">Search</button>
-                                                    </form>
+                                                @foreach (var item in Model.Brand)
+                                                {
+                                                 <li class="tags-item">
+                                                     <a href="/customersite/shop?service=displayProductbyBrand&brandId=@item.BrandId">@item.BrandName</a>
+                                                  </li>                                   
+                                                }
                                                 </ul>
                                             </div>
                                         </div>
@@ -314,31 +254,31 @@
                             </div>      
                         </div>
 
-
                         <hr>
 
 
-                        @*BRAND*@
-                        <section id="brand-collection" class="padding-medium bg-light-grey">
-                            <div class="container">
 
-                                <div class="d-flex flex-wrap justify-content-between " style="margin-bottom: 20px;">
-                                    <img src="images/brand/apple.svg" alt="phone" class="brand-image" style="width: 100px; height: 50px;">
-                                    <img src="images/brand/intel.svg" alt="phone" class="brand-image" style="width: 100px; height: 50px;">
-                                    <img src="images/brand/microsoft.svg" alt="phone" class="brand-image" style="width: 100px; height: 50px;">
-                                    <img src="images/brand/dell.svg" alt="phone" class="brand-image" style="width: 100px; height: 50px;">
-                                    <img src="images/brand/asus.svg" alt="phone" class="brand-image" style="width: 100px; height: 50px;">
-                                </div>
-
-                                <div class="d-flex flex-wrap justify-content-between">
-                                    <img src="images/brand/canon.svg" alt="phone" class="brand-image" style="width: 100px; height: 50px;">
-                                    <img src="images/brand/hp.svg" alt="phone" class="brand-image" style="width: 100px; height: 50px;">
-                                    <img src="images/brand/lenovo.svg" alt="phone" class="brand-image" style="width: 100px; height: 50px;">
-                                    <img src="images/brand/lg.svg" alt="phone" class="brand-image" style="width: 100px; height: 50px;">
-                                    <img src="images/brand/sony.svg" alt="phone" class="brand-image" style="width: 100px; height: 50px;">
-                                </div>
-                            </div>
-                        </section>
+    @* BRAND*@
+    <section id="brand-collection" class="padding-medium bg-light-grey">
+      <div class="container">
+      
+        <div class="d-flex flex-wrap justify-content-between " style="margin-bottom: 20px;">
+          <img src="/Images/brands/apple.svg" alt="phone" class="brand-image" style="width: 100px; height: 50px;">
+          <img src="/Images/brands/intel.svg" alt="phone" class="brand-image" style="width: 100px; height: 50px;">
+          <img src="/Images/brands/microsoft.svg" alt="phone" class="brand-image" style="width: 100px; height: 50px;">
+          <img src="/Images/brands/dell.svg" alt="phone" class="brand-image" style="width: 100px; height: 50px;">
+          <img src="/Images/brands/asus.svg" alt="phone" class="brand-image" style="width: 100px; height: 50px;">
+        </div>
+        
+        <div class="d-flex flex-wrap justify-content-between">
+          <img src="/Images/brands/canon.svg" alt="phone" class="brand-image" style="width: 100px; height: 50px;">
+          <img src="/Images/brands/hp.svg" alt="phone" class="brand-image" style="width: 100px; height: 50px;">
+          <img src="/Images/brands/lenovo.svg" alt="phone" class="brand-image" style="width: 100px; height: 50px;">
+          <img src="/Images/brands/lg.svg" alt="phone" class="brand-image" style="width: 100px; height: 50px;">
+          <img src="/Images/brands/sony.svg" alt="phone" class="brand-image" style="width: 100px; height: 50px;">
+        </div>
+      </div>
+    </section>
 
 
 
@@ -388,30 +328,3 @@
      @*FOOTER*@
      <partial name="/Pages/_FooterCustomerSite.cshtml" model="new PROJECT_PRN221.Pages._FooterCustomerSiteModel()"/>
 
-
-
-
-    <!-- ================================================== -->
-        <script src="~/customer/js/jquery-1.11.0.min.js"></script>
-        <script src="~/customer/js/plugins.js"></script>
-        <script src="~/customer/js/script.js"></script>
-        <script>
-                const numberElements = document.getElementsByClassName('number');
-                for (let i = 0; i < numberElements.length; i++) {
-                    const numberElement = numberElements[i];
-                    const number = parseFloat(numberElement.innerText);
-                    const formattedNumber = formatCurrency(number);
-                    numberElement.innerText = formattedNumber;
-                }
-
-                function formatCurrency(value) {
-                    const intValue = parseInt(value);
-                    const formattedValue = intValue.toLocaleString('vi-VN', {
-                        style: 'currency',
-                        currency: 'VND',
-                    });
-                    return formattedValue;
-                }
-        </script>
-</body>
-</html>

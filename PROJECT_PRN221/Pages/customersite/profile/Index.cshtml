@@ -1,41 +1,9 @@
 ﻿@page
 @model PROJECT_PRN221.Pages.customersite.profile.IndexModel
 @{
+    ViewData["Title"] = "Profile";
+    Layout = "CustomerLayout";
 }
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="format-detection" content="telephone=no">
-        <meta name="apple-mobile-web-app-capable" content="yes">
-        <link rel="stylesheet" type="text/css" href="~/customer/css/normalize.css">
-        <link rel="stylesheet" type="text/css" href="~/customer/icomoon/icomoon.css">
-        <link rel="stylesheet" type="text/css" media="all" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" type="text/css" href="~/customer/css/vendor.css">
-        <link rel="stylesheet" type="text/css" href="~/customer/style.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-        <!-- script
-        ================================================== -->
-        <script src="~/customer/js/modernizr.js"></script>
-        <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-PV3J437JX5"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag() {
-                dataLayer.push(arguments);
-            }
-            gtag('js', new Date());
-
-            gtag('config', 'G-PV3J437JX5');
-        </script>
-    </head>
-<body>
-    <!-- ================================================== -->
-
 
     @*HEADER*@
         <partial name="/Pages/_HeaderCustomersite.cshtml" model="new PROJECT_PRN221.Pages._HeaderCustomerSiteModel()"/>
@@ -43,7 +11,6 @@
 
     @*MAIN*@
             <div class="container">   
-            @*<c:forEach var="l" items="${listcus}">*@
                 <div class="row gutters">
 
                     <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
@@ -52,24 +19,13 @@
                                 <div class="account-settings">
                                     <div class="user-profile">
                                         <div class="user-avatar">
-@*                                            <c:if test="${l.image== null && l.gender == true}">
-                                                <img src="images/avatar/martin.svg" alt=""> <br>
-                                                <a href="ProfileController?service=changeAvatar" class="btn btn-secondary">Change Avatar</a>
-                                            </c:if>
-                                            <c:if test="${l.image == null && l.gender == false}">
-                                                <img src="images/avatar/carol.svg" alt="">
-                                                <a href="ProfileController?service=changeAvatar" class="btn btn-secondary">Change Avatar</a>
-                                            </c:if>*@
-                                            @*<c:if test="${l.image != null}">*@
-                                                <img src="${l.image}" alt="">
-                                                <a href="ProfileController?service=changeAvatar" class="btn btn-secondary">Change Avatar</a>
-                                            @*</c:if>*@
+                                                <img src="@Model.Customer.Image" alt="@Model.Customer.Image">
                                         </div>
-                                        <h5 class="mb-2 text-primary">@*${l.username}*@</h5>
-                                        <h6 class="user-email">@*${l.gmail}*@</h6>
+                                        <h5 class="mb-2 text-primary">@Model.Customer.Username</h5>
+                                        <h6 class="user-email">@Model.Customer.Email</h6>
                                     </div>
                                     <div class="about">
-                                        <a href="EditProfileController" class="btn btn-secondary">Edit Profile</a>
+                                        <a href="/customersite/profile/Edit" class="btn btn-secondary">Edit Profile</a>
                                     </div>
                                 </div>
                             </div>
@@ -86,28 +42,28 @@
                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                         <div class="form-group">
                                             <label for="fullName">Full Name</label>
-                                            <input type="text" name="name" class="form-control" id="fullName" value=""readonly="">
+                                            <input type="text" name="name" class="form-control" id="fullName" value="@Model.Customer.Name" readonly="">
                                         </div>
                                     </div>
 
                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                         <div class="form-group">
                                             <label for="eMail">Email</label>
-                                            <input type="email" name="email" class="form-control" id="eMail" value="" readonly="">
+                                            <input type="email" name="email" class="form-control" id="eMail" value="@Model.Customer.Email" readonly="">
                                         </div>
                                     </div>
 
                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                         <div class="form-group">
                                             <label for="phone">Phone</label>
-                                            <input type="text" name="phone"class="form-control" id="phone" value=""readonly="">
+                                            <input type="text" name="phone"class="form-control" id="phone" value="@Model.Customer.Phone"readonly="">
                                         </div>
                                     </div>
 
                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                         <div class="form-group">
                                             <label for="website">Dob</label>
-                                            <input type="datetime" name="dob"class="form-control" id="website" value=""readonly="">
+                                            <input type="text" name="dob"class="form-control" id="website" value="@Model.Customer.Dob"readonly="">
                                         </div>
                                     </div>
 
@@ -117,21 +73,23 @@
                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                         <div class="form-group">
                                             <label for="Street">Address</label>
-                                            <input type="text" name="address" class="form-control" id="Street" value=""readonly="">
-                                        </div>
-                                    </div><br>
-
-                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                                        <div class="form-group">
-                                            <label for="sTate">Gender</label>
-                                            <input type="text" name="gender" class="form-control" id="sTate" value=""readonly="">
+                                            <input type="text" name="address" class="form-control" id="Street" value="@Model.Customer.Address"readonly="">
                                         </div>
                                     </div>
+                                    
+
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <div class="form-group">
+                                        <label for="sTate">Gender</label>
+                                        <input type="text" name="gender" class="form-control" id="sTate" value="@Model.gender" readonly="">
+                                    </div>
+                                </div>
+
 
                                     <div class="row gutters">
                                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                            <div class="text-center" style="margin-top: 50px;">
-                                                <a href="" id="submit" name="submit" class="btn btn-secondary">Back to Home</a>
+                                            <div class="text-center" style="margin-top: 50px; margin-bottom: 50px; margin-right: 200px">
+                                                <a href="/customersite/home" id="submit" name="submit" class="btn btn-secondary">Back to Home</a>
                                             </div>
                                         </div>
                                     </div>
@@ -141,17 +99,7 @@
                         </div>
                     </div>
                 </div>
-            @*</c:forEach> *@
         </div>
 
+        <hr>
 
-
-     @*FOOTER*@
-     <partial name="/Pages/_FooterCustomerSite.cshtml" model="new PROJECT_PRN221.Pages._FooterCustomerSiteModel()"/>
-
-    <!-- ================================================== -->
-        <script src="~/customer/js/jquery-1.11.0.min.js"></script>
-        <script src="~/customer/js/plugins.js"></script>
-        <script src="~/customer/js/script.js"></script>
-</body>
-</html>

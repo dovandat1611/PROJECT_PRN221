@@ -1,41 +1,9 @@
 ﻿@page
 @model PROJECT_PRN221.Pages.customersite.cart.IndexModel
 @{
+    ViewData["Title"] = "Cart";
+    Layout = "CustomerLayout";
 }
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="format-detection" content="telephone=no">
-        <meta name="apple-mobile-web-app-capable" content="yes">
-        <link rel="stylesheet" type="text/css" href="~/customer/css/normalize.css">
-        <link rel="stylesheet" type="text/css" href="~/customer/icomoon/icomoon.css">
-        <link rel="stylesheet" type="text/css" media="all" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" type="text/css" href="~/customer/css/vendor.css">
-        <link rel="stylesheet" type="text/css" href="~/customer/style.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-        <!-- script
-        ================================================== -->
-        <script src="~/customer/js/modernizr.js"></script>
-        <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-PV3J437JX5"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag() {
-                dataLayer.push(arguments);
-            }
-            gtag('js', new Date());
-
-            gtag('config', 'G-PV3J437JX5');
-        </script>
-    </head>
-<body>
-    <!-- ================================================== -->
-
     
     @*HEADER*@
     <partial name="/Pages/_HeaderCustomersite.cshtml" model="new PROJECT_PRN221.Pages._HeaderCustomerSiteModel()"/>
@@ -216,10 +184,7 @@
 
      @*FOOTER*@
      <partial name="/Pages/_FooterCustomerSite.cshtml" model="new PROJECT_PRN221.Pages._FooterCustomerSiteModel()"/>
-    <!-- ================================================== -->
-        <script src="~/customer/js/jquery-1.11.0.min.js"></script>
-        <script src="~/customer/js/plugins.js"></script>
-        <script src="~/customer/js/script.js"></script>
+
         <script>
             const decrementButtons = document.getElementsByClassName('decrement-button');
             const incrementButtons = document.getElementsByClassName('increment-button');
@@ -251,7 +216,7 @@
 
                 inputField.addEventListener('input', function (event) {
                     let value = this.value;
-                    value = value.replace(/[^\d]/g, ''); // Loại bỏ tất cả các ký tự không phải số
+                    value = value.replace(/[^\d]/g, ''); 
 
                     if (value === '' || value < 1 || value > 100) {
                         this.value = 1;
@@ -278,24 +243,6 @@
                 }
             }
 
-            const numberElements = document.getElementsByClassName('number');
-            for (let i = 0; i < numberElements.length; i++) {
-                const numberElement = numberElements[i];
-                const number = parseFloat(numberElement.innerText);
-                const formattedNumber = formatCurrency(number);
-                numberElement.innerText = formattedNumber;
-            }
-
-            function formatCurrency(value) {
-                const intValue = parseInt(value);
-                const formattedValue = intValue.toLocaleString('vi-VN', {
-                    style: 'currency',
-                    currency: 'VND',
-                });
-                return formattedValue;
-            }
         </script>
 
         <div id="cboxOverlay" style="display: none;"></div><div id="colorbox" class="" role="dialog" tabindex="-1" style="display: none;"><div id="cboxWrapper"><div><div id="cboxTopLeft" style="float: left;"></div><div id="cboxTopCenter" style="float: left;"></div><div id="cboxTopRight" style="float: left;"></div></div><div style="clear: left;"><div id="cboxMiddleLeft" style="float: left;"></div><div id="cboxContent" style="float: left;"><div id="cboxTitle" style="float: left;"></div><div id="cboxCurrent" style="float: left;"></div><button type="button" id="cboxPrevious"></button><button type="button" id="cboxNext"></button><button type="button" id="cboxSlideshow"></button><div id="cboxLoadingOverlay" style="float: left;"></div><div id="cboxLoadingGraphic" style="float: left;"></div></div><div id="cboxMiddleRight" style="float: left;"></div></div><div style="clear: left;"><div id="cboxBottomLeft" style="float: left;"></div><div id="cboxBottomCenter" style="float: left;"></div><div id="cboxBottomRight" style="float: left;"></div></div></div><div style="position: absolute; width: 9999px; visibility: hidden; display: none; max-width: none;"></div></div>
-</body>
-</html>

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "81xzQd3XGmXp+BJZzKLI2SwFqPpbzjFbB11NMJoxTmY=",
+  "Hash": "jTrfr+tAqLwHtjG5viAMhx0c8UHh0FHFYkpAmq2SJBs=",
   "Source": "PROJECT_PRN221",
   "BasePath": "_content/PROJECT_PRN221",
   "Mode": "Default",
@@ -29155,6 +29155,23 @@
       "OriginalItemSpec": "wwwroot\\Images\\avatar\\carol.svg"
     },
     {
+      "Identity": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\avatar\\dovandat.jpg",
+      "SourceId": "PROJECT_PRN221",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\",
+      "BasePath": "_content/PROJECT_PRN221",
+      "RelativePath": "Images/avatar/dovandat.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\avatar\\dovandat.jpg"
+    },
+    {
       "Identity": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\avatar\\george.svg",
       "SourceId": "PROJECT_PRN221",
       "SourceType": "Discovered",
@@ -30683,6 +30700,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Images\\products\\金克丝.png"
+    },
+    {
+      "Identity": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\warranties\\15.png",
+      "SourceId": "PROJECT_PRN221",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\",
+      "BasePath": "_content/PROJECT_PRN221",
+      "RelativePath": "Images/warranties/15.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\warranties\\15.png"
     },
     {
       "Identity": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\warranties\\test.png",

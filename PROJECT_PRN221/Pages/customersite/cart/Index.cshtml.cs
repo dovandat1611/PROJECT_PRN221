@@ -1,3 +1,4 @@
+using Humanizer;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -22,9 +23,30 @@ namespace PROJECT_PRN221.Pages.customersite.cart
 
         public double totalprice { get; set; }
 
-
-        public async Task OnGetAsync(string service, int? proid)
+        public bool checkSession()
         {
+            bool checkS = true;
+            var httpContext = HttpContext;
+            if (httpContext != null && httpContext.Session != null)
+            {
+               string isCustomerAuthenticated = httpContext.Session.GetString("customer");
+                if(string.IsNullOrEmpty(isCustomerAuthenticated))
+                {
+                    checkS = false;
+                }
+            }
+
+            return checkS;
+        }
+
+        public async Task<IActionResult> OnGetAsync(string service, int? proid)
+        {
+
+            if (checkSession() == false)
+            {
+                return RedirectToPage("/customersite/authenticate/login/Index");
+            }
+
             if (service == null)
             {
                 service = "ListCart";
@@ -53,7 +75,7 @@ namespace PROJECT_PRN221.Pages.customersite.cart
 
                 ReturnPage();
             }
-
+            return Page();
         }
 
 

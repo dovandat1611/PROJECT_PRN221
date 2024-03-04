@@ -76,7 +76,7 @@ namespace PROJECT_PRN221.Pages.adminsite.warranty
                 Warranty.ImageProductAdmin = fileURL;
             }
 
-            Warranty.WarrantyDateAdmin = DateTime.Now;
+            Warranty.WarrantyDateAdmin = DateTime.Now.ToString("dd/MM/yyyy");
 
             _context.Attach(Warranty).State = EntityState.Modified;
 

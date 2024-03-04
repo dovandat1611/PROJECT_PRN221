@@ -2,39 +2,9 @@
 @model PROJECT_PRN221.Pages.adminsite.brand.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Brand";
+    Layout = "_AdminLayout";
 }
-
-@*<h1>Index</h1>
-
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Brand[0].BrandName)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.Brand) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.BrandName)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.BrandId">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.BrandId">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.BrandId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>*@
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -74,18 +44,20 @@
                                             <h4 class="card-title card-title-dash">Brand</h4>
                                         </div>
                                         <div>
-                                            <form class="search-form" action="BrandController?service=searchBrand" method="post">
+                                            <form class="search-form" method="post">
+                                                <input type="hidden" name="service" value="searchBrand"/>
                                                 <input type="text" class="form-control" name="name" placeholder="Search Here" title="Search here">
                                             </form>
                                         </div>
                                         <div>
-                                            <a href="BrandController?service=insertBrand" class="btn btn-primary text-white me-0"><i class="mdi mdi-account-plus"></i> Add new Brand</a>
+                                            <a href="/adminsite/brand/Create" class="btn btn-primary text-white me-0"><i class="mdi mdi-account-plus"></i> Add new Brand</a>
                                             <a onclick="exportToExcel()" class="btn btn-primary text-white me-0"><i class="icon-download"></i> Export</a>
                                         </div>
+
                                     </div>
-                                    <div style="text-align: center">
+                 @*                   <div style="text-align: center">
                                         <p class="badge badge-danger">${ms}</p>
-                                    </div>
+                                    </div>*@
                                     <div class="table-responsive">
                                         <table class="table table-hover" id="myTable">
 
@@ -94,50 +66,62 @@
                                                     <th>ID</th>
                                                     <th>Name</th>
                                                     <th>Update</th>
-                                                    <th>Delete</th>
+                                                    @*<th>Delete</th>*@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <c:forEach items="${data}" var="d">
-                                                    <tr>
-                                                        <td>${d.brand_id}</td>
-                                                        <td>${d.brand_name}</td>
-                                                        <td><div class="badge badge-info"><a href="BrandController?service=updateBrand&id=${d.brand_id}">Update</a></div></td>
-                                                        <td ><div class="badge badge-danger"> <a href="BrandController?service=deleteBrand&id=${d.brand_id}">Delete</a></div></td> 
-                                                    </tr>
-                                                </c:forEach>
+                                        @foreach (var item in Model.Brand)
+                                        {
+                                                     <tr>
+                                                        <td>@item.BrandId</td>
+                                                        <td>@item.BrandName</td>
+                                                        <td><div class="badge badge-info"><a href="/adminsite/brand/Edit?id=@item.BrandId">Update</a></div></td>
+                                                        @*<td ><div class="badge badge-danger"> <a href="BrandController?service=deleteBrand&id=${d.brand_id}">Delete</a></div></td> *@
+                                                    </tr> 
+                                        }
                                             </tbody>
                                         </table>
-                                        <div style="text-align: center">
-                                            <c:choose>
-                                                <c:when test="${currentPage > 1}">
-                                                    <a href="?page=${currentPage - 1}">Previous</a>
-                                                </c:when>
-                                                <c:otherwise>
-                                                    <span>Previous</span>
-                                                </c:otherwise>
-                                            </c:choose>
-                                            <c:forEach begin="1" end="${totalPages}" varStatus="loop">
-                                                <c:choose>
-                                                    <c:when test="${loop.index == currentPage}">
-                                                        <span>${loop.index}</span>
-                                                    </c:when>
-                                                    <c:otherwise>
-                                                        <c:if test="${id == null}">
-                                                            <a href="?page=${loop.index}">${loop.index}</a>
-                                                        </c:if>  
-                                                    </c:otherwise>
-                                                </c:choose>
-                                            </c:forEach>
-                                            <c:choose>
-                                                <c:when test="${currentPage < totalPages}">
-                                                    <a href="?page=${currentPage + 1}">Next</a>
-                                                </c:when>
-                                                <c:otherwise>
-                                                    <span>Next</span>
-                                                </c:otherwise>
-                                            </c:choose>
-                                        </div>
+
+                                     @*PAGING*@ 
+
+                                    <div style="text-align: center">
+                                        @if (Model.Brand.PageIndex > 1)
+                                        {
+                                            <a href="?pageIndex=@(Model.Brand.PageIndex - 1)">Previous</a>
+                                        }
+                                        else
+                                        {
+                                            <span>Previous</span>
+                                        }
+
+                                        @for (int i = 1; i <= Model.Brand.TotalPages; i++)
+                                        {
+                                            @if (i == Model.Brand.PageIndex)
+                                            {
+                                                <span>@i</span>
+                                            }
+                                            else
+                                            {   
+                                                <a href="?pageIndex=@i">@i</a>
+                                                @*@if (Model.Admin. == null)
+                                                {
+                                                    <a href="?page=@i">@i</a>
+                                                }*@
+                                            }
+                                        }
+
+                                        @if (Model.Brand.PageIndex < Model.Brand.TotalPages)
+                                        {
+                                            <a href="?pageIndex=@(Model.Brand.PageIndex + 1)">Next</a>
+                                        }
+                                        else
+                                        {
+                                            <span>Next</span>
+                                        }
+                                    </div>
+
+
+
                                     </div>
                                 </div>
                             </div>

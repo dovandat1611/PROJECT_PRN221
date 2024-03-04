@@ -18,8 +18,30 @@ namespace PROJECT_PRN221.Pages.customersite.checkout
         }
         public Customer Customer { get; set; }
         public double totalprice { get; set; }
-        public async Task OnGetAsync()
+
+        public bool checkSession()
         {
+            bool checkS = true;
+            var httpContext = HttpContext;
+            if (httpContext != null && httpContext.Session != null)
+            {
+                string isCustomerAuthenticated = httpContext.Session.GetString("customer");
+                if (string.IsNullOrEmpty(isCustomerAuthenticated))
+                {
+                    checkS = false;
+                }
+            }
+
+            return checkS;
+        }
+
+        public async Task<IActionResult> OnGetAsync()
+        {
+            if (checkSession() == false)
+            {
+                return RedirectToPage("/customersite/authenticate/login/Index");
+            }
+
             string customerJson = HttpContext.Session.GetString("customer");
             string cartJson = HttpContext.Session.GetString("cart");
 
@@ -34,7 +56,7 @@ namespace PROJECT_PRN221.Pages.customersite.checkout
                 List<Cart> cartList = JsonConvert.DeserializeObject<List<Cart>>(cartJson);
                 totalprice = cartList.Sum(x => x.subtotal);
             }
-
+            return Page();
         }
 
         public async Task<IActionResult> OnPostAsync(int id, double total_price, string status, string name_receiver, 

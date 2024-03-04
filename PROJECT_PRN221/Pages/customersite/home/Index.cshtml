@@ -1,44 +1,9 @@
 ﻿@page 
 @model PROJECT_PRN221.Pages.customersite.home.IndexModel
-@{
-
+@{  
+    ViewData["Title"] = "Home";
+    Layout = "CustomerLayout";
 }
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Ultras - Clothing Store eCommerce Store HTML Website Template</title>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="author" content="">
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-    <link rel="stylesheet" type="text/css" href="~/customer/css/normalize.css">
-    <link rel="stylesheet" type="text/css" href="~/customer/icomoon/icomoon.css">
-    <link rel="stylesheet" type="text/css" media="all" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="~/customer/css/vendor.css">
-    <link rel="stylesheet" type="text/css" href="~/customer/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <!-- script
-    ================================================== -->
-    <script src="~/customer/js/modernizr.js"></script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PV3J437JX5"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-
-        gtag('config', 'G-PV3J437JX5');
-    </script>
-  </head>
-  <body>
-
 
     @*HEADER*@
     @if (!string.IsNullOrEmpty(@Model.isCustomerAuthenticated))
@@ -49,8 +14,6 @@
     {
         <partial name="/Pages/_HeaderGuestSite.cshtml" model="new PROJECT_PRN221.Pages._HeaderGuestSiteModel()"/>
     }
-
-   
 
 
     @* HEADER 1 *@
@@ -71,7 +34,7 @@
                     <h2 class="banner-title">Summer Collection</h2>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu feugiat amet, libero ipsum enim pharetra hac.</p>
                     <div class="btn-wrap">
-                      <a href="shop.html" class="btn btn-light btn-medium d-flex align-items-center" tabindex="0">Shop it now <i class="icon icon-arrow-io"></i>
+                      <a href="/customersite/shop" class="btn btn-light btn-medium d-flex align-items-center" tabindex="0">Shop it now <i class="icon icon-arrow-io"></i>
                       </a>
                     </div>
                   </div>
@@ -87,7 +50,7 @@
                     <h2 class="banner-title">Casual Collection</h2>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu feugiat amet, libero ipsum enim pharetra hac.</p>
                     <div class="btn-wrap">
-                      <a href="shop.html" class="btn btn-light btn-light-arrow btn-medium d-flex align-items-center" tabindex="0">Shop it now <i class="icon icon-arrow-io"></i>
+                      <a href="/customersite/shop" class="btn btn-light btn-light-arrow btn-medium d-flex align-items-center" tabindex="0">Shop it now <i class="icon icon-arrow-io"></i>
                       </a>
                     </div>
                   </div>
@@ -115,7 +78,7 @@
           <div class="swiper-wrapper">
 
             @* PRODUCT HERE *@
-                                @foreach (var item in Model.Product)
+                                @foreach (var item in Model.BestSellingProduct)
                                 {
                                     <div class="swiper-slide">
                                         <div class="product-item">
@@ -123,9 +86,9 @@
                                                 <img src="@item.Image" alt="Books" class="product-image" style="width: 290px; height: 290px;">
                                             </div>
                                             <div class="product-detail">
-                                                <h3 class="product-title">
+                                                <h4 class="product-title">
                                                     <a href="/customersite/productdetail?id=@item.ProductId">@item.ProductName</a>
-                                                </h3>
+                                                </h4>
                                                 <span class="item-price text-primary number">@item.ListPrice</span>
                                             </div>
                                         </div>
@@ -212,33 +175,22 @@
             <div class="row d-flex flex-wrap">
 
             @* LIST NEW ITEMS *@
-              <div class="product-item col-lg-3 col-md-6 col-sm-6">
+              
+              @foreach (var item in Model.NewProduct)
+              {
+                  <div class="product-item col-lg-3 col-md-6 col-sm-6">
                 <div class="image-holder">
-                  <img src="images/producs/2/2-medium.jpg" alt="Books" class="product-image" style="width: 290px; height: 200px;">
-                </div>
-                <div class="cart-concern">
-                  <div class="cart-button d-flex justify-content-between align-items-center">
-                    <button type="button" class="btn-wrap cart-link d-flex align-items-center">add to cart <i class="icon icon-arrow-io"></i>
-                    </button>
-                    <button type="button" class="view-btn tooltip
-                        d-flex">
-                      <i class="icon icon-screen-full"></i>
-                      <span class="tooltip-text">Quick view</span>
-                    </button>
-                    <button type="button" class="wishlist-btn">
-                      <i class="icon icon-heart"></i>
-                    </button>
-                  </div>
+                  <img src="@item.Image" alt="@item.Image" class="product-image" style="width: 290px; height: 290px;">
                 </div>
                 <div class="product-detail">
-                  <h3 class="product-title">
-                    <a href="single-product.html">Half sleeve T-shirt</a>
-                  </h3>
-                  <div class="item-price text-primary">$40.00</div>
+                  <h4 class="product-title">
+                    <a href="/customersite/productdetail?id=@item.ProductId">@item.ProductName</a>
+                  </h4>
+                  <div class="item-price text-primary number">@item.ListPrice</div>
                 </div>
-              </div>
-
-
+                 </div>
+              }
+             
             </div>
           </div>
         </div>
@@ -299,36 +251,26 @@
           <div class="swiper-wrapper">
 
             @* LIST HERE *@
-            <div class="swiper-slide">
+           
+              @foreach (var item in Model.SaleProduct)
+              {
+             <div class="swiper-slide">
               <div class="product-item">
-                <img src="images/catalog/cameras.png" alt="Books" class="product-image" style="width: 290px; height: 290px;">
-                <div class="cart-concern">
-                  <div class="cart-button d-flex justify-content-between align-items-center">
-                    <button type="button" class="btn-wrap cart-link d-flex align-items-center">add to cart <i class="icon icon-arrow-io"></i>
-                    </button>
-                    <button type="button" class="view-btn tooltip
-                        d-flex">
-                      <i class="icon icon-screen-full"></i>
-                      <span class="tooltip-text">Quick view</span>
-                    </button>
-                    <button type="button" class="wishlist-btn">
-                      <i class="icon icon-heart"></i>
-                    </button>
-                  </div>
-                </div>
-                <div class="discount">10% Off</div>
+                <img src="@item.Image" alt="Books" class="product-image" style="width: 290px; height: 290px;">
+
+                <div class="discount">@(item.Discount*100)% Off</div>
                 <div class="product-detail">
-                  <h3 class="product-title">
-                    <a href="single-product.html">Long Sleeve T-shirt</a>
-                  </h3>
-                  <div class="item-price text-primary">
-                    <del class="prev-price">$50.00</del>$40.00
+                  <h4 class="product-title">
+                    <a href="/customersite/productdetail?id=@item.ProductId">@item.ProductName</a>
+                  </h4>
+                  <div>
+                    <p class="item-price text-primary number">@(item.ListPrice*(1-@item.Discount))</p>
+                    <del class="number">@item.ListPrice</del>
                   </div>
                 </div>
-              </div>
-            </div>
-
-
+              </div>  
+               </div>
+              }
           </div>
           <div class="swiper-pagination"></div>
         </div>
@@ -377,7 +319,7 @@
         <div class="section-header d-flex flex-wrap align-items-center justify-content-between">
           <h2 class="section-title">Our News</h2>
           <div class="btn-wrap align-right">
-            <a href="blog.html" class="d-flex align-items-center">Read All Articles <i class="icon icon icon-arrow-io"></i>
+            <a href="/customersite/news" class="d-flex align-items-center">Read All Articles <i class="icon icon icon-arrow-io"></i>
             </a>
           </div>
         </div>
@@ -390,21 +332,20 @@
                 {
                     <article class="col-md-4 post-item">
                         <div class="image-holder zoom-effect">
-                            <a href="/customersite/news/Detail?id=@item.NewsId">
-                                <img src="@item.Image" alt="post" class="post-image">
+                            <a href="/customersite/news/Detail?id=@item.news_id">
+                                <img src="@item.image" alt="post" class="post-image">
                             </a>
                         </div>
                         <div class="post-content d-flex">
                             <div class="meta-date">
-                                <div class="meta-day text-primary">25</div>
-                                <div class="meta-month">Aug-2021</div>
+                                <div class="meta-day text-primary">@item.day</div>
+                                <div class="meta-month">@item.month-@item.year</div>
                             </div>
                             <div class="post-header">
                                 <h3 class="post-title">
-                                    <a href="/customersite/news/Detail?id=@item.NewsId">@item.Title</a>
-
+                                    <a href="/customersite/news/Detail?id=@item.news_id">@item.title</a>
                                 </h3>
-                                <a href="/customersite/news" class="blog-categories">@item.Newsgroup.NewsgroupName</a>
+                                <a href="/customersite/news" class="blog-categories">@item.newsgroup_name</a>
                             </div>
                         </div>
                     </article>
@@ -414,33 +355,27 @@
     </section>
 
 
-   @* BRAND*@
+    @* BRAND*@
     <section id="brand-collection" class="padding-medium bg-light-grey">
       <div class="container">
       
         <div class="d-flex flex-wrap justify-content-between " style="margin-bottom: 20px;">
-          <img src="images/brands/apple.svg" alt="phone" class="brand-image" style="width: 100px; height: 50px;">
-          <img src="images/brands/intel.svg" alt="phone" class="brand-image" style="width: 100px; height: 50px;">
-          <img src="images/brands/microsoft.svg" alt="phone" class="brand-image" style="width: 100px; height: 50px;">
-          <img src="images/brands/dell.svg" alt="phone" class="brand-image" style="width: 100px; height: 50px;">
-          <img src="images/brands/asus.svg" alt="phone" class="brand-image" style="width: 100px; height: 50px;">
+          <img src="/Images/brands/apple.svg" alt="phone" class="brand-image" style="width: 100px; height: 50px;">
+          <img src="/Images/brands/intel.svg" alt="phone" class="brand-image" style="width: 100px; height: 50px;">
+          <img src="/Images/brands/microsoft.svg" alt="phone" class="brand-image" style="width: 100px; height: 50px;">
+          <img src="/Images/brands/dell.svg" alt="phone" class="brand-image" style="width: 100px; height: 50px;">
+          <img src="/Images/brands/asus.svg" alt="phone" class="brand-image" style="width: 100px; height: 50px;">
         </div>
         
         <div class="d-flex flex-wrap justify-content-between">
-          <img src="images/brands/canon.svg" alt="phone" class="brand-image" style="width: 100px; height: 50px;">
-          <img src="images/brands/hp.svg" alt="phone" class="brand-image" style="width: 100px; height: 50px;">
-          <img src="images/brands/lenovo.svg" alt="phone" class="brand-image" style="width: 100px; height: 50px;">
-          <img src="images/brands/lg.svg" alt="phone" class="brand-image" style="width: 100px; height: 50px;">
-          <img src="images/brands/sony.svg" alt="phone" class="brand-image" style="width: 100px; height: 50px;">
+          <img src="/Images/brands/canon.svg" alt="phone" class="brand-image" style="width: 100px; height: 50px;">
+          <img src="/Images/brands/hp.svg" alt="phone" class="brand-image" style="width: 100px; height: 50px;">
+          <img src="/Images/brands/lenovo.svg" alt="phone" class="brand-image" style="width: 100px; height: 50px;">
+          <img src="/Images/brands/lg.svg" alt="phone" class="brand-image" style="width: 100px; height: 50px;">
+          <img src="/Images/brands/sony.svg" alt="phone" class="brand-image" style="width: 100px; height: 50px;">
         </div>
       </div>
     </section>
 
-    @*FOOTER*@
-    <partial name="/Pages/_FooterCustomerSite.cshtml" model="new PROJECT_PRN221.Pages._FooterCustomerSiteModel()"/>
+    <hr>
 
-    <script src="~/customer/js/jquery-1.11.0.min.js"></script>
-    <script src="~/customer/js/plugins.js"></script>
-    <script src="~/customer/js/script.js"></script>
-  </body>
-</html>

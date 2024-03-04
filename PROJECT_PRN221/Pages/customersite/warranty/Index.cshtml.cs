@@ -21,8 +21,28 @@ namespace PROJECT_PRN221.Pages.customersite.warranty
         public Customer Customer { get; set; }
         public List<Warranty> warranties { get; set; }
 
-        public void OnGet()
+        public bool checkSession()
         {
+            bool checkS = true;
+            var httpContext = HttpContext;
+            if (httpContext != null && httpContext.Session != null)
+            {
+                string isCustomerAuthenticated = httpContext.Session.GetString("customer");
+                if (string.IsNullOrEmpty(isCustomerAuthenticated))
+                {
+                    checkS = false;
+                }
+            }
+
+            return checkS;
+        }
+
+        public IActionResult OnGet()
+        {
+            if (checkSession() == false)
+            {
+                return RedirectToPage("/customersite/authenticate/login/Index");
+            }
 
             Wait = _context.Warranties.Where(x => x.Status.Equals("Wait")).Count();
             Process = _context.Warranties.Where(x => x.Status.Equals("Process")).Count();
@@ -35,6 +55,8 @@ namespace PROJECT_PRN221.Pages.customersite.warranty
                 Customer = JsonConvert.DeserializeObject<Customer>(customerJson);
             }
             warranties = _context.Warranties.Include(x => x.Product).Where(x => x.CustomerId == Customer.CustomerId).ToList();
+
+            return Page();
         }
     }
 }
