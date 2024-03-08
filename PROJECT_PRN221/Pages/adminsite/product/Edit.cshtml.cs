@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using PROJECT_PRN221.Models;
 using PROJECT_PRN221.Utils;
+using Microsoft.AspNetCore.SignalR;
 
 namespace PROJECT_PRN221.Pages.adminsite.product
 {
@@ -16,11 +17,13 @@ namespace PROJECT_PRN221.Pages.adminsite.product
     {
         private readonly PROJECT_PRN221.Models.ProjectPrn221Context _context;
         private Microsoft.AspNetCore.Hosting.IHostingEnvironment _environment;
+        private readonly IHubContext<HubServer> _hubContext;
 
-        public EditModel(PROJECT_PRN221.Models.ProjectPrn221Context context, Microsoft.AspNetCore.Hosting.IHostingEnvironment environment)
+        public EditModel(PROJECT_PRN221.Models.ProjectPrn221Context context, Microsoft.AspNetCore.Hosting.IHostingEnvironment environment, IHubContext<HubServer> hubContext)
         {
             _context = context;
             _environment = environment;
+            _hubContext = hubContext;
         }
 
         [BindProperty]
@@ -100,6 +103,7 @@ namespace PROJECT_PRN221.Pages.adminsite.product
                 try
                 {
                     await _context.SaveChangesAsync();
+                    await _hubContext.Clients.All.SendAsync("ReloadData");
                 }
                 catch (DbUpdateConcurrencyException)
                 {

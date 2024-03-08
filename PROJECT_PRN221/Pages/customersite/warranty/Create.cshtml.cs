@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using PROJECT_PRN221.Dto;
@@ -11,11 +12,13 @@ namespace PROJECT_PRN221.Pages.customersite.warranty
     {
         private readonly PROJECT_PRN221.Models.ProjectPrn221Context _context;
         private Microsoft.AspNetCore.Hosting.IHostingEnvironment _environment;
+        private readonly IHubContext<HubServer> _hubContext;
 
-        public CreateModel(PROJECT_PRN221.Models.ProjectPrn221Context context, Microsoft.AspNetCore.Hosting.IHostingEnvironment environment)
+        public CreateModel(PROJECT_PRN221.Models.ProjectPrn221Context context, Microsoft.AspNetCore.Hosting.IHostingEnvironment environment, IHubContext<HubServer> hubContext)
         {
             _context = context;
             _environment = environment;
+            _hubContext = hubContext;
         }
         public Customer Customer { get; set; }
         public OrderWarranty Warranty { get; set; }
@@ -104,7 +107,7 @@ namespace PROJECT_PRN221.Pages.customersite.warranty
             {
                 foreach (var FileUpload in FileUploads)
                 {
-                    var file = Path.Combine(_environment.ContentRootPath, "Images/warranties", FileUpload.FileName);
+                    var file = Path.Combine(_environment.ContentRootPath, "wwwroot/Images/warranties", FileUpload.FileName);
                     using (var fileStream = new FileStream(file, FileMode.Create))
                     {
                         await FileUpload.CopyToAsync(fileStream);
@@ -121,6 +124,7 @@ namespace PROJECT_PRN221.Pages.customersite.warranty
 
             _context.Warranties.Add(warranty);
             await _context.SaveChangesAsync();
+            await _hubContext.Clients.All.SendAsync("ReloadData");
             return RedirectToPage("./Index");
         }
     }

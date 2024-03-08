@@ -130,6 +130,9 @@ namespace PROJECT_PRN221.Pages.customersite.profile
                 try
                 {
                     await _context.SaveChangesAsync();
+                    HttpContext.Session.Remove("customer");
+                    string cusjson = JsonConvert.SerializeObject(Customer);
+                    HttpContext.Session.SetString("customer", cusjson);
                 }
                 catch (DbUpdateConcurrencyException)
                 {

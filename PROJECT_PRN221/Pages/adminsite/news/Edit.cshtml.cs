@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting;
 using System.IO;
 using PROJECT_PRN221.Models;
+using Microsoft.AspNetCore.SignalR;
 
 namespace PROJECT_PRN221.Pages.adminsite.news
 {
@@ -17,10 +18,12 @@ namespace PROJECT_PRN221.Pages.adminsite.news
     {
         private readonly PROJECT_PRN221.Models.ProjectPrn221Context _context;
         private Microsoft.AspNetCore.Hosting.IHostingEnvironment _environment;
-        public EditModel(PROJECT_PRN221.Models.ProjectPrn221Context context, Microsoft.AspNetCore.Hosting.IHostingEnvironment environment)
+        private readonly IHubContext<HubServer> _hubContext;
+        public EditModel(PROJECT_PRN221.Models.ProjectPrn221Context context, Microsoft.AspNetCore.Hosting.IHostingEnvironment environment, IHubContext<HubServer> hubContext)
         {
             _context = context;
             _environment = environment;
+            _hubContext = hubContext;
         }
 
 
@@ -83,6 +86,7 @@ namespace PROJECT_PRN221.Pages.adminsite.news
             try
             {
                 await _context.SaveChangesAsync();
+                await _hubContext.Clients.All.SendAsync("ReloadData");
             }
             catch (DbUpdateConcurrencyException)
             {

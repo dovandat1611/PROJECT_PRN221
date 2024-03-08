@@ -77,7 +77,7 @@
                                                             <th>Status</th>
                                                             <th>Update</th>  
                                                             <th>Detail</th> 
-                                                            <th>Delete</th>  
+                                                            @*<th>Delete</th>  *@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -92,8 +92,8 @@
                                                                             <td>@item.CreatedDate</td> 
                                                                             <td>@item.Status</td> 
                                                                             <td><div class="badge badge-info"><a asp-page="./Edit" asp-route-id="@item.NewsId">Update</a></div></td>
-                                                                            <td><div class="badge badge-info"><a asp-page="./Details" asp-route-id="@item.NewsId">Details</a></div></td>
-                                                                            <td><div class="badge badge-danger"><a asp-page="./Delete" asp-route-id="@item.NewsId">Delete</a></div></td> 
+                                                                            <td><div class="badge badge-success"><a href="/customersite/news/Detail?id=@item.NewsId" target="_blank">Details</a></div></td>
+                                                                            @*<td><div class="badge badge-danger"><a asp-page="./Delete" asp-route-id="@item.NewsId">Delete</a></div></td> *@
                                                                         </tr>
                                                     }
 

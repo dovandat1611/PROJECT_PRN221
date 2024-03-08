@@ -6,16 +6,18 @@ using Newtonsoft.Json;
 using PROJECT_PRN221.Dto;
 using PROJECT_PRN221.Models;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.SignalR;
 
 namespace PROJECT_PRN221.Pages.customersite.productdetail
 {
     public class IndexModel : PageModel
     {
         private readonly PROJECT_PRN221.Models.ProjectPrn221Context _context;
-
-        public IndexModel(PROJECT_PRN221.Models.ProjectPrn221Context context)
+        private readonly IHubContext<HubServer> _hubContext;
+        public IndexModel(PROJECT_PRN221.Models.ProjectPrn221Context context, IHubContext<HubServer> hubContext)
         {
             _context = context;
+            _hubContext = hubContext;
         }
 
         public Product Product { get; set; } = default!;
@@ -85,6 +87,7 @@ namespace PROJECT_PRN221.Pages.customersite.productdetail
                 };
                 _context.Comments.Add(comment);
                 _context.SaveChanges();
+                _hubContext.Clients.All.SendAsync("ReloadData");
             }
 
 

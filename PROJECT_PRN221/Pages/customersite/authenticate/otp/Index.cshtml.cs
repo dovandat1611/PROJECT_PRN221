@@ -15,16 +15,20 @@ namespace PROJECT_PRN221.Pages.customersite.authenticate.otp
         {
             string sessionOTP = HttpContext.Session.GetString("otp");
 
-            if (sessionOTP.Equals(otp))
+            if(string.IsNullOrEmpty(sessionOTP))
             {
-                return RedirectToPage("/customersite/authenticate/changespassword/Index");
+                if (sessionOTP.Equals(otp))
+                {
+                    return RedirectToPage("/customersite/authenticate/changespassword/Index");
+                }
+                else
+                {
+                    HttpContext.Session.Remove("username");
+                    HttpContext.Session.Remove("otp");
+                    return RedirectToPage("/customersite/authenticate/forgotpassword/Index");
+                }
             }
-            else
-            {
-                HttpContext.Session.Remove("username");
-                HttpContext.Session.Remove("otp");
-                return RedirectToPage("/customersite/authenticate/forgotpassword/Index");
-            }
+            return RedirectToPage("/customersite/authenticate/changespassword/Index");
         }
     }
 }

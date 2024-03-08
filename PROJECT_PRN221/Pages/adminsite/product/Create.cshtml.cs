@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.SignalR;
 using PROJECT_PRN221.Models;
 using PROJECT_PRN221.Utils;
 
@@ -14,11 +15,13 @@ namespace PROJECT_PRN221.Pages.adminsite.product
     {
         private readonly PROJECT_PRN221.Models.ProjectPrn221Context _context;
         private Microsoft.AspNetCore.Hosting.IHostingEnvironment _environment;
+        private readonly IHubContext<HubServer> _hubContext;
 
-        public CreateModel(PROJECT_PRN221.Models.ProjectPrn221Context context, Microsoft.AspNetCore.Hosting.IHostingEnvironment environment)
+        public CreateModel(PROJECT_PRN221.Models.ProjectPrn221Context context, Microsoft.AspNetCore.Hosting.IHostingEnvironment environment, IHubContext<HubServer> hubContext)
         {
             _context = context;
             _environment = environment;
+            _hubContext = hubContext;
         }
 
         [BindProperty]
@@ -85,6 +88,7 @@ namespace PROJECT_PRN221.Pages.adminsite.product
 
                 _context.Products.Add(Product);
                 await _context.SaveChangesAsync();
+                await _hubContext.Clients.All.SendAsync("ReloadData");
                 return RedirectToPage("./Index");
             }
             else

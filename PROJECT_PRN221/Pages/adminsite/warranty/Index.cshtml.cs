@@ -55,7 +55,7 @@ namespace PROJECT_PRN221.Pages.adminsite.warranty
 
             if (checkSession() == false)
             {
-                return RedirectToPage("/adminsite/authenticate/login/Index");
+                return RedirectToPage("/BadRequest");
             }
 
             if (pageIndex == null)
@@ -109,8 +109,10 @@ namespace PROJECT_PRN221.Pages.adminsite.warranty
             return Page();
         }
 
-        public async Task OnPostAsync(string service, string status, int id, int? pageIndex)
-        {   
+        public async Task OnPostAsync(string service, string status, int id, int? pageIndex, string customer)
+        {
+
+            IQueryable<Warranty> WarrantyIQ = null;
             if (service.Equals("updateStatus"))
             {   
                 Warranty warranty = _context.Warranties.FirstOrDefault(x => x.WarrantyId == id);
@@ -123,21 +125,35 @@ namespace PROJECT_PRN221.Pages.adminsite.warranty
             {
                 Admin = JsonConvert.DeserializeObject<Admin>(adminJson);
             }
-            if (_context.Warranties != null)
+
+            if (service.Equals("searchWarranty"))
             {
-                IQueryable<Warranty> WarrantyIQ = _context.Warranties
+                WarrantyIQ = _context.Warranties
+               .Include(w => w.Customer)
+               .Include(w => w.Orderdetail)
+               .Include(w => w.Product).Where(x => x.Customer.Name.Contains(customer));
+            }
+            else
+            {
+                WarrantyIQ = _context.Warranties
                 .Include(w => w.Customer)
                 .Include(w => w.Orderdetail)
                 .Include(w => w.Product);
+            }
+
+            if (_context.Warranties != null)
+            {
                 var pageSize = Configuration.GetValue("PageSize", 10);
                 Warranty = await PaginatedList<Warranty>.CreateAsync(
                 WarrantyIQ.AsNoTracking(), pageIndex ?? 1, pageSize);
             }
+
             Wait = _context.Warranties.Where(x => x.Status.Equals("Wait")).Count();
             Process = _context.Warranties.Where(x => x.Status.Equals("Process")).Count();
             Done = _context.Warranties.Where(x => x.Status.Equals("Done")).Count();
             Cancel = _context.Warranties.Where(x => x.Status.Equals("Cancel")).Count();
             Status = status;
+
         }
        }
 }

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.CodeAnalysis.Scripting;
 using PROJECT_PRN221.Models;
 using PROJECT_PRN221.Utils;
@@ -14,10 +15,11 @@ namespace PROJECT_PRN221.Pages.adminsite.admin
     public class CreateModel : PageModel
     {
         private readonly PROJECT_PRN221.Models.ProjectPrn221Context _context;
-
-        public CreateModel(PROJECT_PRN221.Models.ProjectPrn221Context context)
+        private readonly IHubContext<HubServer> _hubContext;
+        public CreateModel(PROJECT_PRN221.Models.ProjectPrn221Context context, IHubContext<HubServer> hubContext)
         {
             _context = context;
+            _hubContext = hubContext;
         }
 
         public IActionResult OnGet()
@@ -62,6 +64,7 @@ namespace PROJECT_PRN221.Pages.adminsite.admin
                 Admin.Password = Validation.HashPassword(Admin.Password);
                 _context.Admins.Add(Admin);
                 await _context.SaveChangesAsync();
+                await _hubContext.Clients.All.SendAsync("ReloadData");
                 return RedirectToPage("./Index");
             }
             else

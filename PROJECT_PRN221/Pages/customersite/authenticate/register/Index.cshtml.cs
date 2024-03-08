@@ -85,7 +85,7 @@ namespace PROJECT_PRN221.Pages.customersite.authenticate.register
                 sendMailService.SendEmailAsync(Customer.Email,"Register", "Hello,\n\nYou have successfully registered.\n\nThank you for joining!");
 
                 _context.SaveChanges();
-                return RedirectToPage("/customersite/login/Index");
+                return RedirectToPage("/customersite/authenticate/login/Index");
             }
             return Page();
         }

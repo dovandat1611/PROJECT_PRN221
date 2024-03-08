@@ -22,9 +22,19 @@
                                         <div>
                                             <h4 class="card-title card-title-dash">Warranty</h4>
                                         </div>
+
                                         <div>
                                             <a onclick="exportToExcel()" class="btn btn-primary text-white me-0"><i class="icon-download"></i> Export</a>
                                         </div>
+                                    </div>
+                                    <div class="d-sm-flex justify-content-evenly">
+                                                <form class="search-form" method="post">
+                                                    <div class="form-group">
+                                                        <label for="title">Search Customer</label>
+                                                        <input type="hidden"  name="service" value="searchWarranty">
+                                                        <input type="text" class="form-control" name="customer" id="title" placeholder="Search Here" title="Search here">
+                                                    </div>
+                                                </form>
                                     </div>
                                     <div class="d-sm-flex justify-content-evenly">
                                         <p class="badge badge-info"><a href="/adminsite/warranty/Index?service=displayWarrantyStatus&status=Wait">Wait: @Model.Wait </a></p>
@@ -36,7 +46,7 @@
                                             <thead>
                                                 <tr>
                                                     <th>ID</th>
-                                                    <th>Customer Id</th>
+                                                    <th>Customer</th>
                                                     <th>Image</th>
                                                     <th>Product Name</th>
                                                     <th>Image Product</th>
@@ -64,7 +74,7 @@
                                         {   
                                             <tr>
                                                         <td>@item.WarrantyId</td>
-                                                        <td>@item.ProductId</td>
+                                                        <td>@item.Customer.Name</td>
                                                         <td><img src="@item.Product.Image" alt="alt"/></td>
                                                         <td>@item.Product.ProductName</td>
                                                         <td><img src="@item.ImageProduct" alt="alt"/></td>

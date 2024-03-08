@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.SignalR;
 using Newtonsoft.Json;
 using PROJECT_PRN221.Dto;
 using PROJECT_PRN221.Models;
@@ -10,10 +11,11 @@ namespace PROJECT_PRN221.Pages.customersite.checkout
     public class ReturnModel : PageModel
     {
         private readonly PROJECT_PRN221.Models.ProjectPrn221Context _context;
-
-        public ReturnModel(PROJECT_PRN221.Models.ProjectPrn221Context context)
+        private readonly IHubContext<HubServer> _hubContext;
+        public ReturnModel(PROJECT_PRN221.Models.ProjectPrn221Context context, IHubContext<HubServer> hubContext)
         {
             _context = context;
+            _hubContext = hubContext;
         }
         public string displayMsg { get; set; }
         public string paymentStatus { get; set; }
@@ -84,6 +86,7 @@ namespace PROJECT_PRN221.Pages.customersite.checkout
                                 {
                                     _context.OrderDetails.Add(orderDetail);
                                     _context.SaveChanges();
+                                    _hubContext.Clients.All.SendAsync("ReloadData");
                                 }
                             }
                         }

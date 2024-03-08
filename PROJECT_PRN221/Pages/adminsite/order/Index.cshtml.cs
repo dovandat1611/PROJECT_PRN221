@@ -50,7 +50,7 @@ namespace PROJECT_PRN221.Pages.adminsite.order
 
             if (checkSession() == false)
             {
-                return RedirectToPage("/adminsite/authenticate/login/Index");
+                return RedirectToPage("/BadRequest");
             }
 
             if (pageIndex == null)
@@ -93,13 +93,14 @@ namespace PROJECT_PRN221.Pages.adminsite.order
             }
             return Page();
         }
-        public async Task<IActionResult> OnPostAsync(int id, string status, string service, int? pageIndex)
+        public async Task<IActionResult> OnPostAsync(int id, string status, string service, int? pageIndex, DateTime? month, DateTime? date)
         {
+            IQueryable<Order> ordersIQ = null;
             if (pageIndex == null)
             {
                 pageIndex = 1;
             }
-            if (_context.Customers != null)
+            if (_context.Orders != null)
             {
                 if (service.Equals("updateStatus"))
                 {
@@ -107,16 +108,44 @@ namespace PROJECT_PRN221.Pages.adminsite.order
                     order.Status = status;
                     _context.Orders.Update(order);
                     _context.SaveChanges();
-                }
-            }
-            if (_context.Orders != null)
-            {
-                IQueryable<Order> ordersIQ = _context.Orders.Include(o => o.Customer).Where(x => x.Status.Equals(status));
 
-                var pageSize = Configuration.GetValue("PageSize", 10);
-                Order = await PaginatedList<Order>.CreateAsync(
-                ordersIQ.AsNoTracking(), pageIndex ?? 1, pageSize);
+                    ordersIQ = _context.Orders.Include(o => o.Customer).Where(x => x.Status.Equals(status));
+                }
+                if (service.Equals("SearchByMonth"))
+                {
+                    if(month != null)
+                    {
+                        int selectedMonth = month.Value.Month;
+                        int selectedYear = month.Value.Year;
+                        ordersIQ = _context.Orders.Include(o => o.Customer).Where(x => x.OderDate.Value.Month == selectedMonth && x.OderDate.Value.Year == selectedYear);
+                    }
+                    else
+                    {
+                       ordersIQ = _context.Orders.Include(o => o.Customer);
+                    }
+                }
+                if (service.Equals("SearchByDate"))
+                {
+                    if (date != null)
+                    {
+                        int selectedDay = date.Value.Day;
+                        int selectedMonth = date.Value.Month;
+                        int selectedYear = date.Value.Year;
+                        ordersIQ = _context.Orders.Include(o => o.Customer).
+                            Where(x => x.OderDate.Value.Day == selectedDay && x.OderDate.Value.Month == selectedMonth && x.OderDate.Value.Year == selectedYear);
+                    }
+                    else
+                    {
+                        ordersIQ = _context.Orders.Include(o => o.Customer);
+                    }
+                }
+
             }
+
+            var pageSize = Configuration.GetValue("PageSize", 10);
+            Order = await PaginatedList<Order>.CreateAsync(
+            ordersIQ.AsNoTracking(), pageIndex ?? 1, pageSize);
+
             Wait = _context.Orders.Where(x => x.Status.Equals("Wait")).Count();
             Process = _context.Orders.Where(x => x.Status.Equals("Process")).Count();
             Done = _context.Orders.Where(x => x.Status.Equals("Done")).Count();

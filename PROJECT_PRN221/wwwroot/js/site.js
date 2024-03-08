@@ -1,4 +1,15 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿"use strict";
 
-// Write your JavaScript code.
+var connection = new signalR.HubConnectionBuilder().withUrl("/hub").build();
+connection.on("ReloadData", function () {
+    location.reload();
+    //Refresh();
+});
+
+//function Refresh() {
+
+//}
+
+connection.start().then().catch(function (err) {
+    return console.log(err.toString());
+});

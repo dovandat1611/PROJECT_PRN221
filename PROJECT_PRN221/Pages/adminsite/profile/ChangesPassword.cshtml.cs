@@ -37,7 +37,7 @@ namespace PROJECT_PRN221.Pages.adminsite.profile
         {
             if (checkSession() == false)
             {
-                return RedirectToPage("/adminsite/authenticate/login/Index");
+                return RedirectToPage("/BadRequest");
             }
 
             string Json = HttpContext.Session.GetString("admin");

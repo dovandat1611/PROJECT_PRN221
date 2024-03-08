@@ -109,6 +109,10 @@
       "PackagePath": "staticwebassets\\Images\\logo\\logo.png"
     },
     {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\logo\\logodemo.jpg",
+      "PackagePath": "staticwebassets\\Images\\logo\\logodemo.jpg"
+    },
+    {
       "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\news\\Apple.webp",
       "PackagePath": "staticwebassets\\Images\\news\\Apple.webp"
     },
@@ -383,6 +387,18 @@
     {
       "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\warranties\\15.png",
       "PackagePath": "staticwebassets\\Images\\warranties\\15.png"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\warranties\\17.png",
+      "PackagePath": "staticwebassets\\Images\\warranties\\17.png"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\warranties\\Iphone14ProGold.jpg",
+      "PackagePath": "staticwebassets\\Images\\warranties\\Iphone14ProGold.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\warranties\\SamsungGalaxyZFlip4.jpg",
+      "PackagePath": "staticwebassets\\Images\\warranties\\SamsungGalaxyZFlip4.jpg"
     },
     {
       "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\Images\\warranties\\test.png",
@@ -7455,6 +7471,14 @@
     {
       "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\microsoft\\signalr\\dist\\browser\\signalr.js",
+      "PackagePath": "staticwebassets\\microsoft\\signalr\\dist\\browser\\signalr.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\C#\\PRN221\\PROJECT_PRN221\\PROJECT_PRN221\\wwwroot\\microsoft\\signalr\\dist\\browser\\signalr.min.js",
+      "PackagePath": "staticwebassets\\microsoft\\signalr\\dist\\browser\\signalr.min.js"
     },
     {
       "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.PROJECT_PRN221.Microsoft.AspNetCore.StaticWebAssets.props",

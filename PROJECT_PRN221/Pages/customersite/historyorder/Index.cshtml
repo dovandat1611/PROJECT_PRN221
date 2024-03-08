@@ -82,6 +82,49 @@
                     </tbody>
                 </table>
             </div>
+            <div style="text-align: center">
+                <nav class="navigation paging-navigation text-center padding-medium" role="navigation">
+                    <div class="pagination loop-pagination d-flex justify-content-center">
+                @if (Model.Orders.PageIndex > 1)
+                {
+                    <a href="?pageIndex=@(Model.Orders.PageIndex - 1)" class="pagination-arrow d-flex align-items-center">
+                        <i class="icon icon-arrow-left"></i>
+                    </a>
+                }
+                else
+                {
+                    <span class="pagination-arrow d-flex align-items-center">
+                        <i class="icon icon-arrow-left"></i>
+                    </span>
+                }
+
+                @for (int i = 1; i <= Model.Orders.TotalPages; i++)
+                {
+                    if (i == Model.Orders.PageIndex)
+                    {
+                        <span aria-current="page" class="page-numbers current">@i</span>
+                    }
+                    else
+                    {
+                        <a href="?pageIndex=@i" class="page-numbers">@i</a>
+                    }
+                }
+
+                @if (Model.Orders.PageIndex < Model.Orders.TotalPages)
+                {
+                    <a href="?pageIndex=@(Model.Orders.PageIndex + 1)" class="pagination-arrow d-flex align-items-center">
+                        <i class="icon icon-arrow-right"></i>
+                    </a>
+                }
+                else
+                {
+                    <span class="pagination-arrow d-flex align-items-center">
+                        <i class="icon icon-arrow-right"></i>
+                    </span>
+                }
+                </div>
+                </nav>
+            </div>
         </div>
 
 

@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration;
 using PROJECT_PRN221.Utils;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
-
+using PROJECT_PRN221;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -48,6 +48,23 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+app.Use(async (context, next) =>
+{
+    await next();
+
+    if (context.Response.StatusCode == 404)
+    {
+        context.Request.Path = "/NotFound";
+        await next();
+    }
+});
+
+app.MapGet("/NotFound", () =>
+{
+    var content = File.ReadAllText("Pages/NotFound.cshtml");
+    return Results.Content(content, "text/html");
+});
+
 app.UseHttpsRedirection();
 
 app.UseStaticFiles();
@@ -61,6 +78,7 @@ app.MapRazorPages();
 app.UseSession();
 
 //// Map SignalR hub
-//app.MapHub<ChatHub>("/chatHub");
+app.MapHub<HubServer>("/hub");
+
 
 app.Run();

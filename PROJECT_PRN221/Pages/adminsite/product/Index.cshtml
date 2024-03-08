@@ -71,7 +71,8 @@
                                                     <th>Brand Name</th>
                                                     <th>Status</th>
                                                     <th>Update</th>
-                                                    <th>Delete</th>
+                                                    <th>Details</th>
+                                                    @*<th>Delete</th>*@
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -93,7 +94,8 @@
                                                         </td>
 
                                                         <td><div class="badge badge-info"><a asp-page="./Edit" asp-route-id="@item.ProductId">Update</a></div></td>
-                                                        <td><div class="badge badge-danger"><a asp-page="./Delete" asp-route-id="@item.ProductId">Delete</a></div></td> 
+                                                        <td><div class="badge badge-success"><a href="/customersite/productdetail/Index?id=@item.ProductId" target="_blank">Details</a></div></td>
+                                                        @*<td><div class="badge badge-danger"><a asp-page="./Delete" asp-route-id="@item.ProductId">Delete</a></div></td> *@
                                                     </tr>
                                         }
 

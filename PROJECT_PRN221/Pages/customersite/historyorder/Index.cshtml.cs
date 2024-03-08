@@ -1,7 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
+using PROJECT_PRN221.Dto;
 using PROJECT_PRN221.Models;
+using RazorPagesLab.utils;
 
 namespace PROJECT_PRN221.Pages.customersite.historyorder
 {
@@ -14,7 +17,7 @@ namespace PROJECT_PRN221.Pages.customersite.historyorder
             _context = context;
         }
 
-        public List<Order> Orders { get; set; }
+        public PaginatedList<Order> Orders { get; set; }
         public int Wait { get; set; }
         public int Process { get; set; }
         public int Done { get; set; }
@@ -36,8 +39,12 @@ namespace PROJECT_PRN221.Pages.customersite.historyorder
             return checkS;
         }
 
-        public async Task<IActionResult> OnGetAsync(string service, string status)
+        public async Task<IActionResult> OnGetAsync(string service, string status, int? pageIndex)
         {
+            if (pageIndex == null)
+            {
+                pageIndex = 1;
+            }
             if (checkSession() == false)
             {
                 return RedirectToPage("/customersite/authenticate/login/Index");
@@ -59,26 +66,31 @@ namespace PROJECT_PRN221.Pages.customersite.historyorder
             {
                 service = "DisplayOrderHistpory";
             }
+
+            IQueryable<Order> IQ = null;
             if (service == "DisplayOrderHistpory")
             {
                 if (_context != null)
                 {
-                    Orders = _context.Orders
+
+                    IQ = _context.Orders
                     .Where(x => x.CustomerId == customer.CustomerId)
-                    .OrderByDescending(x => x.OderDate)
-                    .ToList();
+                    .OrderByDescending(x => x.OderDate);
+
                 }
             }
             if (service == "displayOrderStatus")
             {
                 if (_context != null)
                 {
-                    Orders = _context.Orders
+                    IQ = _context.Orders
                     .Where(x => x.CustomerId == customer.CustomerId && x.Status.Equals(status))
-                    .OrderByDescending(x => x.OderDate)
-                    .ToList();
+                    .OrderByDescending(x => x.OrderId);
                 }
             }
+
+            Orders = await PaginatedList<Order>.CreateAsync(
+            IQ.AsNoTracking(), pageIndex ?? 1, 6);
 
             return Page();
         }

@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.SignalR;
 using Newtonsoft.Json;
 using PROJECT_PRN221.Dto;
 using PROJECT_PRN221.Models;
@@ -11,10 +12,12 @@ namespace PROJECT_PRN221.Pages.customersite.checkout
     {
 
         private readonly PROJECT_PRN221.Models.ProjectPrn221Context _context;
+        private readonly IHubContext<HubServer> _hubContext;
 
-        public IndexModel(PROJECT_PRN221.Models.ProjectPrn221Context context)
+        public IndexModel(PROJECT_PRN221.Models.ProjectPrn221Context context, IHubContext<HubServer> hubContext)
         {
             _context = context;
+            _hubContext = hubContext;
         }
         public Customer Customer { get; set; }
         public double totalprice { get; set; }
@@ -105,6 +108,7 @@ namespace PROJECT_PRN221.Pages.customersite.checkout
                         {
                             _context.OrderDetails.Add(orderDetail);
                             _context.SaveChanges();
+                            await _hubContext.Clients.All.SendAsync("ReloadData");
                         }
                     }
                 }

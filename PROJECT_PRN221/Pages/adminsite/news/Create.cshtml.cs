@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.SignalR;
 using Newtonsoft.Json;
 using PROJECT_PRN221.Models;
 
@@ -14,11 +15,13 @@ namespace PROJECT_PRN221.Pages.adminsite.news
     {
         private readonly PROJECT_PRN221.Models.ProjectPrn221Context _context;
         private Microsoft.AspNetCore.Hosting.IHostingEnvironment _environment;
+        private readonly IHubContext<HubServer> _hubContext;
 
-        public CreateModel(PROJECT_PRN221.Models.ProjectPrn221Context context, Microsoft.AspNetCore.Hosting.IHostingEnvironment environment)
+        public CreateModel(PROJECT_PRN221.Models.ProjectPrn221Context context, Microsoft.AspNetCore.Hosting.IHostingEnvironment environment, IHubContext<HubServer> hubContext)
         {
             _context = context;
             _environment = environment;
+            _hubContext = hubContext;
         }
 
 
@@ -78,6 +81,7 @@ namespace PROJECT_PRN221.Pages.adminsite.news
 
             _context.News.Add(News);
             await _context.SaveChangesAsync();
+            await _hubContext.Clients.All.SendAsync("ReloadData");
 
             return RedirectToPage("./Index");
         }

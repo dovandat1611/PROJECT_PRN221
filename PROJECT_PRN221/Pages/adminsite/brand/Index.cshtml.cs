@@ -42,7 +42,7 @@ namespace PROJECT_PRN221.Pages.adminsite.brand
         {
             if (checkSession() == false)
             {
-                return RedirectToPage("/adminsite/authenticate/login/Index");
+                return RedirectToPage("/BadRequest");
             }
             if (pageIndex == null)
             {

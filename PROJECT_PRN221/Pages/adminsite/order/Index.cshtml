@@ -22,10 +22,33 @@
                                         <div>
                                             <h4 class="card-title card-title-dash">Order</h4>
                                         </div>
+
                                         <div>
-                                            <a onclick="exportToExcel()" class="btn btn-primary text-white me-0"><i class="icon-download"></i> Export</a>
+                                                <a onclick="exportToExcel()" class="btn btn-primary text-white me-0"><i class="icon-download"></i> Export</a>
                                         </div>
                                     </div>
+                                        <div class="d-sm-flex justify-content-evenly" style="margin-bottom: 20px">
+                                            <div>
+                                            <form method="post">
+                                                <label for="title">Search By Month-Year</label>
+                                                <input type="hidden" name="service" value="SearchByMonth"/>
+                                                 <div class="d-flex">
+                                                <input type="month" name="month" for="title" class="form-control" style="margin-right: 15px"/>
+                                                <button type="submit" class="btn btn-success  btn-sm">Search</button>
+                                                 </div>
+                                            </form>
+                                            </div>
+                                            <div>
+                                            <form method="post">
+                                                <label for="title">Search By Day-Month-Year</label>
+                                                <input type="hidden" name="service" value="SearchByDate"/>
+                                                 <div class="d-flex">
+                                                <input type="date" name="date" for="title" class="form-control" style="margin-right: 15px"/>
+                                                <button type="submit" class="btn btn-success  btn-sm">Search</button>
+                                                 </div>
+                                            </form>
+                                            </div>
+                                        </div>
                                     <div class="d-sm-flex justify-content-evenly">
                                         <p class="badge badge-info"><a href="/adminsite/order/Index?service=displayOrderStatus&status=Wait">Wait: @Model.Wait</a></p>
                                         <p class="badge badge-warning"><a href="/adminsite/order/Index?service=displayOrderStatus&status=Process">Process: @Model.Process </a></p>

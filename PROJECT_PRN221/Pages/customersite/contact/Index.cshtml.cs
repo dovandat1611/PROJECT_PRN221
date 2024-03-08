@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
@@ -16,11 +17,13 @@ namespace PROJECT_PRN221.Pages.customersite.contact
     {
         private readonly PROJECT_PRN221.Models.ProjectPrn221Context _context;
         private readonly IConfiguration Configuration;
+        private readonly IHubContext<HubServer> _hubContext;
 
-        public IndexModel(PROJECT_PRN221.Models.ProjectPrn221Context context, IConfiguration configuration)
+        public IndexModel(PROJECT_PRN221.Models.ProjectPrn221Context context, IConfiguration configuration, IHubContext<HubServer> hubContext)
         {
             _context = context;
             Configuration = configuration;
+            _hubContext = hubContext;
         }
 
         public string isCustomerAuthenticated { get; set; } = null;
@@ -78,6 +81,7 @@ namespace PROJECT_PRN221.Pages.customersite.contact
 
                     _context.Contacts.Add(contact);
                     _context.SaveChanges();
+                    await _hubContext.Clients.All.SendAsync("ReloadData");
 
 
                     var mailSettings = new MailSettings
