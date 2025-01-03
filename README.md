@@ -7,7 +7,7 @@
 
 ---
 
-## 📖 Table of Contents
+## Table of Contents
 
 - [Introduction](#introduction)
 - [Features](#features)
@@ -20,7 +20,7 @@
 
 ---
 
-## 🌟 Introduction
+## Introduction
 
 Welcome to the **HighTeach Store Website**, a modern and user-friendly platform for shopping for the latest technology products. 
 
@@ -30,7 +30,7 @@ This project is designed to provide an exceptional shopping experience while als
 
 ---
 
-## 🎯 Features
+## Features
 
 ### Customer Site
 
@@ -102,7 +102,7 @@ The **Admin Site** provides tools for managing the platform, including:
 
 ---
 
-## ⚙️ Installation
+## Installation
 
 Follow these steps to set up the project locally:
 
