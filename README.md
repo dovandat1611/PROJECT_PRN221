@@ -1,4 +1,4 @@
-![news-detail](https://github.com/user-attachments/assets/e8b408e0-35a5-42c9-8113-85d9cbf941be)# HighTeach Store Website
+# HighTeach Store Website
 
 **HighTeach Store Website** is an online technology store built using **C#** with the **Razor Pages** framework. The project consists of two main sites:
 
