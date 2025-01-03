@@ -24,9 +24,7 @@
 
 Welcome to the **HighTeach Store Website**, a modern and user-friendly platform for shopping for the latest technology products. 
 
-<div style="display: flex; justify-content: center;">
-  <img src="https://github.com/user-attachments/assets/f73e075b-c9f9-4ea7-a4c2-a85c5058da70" alt="homepage" width="400" />
-</div>
+<img src="https://github.com/user-attachments/assets/f73e075b-c9f9-4ea7-a4c2-a85c5058da70" alt="homepage" width="600" />
 
 This project is designed to provide an exceptional shopping experience while also offering administrative tools for efficient management.
 
