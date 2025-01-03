@@ -24,7 +24,7 @@
 
 Welcome to the **HighTeach Store Website**, a modern and user-friendly platform for shopping for the latest technology products. 
 
-![HighTeach Store Homepage](https://drive.google.com/file/d/1DZ0TfMJu2-6kz0ECIMA6dzUNm-zFdXFq/view?usp=drive_link)
+![HighTeach Store Homepage](https://drive.google.com/file/d/1GW32GjxN5Nz7ivjOTDNBt0MabxHGfedZ/view)
 
 This project is designed to provide an exceptional shopping experience while also offering administrative tools for efficient management.
 
