@@ -24,7 +24,7 @@
 
 Welcome to the **HighTeach Store Website**, a modern and user-friendly platform for shopping for the latest technology products. 
 
-![HighTeach Store Homepage](path/to/homepage-image.png)
+![HighTeach Store Homepage](C:\Users\Lenovo\Desktop\FULearning\HighTechStore\Customer/homepage.png)
 
 This project is designed to provide an exceptional shopping experience while also offering administrative tools for efficient management.
 
